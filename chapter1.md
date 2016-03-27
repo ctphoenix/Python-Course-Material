@@ -3,58 +3,75 @@ title       : Homework 1
 description : Exercises for homework (Week 1)
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+  
+  --- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1
 
---- type:VideoExercise lang:python xp:50 skills:1
-## Analyze movie ratings
+In this exercise, we will count the frequency of each letter in a document.
 
-*** =video_link
-//https://www.youtube.com/watch?v=xN1d3qHMIEQ
 
---- type:MultipleChoiceExercise lang:python xp:50 skills:1
-## A really bad movie
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movies have the worst rating assigned to them?
+
+
+Do you remember the plot of the last exercise? Let's make an even cooler plot!
+
+A dataset of movies, `movies`, is available in the workspace.
 
 *** =instructions
-- Long movies, clearly
-- Short movies, clearly
-- Long movies, but the correlation seems weak
-- Short movies, but the correlation seems weak
+- The lowercase English alphabet can be found using `ascii_lowercase` attribute in the `string` library.  Store this as `alphabet`.
 
 *** =hint
-Have a look at the plot. Do you see a trend in the dots?
+- You don't have to program anything for the first instruction, just take a look at the first line of code.
+- Use `import ___ as ___` to import `matplotlib.pyplot` as `plt`.
+- Use `plt.scatter(___, ___, c = ___)` for the third instruction.
+- You'll always have to type in `plt.show()` to show the plot you created.
 
 *** =pre_exercise_code
-```{r}
-# The pre exercise code runs code to initialize the user's workspace. You can use it for several things:
-
-# 1. Pre-load packages, so that users don't have to do this manually.
+```{python}
 import pandas as pd
-import matplotlib.pyplot as plt
+```
 
-# 2. Preload a dataset. The code below will read the csv that is stored at the URL's location.
-# The movies variable will be available in the user's console.
-movies = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
+*** =sample_code
+```{python}
+# write your code here!
 
-# 3. Create a plot in the viewer, that students can check out while reading the exercise
-plt.scatter(movies.runtime, movies.rating)
-plt.show()
+
+
+
+```
+
+*** =solution
+```{python}
+import string
+alphabet = string.ascii_lowercase
 ```
 
 *** =sct
-```{r}
-# The sct section defines the Submission Correctness Tests (SCTs) used to
-# evaluate the student's response. All functions used here are defined in the 
-# pythonwhat Python package
+```{python}
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
 
-msg_bad = "That is not correct!"
-msg_success = "Exactly! The correlation is very weak though."
-
-# Use test_mc() to grade multiple choice exercises. 
-# Pass the correct option (Action, option 2 in the instructions) to correct.
-# Pass the feedback messages, both positive and negative, to feedback_msgs in the appropriate order.
-test_mc(4, [msg_bad, msg_bad, msg_bad, msg_success]) 
+# Check if the student changed the np.unique() call
+# If it's not called, we know the student removed the call.
+# If it's called incorrectly, we know the student changed the call.
+test_function("string.ascii_lowercase",
+              not_called_msg = "Make sure to use `ascii_lowercase`!",
+              incorrect_msg = "Check your usage of `ascii_lowercase` again.")
+# Check if the student removed the ints object
+test_object("alphabet",
+            undefined_msg = "Did you define `alphabet`?",
+            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
+success_msg("Great work!")
 ```
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
 
 --- type:MultipleChoiceExercise lang:python xp:50 skills:1
 ## A really bad movie
