@@ -49,7 +49,7 @@ success_msg("Great work!")
 
 
 --- type:MultipleChoiceExercise lang:python xp:50 skills:1
-## A really bad movie
+## Default Multiple Choice Question (about movies)
 
 Have a look at the plot that showed up in the viewer to the right. Which type of movies have the worst rating assigned to them?
 
