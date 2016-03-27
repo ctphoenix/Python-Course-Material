@@ -9,22 +9,12 @@ attachments :
 
 In this exercise, we will count the frequency of each letter in a document.
 
-
-
-
-
-Do you remember the plot of the last exercise? Let's make an even cooler plot!
-
-A dataset of movies, `movies`, is available in the workspace.
-
 *** =instructions
 - The lowercase English alphabet can be found using `ascii_lowercase` attribute in the `string` library.  Store this as `alphabet`.
 
 *** =hint
-- You don't have to program anything for the first instruction, just take a look at the first line of code.
-- Use `import ___ as ___` to import `matplotlib.pyplot` as `plt`.
-- Use `plt.scatter(___, ___, c = ___)` for the third instruction.
-- You'll always have to type in `plt.show()` to show the plot you created.
+- Use `import` to import the `string` library.
+- Use `=` to assign `ascii_lowercase` to `alphabet`.
 
 *** =pre_exercise_code
 ```{python}
@@ -34,7 +24,6 @@ import pandas as pd
 *** =sample_code
 ```{python}
 # write your code here!
-
 
 
 
@@ -49,28 +38,14 @@ alphabet = string.ascii_lowercase
 *** =sct
 ```{python}
 # Documentation can also be found at github.com/datacamp/pythonwhat/wiki
-
-# Check if the student changed the np.unique() call
-# If it's not called, we know the student removed the call.
-# If it's called incorrectly, we know the student changed the call.
 test_function("string.ascii_lowercase",
               not_called_msg = "Make sure to use `ascii_lowercase`!",
               incorrect_msg = "Check your usage of `ascii_lowercase` again.")
-# Check if the student removed the ints object
 test_object("alphabet",
             undefined_msg = "Did you define `alphabet`?",
             incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
 
 --- type:MultipleChoiceExercise lang:python xp:50 skills:1
