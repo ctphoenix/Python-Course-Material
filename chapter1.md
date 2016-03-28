@@ -31,14 +31,14 @@ import pandas as pd
 
 *** =solution
 ```{python}
-import numpy as np
-print(np.array([0]))
+import string
+alphabet = string.ascii_lowercase
 ```
 
 *** =sct
 ```{python}
 # Documentation can also be found at github.com/datacamp/pythonwhat/wiki
-test_function("string.ascii_lowercase",
+test_function("ascii_lowercase",
               not_called_msg = "Make sure to use `ascii_lowercase`!",
               incorrect_msg = "Check your usage of `ascii_lowercase` again.")
 test_object("alphabet",
