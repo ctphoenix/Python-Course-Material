@@ -4,7 +4,7 @@ description : Exercises for homework (Week 1)
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
-  --- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 1
 
 In this exercise, we will count the frequency of each letter in a document.
