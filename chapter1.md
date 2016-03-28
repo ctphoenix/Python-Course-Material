@@ -18,7 +18,6 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
-import pandas as pd
 ```
 
 *** =sample_code
@@ -38,6 +37,7 @@ alphabet = string.ascii_lowercase
 *** =sct
 ```{python}
 # Documentation can also be found at github.com/datacamp/pythonwhat/wiki
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
 #test_function("ascii_lowercase",
 #              not_called_msg = "Make sure to use `ascii_lowercase`!",
 #              incorrect_msg = "Check your usage of `ascii_lowercase` again.")
@@ -48,48 +48,127 @@ success_msg("Great work!")
 ```
 
 
---- type:MultipleChoiceExercise lang:python xp:50 skills:1
-## Default Multiple Choice Question (about movies)
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movies have the worst rating assigned to them?
+--- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1
+
+In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- Long movies, clearly
-- Short movies, clearly
-- Long movies, but the correlation seems weak
-- Short movies, but the correlation seems weak
+- Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary that counts the number of times each letter is used in this sentence.  Make sure that capital letters are counted!
 
-*** =hint
-Have a look at the plot. Do you see a trend in the dots?
-
-*** =pre_exercise_code
+*** =sample_code
 ```{python}
-# The pre exercise code runs code to initialize the user's workspace. You can use it for several things:
+# write your code here!
 
-# 1. Pre-load packages, so that users don't have to do this manually.
-import pandas as pd
-import matplotlib.pyplot as plt
 
-# 2. Preload a dataset. The code below will read the csv that is stored at the URL's location.
-# The movies variable will be available in the user's console.
-movies = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
 
-# 3. Create a plot in the viewer, that students can check out while reading the exercise
-plt.scatter(movies.runtime, movies.rating)
-plt.show()
+```
+
+*** =solution
+```{python}
+sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
+
+count_letters = {}
+for letter in alphabet:
+    count_letter = 0
+    for character in sentence:
+        if character.casefold() == letter:
+            count_letter += 1
+    count_letters[letter] = count_letter
 ```
 
 *** =sct
 ```{python}
-# The sct section defines the Submission Correctness Tests (SCTs) used to
-# evaluate the student's response. All functions used here are defined in the
-# pythonwhat Python package
 
-msg_bad = "That is not correct!"
-msg_success = "Exactly! The correlation is very weak though."
-
-# Use test_mc() to grade multiple choice exercises.
-# Pass the correct option (option 4 in the instructions) to correct.
-# Pass the feedback messages, both positive and negative, to feedback_msgs in the appropriate order.
-test_mc(4, [msg_bad, msg_bad, msg_bad, msg_success])
+test_object("count_letters",
+            undefined_msg = "Did you define `count_letters`?",
+            incorrect_msg = "It looks like `count_letters` wasn't defined correctly.")
+test_object("count_letters",
+            undefined_msg = "Did you define `sentence`?",
+            incorrect_msg = "It looks like `sentence` wasn't defined correctly.")
+success_msg("Great work!")
 ```
+
+
+
+
+
+--- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1
+
+In this exercise, we will count the frequency of each letter in a document.
+
+*** =instructions
+- Rewrite your code in part a.) as a function.  That is, make a function that takes a string and returns a dictionary of letter counts.
+
+*** =sample_code
+```{python}
+# write your code here!
+
+
+
+```
+
+*** =solution
+```{python}
+def counter(input_string):
+    count_letters = {}
+    for letter in string.ascii_lowercase:
+        count_letter = 0
+        for character in input_string:
+            if character.casefold() == letter:
+                count_letter += 1
+        count_letters[letter] = count_letter
+    return count_letters
+```
+
+
+--- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1
+
+In this exercise, we will count the frequency of each letter in a document.
+
+*** =instructions
+- In the course repository of the Abraham Lincoln's Gettysburg Address. Use your function from part b.) to count the number of letters in this address.
+
+*** =solution
+```{python}
+with open('gettysburg.txt', 'r') as f:
+    address = f.read()
+    address_count = counter(address)
+    
+print(address_count)
+```
+
+
+
+
+--- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1
+
+In this exercise, we will count the frequency of each letter in a document.
+
+*** =instructions
+- What is the most common letter used in the Gettysburg Address?  Print your answer.
+
+*** =solution
+```{python}
+maximum, letter_maximum  = 0, ""
+for letter in address_count.keys():
+    if address_count[letter] > maximum:
+        letter_maximum = letter
+
+print(letter)
+```
+
+*** =sample_code
+```{python}
+# write your code here!
+
+
+
+```
+
+
+
