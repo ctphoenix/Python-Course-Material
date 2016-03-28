@@ -94,8 +94,8 @@ test_object("sentence",
             undefined_msg = "Did you define `sentence`?",
             incorrect_msg = "It looks like `sentence` wasn't defined correctly.")
 test_object("count_letters",
-            undefined_msg = "Did you define `sentence`?",
-            incorrect_msg = "It looks like `sentence` wasn't defined correctly.")
+            undefined_msg = "Did you define `count_letters`?",
+            incorrect_msg = "It looks like `count_letters` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
