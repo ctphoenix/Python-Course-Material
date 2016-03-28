@@ -31,8 +31,8 @@ import pandas as pd
 
 *** =solution
 ```{python}
-import string
-alphabet = string.ascii_lowercase
+import numpy as np
+print(np.array([0]))
 ```
 
 *** =sct
