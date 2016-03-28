@@ -62,7 +62,8 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
-
+import string
+alphabet = string.ascii_lowercase
 ```
 
 
