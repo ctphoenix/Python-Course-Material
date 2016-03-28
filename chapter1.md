@@ -5,7 +5,7 @@ attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1
+## Exercise 1a
 
 In this exercise, we will count the frequency of each letter in a document.
 
@@ -50,7 +50,7 @@ success_msg("Great work!")
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1
+## Exercise 1b
 
 In this exercise, we will count the frequency of each letter in a document.
 
