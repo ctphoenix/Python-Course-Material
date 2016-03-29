@@ -497,7 +497,7 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Find how many of `R=1000000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle.  This proportion is an estimate of the ratio of the two volumes!
+- Find how many of `R=10000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle.  This proportion is an estimate of the ratio of the two volumes!
 
 *** =hint
 -
@@ -550,7 +550,7 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
-R=1000000
+R=10000
 inside = 0
 for i in range(R):
     x = [rand(), rand()]
@@ -561,7 +561,7 @@ print(inside/R)
 *** =sample_code
 ```{python}
 # write your code here!
-R=1000000
+R=10000
 inside = 0
 for i in range(R):
     x = [rand(), rand()]
@@ -617,7 +617,7 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
-R=1000000
+R=10000
 inside = 0
 for i in range(R):
     x = [rand(), rand()]
@@ -647,7 +647,7 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
-R=1000000
+R=10000
 inside = 0
 for i in range(R):
     x = [rand(), rand()]
