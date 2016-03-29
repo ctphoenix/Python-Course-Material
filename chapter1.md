@@ -101,3 +101,50 @@ success_msg("Great work!")
 ```
 
 
+
+
+--- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1c
+
+In this exercise, we will count the frequency of each letter in a document.
+
+*** =instructions
+- Rewrite your code in part a.) as a function.  That is, make a function that takes a string and returns a dictionary of letter counts.
+
+*** =hint
+-
+
+*** =pre_exercise_code
+```{python}
+```
+
+*** =sample_code
+```{python}
+# write your code here!
+
+
+
+```
+
+*** =solution
+```{python}
+def counter(input_string):
+    count_letters = {}
+    for letter in string.ascii_lowercase:
+        count_letter = 0
+        for character in input_string:
+            if character.casefold() == letter:
+                count_letter += 1
+        count_letters[letter] = count_letter
+    return count_letters
+```
+
+*** =sct
+```{python}
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
+test_function("counter",
+              not_called_msg = "Make sure to define `counter`!",
+              incorrect_msg = "Check your usage of `counter` again.")
+success_msg("Great work!")
+```
