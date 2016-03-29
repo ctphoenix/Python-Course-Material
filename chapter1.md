@@ -485,12 +485,16 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 *** =pre_exercise_code
 ```{python}
 import random
+def rand():
+    return random.random()*2-1
 random.seed(1)
 ```
 
 *** =solution
 ```{python}
 import random
+def rand():
+    return random.random()*2-1
 random.seed(1)
 R=1000000
 inside = 0
