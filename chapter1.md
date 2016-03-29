@@ -269,8 +269,6 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
-import math
-print(math.pi/4)
 ```
 
 *** =solution
@@ -282,7 +280,8 @@ print(math.pi/4)
 *** =sample_code
 ```{python}
 # write your code here!
-
+import math
+print(math.pi/4)
 ```
 
 *** =sct
@@ -313,11 +312,14 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+import random
+random.seed(1)
 ```
 
 *** =solution
 ```{python}
 import random
+random.seed(1)
 def rand():
     """
         Generates a random real number between -1 and 1.\n
@@ -360,10 +362,14 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+import random
+random.seed(1)
 ```
 
 *** =solution
 ```{python}
+import random
+random.seed(1)
 import math
 def distance(x, y):
     """
@@ -419,11 +425,15 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 -
 
 *** =pre_exercise_code
+import random
+random.seed(1)
 ```{python}
 ```
 
 *** =solution
 ```{python}
+import random
+random.seed(1)
 def in_circle(x, origin = [0]*2):
     """
         This function determines if a two-dimensional point\n
@@ -474,10 +484,14 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+import random
+random.seed(1)
 ```
 
 *** =solution
 ```{python}
+import random
+random.seed(1)
 R=1000000
 inside = 0
 for i in range(R):
@@ -524,10 +538,14 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+import random
+random.seed(1)
 ```
 
 *** =solution
 ```{python}
+import random
+random.seed(1)
 print(inside/R - math.pi/4)
 ```
 
@@ -560,10 +578,14 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 
 *** =pre_exercise_code
 ```{python}
+import random
+random.seed(1)
 ```
 
 *** =solution
 ```{python}
+import random
+random.seed(1)
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
@@ -605,10 +627,14 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 
 *** =pre_exercise_code
 ```{python}
+import random
+random.seed(1)
 ```
 
 *** =solution
 ```{python}
+import random
+random.seed(1)
 x=[0,10,5,3,1,5]
 
 moving_window_average(x, n_neighbors=1)
@@ -664,10 +690,14 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 
 *** =pre_exercise_code
 ```{python}
+import random
+random.seed(1)
 ```
 
 *** =solution
 ```{python}
+import random
+random.seed(1)
 [max(x)-min(x) for x in X]
 ```
 
