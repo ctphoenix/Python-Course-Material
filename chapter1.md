@@ -109,7 +109,7 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- Here is an example solution of part b.)  Rewrite this code to make a function that takes a string and returns a dictionary of letter counts.
+- Here is an example solution of part b.)  Rewrite this code to make a function called `counter` that takes a string and returns a dictionary of letter counts.
 
 *** =hint
 -
@@ -137,6 +137,8 @@ for letter in alphabet:
 
 *** =solution
 ```{python}
+import string 
+
 def counter(input_string):
     count_letters = {}
     for letter in string.ascii_lowercase:
