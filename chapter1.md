@@ -109,28 +109,29 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- Here is an example solution of part b.)  Rewrite this code to make a function called `counter` that takes a string and returns a dictionary of letter counts.
+- Here is an example solution of part b.)  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.  Use your function to call `counter(sentence)`.
 
 *** =hint
 -
 
 *** =pre_exercise_code
 ```{python}
-import string
-alphabet = string.ascii_lowercase
 ```
 
 *** =sample_code
 ```{python}
+
+import string
+sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
+
 # edit this code!
 count_letters = {}
-for letter in alphabet:
+for letter in string.ascii_lowercase:
     count_letter = 0
-    for character in sentence:
+    for character in input_string:
         if character.casefold() == letter:
             count_letter += 1
     count_letters[letter] = count_letter
-
 
 
 ```
@@ -138,6 +139,7 @@ for letter in alphabet:
 *** =solution
 ```{python}
 import string 
+sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
 
 def counter(input_string):
     count_letters = {}
@@ -148,14 +150,13 @@ def counter(input_string):
                 count_letter += 1
         count_letters[letter] = count_letter
     return count_letters
+    
+counter(sentence)
 ```
 
 *** =sct
 ```{python}
-# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
-# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
-test_object("counter",
-              undefined_msg = "Did you define `counter`?")
+test_function("counter", 1")
 success_msg("Great work!")
 ```
 
