@@ -286,7 +286,7 @@ print(math.pi/4)
 
 *** =sct
 ```{python}
-test_function("print", index = 1
+test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!",
               incorrect_msg = "Wat you printed is not yet correct.")
 success_msg("Great work!")
