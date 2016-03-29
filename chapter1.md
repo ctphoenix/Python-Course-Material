@@ -154,9 +154,8 @@ def counter(input_string):
 ```{python}
 # Documentation can also be found at github.com/datacamp/pythonwhat/wiki
 # Documentation can also be found at github.com/datacamp/pythonwhat/wiki
-test_function("counter",
-              not_called_msg = "Make sure to define `counter`!",
-              incorrect_msg = "Check your usage of `counter` again.")
+test_object("counter",
+              undefined_msg = "Did you define `counter`?")
 success_msg("Great work!")
 ```
 
@@ -174,6 +173,20 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
+```
+
+*** -sample_code
+```{python}
+import string
+def counter(input_string):
+    count_letters = {}
+    for letter in string.ascii_lowercase:
+        count_letter = 0
+        for character in input_string:
+            if character.casefold() == letter:
+                count_letter += 1
+        count_letters[letter] = count_letter
+    return count_letters
 ```
 
 *** =solution
