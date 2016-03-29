@@ -116,6 +116,13 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
+import string
+alphabet = string.ascii_lowercase
+```
+
+*** =sample_code
+```{python}
+# edit this code!
 count_letters = {}
 for letter in alphabet:
     count_letter = 0
@@ -123,11 +130,6 @@ for letter in alphabet:
         if character.casefold() == letter:
             count_letter += 1
     count_letters[letter] = count_letter
-```
-
-*** =sample_code
-```{python}
-# write your code here!
 
 
 
