@@ -156,7 +156,9 @@ counter(sentence)
 
 *** =sct
 ```{python}
-test_function("counter", 1")
+test_function("counter", index = 1,
+              not_called_msg = "Make sure to use `ascii_lowercase`!",
+              incorrect_msg = "Check your usage of `ascii_lowercase` again.")
 success_msg("Great work!")
 ```
 
