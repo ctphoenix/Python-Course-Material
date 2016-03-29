@@ -734,23 +734,24 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 *** =pre_exercise_code
 ```{python}
 import random
+random.seed(1)
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
     return [sum(x[i:(i+width)]) / width for i in range(n)]
-random.seed(1)
 ```
 
 *** =solution
 ```{python}
 import random
+random.seed(1)
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
     return [sum(x[i:(i+width)]) / width for i in range(n)]
-random.seed(1)
+
 x=[0,10,5,3,1,5]
 
 moving_window_average(x, n_neighbors=1)
@@ -775,7 +776,6 @@ moving_window_average(x, n_neighbors=1)
 R=1000
 x = [random.random() for i in range(R)]
 X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
-
 # Decreases, because the average smooths a larger number of neighbors.
 # Because the numbers in the original list are just random, we expect the
 # average of many of them to be roughly 1/2, and more averaging means more
@@ -807,12 +807,13 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 *** =pre_exercise_code
 ```{python}
 import random
+random.seed(1)
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
     return [sum(x[i:(i+width)]) / width for i in range(n)]
-random.seed(1)
+
 x=[0,10,5,3,1,5]
 
 moving_window_average(x, n_neighbors=1)
@@ -825,12 +826,13 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 *** =solution
 ```{python}
 import random
+random.seed(1)
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
     return [sum(x[i:(i+width)]) / width for i in range(n)]
-random.seed(1)
+
 x=[0,10,5,3,1,5]
 
 moving_window_average(x, n_neighbors=1)
