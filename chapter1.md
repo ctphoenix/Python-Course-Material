@@ -692,7 +692,7 @@ random.seed(1)
 ```{python}
 import random
 random.seed(1)
-def moving_window_average(x, n_neighbors=2):
+def moving_window_sum(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
@@ -702,7 +702,7 @@ def moving_window_average(x, n_neighbors=2):
 *** =sample_code
 ```{python}
 # write your code here!
-def moving_window_average(x, n_neighbors=2):
+def moving_window_sum(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
@@ -735,7 +735,7 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 ```{python}
 import random
 random.seed(1)
-def moving_window_average(x, n_neighbors=2):
+def moving_window_sum(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
@@ -746,7 +746,7 @@ def moving_window_average(x, n_neighbors=2):
 ```{python}
 import random
 random.seed(1)
-def moving_window_average(x, n_neighbors=2):
+def moving_window_sum(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
@@ -754,7 +754,7 @@ def moving_window_average(x, n_neighbors=2):
 
 x=[0,10,5,3,1,5]
 
-moving_window_average(x, n_neighbors=1)
+moving_window_sum(x, n_neighbors=1)
 
 R=1000
 x = [random.random() for i in range(R)]
@@ -771,7 +771,7 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 # write your code here!
 x=[0,10,5,3,1,5]
 
-moving_window_average(x, n_neighbors=1)
+moving_window_sum(x, n_neighbors=1)
 
 R=1000
 x = [random.random() for i in range(R)]
@@ -808,7 +808,7 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 ```{python}
 import random
 random.seed(1)
-def moving_window_average(x, n_neighbors=2):
+def moving_window_sum(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
@@ -816,7 +816,7 @@ def moving_window_average(x, n_neighbors=2):
 
 x=[0,10,5,3,1,5]
 
-moving_window_average(x, n_neighbors=1)
+moving_window_sum(x, n_neighbors=1)
 
 R=1000
 x = [random.random() for i in range(R)]
@@ -827,7 +827,7 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 ```{python}
 import random
 random.seed(1)
-def moving_window_average(x, n_neighbors=2):
+def moving_window_sum(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
@@ -835,7 +835,7 @@ def moving_window_average(x, n_neighbors=2):
 
 x=[0,10,5,3,1,5]
 
-moving_window_average(x, n_neighbors=1)
+moving_window_sum(x, n_neighbors=1)
 
 R=1000
 x = [random.random() for i in range(R)]
