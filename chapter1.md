@@ -109,13 +109,20 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- Rewrite your code in part a.) as a function.  That is, make a function that takes a string and returns a dictionary of letter counts.
+- Here is an example solution of part b.)  Rewrite this code to make a function that takes a string and returns a dictionary of letter counts.
 
 *** =hint
 -
 
 *** =pre_exercise_code
 ```{python}
+count_letters = {}
+for letter in alphabet:
+    count_letter = 0
+    for character in sentence:
+        if character.casefold() == letter:
+            count_letter += 1
+    count_letters[letter] = count_letter
 ```
 
 *** =sample_code
@@ -146,5 +153,84 @@ def counter(input_string):
 test_function("counter",
               not_called_msg = "Make sure to define `counter`!",
               incorrect_msg = "Check your usage of `counter` again.")
+success_msg("Great work!")
+```
+
+
+--- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1d
+
+In this exercise, we will count the frequency of each letter in a document.
+
+*** =instructions
+- In the course repository of the Abraham Lincoln's Gettysburg Address. Use your function from part b.) to count the number of letters in this address.
+
+*** =hint
+-
+
+*** =pre_exercise_code
+```{python}
+```
+
+*** =solution
+```{python}
+with open('gettysburg.txt', 'r') as f:
+    address = f.read()
+    address_count = counter(address)
+    
+print(address_count)
+```
+
+*** =sct
+```{python}
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
+test_object("address_count",
+              not_called_msg = "Make sure to define `address_count`!",
+              incorrect_msg = "Check your usage of `address_count` again.")
+success_msg("Great work!")
+```
+
+
+--- type:NormalExercise lang:python xp:100 skills:1
+## Exercise 1e
+
+In this exercise, we will count the frequency of each letter in a document.
+
+*** =instructions
+- What is the most common letter used in the Gettysburg Address?  Print your answer.
+
+*** =hint
+-
+
+*** =pre_exercise_code
+```{python}
+```
+
+*** =solution
+```{python}
+maximum, letter_maximum  = 0, ""
+for letter in address_count.keys():
+    if address_count[letter] > maximum:
+        letter_maximum = letter
+
+print(letter)
+```
+
+*** =sample_code
+```{python}
+# write your code here!
+
+
+
+```
+
+*** =sct
+```{python}
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
+# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
+test_object("letter",
+              not_called_msg = "Make sure to define `letter`!",
+              incorrect_msg = "Check your usage of `letter` again.")
 success_msg("Great work!")
 ```
