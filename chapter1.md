@@ -487,6 +487,13 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 import random
 def rand():
     return random.random()*2-1
+def in_circle(x, origin = [0]*2):
+    if len(x) != 2:
+        return "x is not two-dimensional!"
+    elif distance(x, origin) < 1:
+        return True
+    else:
+        return False
 random.seed(1)
 ```
 
@@ -495,6 +502,13 @@ random.seed(1)
 import random
 def rand():
     return random.random()*2-1
+def in_circle(x, origin = [0]*2):
+    if len(x) != 2:
+        return "x is not two-dimensional!"
+    elif distance(x, origin) < 1:
+        return True
+    else:
+        return False
 random.seed(1)
 R=1000000
 inside = 0
@@ -517,7 +531,7 @@ print(inside/R)
 
 *** =sct
 ```{python}
-test_function("letter", index = 1,
+test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!")
 success_msg("Great work!")
 ```
@@ -543,12 +557,30 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 *** =pre_exercise_code
 ```{python}
 import random
+def rand():
+    return random.random()*2-1
+def in_circle(x, origin = [0]*2):
+    if len(x) != 2:
+        return "x is not two-dimensional!"
+    elif distance(x, origin) < 1:
+        return True
+    else:
+        return False
 random.seed(1)
 ```
 
 *** =solution
 ```{python}
 import random
+def rand():
+    return random.random()*2-1
+def in_circle(x, origin = [0]*2):
+    if len(x) != 2:
+        return "x is not two-dimensional!"
+    elif distance(x, origin) < 1:
+        return True
+    else:
+        return False
 random.seed(1)
 print(inside/R - math.pi/4)
 ```
@@ -632,12 +664,22 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 *** =pre_exercise_code
 ```{python}
 import random
+def moving_window_average(x, n_neighbors=2):
+    n = len(x)
+    width = n_neighbors*2 + 1
+    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
+    return [sum(x[i:(i+width)]) / width for i in range(n)]
 random.seed(1)
 ```
 
 *** =solution
 ```{python}
 import random
+def moving_window_average(x, n_neighbors=2):
+    n = len(x)
+    width = n_neighbors*2 + 1
+    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
+    return [sum(x[i:(i+width)]) / width for i in range(n)]
 random.seed(1)
 x=[0,10,5,3,1,5]
 
@@ -672,9 +714,9 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
+test_object("X",
+              not_called_msg = "Make sure to define `X`!",
+              incorrect_msg = "Check your usage of `X` again.")
 success_msg("Great work!")
 ```
 
@@ -695,13 +737,37 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 *** =pre_exercise_code
 ```{python}
 import random
+def moving_window_average(x, n_neighbors=2):
+    n = len(x)
+    width = n_neighbors*2 + 1
+    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
+    return [sum(x[i:(i+width)]) / width for i in range(n)]
 random.seed(1)
+x=[0,10,5,3,1,5]
+
+moving_window_average(x, n_neighbors=1)
+
+R=1000
+x = [random.random() for i in range(R)]
+X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 ```
 
 *** =solution
 ```{python}
 import random
+def moving_window_average(x, n_neighbors=2):
+    n = len(x)
+    width = n_neighbors*2 + 1
+    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
+    return [sum(x[i:(i+width)]) / width for i in range(n)]
 random.seed(1)
+x=[0,10,5,3,1,5]
+
+moving_window_average(x, n_neighbors=1)
+
+R=1000
+x = [random.random() for i in range(R)]
+X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 [max(x)-min(x) for x in X]
 ```
 
