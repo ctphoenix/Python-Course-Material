@@ -617,6 +617,11 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
+R=1000000
+inside = 0
+for i in range(R):
+    x = [rand(), rand()]
+    inside += int(in_circle(x))        
 ```
 
 *** =solution
@@ -642,6 +647,11 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
+R=1000000
+inside = 0
+for i in range(R):
+    x = [rand(), rand()]
+    inside += int(in_circle(x))        
 print(inside/R - math.pi/4)
 ```
 
