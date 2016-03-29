@@ -504,11 +504,10 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
-import random
+import random, math
+random.seed(1)
 def rand():
     return random.random()*2-1
-import random
-random.seed(1)
 def distance(x, y):
     """
         Given x and y, find their distance.\n
@@ -526,16 +525,14 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
-random.seed(1)
 ```
 
 *** =solution
 ```{python}
-import random
+import random, math
+random.seed(1)
 def rand():
     return random.random()*2-1
-import random
-random.seed(1)
 def distance(x, y):
     """
         Given x and y, find their distance.\n
@@ -553,7 +550,6 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
-random.seed(1)
 R=1000000
 inside = 0
 for i in range(R):
