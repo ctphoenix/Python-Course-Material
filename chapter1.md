@@ -425,15 +425,35 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 -
 
 *** =pre_exercise_code
+```{python}
 import random
 random.seed(1)
-```{python}
+def distance(x, y):
+    """
+        Given x and y, find their distance.\n
+        This is given by sqrt(sum((x-y)**2)).
+    """
+    if len(x) != len(y):
+        return "x and y do not have the same length!"
+    else:
+        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
+        return math.sqrt(sum(square_differences))
 ```
 
 *** =solution
 ```{python}
 import random
 random.seed(1)
+def distance(x, y):
+    """
+        Given x and y, find their distance.\n
+        This is given by sqrt(sum((x-y)**2)).
+    """
+    if len(x) != len(y):
+        return "x and y do not have the same length!"
+    else:
+        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
+        return math.sqrt(sum(square_differences))
 def in_circle(x, origin = [0]*2):
     """
         This function determines if a two-dimensional point\n
@@ -487,6 +507,18 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 import random
 def rand():
     return random.random()*2-1
+import random
+random.seed(1)
+def distance(x, y):
+    """
+        Given x and y, find their distance.\n
+        This is given by sqrt(sum((x-y)**2)).
+    """
+    if len(x) != len(y):
+        return "x and y do not have the same length!"
+    else:
+        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
+        return math.sqrt(sum(square_differences))    
 def in_circle(x, origin = [0]*2):
     if len(x) != 2:
         return "x is not two-dimensional!"
@@ -502,6 +534,18 @@ random.seed(1)
 import random
 def rand():
     return random.random()*2-1
+import random
+random.seed(1)
+def distance(x, y):
+    """
+        Given x and y, find their distance.\n
+        This is given by sqrt(sum((x-y)**2)).
+    """
+    if len(x) != len(y):
+        return "x and y do not have the same length!"
+    else:
+        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
+        return math.sqrt(sum(square_differences))    
 def in_circle(x, origin = [0]*2):
     if len(x) != 2:
         return "x is not two-dimensional!"
@@ -559,6 +603,18 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 import random
 def rand():
     return random.random()*2-1
+import random
+random.seed(1)
+def distance(x, y):
+    """
+        Given x and y, find their distance.\n
+        This is given by sqrt(sum((x-y)**2)).
+    """
+    if len(x) != len(y):
+        return "x and y do not have the same length!"
+    else:
+        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
+        return math.sqrt(sum(square_differences))    
 def in_circle(x, origin = [0]*2):
     if len(x) != 2:
         return "x is not two-dimensional!"
@@ -574,6 +630,18 @@ random.seed(1)
 import random
 def rand():
     return random.random()*2-1
+import random
+random.seed(1)
+def distance(x, y):
+    """
+        Given x and y, find their distance.\n
+        This is given by sqrt(sum((x-y)**2)).
+    """
+    if len(x) != len(y):
+        return "x and y do not have the same length!"
+    else:
+        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
+        return math.sqrt(sum(square_differences))    
 def in_circle(x, origin = [0]*2):
     if len(x) != 2:
         return "x is not two-dimensional!"
