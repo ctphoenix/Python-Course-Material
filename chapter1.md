@@ -247,8 +247,6 @@ print(letter)
 
 *** =sct
 ```{python}
-# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
-# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
 test_object("letter",
               not_called_msg = "Make sure to define `letter`!",
               incorrect_msg = "Check your usage of `letter` again.")
@@ -258,97 +256,27 @@ success_msg("Great work!")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 2a
 
-The ratio of the volumes of a circle and the square inscribing it is pi/4.  In this exercise, we will find a way to approximate this value.
+The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- 
+- Using the math library, calculate and print the value of pi/4.
 
 *** =hint
 -
 
 *** =pre_exercise_code
 ```{python}
-```
-
-*** =solution
-```{python}
-
-```
-
-*** =sample_code
-```{python}
-# write your code here!
-
-```
-
-*** =sct
-```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
-success_msg("Great work!")
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 2a
-
-The ratio of the volumes of a circle and the square inscribing it is pi/4.  In this exercise, we will find a way to approximate this value.
-
-*** =instructions
-- Using the math library, calculate the value of pi/4.
-
-*** =hint
--
-
-*** =pre_exercise_code
-```{python}
+import math
+print(math.pi/4)
 ```
 
 *** =solution
 ```{python}
 import math
-math.pi/4
+print(math.pi/4)
 ```
 
 *** =sample_code
@@ -359,9 +287,9 @@ math.pi/4
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
+test_function("print", index = 1
+              not_called_msg = "Make sure to print your answer!",
+              incorrect_msg = "Wat you printed is not yet correct.")
 success_msg("Great work!")
 ```
 
@@ -375,10 +303,10 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 2b
 
-The ratio of the volumes of a circle and the square inscribing it is pi/4.  In this exercise, we will find a way to approximate this value.
+The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Using random.random, generate real numbers between -1 and 1.
+- Using `random.random`, generate real numbers between -1 and 1.
 
 *** =hint
 -
@@ -402,14 +330,18 @@ def rand():
 *** =sample_code
 ```{python}
 # write your code here!
-
+import random
+def rand():
+    """
+        Generates a random real number between -1 and 1.\n
+        This function uses random.random, which generates\n
+        random real number between 0 and 1.
+    """
+    return random.random()*2-1
 ```
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
 success_msg("Great work!")
 ```
 
@@ -418,7 +350,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 2c
 
-The ratio of the volumes of a circle and the square inscribing it is pi/4.  In this exercise, we will find a way to approximate this value.
+The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - The formula for the distance between two points `x` and `y` is `sqrt(sum((x-y)**2))`.  Find distance between two points.
@@ -448,14 +380,21 @@ def distance(x, y):
 *** =sample_code
 ```{python}
 # write your code here!
-
+import math
+def distance(x, y):
+    """
+        Given x and y, find their distance.\n
+        This is given by sqrt(sum((x-y)**2)).
+    """
+    if len(x) != len(y):
+        return "x and y do not have the same length!"
+    else:
+        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
+        return math.sqrt(sum(square_differences))
 ```
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
 success_msg("Great work!")
 ```
 
@@ -471,7 +410,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 2d
 
-The ratio of the volumes of a circle and the square inscribing it is pi/4.  In this exercise, we will find a way to approximate this value.
+The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - Make a function that determines if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.
@@ -501,22 +440,23 @@ def in_circle(x, origin = [0]*2):
 *** =sample_code
 ```{python}
 # write your code here!
-
+def in_circle(x, origin = [0]*2):
+    """
+        This function determines if a two-dimensional point\n
+        falls within the\n unit circle.
+    """
+    if len(x) != 2:
+        return "x is not two-dimensional!"
+    elif distance(x, origin) < 1:
+        return True
+    else:
+        return False
 ```
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
 success_msg("Great work!")
 ```
-
-
-
-
-
-
 
 
 
@@ -524,10 +464,10 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 2e
 
-The ratio of the volumes of a circle and the square inscribing it is pi/4.  In this exercise, we will find a way to approximate this value.
+The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Find how many of R=1000000 two-dimensional points selected at random from [-1,1]^2 fall within the unit circle.  This proportion is an estimate of the ratio of the two volumes!
+- Find how many of `R=1000000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle.  This proportion is an estimate of the ratio of the two volumes!
 
 *** =hint
 -
@@ -549,14 +489,18 @@ print(inside/R)
 *** =sample_code
 ```{python}
 # write your code here!
-
+R=1000000
+inside = 0
+for i in range(R):
+    x = [rand(), rand()]
+    inside += int(in_circle(x))
+print(inside/R)
 ```
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
+test_function("letter", index = 1,
+              not_called_msg = "Make sure to print your answer!")
 success_msg("Great work!")
 ```
 
@@ -570,10 +514,10 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 2f
 
-The ratio of the volumes of a circle and the square inscribing it is pi/4.  In this exercise, we will find a way to approximate this value.
+The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find the difference between this value and your estimate in part e.)
+- Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find the difference between this value and your estimate in part `2e`.
 
 *** =hint
 -
@@ -590,14 +534,13 @@ print(inside/R - math.pi/4)
 *** =sample_code
 ```{python}
 # write your code here!
-
+print(inside/R - math.pi/4)
 ```
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
+test_object("print", index = 1
+              not_called_msg = "Make sure to print your answer!")
 success_msg("Great work!")
 ```
 
@@ -631,14 +574,15 @@ def moving_window_average(x, n_neighbors=2):
 *** =sample_code
 ```{python}
 # write your code here!
-
+def moving_window_average(x, n_neighbors=2):
+    n = len(x)
+    width = n_neighbors*2 + 1
+    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
+    return [sum(x[i:(i+width)]) / width for i in range(n)]
 ```
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
 success_msg("Great work!")
 ```
 
@@ -654,7 +598,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.  Find a function that takes a list and the number of neighbors on either side to consider. For each value, the function computes the average of each value's neighbors, including themselves. The function should return a list of these averaged Values as long as the original list.  If there are not enough neighbors (for cases near the edge), substitute the original value as many times as there are missing neighbors.
 
 *** =instructions
-- Compute and store R=1000 random values from 0-1. Then, compute the moving window average several times for this list for a range of number of neighbors 1-9.
+- Compute and store `R=1000` random values from 0-1. Then, compute the moving window average several times for this list for a range of number of neighbors 1-9.
 
 *** =hint
 -
@@ -682,7 +626,18 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 *** =sample_code
 ```{python}
 # write your code here!
+x=[0,10,5,3,1,5]
 
+moving_window_average(x, n_neighbors=1)
+
+R=1000
+x = [random.random() for i in range(R)]
+X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
+
+# Decreases, because the average smooths a larger number of neighbors.
+# Because the numbers in the original list are just random, we expect the
+# average of many of them to be roughly 1/2, and more averaging means more
+# smoothness in this value.
 ```
 
 *** =sct
@@ -719,14 +674,11 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 *** =sample_code
 ```{python}
 # write your code here!
-
+[max(x)-min(x) for x in X]
 ```
 
 *** =sct
 ```{python}
-test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Check your usage of `letter` again.")
 success_msg("Great work!")
 ```
 
