@@ -773,7 +773,7 @@ moving_window_average(x, 1)
 test_object("x",
             undefined_msg = "Did you remember to define `x`?",
             incorrect_msg = "It looks like `x` wasn't defined correctly.")
-test_function("print", index = 1,
+test_function("moving_window_average", index = 1,
               not_called_msg = "Make sure to use `moving_window_average`!",
               incorrect_msg = "Are you sure that your answer is correct?")
 success_msg("Great work!")
