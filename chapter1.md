@@ -357,8 +357,6 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
-import random
-random.seed(1)
 ```
 
 *** =solution
@@ -380,6 +378,7 @@ print(rand())
 ```{python}
 # write your code here!
 import random
+random.seed(1)
 def rand():
     """
         Generates a random real number between -1 and 1.\n
