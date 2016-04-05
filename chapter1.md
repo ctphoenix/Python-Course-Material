@@ -840,7 +840,7 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 
 *** =sct
 ```{python}
-success_msg("Great work!")
+success_msg("Great work!  The range decreases, because the average smooths a larger number of neighbors. Because the numbers in the original list are just random, we expect the average of many of them to be roughly 1/2, and more averaging means more smoothness in this value.")
 ```
 
 
