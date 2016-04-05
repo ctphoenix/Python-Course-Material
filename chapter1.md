@@ -776,12 +776,10 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 *** =sct
 ```{python}
 test_object("X",
-              not_called_msg = "Make sure to define `X`!",
-              incorrect_msg = "Check your usage of `X` again.")
+              undefined_msg="Make sure to define `X`!",
+              incorrect_msg="Check your usage of `X` again.")
 success_msg("Great work!")
 ```
-
-
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
