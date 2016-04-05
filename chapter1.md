@@ -371,7 +371,7 @@ def rand():
     """
     return random.random()*2-1
 
-print(rand())  
+print(rand())     
 ```
 
 *** =sample_code
@@ -417,8 +417,6 @@ random.seed(1)
 
 *** =solution
 ```{python}
-import random
-random.seed(1)
 import math
 def distance(x, y):
     """
@@ -430,6 +428,8 @@ def distance(x, y):
     else:
         square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
         return math.sqrt(sum(square_differences))
+
+distance((0,0),(1,1))
 ```
 
 *** =sample_code
@@ -474,7 +474,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
-import random
+import random, math
 random.seed(1)
 def distance(x, y):
     """
@@ -490,7 +490,7 @@ def distance(x, y):
 
 *** =solution
 ```{python}
-import random
+import random, math
 random.seed(1)
 def distance(x, y):
     """
