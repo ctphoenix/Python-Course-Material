@@ -371,7 +371,7 @@ def rand():
     """
     return random.random()*2-1
 
-print(rand())     
+print(rand())
 ```
 
 *** =sample_code
@@ -387,7 +387,7 @@ def rand():
     """
     return random.random()*2-1
 
-print(rand())    
+print(rand())
 ```
 
 *** =sct
