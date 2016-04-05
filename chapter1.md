@@ -388,7 +388,7 @@ def rand():
     """
     return random.random()*2-1
 
-print(rand())
+rand()
 ```
 
 *** =sct
@@ -819,8 +819,6 @@ def moving_window_average(x, n_neighbors=2):
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
     return [sum(x[i:(i+width)]) / width for i in range(n)]
 
-moving_window_average(x, n_neighbors=1)
-
 R=1000
 x = [random.random() for i in range(R)]
 X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
@@ -829,10 +827,6 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 *** =sample_code
 ```{python}
 # write your code here!
-x=[0,10,5,3,1,5]
-
-moving_window_average(x, n_neighbors=1)
-
 R=1000
 x = [random.random() for i in range(R)]
 X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
