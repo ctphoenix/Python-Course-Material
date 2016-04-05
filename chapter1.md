@@ -651,7 +651,7 @@ R=10000
 inside = 0
 for i in range(R):
     x = [rand(), rand()]
-    inside += int(in_circle(x))        
+    inside += int(in_circle(x))         
 print(inside/R - math.pi/4)
 ```
 
