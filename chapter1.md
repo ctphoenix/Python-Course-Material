@@ -394,7 +394,7 @@ print(rand())
 *** =sct
 ```{python}
 test_function("print", index = 1,
-              not_called_msg = "Make sure to print an instance of `rand()`!",
+              not_called_msg = "Make sure to print an instance of `rand()`!")
 success_msg("Great work!")
 ```
 
