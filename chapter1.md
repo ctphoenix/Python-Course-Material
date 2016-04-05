@@ -663,7 +663,7 @@ print(inside/R - math.pi/4)
 
 *** =sct
 ```{python}
-test_object("print", index = 1
+test_function("print", index = 1
               not_called_msg = "Make sure to print your answer!")
 success_msg("Great work!")
 ```
@@ -759,11 +759,6 @@ moving_window_sum(x, n_neighbors=1)
 R=1000
 x = [random.random() for i in range(R)]
 X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
-
-# Decreases, because the average smooths a larger number of neighbors.
-# Because the numbers in the original list are just random, we expect the
-# average of many of them to be roughly 1/2, and more averaging means more
-# smoothness in this value.
 ```
 
 *** =sample_code
@@ -776,10 +771,6 @@ moving_window_sum(x, n_neighbors=1)
 R=1000
 x = [random.random() for i in range(R)]
 X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
-# Decreases, because the average smooths a larger number of neighbors.
-# Because the numbers in the original list are just random, we expect the
-# average of many of them to be roughly 1/2, and more averaging means more
-# smoothness in this value.
 ```
 
 *** =sct
@@ -851,7 +842,9 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 
 *** =sct
 ```{python}
-success_msg("Great work!")
+success_msg("Great work!
+
+Decreases, because the average smooths a larger number of neighbors. Because the numbers in the original list are just random, we expect the average of many of them to be roughly 1/2, and more averaging means more smoothness in this value.")
 ```
 
 
