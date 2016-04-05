@@ -24,7 +24,8 @@ In this exercise, we will count the frequency of each letter in a document.
 ```{python}
 # write your code here!
 
-
+import string
+alphabet = string.ascii_lowercase
 
 ```
 
@@ -55,10 +56,10 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary that counts the number of times each letter is used in this sentence.  Make sure that capital letters are counted!
+- Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with each letter used as keys and the number of times each letter is used in this sentence as values.  Make sure that capital letters are counted!
 
 *** =hint
--
+- Can you think of a way to use `for` loops to count up the frequency of each letter used in the sentence? 
 
 *** =pre_exercise_code
 ```{python}
@@ -71,7 +72,15 @@ alphabet = string.ascii_lowercase
 ```{python}
 # write your code here!
 
+sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
 
+count_letters = {}
+for letter in alphabet:
+    count_letter = 0
+    for character in sentence:
+        if character.casefold() == letter:
+            count_letter += 1
+    count_letters[letter] = count_letter
 
 ```
 
@@ -101,8 +110,6 @@ success_msg("Great work!")
 ```
 
 
-
-
 --- type:NormalExercise lang:python xp:100 skills:1
 ## Exercise 1c
 
@@ -112,7 +119,7 @@ In this exercise, we will count the frequency of each letter in a document.
 - Here is an example solution of part b.)  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.  Use your function to call `counter(sentence)`.
 
 *** =hint
--
+- Add `def` at the beginning to define the function, indent the inner code, and use `return` at the end to ensure your function returns the output.
 
 *** =pre_exercise_code
 ```{python}
@@ -171,7 +178,7 @@ In this exercise, we will count the frequency of each letter in a document.
 - In the course repository of the Abraham Lincoln's Gettysburg Address. Use your function from part b.) to count the number of letters in this address.
 
 *** =hint
--
+-  Read in the Gettysbug Address using `open`.  Can you use `counter` to do count the frequency of each letter?
 
 *** =pre_exercise_code
 ```{python}
@@ -203,8 +210,6 @@ print(address_count)
 
 *** =sct
 ```{python}
-# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
-# Documentation can also be found at github.com/datacamp/pythonwhat/wiki
 test_object("address_count",
               not_called_msg = "Make sure to define `address_count`!",
               incorrect_msg = "Are you sure `address_count` is correct?")
@@ -224,14 +229,43 @@ In this exercise, we will count the frequency of each letter in a document.
 - What is the most common letter used in the Gettysburg Address?  Print your answer.
 
 *** =hint
--
+- You will have to find the key that corresponds to the maximum value in `address_count`!
 
 *** =pre_exercise_code
 ```{python}
+import string
+def counter(input_string):
+    count_letters = {}
+    for letter in string.ascii_lowercase:
+        count_letter = 0
+        for character in input_string:
+            if character.casefold() == letter:
+                count_letter += 1
+        count_letters[letter] = count_letter
+    return count_letters
+    
+with open('gettysburg.txt', 'r') as f:
+address = f.read()
+address_count = counter(address)
 ```
 
 *** =solution
 ```{python}
+import string
+def counter(input_string):
+    count_letters = {}
+    for letter in string.ascii_lowercase:
+        count_letter = 0
+        for character in input_string:
+            if character.casefold() == letter:
+                count_letter += 1
+        count_letters[letter] = count_letter
+    return count_letters
+    
+with open('gettysburg.txt', 'r') as f:
+address = f.read()
+address_count = counter(address)
+
 maximum, letter_maximum  = 0, ""
 for letter in address_count.keys():
     if address_count[letter] > maximum:
@@ -244,7 +278,12 @@ print(letter)
 ```{python}
 # write your code here!
 
+maximum, letter_maximum  = 0, ""
+for letter in address_count.keys():
+    if address_count[letter] > maximum:
+        letter_maximum = letter
 
+print(letter)
 
 ```
 
@@ -271,7 +310,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 - Using the math library, calculate and print the value of pi/4.
 
 *** =hint
--
+- The `math` library contains a float `pi` --- try using that!
 
 *** =pre_exercise_code
 ```{python}
