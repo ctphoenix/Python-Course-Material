@@ -350,7 +350,8 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Using `random.random`, create a function `rand()` that generate real numbers between -1 and 1.  Print one instance of `rand()`.
+- Using `random.random`, create a function `rand()` that generate real numbers between -1 and 1.
+- Call `rand()` once.
 
 *** =hint
 -  `random.random` creates random numbers between 0 and 1.  How can you stretch and shift this range to get random values between 0 and 1?
@@ -371,7 +372,7 @@ def rand():
     """
     return random.random()*2-1
 
-print(rand())
+rand()
 ```
 
 *** =sample_code
@@ -392,8 +393,9 @@ print(rand())
 
 *** =sct
 ```{python}
-test_function("print", index = 1,
-              not_called_msg = "Make sure to print an instance of `rand()`!")
+test_function("rand", index = 1,
+              not_called_msg = "Make sure to call `rand()`!",
+              incorrect_msg = "Did you define `rand` correctly?")
 success_msg("Great work!")
 ```
 
