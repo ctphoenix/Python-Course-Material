@@ -370,8 +370,8 @@ def rand():
         random real number between 0 and 1.
     """
     return random.random()*2-1
-    
-print(rand())
+
+print(rand())  
 ```
 
 *** =sample_code
