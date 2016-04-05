@@ -821,7 +821,7 @@ def moving_window_average(x, n_neighbors=2):
 
 R=1000
 x = [random.random() for i in range(R)]
-X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
+X = [x] + [moving_window_average(x, i) for i in range(1,10)]
 ```
 
 *** =sample_code
@@ -829,7 +829,7 @@ X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
 # write your code here!
 R=1000
 x = [random.random() for i in range(R)]
-X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
+X = [x] + [moving_window_average(x, i) for i in range(1,10)]
 ```
 
 *** =sct
@@ -864,11 +864,11 @@ def moving_window_average(x, n_neighbors=2):
 
 x=[0,10,5,3,1,5]
 
-moving_window_sum(x, n_neighbors=1)
+moving_window_average(x, n_neighbors=1)
 
 R=1000
 x = [random.random() for i in range(R)]
-X = [x] + [moving_window_sum(x, i) for i in range(1,10)]
+X = [x] + [moving_window_average(x, i) for i in range(1,10)]
 ```
 
 *** =solution
@@ -883,7 +883,7 @@ def moving_window_average(x, n_neighbors=2):
 
 x=[0,10,5,3,1,5]
 
-moving_window_saverage(x, n_neighbors=1)
+moving_window_average(x, n_neighbors=1)
 
 R=1000
 x = [random.random() for i in range(R)]
