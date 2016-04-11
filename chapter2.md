@@ -5,57 +5,59 @@ attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1a
+## Exercise 1
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
 *** =instructions
 - For our tic-tac-toe board, we will use a numpy array with dimension 3 by 3.  Make a function `create_board()` that creates such a board, with values of integers `0`.
+- Call `create_board,` and store this as `board`.
 
 
 *** =hint
--
+- The function`zeros` in the `numpy` library could do the trick!
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
 ```
 
 *** =sample_code
 ```{python}
 # write your code here!
-import random
-import numpy as np
-import matplotlib.pyplot as plt
-import time
 def create_board():
     board = np.zeros((3,3), dtype=int)
     return board
 
-
+board = create_board()
 ```
 
 *** =solution
 ```{python}
 import random
 import numpy as np
-import matplotlib.pyplot as plt
-import time
+random.seed(1)
 def create_board():
     board = np.zeros((3,3), dtype=int)
     return board
+
+board = create_board() 
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
-
-
-
-
-
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1b
+## Exercise 2
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -66,6 +68,12 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
 ```
 
 *** =sample_code
@@ -75,18 +83,37 @@ def place(board, player, position):
     if board[position] == 0:
         board[position] = player
         return board
+
+board = create_board()
+board = place(board, 1, (0, 0))
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+    
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
         return board
+
+board = create_board()
+board = place(board, 1, (0, 0))
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -94,7 +121,7 @@ success_msg("Great work!")
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1c
+## Exercise 3
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -105,6 +132,18 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+board = create_board()
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+board = place(board, 1, (0, 0))
 ```
 
 *** =sample_code
@@ -112,22 +151,45 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 # write your code here!
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
+
+possibilities(board)
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+board = create_board()
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+board = place(board, 1, (0, 0))
+
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
+
+possibilities(board)
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1d
+## Exercise 4
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -138,6 +200,20 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+board = create_board()
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+board = place(board, 1, (0, 0))
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
 ```
 
 *** =sample_code
@@ -149,65 +225,130 @@ def random_place(board, player):
         selection = random.choice(selections)
         board = place(board, player, selection)
     return board
+
+board = random_place(board, 2)
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+board = create_board()
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+board = place(board, 1, (0, 0))
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
         board = place(board, player, selection)
     return board
+
+board = random_place(board, 2)
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1e
+## Exercise 5
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Use the three functions you've made to place three pieces each for players 1 and 2. Print your result.
 *** =hint
--
+- Can you use `for` loops to alternate a `random_place` for each player three times?
+
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
 ```
 
 *** =sample_code
 ```{python}
-# write your code here!
+#edit these!
 board = create_board()
-for i in range(3):
-    for player in [1, 2]:
-        board = random_place(board, player)
-print(board)
+board = random_place(board, player)
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
         board = random_place(board, player)
+
 print(board)
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1f
+## Exercise 6
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -219,6 +360,28 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 ```
 
 *** =sample_code
@@ -230,20 +393,52 @@ def row_win(board, player):
         return True
     else:
         return False
+
+row_win(board, 1)
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 def row_win(board, player):
     winner = False
     if np.any(np.all(board==player,axis=1)):
         return True
     else:
         return False
+
+row_win(board, 1)
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -251,7 +446,7 @@ success_msg("Great work!")
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1g
+## Exercise 7
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -263,6 +458,28 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 ```
 
 *** =sample_code
@@ -273,19 +490,51 @@ def col_win(board, player):
         return True
     else:
         return False
+
+col_win(board, 2)
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 def col_win(board, player):
     if np.any(np.all(board==player,axis=0)):
         return True
     else:
         return False
+
+col_win(board, 2)
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -293,7 +542,7 @@ success_msg("Great work!")
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1h
+## Exercise 8
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -305,6 +554,28 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 ```
 
 *** =sample_code
@@ -315,19 +586,51 @@ def diag_win(board, player):
         return True
     else:
         return False
+
+diag_win(board, 1)
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 def diag_win(board, player):
     if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
         return True
     else:
         return False
+
+diag_win(board, 1)
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -336,7 +639,7 @@ success_msg("Great work!")
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1i
+## Exercise 9
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -348,6 +651,44 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 ```
 
 *** =sample_code
@@ -361,10 +702,50 @@ def evaluate(board):
     if np.all(board != 0):
         winner = -1
     return winner
+
+evaluate(board)
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+board = create_board()
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
 def evaluate(board):
     winner = 0
     for player in [1, 2]:
@@ -373,15 +754,23 @@ def evaluate(board):
     if np.all(board != 0):
         winner = -1
     return winner
+
+evaluate(board)
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1j
+## Exercise 10
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -392,6 +781,48 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
 ```
 
 *** =sample_code
@@ -406,10 +837,54 @@ def play_game():
             if winner != 0:
                 break
     return winner
+
+play_game()
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
 def play_game():
     board, winner = create_board(), 0
     while winner == 0:
@@ -419,10 +894,18 @@ def play_game():
             if winner != 0:
                 break
     return winner
+
+play_game()
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -431,7 +914,7 @@ success_msg("Great work!")
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1k
+## Exercise 11
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -441,13 +924,66 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
+def play_game():
+    board, winner = create_board(), 0
+    while winner == 0:
+        for player in [1, 2]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
 ```
 
 *** =sample_code
 ```{python}
 # write your code here!
+import time
 start = time.time()
-games = [play_game() for i in range(10000)]
+games = [play_game() for i in range(1000)]
 stop = time.time()
 print(stop - start)
 plt.hist(games)
@@ -456,8 +992,62 @@ plt.show()
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
+def play_game():
+    board, winner = create_board(), 0
+    while winner == 0:
+        for player in [1, 2]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
+#
+import time
 start = time.time()
-games = [play_game() for i in range(10000)]
+games = [play_game() for i in range(1000)]
 stop = time.time()
 print(stop - start)
 plt.hist(games)
@@ -466,6 +1056,12 @@ plt.show()
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -475,7 +1071,7 @@ success_msg("Great work!")
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1k
+## Exercise 12
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -486,6 +1082,57 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
+def play_game():
+    board, winner = create_board(), 0
+    while winner == 0:
+        for player in [1, 2]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
 ```
 
 *** =sample_code
@@ -501,10 +1148,64 @@ def play_strategic_game():
             if winner != 0:
                 break
     return winner
+
+play_strategic_game()    
 ```
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
+def play_game():
+    board, winner = create_board(), 0
+    while winner == 0:
+        for player in [1, 2]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
+#
 def play_strategic_game():
     board, winner = create_board(), 0
     board[1,1] = 1
@@ -515,17 +1216,25 @@ def play_strategic_game():
             if winner != 0:
                 break
     return winner
+
+play_strategic_game()
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
 
 
 --- type:NormalExercise lang:python xp:100 skills:1
-## Exercise 1l
+## Exercise 13
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
@@ -536,13 +1245,76 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 -
 *** =pre_exercise_code
 ```{python}
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
+def play_game():
+    board, winner = create_board(), 0
+    while winner == 0:
+        for player in [1, 2]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
+def play_strategic_game():
+    board, winner = create_board(), 0
+    board[1,1] = 1
+    while winner == 0:
+        for player in [2,1]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
 ```
 
 *** =sample_code
 ```{python}
 # write your code here!
+import time
 start = time.time()
-games = [play_strategic_game() for i in range(10000)]
+games = [play_strategic_game() for i in range(1000)]
 stop = time.time()
 print(stop - start)
 plt.hist(games)
@@ -551,23 +1323,86 @@ plt.show()
 
 *** =solution
 ```{python}
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+random.seed(1)
+def create_board():
+    board = np.zeros((3,3), dtype=int)
+    return board
+def place(board, player, position):
+    if board[position] == 0:
+        board[position] = player
+        return board
+def possibilities(board):
+    return list(zip(*np.where(board == 0)))
+def random_place(board, player):
+    selections = possibilities(board)
+    if len(selections) > 0:
+        selection = random.choice(selections)
+        board = place(board, player, selection)
+    return board
+def row_win(board, player):
+    winner = False
+    if np.any(np.all(board==player,axis=1)):
+        return True
+    else:
+        return False
+def col_win(board, player):
+    if np.any(np.all(board==player,axis=0)):
+        return True
+    else:
+        return False
+def diag_win(board, player):
+    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        return True
+    else:
+        return False
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
+            winner = player
+    if np.all(board != 0):
+        winner = -1
+    return winner
+def play_game():
+    board, winner = create_board(), 0
+    while winner == 0:
+        for player in [1, 2]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
+def play_strategic_game():
+    board, winner = create_board(), 0
+    board[1,1] = 1
+    while winner == 0:
+        for player in [2,1]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner
+import time
 start = time.time()
-games = [play_strategic_game() for i in range(10000)]
+games = [play_strategic_game() for i in range(1000)]
 stop = time.time()
 print(stop - start)
 plt.hist(games)
 plt.show()
-# Yes, starting in the middle square is a large advantage when play is otherwise
-# random.  Also, each game takes less time to play, because each victory is
-# decided earlier.  Player 1 wins more than both players draw, and Player 2 wins
-# less than both of these outcomes.
-
 ```
 
 *** =sct
 ```{python}
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("alphabet",
+#            undefined_msg = "Did you define `alphabet`?",
+#            incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
 ```
-
 
 
