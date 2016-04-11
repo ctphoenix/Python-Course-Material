@@ -10,8 +10,9 @@ attachments :
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
 *** =instructions
-- For our board, we will use a numpy array with dimension 3 by 3.  Make a function create_board() that creates a board, with values of integers 0.
-- 
+- For our tic-tac-toe board, we will use a numpy array with dimension 3 by 3.  Make a function `create_board()` that creates such a board, with values of integers `0`.
+
+
 *** =hint
 -
 *** =pre_exercise_code
