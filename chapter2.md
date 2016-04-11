@@ -304,7 +304,7 @@ def random_place(board, player):
 ```{python}
 #edit these!
 board = create_board()
-board = random_place(board, player)
+board = random_place(board, player = 1)
 ```
 
 *** =solution
