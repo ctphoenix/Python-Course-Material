@@ -1067,6 +1067,9 @@ test_function("time.time",
 #test_function("plt.hist", # You can also use pythonwhat to check the histogram itself here!
 #              not_called_msg = "Make sure to call `plt.hist`!",
 #              incorrect_msg = "Check your definition of `plt.hist` again.")
+#test_function("plt.show", # You can also use pythonwhat to check the histogram itself here!
+#              not_called_msg = "Make sure to call `plt.show`!",
+#              incorrect_msg = "Check your definition of `plt.show` again.")
 success_msg("Great work!  We see that Player 1 wins slightly more than Player 2.  Draws are about as common as a win for Player 1.  The total amount of time taken is about a dozen seconds, but will vary from machine to machine.")
 ```
 
@@ -1404,9 +1407,9 @@ test_function("time.time",
 #test_function("plt.hist",
 #              not_called_msg = "Make sure to call `plt.hist`!",
 #              incorrect_msg = "Check your definition of `plt.hist` again.")
-test_function("plt.show",
-              not_called_msg = "Make sure to see your results using `plt.show`!",
-              incorrect_msg = "Check your definition of `plt.show` again.")
+#test_function("plt.show",
+#              not_called_msg = "Make sure to see your results using `plt.show`!",
+#              incorrect_msg = "Check your definition of `plt.show` again.")
 success_msg("Great work!")
 ```
 
