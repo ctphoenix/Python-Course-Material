@@ -1410,7 +1410,7 @@ test_function("time.time",
 #test_function("plt.show",
 #              not_called_msg = "Make sure to see your results using `plt.show`!",
 #              incorrect_msg = "Check your definition of `plt.show` again.")
-success_msg("Great work!")
+success_msg("Great work!  Yes, starting in the middle square is a large advantage when play is otherwise random.  Also, each game takes less time to play, because each victory is decided earlier.  Player 1 wins more than both players draw, and Player 2 wins less than both of these outcomes.")
 ```
 
 
