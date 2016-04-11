@@ -442,7 +442,7 @@ row_win(board, 1)
 
 *** =sct
 ```{python}
-test_function("create_board",
+test_function("row_win",
               not_called_msg = "Make sure to call `row_win`!",
               incorrect_msg = "Check your definition of `row_win` again.")
 success_msg("Great work!")
