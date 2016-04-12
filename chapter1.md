@@ -354,7 +354,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 - Call `rand()` once.
 
 *** =hint
--  `random.random` creates random numbers between 0 and 1.  How can you stretch and shift this range to get random values between 0 and 1?
+-  `random.random` creates random numbers between 0 and 1.  How can you stretch and shift this range to get random values between -1 and 1?
 
 *** =pre_exercise_code
 ```{python}
@@ -409,7 +409,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 *** =instructions
 - The formula for the distance between two points `x` and `y` is `sqrt(sum((x-y)**2))`.  Create a function `distance(x, y)` that takes two vectors and outputs the distance between them.  Use your function to find the distance between `(0,0)` and `1,1`.
 *** =hint
--
+- Use the `sqrt` function in the `math` library to find square roots.  Finding the square can be done using the `pow` function in the `math` library, or exponentiating using `**2` after the number you would like to square.
 
 *** =pre_exercise_code
 ```{python}
