@@ -4,7 +4,7 @@ description : Exercises for Homework
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
