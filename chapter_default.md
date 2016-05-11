@@ -39,7 +39,7 @@ movies = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/introdu
 # 3. Create a plot in the viewer, that students can check out while reading the exercise
 plt.scatter(movies.runtime, movies.rating)
 plt.show()
-```
+```.
 
 *** =sct
 ```{r}
