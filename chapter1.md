@@ -4,7 +4,7 @@ description : Exercises for homework (Week 1)
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:e637b6eee9
 ## Exercise 1a
 
 In this exercise, we will count the frequency of each letter in a document.
@@ -50,7 +50,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:89cba9d6a8
 ## Exercise 1b
 
 In this exercise, we will count the frequency of each letter in a document.
@@ -110,7 +110,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:8cb1c4bf90
 ## Exercise 1c
 
 In this exercise, we will count the frequency of each letter in a document.
@@ -169,7 +169,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:a0932fb3c4
 ## Exercise 1d
 
 In this exercise, we will count the frequency of each letter in a document.
@@ -220,7 +220,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:bb70667667
 ## Exercise 1e
 
 In this exercise, we will count the frequency of each letter in a document.
@@ -301,7 +301,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:8b40a3f09f
 ## Exercise 2a
 
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
@@ -344,7 +344,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:7aa7dadeac
 ## Exercise 2b
 
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
@@ -401,7 +401,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:eabc2b80ff
 ## Exercise 2c
 
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
@@ -464,7 +464,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:89310e2304
 ## Exercise 2d
 
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
@@ -549,7 +549,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:c7c20038ea
 ## Exercise 2e
 
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
@@ -638,7 +638,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:d3950c2ef5
 ## Exercise 2f
 
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
@@ -726,7 +726,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:807ffbdc6f
 ## Exercise 3a
 
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.  
@@ -788,7 +788,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:006c8d659a
 ## Exercise 3b
 
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.
@@ -842,7 +842,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:7f5873e828
 ## Exercise 3c
 
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.
