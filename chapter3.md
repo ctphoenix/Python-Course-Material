@@ -72,6 +72,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 ```{python}
 import string
 alphabet = string.ascii_lowercase + " "
+message = "hi my name is caesar"
 letters = dict(enumerate(alphabet))
 ```
 
@@ -116,6 +117,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 ```{python}
 import string
 alphabet = string.ascii_lowercase + " "
+message = "hi my name is caesar"
 letters = dict(enumerate(alphabet))
 key = 3
 coded_letters   = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
@@ -186,6 +188,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 ```{python}
 import string
 alphabet = string.ascii_lowercase + " "
+message = "hi my name is caesar"
 letters = dict(enumerate(alphabet))
 key = 3
 coded_letters   = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
