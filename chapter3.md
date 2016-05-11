@@ -63,7 +63,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 -  Create a dictionary `coded_letters` that maps each letter in our alphabet to the numbers `0-26`, starting with `key=3`.
 
 *** =hint
--
+- You can simply add `key` to the place value of each letter.  To reduce this `sum` by `27` if it exceeds `27`, use `sum%27`!
 
 *** =pre_exercise_code
 ```{python}
@@ -105,7 +105,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 - Encode, save and print the message defined earlier as `coded_message`, using `key = 3`.
 
 *** =hint
-- 
+- Using the code in Exercise 2, you can use `"".join(my_list)` to transform the coded list into a string!
 
 *** =pre_exercise_code
 ```{python}
@@ -167,7 +167,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 - Decode, save and print your encoded message as `decoded_message`, using `key = -3`.  Does this recover your original message?
 
 *** =hint
--
+- This should not require any changes to the function `caesar`!
 
 *** =pre_exercise_code
 ```{python}
