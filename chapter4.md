@@ -62,7 +62,7 @@ def word_stats(word_counts):
 #success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+--- type:NormalExercise lang:python xp:100 skills:1 key:db540fe0fe
 ## Exercise 1
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
@@ -120,7 +120,7 @@ def word_stats(word_counts):
 #success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+--- type:NormalExercise lang:python xp:100 skills:1 key:6af15c16f0
 ## Exercise 1
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
