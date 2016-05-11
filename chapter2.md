@@ -4,7 +4,7 @@ description : Exercises for Homework (Week 2)
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:cfd2bb78d3
 ## Exercise 1
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -57,7 +57,7 @@ test_object("board",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:12006fdb5a
 ## Exercise 2
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -124,7 +124,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:a336ef36ee
 ## Exercise 3
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -192,7 +192,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:e511ea8d2b
 ## Exercise 4
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -274,7 +274,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:436b7ed3e4
 ## Exercise 5
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -355,7 +355,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:2d47bf75c5
 ## Exercise 6
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -451,7 +451,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:1b692c47fe
 ## Exercise 7
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -545,7 +545,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:c059adbd6b
 ## Exercise 8
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -641,7 +641,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:5fc2ecbc43
 ## Exercise 9
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -770,7 +770,7 @@ test_function("evaluate",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:c55bf90a13
 ## Exercise 10
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -914,7 +914,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:a22dfc2ad8
 ## Exercise 11
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -1073,7 +1073,7 @@ test_function("time.time",
 success_msg("Great work!  We see that Player 1 wins slightly more than Player 2.  Draws are about as common as a win for Player 1.  The total amount of time taken is about a dozen seconds, but will vary from machine to machine.")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:b02cc12320
 ## Exercise 12
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
@@ -1235,7 +1235,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1
+--- type:NormalExercise lang:python xp:100 skills:1 key:d99f988283
 ## Exercise 13
 
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
