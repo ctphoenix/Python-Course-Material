@@ -46,9 +46,6 @@ letters = dict(enumerate(alphabet))
 
 *** =sct
 ```{python}
-#test_function("create_board",
-#              not_called_msg = "Make sure to call `create_board`!",
-#              incorrect_msg = "Check your definition of `create_board` again.")
 test_object("letters",
             undefined_msg = "Did you define `letters`?",
             incorrect_msg = "It looks like `letters` wasn't defined correctly.")
@@ -92,9 +89,6 @@ coded_letters   = {letter:(place + key)%27 for (place, letter) in enumerate(alph
 
 *** =sct
 ```{python}
-#test_function("create_board",
-#              not_called_msg = "Make sure to call `create_board`!",
-#              incorrect_msg = "Check your definition of `create_board` again.")
 test_object("coded_letters",
             undefined_msg = "Did you define `coded_letters`?",
             incorrect_msg = "It looks like `coded_letters` wasn't defined correctly.")
@@ -126,15 +120,6 @@ coded_letters   = {letter:(place + key)%27 for (place, letter) in enumerate(alph
 *** =sample_code
 ```{python}
 def caesar(message, key):
-    """
-    This is a Caesar cipher.  Each letter in a message is shifted by a few
-    characters in the alphabet, and returned.
-
-    message: A string you would like to encode or decode.  Must consist of
-             lowercase letters and spaces.
-    key:     An integer, indicating how many characters each letter in the
-             message will be shifted.
-    """
     coded_letters = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
     return "".join([letters[coded_letters[letter]] for letter in message])
 coded_message = caesar(message, key=3)
@@ -196,7 +181,6 @@ def caesar(message, key):
     coded_letters = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
     return "".join([letters[coded_letters[letter]] for letter in message])
 coded_message = caesar(message, key=3)
-print(coded_message)
 ```
 
 *** =sample_code
@@ -221,7 +205,4 @@ test_object("letters",
             incorrect_msg = "It looks like `decoded_message` wasn't defined correctly.")
 success_msg("Great work!")
 ```
-
-
-
 
