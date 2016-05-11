@@ -7,7 +7,7 @@ attachments :
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
-This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
+A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
 - 
@@ -31,12 +31,12 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =sct
 ```{python}
-test_function("create_board",
-              not_called_msg = "Make sure to call `create_board`!",
-              incorrect_msg = "Check your definition of `create_board` again.")
-test_object("board",
-            undefined_msg = "Did you define `board`?",
-            incorrect_msg = "It looks like `board` wasn't defined correctly.")
+#test_function("create_board",
+#              not_called_msg = "Make sure to call `create_board`!",
+#              incorrect_msg = "Check your definition of `create_board` again.")
+#test_object("board",
+#            undefined_msg = "Did you define `board`?",
+#            incorrect_msg = "It looks like `board` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
