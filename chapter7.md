@@ -1,5 +1,5 @@
 ---
-title       : Module X () Extra Exercises
+title       : Module 5 (Network) Extra Exercises
 description : Exercises for Homework
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
