@@ -592,8 +592,11 @@ print(percentage)
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-test_object("",
-            undefined_msg = "Did you define ``?",
-            incorrect_msg = "It looks like `` wasn't defined correctly.")
+test_function("print",
+              not_called_msg = "Make sure to call `print`!",
+              incorrect_msg = "Check your definition of `print` again.")
+test_object("percentage",
+            undefined_msg = "Did you define `percentage`?",
+            incorrect_msg = "It looks like `percentage` wasn't defined correctly.")
 success_msg("Great work! Our accuracy is comparable to the library's function (100% vs 99.9%)!")
 ```
