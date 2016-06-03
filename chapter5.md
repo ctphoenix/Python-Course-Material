@@ -14,7 +14,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 -  Read in the data as a `pandas` dataframe.  The data can be found at `https://s3.amazonaws.com/demo-datasets/wine.csv`.
 
 *** =hint
-- 
+- `pd.read_csv` will work directly!
 
 *** =pre_exercise_code
 ```{python}
@@ -67,7 +67,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 - The dataset contains a variable called `is_red`, making `color` redundant. Drop the color variable from the dataset, and save the new dataset as `numeric_data`.
 
 *** =hint
-- 
+- Pandas dataframes contain the `drop` method - give that a try!
 
 *** =pre_exercise_code
 ```{python}
@@ -122,7 +122,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 - Principal components is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well they separate the data. The following code uses the scikit-learn (sklearn) library to find and store the two most informative angles, or principal components, of the data (a matrix with two columns corresponding to the principal components). Use this on your dataset to find and store the two principal components as `principal_components`.
 
 *** =hint
-- 
+- Use and store `sklearn.decomposition.PCA(2)`, and use the `fit` and `transform` methods to extract the first two principal components from `numeric_data`.
 
 *** =pre_exercise_code
 ```{python}
@@ -182,7 +182,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 -  Plot the first two principal components.  Color the high and low quality wine as red and blue, respectively.  Are the two well separated by the first two principal components?
 
 *** =hint
-- 
+- `plt.scatter` will come in handy here!
 
 *** =pre_exercise_code
 ```{python}
@@ -261,7 +261,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 -  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.
 
 *** =hint
-- 
+- The `==` operator will test for element-wise equality for numpy arrays (1 if equal, and 0 if not).  You can then use `numpy.mean` to find the fraction of these elements that are equal!
 
 *** =pre_exercise_code
 ```{python}
@@ -334,7 +334,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 -  Because most wines are classified as low quality, a very simple classifier predicts that all wines are of low accuracy.  Use the accuracy function to calculate how many wines in the dataset are of low quality.
 
 *** =hint
-- 
+- The `accuracy` function should work just fine, with `0` as the first argument!
 
 *** =pre_exercise_code
 ```{python}
@@ -391,10 +391,10 @@ success_msg("Great work!")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  Use the scikit-learn classifier `KNeighborsClassifier` to predict which wines are high and low quality.  Is this predictor better than the simple classifier in Question 6?
+-  Use the scikit-learn classifier `KNeighborsClassifier`, to predict which wines are high and low quality.  Is this predictor better than the simple classifier in Question 6?
 
 *** =hint
-- 
+- A `KNeighborsClassifier` will contain a `predict` method --- try that!
 
 *** =pre_exercise_code
 ```{python}
@@ -462,7 +462,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 -  Unlike the `scikit-learn` function, our homemade KNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed 123, and sample 100 wines from the dataset.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
 
 *** =hint
-- 
+- `random.sample` ought to do the trick here.
 
 *** =pre_exercise_code
 ```{python}
@@ -528,11 +528,11 @@ success_msg("Great work!")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  Use your homemade KNN classifier on this sampled dataset to predict wine quality.
+-  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality.
 -  Compare these results to the scikit-learn accuracy using the `accuracy` function.  Store these results as `percentage`.
 
 *** =hint
-- 
+- Use `knn_predict` for each value in `predictors[selection]`.
 
 *** =pre_exercise_code
 ```{python}
@@ -571,6 +571,22 @@ selection = random.sample(range(n_rows), 100)
 
 *** =sample_code
 ```{python}
+import numpy as np, random, scipy.stats as ss
+def majority_vote_fast(votes):
+    mode, count = ss.mstats.mode(votes)
+    return mode
+def distance(p1, p2):
+    return np.sqrt(np.sum(np.power(p2 - p1, 2)))
+def find_nearest_neighbors(p, points, k=5):
+    distances = np.zeros(points.shape[0])
+    for i in range(len(distances)):
+        distances[i] = distance(p, points[i])
+    ind = np.argsort(distances)
+    return ind[:k]
+def knn_predict(p, points, outcomes, k=5):
+    ind = find_nearest_neighbors(p, points, k)
+    return majority_vote_fast(outcomes[ind])[0]
+    
 predictors = np.array(numeric_data)
 outcomes = np.array(data["high_quality"])
 my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
