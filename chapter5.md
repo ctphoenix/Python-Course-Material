@@ -459,7 +459,7 @@ success_msg("Great work!  Yes, this is better!")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade KNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed 123, and sample 100 wines from the dataset.  Store this selection as `selection`.
+-  Unlike the `scikit-learn` function, our homemade KNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed 123, and sample 100 wines from the dataset.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
 
 *** =hint
 - 
@@ -520,4 +520,80 @@ test_object("selection",
             undefined_msg = "Did you define `selection`?",
             incorrect_msg = "It looks like `selection` wasn't defined correctly.")
 success_msg("Great work!")
+```
+
+--- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+## Exercise 9
+
+In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+
+*** =instructions
+-  Use your homemade KNN classifier on this sampled dataset to predict wine quality.
+-  Compare these results to the scikit-learn accuracy using the `accuracy` function.  Store these results as `percentage`.
+
+*** =hint
+- 
+
+*** =pre_exercise_code
+```{python}
+import numpy as np, random, scipy.stats as ss
+def majority_vote_fast(votes):
+    mode, count = ss.mstats.mode(votes)
+    return mode
+def distance(p1, p2):
+    return np.sqrt(np.sum(np.power(p2 - p1, 2)))
+def find_nearest_neighbors(p, points, k=5):
+    distances = np.zeros(points.shape[0])
+    for i in range(len(distances)):
+        distances[i] = distance(p, points[i])
+    ind = np.argsort(distances)
+    return ind[:k]
+def knn_predict(p, points, outcomes, k=5):
+    ind = find_nearest_neighbors(p, points, k)
+    return majority_vote_fast(outcomes[ind])[0]
+import pandas as pd
+data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+numeric_data = data.drop("color", axis=1)
+numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+import sklearn.decomposition
+pca = sklearn.decomposition.PCA(2)
+principal_components = pca.fit(numeric_data).transform(numeric_data)    
+def accuracy(predictions, outcomes):
+    print(np.mean(predictions == outcomes)*100)   
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors = 5)
+knn.fit(numeric_data, data['high_quality'])
+library_predictions = knn.predict(numeric_data)
+random.seed(1)
+n_rows = data.shape[0]
+selection = random.sample(range(n_rows), 100)    
+```
+
+*** =sample_code
+```{python}
+predictors = np.array(numeric_data)
+outcomes = np.array(data["high_quality"])
+my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
+percentage = accuracy(my_predictions, data.high_quality[selection])
+print(percentage)
+```
+
+*** =solution
+```{python}
+predictors = np.array(numeric_data)
+outcomes = np.array(data["high_quality"])
+my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
+percentage = accuracy(my_predictions, data.high_quality[selection])
+print(percentage)
+```
+
+*** =sct
+```{python}
+test_function("accuracy",
+              not_called_msg = "Make sure to call `accuracy`!",
+              incorrect_msg = "Check your definition of `accuracy` again.")
+test_object("",
+            undefined_msg = "Did you define ``?",
+            incorrect_msg = "It looks like `` wasn't defined correctly.")
+success_msg("Great work! Our accuracy is comparable to the library's function (100% vs 99.9%)!")
 ```
