@@ -444,9 +444,9 @@ accuracy(library_predictions, data["high_quality"])
 
 *** =sct
 ```{python}
-test_function("print",
+test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
-              incorrect_msg = "Check your definition of `` again.")
+              incorrect_msg = "Check your definition of `accuracy` again.")
 #test_object("",
 #            undefined_msg = "Did you define ``?",
 #            incorrect_msg = "It looks like `` wasn't defined correctly.")
