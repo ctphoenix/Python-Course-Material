@@ -242,9 +242,9 @@ plt.show()
 
 *** =sct
 ```{python}
-test_function("plt.show", # Use pythonwhat to do this!
-              not_called_msg = "Make sure to call `plt.show`!",
-              incorrect_msg = "Check your definition of `plt.show` again.")
+#test_function("plt.show", # Use pythonwhat to do this!
+#              not_called_msg = "Make sure to call `plt.show`!",
+#              incorrect_msg = "Check your definition of `plt.show` again.")
 #test_object("",
 #            undefined_msg = "Did you define ``?",
 #            incorrect_msg = "It looks like `` wasn't defined correctly.")
@@ -319,9 +319,9 @@ accuracy(x,y)
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-test_object("",
-            undefined_msg = "Did you define ``?",
-            incorrect_msg = "It looks like `` wasn't defined correctly.")
+#test_object("",
+#            undefined_msg = "Did you define ``?",
+#            incorrect_msg = "It looks like `` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
