@@ -54,7 +54,7 @@ test_object("df2",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+--- type:NormalExercise lang:python xp:100 skills:1 key:95681c66de
 ## Exercise 2
 
 Description
