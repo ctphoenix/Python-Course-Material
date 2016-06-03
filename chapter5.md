@@ -102,12 +102,12 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sct
 ```{python}
-test_function("print",
-              not_called_msg = "Make sure to call ``!",
-              incorrect_msg = "Check your definition of `` again.")
-test_object("",
-            undefined_msg = "Did you define ``?",
-            incorrect_msg = "It looks like `` wasn't defined correctly.")
+#test_function("print",
+#              not_called_msg = "Make sure to call ``!",
+#              incorrect_msg = "Check your definition of `` again.")
+test_object("numeric_data",
+            undefined_msg = "Did you define `numeric_data`?",
+            incorrect_msg = "It looks like `numeric_data` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
