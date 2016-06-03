@@ -38,23 +38,23 @@ def knn_predict(p, points, outcomes, k=5):
 *** =sample_code
 ```{python}
 import pandas as pd
-#data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
+data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 ```
 
 *** =solution
 ```{python}
 import pandas as pd
-#data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
+data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 ```
 
 *** =sct
 ```{python}
-test_function("print",
-              not_called_msg = "Make sure to call ``!",
-              incorrect_msg = "Check your definition of `` again.")
-test_object("",
-            undefined_msg = "Did you define ``?",
-            incorrect_msg = "It looks like `` wasn't defined correctly.")
+#test_function("print",
+#              not_called_msg = "Make sure to call ``!",
+#              incorrect_msg = "Check your definition of `` again.")
+test_object("data",
+            undefined_msg = "Did you define `data`?",
+            incorrect_msg = "It looks like `data` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
