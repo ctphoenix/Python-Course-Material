@@ -54,4 +54,45 @@ test_object("df2",
 success_msg("Great work!")
 ```
 
+--- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+## Exercise 2
+
+Description
+
+*** =instructions
+-  The personal ID for each individual is found in the column "pid" in the stored data. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for villages 1 and 2, respectively.
+
+
+
+*** =hint
+-
+
+*** =pre_exercise_code
+```{python}
+import numpy as np
+```
+
+*** =sample_code
+```{python}
+pid1 = np.loadtxt("key_vilno_1.csv", dtype=int)
+pid2 = np.loadtxt("key_vilno_2.csv", dtype=int)
+```
+
+*** =solution
+```{python}
+pid1 = np.loadtxt("key_vilno_1.csv", dtype=int)
+pid2 = np.loadtxt("key_vilno_2.csv", dtype=int)
+```
+
+*** =sct
+```{python}
+test_object("pid1",
+            undefined_msg = "Did you define `pid1`?",
+            incorrect_msg = "It looks like `pid1` wasn't defined correctly.")
+test_object("pid2",
+            undefined_msg = "Did you define `pid2`?",
+            incorrect_msg = "It looks like `pid2` wasn't defined correctly.")
+success_msg("Great work!")
+```
+
 
