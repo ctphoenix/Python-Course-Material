@@ -7,13 +7,15 @@ attachments :
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
-Description
+Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
--  
+-  `individual_characteristics.dta` contains several characteristics for each individual in rural Indian social networks dataset, such as age, religion, and caste.  Use the pandas library to read in and store these characteristics as `df`.
+-  We will focus only on villages 1 and 2:  Store separate datasets for individuals belonging to villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
+- Use the `head` function to display the first few entries of `df1`.
 
 *** =hint
-- 
+- For reading in the dataset directly, try `pd.read_stata`!
 
 *** =pre_exercise_code
 ```{python}
@@ -21,20 +23,35 @@ Description
 
 *** =sample_code
 ```{python}
-
+import pandas as pd
+df = pd.read_stata("individual_characteristics.dta")
+df1 = df[df["village"]==1]
+df2 = df[df["village"]==2]
 ```
 
 *** =solution
 ```{python}
+import pandas as pd
+df = pd.read_stata("individual_characteristics.dta")
+df1 = df[df["village"]==1]
+df2 = df[df["village"]==2]
 ```
 
 *** =sct
 ```{python}
-test_function("print",
-              not_called_msg = "Make sure to call ``!",
-              incorrect_msg = "Check your definition of `` again.")
-test_object("",
-            undefined_msg = "Did you define ``?",
-            incorrect_msg = "It looks like `` wasn't defined correctly.")
+#test_function("",
+#              not_called_msg = "Make sure to call ``!",
+#              incorrect_msg = "Check your definition of `` again.")
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.")
+test_object("df1",
+            undefined_msg = "Did you define `df1`?",
+            incorrect_msg = "It looks like `df1` wasn't defined correctly.")
+test_object("df2",
+            undefined_msg = "Did you define `df2`?",
+            incorrect_msg = "It looks like `df2` wasn't defined correctly.")            
 success_msg("Great work!")
 ```
+
+
