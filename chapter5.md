@@ -513,7 +513,7 @@ selection = random.sample(range(n_rows), 100)
 
 *** =sct
 ```{python}
-test_function("print",
+test_function("random.sample",
               not_called_msg = "Make sure to call `random.sample`!",
               incorrect_msg = "Check your definition of `random.sample` again.")
 test_object("selection",
