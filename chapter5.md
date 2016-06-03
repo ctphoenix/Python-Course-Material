@@ -64,7 +64,7 @@ success_msg("Great work!")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
-- The dataset contains a variable called "is_red", making "color" redundant. Drop the color variable from the dataset.
+- The dataset contains a variable called "is_red", making "color" redundant. Drop the color variable from the dataset, and save the new dataset as `numeric_data`.
 
 *** =hint
 - 
