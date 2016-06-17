@@ -10,16 +10,17 @@ attachments :
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop
-through the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average
-`speed_2d` for each bird. Modify the code to assign the maximum altitudes of each bird into an object called
-`max_altitudes`.
+-  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird. Modify the code to assign the maximum altitudes of each bird into an object called `max_altitudes`.
 
 *** =hint
-- 
+- When grouping by more than one column, remember to use a `[list]`.
+- See `?pd.DataFrame.groupby` for help.
 
 *** =pre_exercise_code
 ```{python}
+import pandas as pd
+import numpy as np
+birddata = pd.read_csv("bird_tracking.csv")
 ```
 
 *** =sample_code
@@ -74,5 +75,166 @@ success_msg("Great work!")
 ```
 
 
-  
+--- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+## Exercise 2
+
+In these exercises, we will continue taking a look at patterns of bird flights over time.
+
+*** =instructions
+-  `pandas` was designed for time series (i.e., *pan*el *da*ta) and has a useful function called `dt.normalize()` which (among other things) can be used to collapse timestamped data into days. Here’s an example of normalizing our `timestamp` into days.
+-  Now `groupby` the data and calculate the maximum altitude per day. Save these results into an object called `max_altitudes_perday`.
+
+*** =hint
+- When grouping by more than one column, remember to use a `[list]`.
+- See `?pd.DataFrame.groupby` for help.
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+birddata = pd.read_csv("bird_tracking.csv")
+```
+
+*** =sample_code
+```{python}
+## Create a new column of day of observation
+birddata['n_time'] = birddata.timestamp.dt.normalize()
+birddata.n_time.head()
+
+## YOUR CODE HERE ##
+```
+
+*** =solution
+```{python}
+## Create a new column of day of observation
+birddata['n_time'] = birddata.timestamp.dt.normalize()
+birddata.n_time.head()
+
+grouped_bydates = birddata.groupby('n_time')
+max_altitudes_perday = grouped_bydates.altitude.max()
+```
+
+*** =sct
+```{python}
+#test_function("",
+#              not_called_msg = "Make sure to call ``!",
+#              incorrect_msg = "Check your definition of `` again.")
+test_object("grouped_bydates",
+            undefined_msg = "Did you define `grouped_bydates`?",
+            incorrect_msg = "It looks like `grouped_bydates` wasn't defined correctly.")
+test_object("max_altitudes_perday",
+            undefined_msg = "Did you define `max_altitudes_perday`?",
+            incorrect_msg = "It looks like `max_altitudes_perday` wasn't defined correctly.")
+success_msg("Great work!")
+```
+
+--- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+## Exercise 3
+
+In these exercises, we will continue taking a look at patterns of bird flights over time.
+
+*** =instructions
+-  Now, let’s combine the last two tasks to recreate one of the video lessons. We will `groupby` using both `bird_name` and `n_time`. Then we will find the average speed per day, per bird.
+-  First, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `n_time`.
+
+*** =hint
+- When grouping by more than one column, remember to use a `[list]`.
+- See `?pd.DataFrame.groupby` for help.
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+birddata = pd.read_csv("bird_tracking.csv")
+birddata['n_time'] = birddata.timestamp.dt.normalize()
+```
+
+*** =sample_code
+```{python}
+grouped_birdday = ## YOUR CODE HERE ##
+```
+
+*** =solution
+```{python}
+grouped_birdday = birddata.groupby(['bird_name', 'n_time'])
+```
+
+*** =sct
+```{python}
+#test_function("",
+#              not_called_msg = "Make sure to call ``!",
+#              incorrect_msg = "Check your definition of `` again.")
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.")
+test_object("df1",
+            undefined_msg = "Did you define `df1`?",
+            incorrect_msg = "It looks like `df1` wasn't defined correctly.")
+success_msg("Great work!")
+```
+
+--- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+## Exercise 4
+
+In these exercises, we will continue taking a look at patterns of bird flights over time.
+
+*** =instructions
+-  Great! Now you have a dataframe called `grouped_birdday` that has grouped all of the `birddata` by `bird_name` and `n_time`. Now, we can perform the same operations as before – such as using `.mean()` on `speed_2d` to get the average speed per day per bird.
+-  We’ve recreated the `Eric` plot using this method for you. Now create two more dataframes – one for `Sanne` and one for `Nico` – and plot all three speeds on the same plot.
+
+*** =hint
+- When grouping by more than one column, remember to use a `[list]`.
+- See `?pd.DataFrame.groupby` for help.
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+birddata = pd.read_csv("bird_tracking.csv")
+birddata['n_time'] = birddata.timestamp.dt.normalize()
+```
+
+*** =sample_code
+```{python}
+eric_daily_speed = grouped_birdday.speed_2d.mean()['Eric']
+eric_daily_speed.plot()
+plt.show()
+
+sanne_daily_speed = ## YOUR CODE HERE ##
+nico_daily_speed = ## YOUR CODE HERE ##
+
+## Don't modify below this line
+eric_daily_speed.plot(label="Eric")
+sanne_daily_speed.plot(label="Sanne")
+nico_daily_speed.plot(label="Nico")
+plt.legend(loc="upper left")
+plt.show()
+```
+
+*** =solution
+```{python}
+eric_daily_speed = grouped_birdday.speed_2d.mean()['Eric']
+eric_daily_speed.plot()
+plt.show()
+
+sanne_daily_speed = grouped_birdday.speed_2d.mean()['Sanne']
+nico_daily_speed = grouped_birdday.speed_2d.mean()['Nico']
+```
+
+*** =sct
+```{python}
+#test_function("",
+#              not_called_msg = "Make sure to call ``!",
+#              incorrect_msg = "Check your definition of `` again.")
+test_object("eric_daily_speed",
+            undefined_msg = "Did you define `eric_daily_speed`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.")
+test_object("sanne_daily_speed",
+            undefined_msg = "Did you define `sanne_daily_speed`?",
+            incorrect_msg = "It looks like `sanne_daily_speed` wasn't defined correctly.")
+test_object("nico_daily_speed",
+            undefined_msg = "Did you define `nico_daily_speed`?",
+            incorrect_msg = "It looks like `nico_daily_speed` wasn't defined correctly.")
+success_msg("Great work!")
+```
 
