@@ -81,7 +81,7 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` was designed for time series (i.e., *pan*el *da*ta) and has a useful function called `dt.normalize()` which (among other things) can be used to collapse timestamped data into days. Here’s an example of normalizing our `timestamp` into days.
+-  `pandas` was designed for time series (i.e., **pan**el **da**ta) and has a useful function called `dt.normalize()` which (among other things) can be used to collapse timestamped data into days. Here’s an example of normalizing our `timestamp` into days.
 -  Now `groupby` the data and calculate the maximum altitude per day. Save these results into an object called `max_altitudes_perday`.
 
 *** =hint
