@@ -75,7 +75,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+--- type:NormalExercise lang:python xp:100 skills:1 key:88166cd5b1
 ## Exercise 2
 
 In these exercises, we will continue taking a look at patterns of bird flights over time.
@@ -128,7 +128,7 @@ test_object("max_altitudes_perday",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+--- type:NormalExercise lang:python xp:100 skills:1 key:d421739915
 ## Exercise 3
 
 In these exercises, we will continue taking a look at patterns of bird flights over time.
@@ -173,7 +173,7 @@ test_object("df1",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+--- type:NormalExercise lang:python xp:100 skills:1 key:c5edc7b67f
 ## Exercise 4
 
 In these exercises, we will continue taking a look at patterns of bird flights over time.
