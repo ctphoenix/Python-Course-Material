@@ -249,8 +249,8 @@ def counter(input_string):
     return count_letters
     
 with open('gettysburg.txt', 'r') as f:
-address = f.read()
-address_count = counter(address)
+    address = f.read()
+    address_count = counter(address)
 ```
 
 *** =solution
