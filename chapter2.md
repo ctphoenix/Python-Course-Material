@@ -312,7 +312,11 @@ def random_place(board, player):
 ```{python}
 #edit these!
 board = create_board()
-board = random_place(board, player = 1)
+for i in range(3):
+    for player in [1, 2]:
+        board = random_place(board, player)
+
+print(board)
 ```
 
 *** =solution
