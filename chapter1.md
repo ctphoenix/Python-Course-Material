@@ -196,7 +196,11 @@ def counter(input_string):
 
 *** -sample_code
 ```{python}
+with open('gettysburg.txt', 'r') as f:
+    address = f.read()
+    address_count = counter(address)
 
+print(address_count)
 ```
 
 *** =solution
