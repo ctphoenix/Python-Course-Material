@@ -329,40 +329,11 @@ for i in range(3):
 *** =sample_code
 ```{python}
 # write your code here!
-def row_win(board, player):
-    winner = False
-    if np.any(np.all(board==player,axis=1)):
-        return True
-    else:
-        return False
 
-row_win(board, 1)
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-board = create_board()
-for i in range(3):
-    for player in [1, 2]:
-        board = random_place(board, player)
 def row_win(board, player):
     winner = False
     if np.any(np.all(board==player,axis=1)):
@@ -436,28 +407,6 @@ col_win(board, 2)
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-board = create_board()
-for i in range(3):
-    for player in [1, 2]:
-        board = random_place(board, player)
 def col_win(board, player):
     if np.any(np.all(board==player,axis=0)):
         return True
@@ -520,39 +469,11 @@ for i in range(3):
 *** =sample_code
 ```{python}
 # write your code here!
-def diag_win(board, player):
-    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
-        return True
-    else:
-        return False
 
-diag_win(board, 1)
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-board = create_board()
-for i in range(3):
-    for player in [1, 2]:
-        board = random_place(board, player)
 def diag_win(board, player):
     if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
         return True
@@ -580,7 +501,7 @@ success_msg("Great work!")
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
 *** =instructions
-- Create a function `evaluate(board)` that uses each of these evaluation functions for both players.  If one of them has won, return that player's number.  If the board is full but no one has won, return `-1`.  Otherwise, return `0`.
+- Create a function `evaluate(board)` that uses `row_win`, `col_win`, and `diag_win` functions for both players.  If one of them has won, return that player's number.  If the board is full but no one has won, return `-1`.  Otherwise, return `0`.
 - `board` is already defined from previous exercises.  Call `evaluate` to see if either player has won the game yet.
 
 *** =hint
@@ -630,59 +551,18 @@ for i in range(3):
 
 *** =sample_code
 ```{python}
-# write your code here!
 def evaluate(board):
     winner = 0
     for player in [1, 2]:
-        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
-            winner = player
+        # Check if `row_win`, `col_win`, or `diag_win` apply.  if so, store `player` as `winner`.
     if np.all(board != 0):
         winner = -1
     return winner
 
-evaluate(board)
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-def row_win(board, player):
-    winner = False
-    if np.any(np.all(board==player,axis=1)):
-        return True
-    else:
-        return False
-def col_win(board, player):
-    if np.any(np.all(board==player,axis=0)):
-        return True
-    else:
-        return False
-def diag_win(board, player):
-    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
-        return True
-    else:
-        return False
-board = create_board()
-for i in range(3):
-    for player in [1, 2]:
-        board = random_place(board, player)
 def evaluate(board):
     winner = 0
     for player in [1, 2]:
@@ -693,6 +573,8 @@ def evaluate(board):
     return winner
 
 evaluate(board)
+
+
 ```
 
 *** =sct
@@ -765,63 +647,11 @@ def evaluate(board):
 *** =sample_code
 ```{python}
 # write your code here!
-def play_game():
-    board, winner = create_board(), 0
-    while winner == 0:
-        for player in [1, 2]:
-            board = random_place(board, player)
-            winner = evaluate(board)
-            if winner != 0:
-                break
-    return winner
 
-play_game()
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-def row_win(board, player):
-    winner = False
-    if np.any(np.all(board==player,axis=1)):
-        return True
-    else:
-        return False
-def col_win(board, player):
-    if np.any(np.all(board==player,axis=0)):
-        return True
-    else:
-        return False
-def diag_win(board, player):
-    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
-        return True
-    else:
-        return False
-def evaluate(board):
-    winner = 0
-    for player in [1, 2]:
-        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
-            winner = player
-    if np.all(board != 0):
-        winner = -1
-    return winner
 def play_game():
     board, winner = create_board(), 0
     while winner == 0:
@@ -930,59 +760,6 @@ plt.show()
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-import matplotlib.pyplot as plt
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-def row_win(board, player):
-    winner = False
-    if np.any(np.all(board==player,axis=1)):
-        return True
-    else:
-        return False
-def col_win(board, player):
-    if np.any(np.all(board==player,axis=0)):
-        return True
-    else:
-        return False
-def diag_win(board, player):
-    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
-        return True
-    else:
-        return False
-def evaluate(board):
-    winner = 0
-    for player in [1, 2]:
-        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
-            winner = player
-    if np.all(board != 0):
-        winner = -1
-    return winner
-def play_game():
-    board, winner = create_board(), 0
-    while winner == 0:
-        for player in [1, 2]:
-            board = random_place(board, player)
-            winner = evaluate(board)
-            if winner != 0:
-                break
-    return winner
-#
 import time
 start = time.time()
 games = [play_game() for i in range(1000)]
@@ -997,12 +774,15 @@ plt.show()
 test_function("time.time",
               not_called_msg = "Make sure to call `time.time`!",
               incorrect_msg = "Check your definition of `create_board` again.")
-#test_function("plt.hist", # You can also use pythonwhat to check the histogram itself here!
-#              not_called_msg = "Make sure to call `plt.hist`!",
-#              incorrect_msg = "Check your definition of `plt.hist` again.")
-#test_function("plt.show", # You can also use pythonwhat to check the histogram itself here!
-#              not_called_msg = "Make sure to call `plt.show`!",
-#              incorrect_msg = "Check your definition of `plt.show` again.")
+test_student_typed("plt.show",
+              pattern=False,
+              not_typed_msg="Did you use `plt.show`?")
+test_student_typed("plt.hist",
+              pattern=False,
+              not_typed_msg="Did you use `plt.hist`?")              
+test_student_typed("play_game()",
+              pattern=False,
+              not_typed_msg="Did you use `play_game()`?")              
 success_msg("Great work!  We see that Player 1 wins slightly more than Player 2.  Draws are about as common as a win for Player 1.  The total amount of time taken is about a dozen seconds, but will vary from machine to machine.")
 ```
 
@@ -1091,58 +871,6 @@ play_strategic_game()
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-def row_win(board, player):
-    winner = False
-    if np.any(np.all(board==player,axis=1)):
-        return True
-    else:
-        return False
-def col_win(board, player):
-    if np.any(np.all(board==player,axis=0)):
-        return True
-    else:
-        return False
-def diag_win(board, player):
-    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
-        return True
-    else:
-        return False
-def evaluate(board):
-    winner = 0
-    for player in [1, 2]:
-        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
-            winner = player
-    if np.all(board != 0):
-        winner = -1
-    return winner
-def play_game():
-    board, winner = create_board(), 0
-    while winner == 0:
-        for player in [1, 2]:
-            board = random_place(board, player)
-            winner = evaluate(board)
-            if winner != 0:
-                break
-    return winner
-#
 def play_strategic_game():
     board, winner = create_board(), 0
     board[1,1] = 1
@@ -1260,68 +988,6 @@ plt.show()
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-import matplotlib.pyplot as plt
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
-def row_win(board, player):
-    winner = False
-    if np.any(np.all(board==player,axis=1)):
-        return True
-    else:
-        return False
-def col_win(board, player):
-    if np.any(np.all(board==player,axis=0)):
-        return True
-    else:
-        return False
-def diag_win(board, player):
-    if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
-        return True
-    else:
-        return False
-def evaluate(board):
-    winner = 0
-    for player in [1, 2]:
-        if row_win(board, player) or col_win(board, player) or diag_win(board, player):
-            winner = player
-    if np.all(board != 0):
-        winner = -1
-    return winner
-def play_game():
-    board, winner = create_board(), 0
-    while winner == 0:
-        for player in [1, 2]:
-            board = random_place(board, player)
-            winner = evaluate(board)
-            if winner != 0:
-                break
-    return winner
-def play_strategic_game():
-    board, winner = create_board(), 0
-    board[1,1] = 1
-    while winner == 0:
-        for player in [2,1]:
-            board = random_place(board, player)
-            winner = evaluate(board)
-            if winner != 0:
-                break
-    return winner
 import time
 start = time.time()
 games = [play_strategic_game() for i in range(1000)]
@@ -1335,13 +1001,16 @@ plt.show()
 ```{python}
 test_function("time.time",
               not_called_msg = "Make sure to call `time.time`!",
-              incorrect_msg = "Check your definition of `time.time` again.")
-#test_function("plt.hist",
-#              not_called_msg = "Make sure to call `plt.hist`!",
-#              incorrect_msg = "Check your definition of `plt.hist` again.")
-#test_function("plt.show",
-#              not_called_msg = "Make sure to see your results using `plt.show`!",
-#              incorrect_msg = "Check your definition of `plt.show` again.")
+              incorrect_msg = "Check your definition of `create_board` again.")
+test_student_typed("plt.show",
+              pattern=False,
+              not_typed_msg="Did you use `plt.show`?")
+test_student_typed("plt.hist",
+              pattern=False,
+              not_typed_msg="Did you use `plt.hist`?")              
+test_student_typed("play_game()",
+              pattern=False,
+              not_typed_msg="Did you use `play_game()`?")
 success_msg("Great work!  Yes, starting in the middle square is a large advantage when play is otherwise random.  Also, each game takes less time to play, because each victory is decided earlier.  Player 1 wins more than both players draw, and Player 2 wins less than both of these outcomes.")
 ```
 
