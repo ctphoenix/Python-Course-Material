@@ -163,7 +163,8 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- In the course repository of the Abraham Lincoln's Gettysburg Address. Use your function from part b.) to count the number of letters in this address.
+- In the course repository of the Abraham Lincoln's Gettysburg Address, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
+- Print `address_count`.
 
 *** =hint
 -  Read in the Gettysbug Address using `open`.  Can you use `counter` to do count the frequency of each letter?
@@ -176,7 +177,7 @@ def counter(input_string):
     for letter in string.ascii_lowercase:
         count_letter = 0
         for character in input_string:
-            if character.casefold() == letter:
+            if character == letter:
                 count_letter += 1
         count_letters[letter] = count_letter
     return count_letters
@@ -186,9 +187,9 @@ def counter(input_string):
 ```{python}
 with open('gettysburg.txt', 'r') as f:
     address = f.read()
-    address_count = counter(address)
+    # define address_count here!
+    
 
-print(address_count)
 ```
 
 *** =solution
@@ -218,7 +219,8 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- What is the most common letter used in the Gettysburg Address?  Print your answer.
+- What is the most common letter used in the Gettysburg Address?
+- Store this letter as `letter`, and print your answer.
 
 *** =hint
 - You will have to find the key that corresponds to the maximum value in `address_count`!
@@ -243,21 +245,6 @@ with open('gettysburg.txt', 'r') as f:
 
 *** =solution
 ```{python}
-import string
-def counter(input_string):
-    count_letters = {}
-    for letter in string.ascii_lowercase:
-        count_letter = 0
-        for character in input_string:
-            if character.casefold() == letter:
-                count_letter += 1
-        count_letters[letter] = count_letter
-    return count_letters
-    
-with open('gettysburg.txt', 'r') as f:
-address = f.read()
-address_count = counter(address)
-
 maximum, letter_maximum  = 0, ""
 for letter in address_count.keys():
     if address_count[letter] > maximum:
@@ -269,13 +256,6 @@ print(letter)
 *** =sample_code
 ```{python}
 # write your code here!
-
-maximum, letter_maximum  = 0, ""
-for letter in address_count.keys():
-    if address_count[letter] > maximum:
-        letter_maximum = letter
-
-print(letter)
 
 ```
 
@@ -289,8 +269,6 @@ test_function("print", index = 1,
               incorrect_msg = "Check your usage of `print` again.")                
 success_msg("Great work!")
 ```
-
-
 
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:8b40a3f09f
