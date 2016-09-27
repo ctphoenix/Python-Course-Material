@@ -60,24 +60,24 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
--  Create a dictionary `coded_letters` that maps each letter in our alphabet to the numbers `0-26`, starting with `key=3`.
+-  Create a dictionary `coded_letters` that rs (and the space) for keys, and numbers from `0-26` for values.  Define these alphabetically, starting with `a` mapped to  `key=3`.
 
 *** =hint
 - You can simply add `key` to the place value of each letter.  To reduce this `sum` by `27` if it exceeds `27`, use `sum%27`!
 
 *** =pre_exercise_code
 ```{python}
-import string
-alphabet = string.ascii_lowercase + " "
-message = "hi my name is caesar"
-letters = dict(enumerate(alphabet))
 ```
 
 *** =sample_code
 ```{python}
-key = 3
-coded_letters   = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
+import string
+alphabet = string.ascii_lowercase + " "
+message = "hi my name is caesar"
+letters = dict(enumerate(alphabet))
 
+key = 3
+# define `coded_letters` here!
 ```
 
 *** =solution
