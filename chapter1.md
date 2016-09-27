@@ -35,7 +35,7 @@ alphabet = string.ascii_lowercase
 *** =sct
 ```{python}
 test_student_typed("ascii_lowercase",
-                       pattern=True,
+                       pattern=False,
                        not_typed_msg="Make sure to use `ascii_lowercase`!")
 test_object("alphabet",
             undefined_msg = "Did you define `alphabet`?",
@@ -357,7 +357,7 @@ rand()
 test_function("rand", index = 1,
               not_called_msg = "Make sure to call `rand()`!")
 test_student_typed("random.random",
-              pattern=True,
+              pattern=False,
               not_typed_msg="Did you use `random.random` to generate your answer?")                            
 success_msg("Great work!")
 ```
@@ -558,10 +558,10 @@ test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!",
               incorrect_msg = "Are you sure that your answer is correct?")
 test_student_typed("rand()",
-                       pattern=True,
+                       pattern=False,
                        not_typed_msg="Make sure to use `rand()`!")      
-test_student_typed("in_circle(",
-                       pattern=True,
+test_student_typed("in_circle",
+                       pattern=False,
                        not_typed_msg="Make sure to use `in_circle()`!")                  
 test_object("inside",
             undefined_msg = "Did you define `inside`?",
