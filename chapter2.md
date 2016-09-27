@@ -113,7 +113,7 @@ success_msg("Great work!")
 This week, we will create a tic-tac-toe (noughts and crosses) simulator and evaluate basic winning strategies.
 
 *** =instructions
-- Create a function `possibilities(board)` that returns a list of all positions (tuples) on the board that are not occupied (0).
+- Create a function `possibilities(board)` that returns a list of all positions (`tuples`) on the board that are not occupied (`0`).
 - `board` is already defined from previous exercises.  Call `possibilities(board)` to see what it returns!
 
 *** =hint
