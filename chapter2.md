@@ -139,27 +139,11 @@ board = place(board, 1, (0, 0))
 *** =sample_code
 ```{python}
 # write your code here!
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
 
-possibilities(board)
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-board = create_board()
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-board = place(board, 1, (0, 0))
-
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 
@@ -208,32 +192,11 @@ def possibilities(board):
 *** =sample_code
 ```{python}
 # write your code here!
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
 
-board = random_place(board, 2)
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-board = create_board()
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-board = place(board, 1, (0, 0))
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
@@ -297,31 +260,14 @@ def random_place(board, player):
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
-        board = random_place(board, player)
+        # use `random_place` to play a game, and store on `board`.
 
 print(board)
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
-def possibilities(board):
-    return list(zip(*np.where(board == 0)))
-def random_place(board, player):
-    selections = possibilities(board)
-    if len(selections) > 0:
-        selection = random.choice(selections)
-        board = place(board, player, selection)
-    return board
+
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
@@ -1129,19 +1075,18 @@ def play_game():
 
 *** =sample_code
 ```{python}
-# write your code here!
 def play_strategic_game():
     board, winner = create_board(), 0
     board[1,1] = 1
     while winner == 0:
         for player in [2,1]:
-            board = random_place(board, player)
-            winner = evaluate(board)
+            # use `random_place` to play a game, and store as `board`.
+            # use `evaluate(board)`, and store as `winner`.
             if winner != 0:
                 break
     return winner
 
-play_strategic_game()    
+play_strategic_game()     
 ```
 
 *** =solution
