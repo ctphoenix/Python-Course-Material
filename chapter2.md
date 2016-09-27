@@ -1008,7 +1008,7 @@ test_student_typed("plt.show",
 test_student_typed("plt.hist",
               pattern=False,
               not_typed_msg="Did you use `plt.hist`?")              
-test_student_typed("play_game()",
+test_student_typed("play_strategic_game()",
               pattern=False,
               not_typed_msg="Did you use `play_strategic_game()`?")
 success_msg("Great work!  Yes, starting in the middle square is a large advantage when play is otherwise random.  Also, each game takes less time to play, because each victory is decided earlier.  Player 1 wins more than both players draw, and Player 2 wins less than both of these outcomes.")
