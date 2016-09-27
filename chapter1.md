@@ -358,9 +358,7 @@ test_function("rand", index = 1,
               not_called_msg = "Make sure to call `rand()`!")
 test_student_typed("random.random",
               pattern=True,
-              not_typed_msg="Did you use `randm.random` to generate your answer?")              
-              random.random
-              
+              not_typed_msg="Did you use `random.random` to generate your answer?")                            
 success_msg("Great work!")
 ```
 
