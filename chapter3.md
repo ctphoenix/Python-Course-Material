@@ -60,24 +60,23 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
--  Create a dictionary `coded_letters` that rs (and the space) for keys, and numbers from `0-26` for values.  Define these alphabetically, starting with `a` mapped to  `key=3`.
+-  `alphabet` and `letters` are shown below.    Create a dictionary `coded_letters` that map the letters of the alphabet (and the space) for keys, and numbers from `0-26` for values.  Define these alphabetically, starting with `a` mapped to  `key=3`.
 
 *** =hint
 - You can simply add `key` to the place value of each letter.  To reduce this `sum` by `27` if it exceeds `27`, use `sum%27`!
 
 *** =pre_exercise_code
 ```{python}
+import string
+alphabet = string.ascii_lowercase + " "
+letters = dict(enumerate(alphabet))
 ```
 
 *** =sample_code
 ```{python}
-import string
-alphabet = string.ascii_lowercase + " "
-message = "hi my name is caesar"
-letters = dict(enumerate(alphabet))
-
 key = 3
 # define `coded_letters` here!
+
 ```
 
 *** =solution
@@ -101,17 +100,17 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
-- Create a function `caesar(message, key)` that includes `coded_letters` to encode a message with the caesar cipher.
-- Encode, save and print the message defined earlier as `coded_message`, using `key = 3`.
+- `alphabet` and `letters` are preloaded from the previous problem.  Create a function `caesar(message, key)` that includes `coded_letters` to encode a message with the caesar cipher.
+- A message is provided below for encoding. Use `caesar` to encode the message using `key = 3`, and save as `coded_letters`.
+- Print `coded_letters`.
 
 *** =hint
-- Using the code in Exercise 2, you can use `"".join(my_list)` to transform the coded list into a string!
+- Try using `"".join(my_list)` to transform the coded list into a string!
 
 *** =pre_exercise_code
 ```{python}
 import string
 alphabet = string.ascii_lowercase + " "
-message = "hi my name is caesar"
 letters = dict(enumerate(alphabet))
 key = 3
 coded_letters   = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
@@ -119,11 +118,13 @@ coded_letters   = {letter:(place + key)%27 for (place, letter) in enumerate(alph
 
 *** =sample_code
 ```{python}
+message = "hi my name is caesar"
+
 def caesar(message, key):
     coded_letters = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
-    return "".join([letters[coded_letters[letter]] for letter in message])
-coded_message = caesar(message, key=3)
-print(coded_message)    
+    # return the encoded message as a single string!
+
+
 ```
 
 *** =solution
@@ -140,6 +141,7 @@ def caesar(message, key):
     """
     coded_letters = {letter:(place + key)%27 for (place, letter) in enumerate(alphabet)}
     return "".join([letters[coded_letters[letter]] for letter in message])
+    
 coded_message = caesar(message, key=3)
 print(coded_message)    
 ```
@@ -164,7 +166,8 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
-- Decode, save and print your encoded message as `decoded_message`, using `key = -3`.  Does this recover your original message?
+- Decode, save and print `coded_message` using `caesar` and `key = -3`.
+- Store this as `decoded_message`, and print.  Does this recover your original message?
 
 *** =hint
 - This should not require any changes to the function `caesar`!
@@ -185,8 +188,7 @@ coded_message = caesar(message, key=3)
 
 *** =sample_code
 ```{python}
-decoded_message = caesar(coded_message, key=-3)
-print(decoded_message)
+
 ```
 
 *** =solution
@@ -200,7 +202,7 @@ print(decoded_message)
 test_function("print",
               not_called_msg = "Make sure to call `print`!",
               incorrect_msg = "Check your definition of `decoded_message` again.")
-test_object("letters",
+test_object("decoded_message",
             undefined_msg = "Did you define `decoded_message`?",
             incorrect_msg = "It looks like `decoded_message` wasn't defined correctly.")
 success_msg("Great work!")
