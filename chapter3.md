@@ -32,7 +32,7 @@ string.ascii_lowercase
 # We will consider the alphabet to be these letters, along with a spaces.
 alphabet = string.ascii_lowercase + " "
 
-letters = dict(enumerate(alphabet))
+# create `letters` here!
 
 ```
 
