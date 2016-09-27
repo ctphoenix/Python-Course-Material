@@ -103,7 +103,8 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- Here is an example solution of part **1b**.  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.  Use your function to call `counter(sentence)`.
+- Here is an example solution of part **1b**.  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.
+- Use your function to call `counter(sentence)`.
 
 *** =hint
 - Add `def` at the beginning to define the function, indent the inner code, and use `return` at the end to ensure your function returns the output.
@@ -150,8 +151,8 @@ counter(sentence)
 *** =sct
 ```{python}
 test_function("counter", index = 1,
-              not_called_msg = "Make sure to use `ascii_lowercase`!",
-              incorrect_msg = "Check your usage of `ascii_lowercase` again.")
+              not_called_msg = "Make sure to call `counter`!",
+              incorrect_msg = "It appears that `counter` was not defined correctly.")
 success_msg("Great work!")
 ```
 
