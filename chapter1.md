@@ -501,10 +501,11 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Find how many of `R=1000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two volumes!
+- The functions `rand` and `in_circle` are Find how many of `R=1000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two volumes!
 
 *** =hint
--  Use your functions `rand()` and `in_circle()` to create 1000 points, test if they fall within the unit circle.  Make sure to print the fraction that do fit inside the circle!
+-  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  Using these functions, create 1000 points, test if they fall within the unit circle.
+- Print the fraction that do fit inside the circle!
 
 *** =pre_exercise_code
 ```{python}
@@ -533,27 +534,6 @@ def in_circle(x, origin = [0]*2):
 
 *** =solution
 ```{python}
-import random, math
-random.seed(1)
-def rand():
-    return random.random()*2-1
-def distance(x, y):
-    """
-        Given x and y, find their distance.\n
-        This is given by sqrt(sum((x-y)**2)).
-    """
-    if len(x) != len(y):
-        return "x and y do not have the same length!"
-    else:
-        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
-        return math.sqrt(sum(square_differences))    
-def in_circle(x, origin = [0]*2):
-    if len(x) != 2:
-        return "x is not two-dimensional!"
-    elif distance(x, origin) < 1:
-        return True
-    else:
-        return False
 R=1000
 inside = 0
 for i in range(R):
@@ -565,12 +545,6 @@ print(inside/R)
 *** =sample_code
 ```{python}
 # write your code here!
-R=1000
-inside = 0
-for i in range(R):
-    x = [rand(), rand()]
-    inside += int(in_circle(x))
-print(inside/R)
 ```
 
 *** =sct
