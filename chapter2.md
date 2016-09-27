@@ -11,7 +11,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =instructions
 - For our tic-tac-toe board, we will use a numpy array with dimension 3 by 3.  Make a function `create_board()` that creates such a board, with values of integers `0`.
-- Call `create_board,` and store this as `board`.
+- Call `create_board(),` and store this as `board`.
 
 
 *** =hint
@@ -27,11 +27,7 @@ random.seed(1)
 *** =sample_code
 ```{python}
 # write your code here!
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
 
-board = create_board()
 ```
 
 *** =solution
@@ -83,24 +79,11 @@ def create_board():
 *** =sample_code
 ```{python}
 # write your code here!
-def place(board, player, position):
-    if board[position] == 0:
-        board[position] = player
-        return board
 
-board = create_board()
-board = place(board, 1, (0, 0))
 ```
 
 *** =solution
 ```{python}
-import random
-import numpy as np
-random.seed(1)
-def create_board():
-    board = np.zeros((3,3), dtype=int)
-    return board
-    
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
