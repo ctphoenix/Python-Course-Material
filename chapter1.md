@@ -576,7 +576,7 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- ``Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find and print the difference between this value and your estimate in part `2e`.
+- Note: `inside` and `R` are defined from the previous subproblem.  Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find and print the difference between this value and your estimate in part `2e`.
 
 *** =hint
 - Take your estimate from the last exercise, and subtract `math.pi/4`.  Make sure to print your answer!
@@ -613,32 +613,6 @@ for i in range(R):
 
 *** =solution
 ```{python}
-import random, math
-random.seed(1)
-def rand():
-    return random.random()*2-1
-def distance(x, y):
-    """
-        Given x and y, find their distance.\n
-        This is given by sqrt(sum((x-y)**2)).
-    """
-    if len(x) != len(y):
-        return "x and y do not have the same length!"
-    else:
-        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
-        return math.sqrt(sum(square_differences))    
-def in_circle(x, origin = [0]*2):
-    if len(x) != 2:
-        return "x is not two-dimensional!"
-    elif distance(x, origin) < 1:
-        return True
-    else:
-        return False
-R=10000
-inside = 0
-for i in range(R):
-    x = [rand(), rand()]
-    inside += int(in_circle(x))         
 print(inside/R - math.pi/4)
 ```
 
@@ -651,7 +625,8 @@ print(inside/R - math.pi/4)
 *** =sct
 ```{python}
 test_function("print", index = 1,
-              not_called_msg = "Make sure to print your answer!")     
+              incorrect_msg = "It appears what you've printed is not correct.", 
+              not_called_msg = "Make sure to print your answer!")              
 success_msg("Great work!")
 ```
 
