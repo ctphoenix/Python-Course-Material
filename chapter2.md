@@ -749,13 +749,7 @@ def play_game():
 *** =sample_code
 ```{python}
 # write your code here!
-import time
-start = time.time()
-games = [play_game() for i in range(1000)]
-stop = time.time()
-print(stop - start)
-plt.hist(games)
-plt.show()
+
 ```
 
 *** =solution
@@ -977,13 +971,7 @@ def play_strategic_game():
 *** =sample_code
 ```{python}
 # write your code here!
-import time
-start = time.time()
-games = [play_strategic_game() for i in range(1000)]
-stop = time.time()
-print(stop - start)
-plt.hist(games)
-plt.show()
+
 ```
 
 *** =solution
