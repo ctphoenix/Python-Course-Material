@@ -508,7 +508,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 - The functions `rand` and `in_circle` are Find how many of `R=1000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two volumes!
 
 *** =hint
--  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  Using these functions, create 1000 points, test if they fall within the unit circle.
+-  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  Using these functions, create a list of 1000 points, test if they fall within the unit circle.  Store your answers as a list of booleans called `inside`.
 - Print the fraction that do fit inside the circle!
 
 *** =pre_exercise_code
@@ -557,11 +557,17 @@ print(inside/R)
 test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!",
               incorrect_msg = "Are you sure that your answer is correct?")
-              
+test_student_typed("rand()",
+                       pattern=True,
+                       not_typed_msg="Make sure to use `rand()`!")      
+test_student_typed("in_circle(",
+                       pattern=True,
+                       not_typed_msg="Make sure to use `in_circle()`!")                  
+test_object("inside",
+            undefined_msg = "Did you define `inside`?",
+            incorrect_msg = "It looks like `inside` wasn't defined correctly.")
 success_msg("Great work!")
 ```
-
-
 
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:d3950c2ef5
@@ -570,7 +576,7 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find and print the difference between this value and your estimate in part `2e`.
+- ``Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find and print the difference between this value and your estimate in part `2e`.
 
 *** =hint
 - Take your estimate from the last exercise, and subtract `math.pi/4`.  Make sure to print your answer!
@@ -645,13 +651,7 @@ print(inside/R - math.pi/4)
 *** =sct
 ```{python}
 test_function("print", index = 1,
-              not_called_msg = "Make sure to print your answer!")
-test_student_typed("rand()",
-                       pattern=True,
-                       not_typed_msg="Make sure to use `rand()`!")      
-test_student_typed("in_circle(",
-                       pattern=True,
-                       not_typed_msg="Make sure to use `in_circle()`!")       
+              not_called_msg = "Make sure to print your answer!")     
 success_msg("Great work!")
 ```
 
