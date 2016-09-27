@@ -394,7 +394,7 @@ def distance(x, y):
         square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
         return math.sqrt(sum(square_differences))
 
-distance((0,0),(1,1))
+print(distance((0,0),(1,1)))
 ```
 
 *** =sample_code
@@ -411,6 +411,9 @@ def distance(x, y):
 test_function("distance", index = 1,
               not_called_msg = "Did you use your `distance` function?",
               incorrect_msg = "Are you sure that is the correct distance?")
+test_function("print", index = 1,
+              not_called_msg = "Did you print your output?",
+              incorrect_msg = "It appears what you have printed is incorrect.")              
 success_msg("Great work!")
 ```
 
@@ -423,7 +426,7 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  - Use your function to find whether the point `(1,1)` lies within the unit circle centered at the origin.
+- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  - Use your function to print whether the point `(1,1)` lies within the unit circle centered at the origin.
 
 *** =hint
 - Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than 1!
@@ -470,7 +473,7 @@ def in_circle(x, origin = [0]*2):
     else:
         return False
 
-in_circle((1,1))
+print(in_circle((1,1)))
 ```
 
 *** =sample_code
@@ -486,7 +489,10 @@ def in_circle(x, origin = [0]*2):
 ```{python}
 test_function("in_circle", index = 1,
               not_called_msg = "Did you use your `in_circle` function?",
-              incorrect_msg = "Is the output of `in_circle` correct?")         
+              incorrect_msg = "Is the output of `in_circle` correct?")  
+test_function("print", index = 1,
+              not_called_msg = "Did you make sure to print your answer?",
+              incorrect_msg = "It appears what you've printed is not correct.")  
 success_msg("Great work!")
 ```
 
@@ -543,6 +549,7 @@ print(inside/R)
 *** =sample_code
 ```{python}
 # write your code here!
+
 ```
 
 *** =sct
@@ -550,6 +557,7 @@ print(inside/R)
 test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!",
               incorrect_msg = "Are you sure that your answer is correct?")
+              
 success_msg("Great work!")
 ```
 
@@ -638,6 +646,12 @@ print(inside/R - math.pi/4)
 ```{python}
 test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!")
+test_student_typed("rand()",
+                       pattern=True,
+                       not_typed_msg="Make sure to use `rand()`!")      
+test_student_typed("in_circle(",
+                       pattern=True,
+                       not_typed_msg="Make sure to use `in_circle()`!")       
 success_msg("Great work!")
 ```
 
@@ -650,7 +664,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.  
 
 *** =instructions
-- Make a function `moving_window_average(x, n_neighbors)` that takes a list `x` and the number of neighbors `n_neighbors` on either side to consider. For each value, the function computes the average of each value's neighbors, including themselves. Have the function return a list of these averaged values as long as the original list.  If there are not enough neighbors (for cases near the edge), substitute the original value as many times as there are missing neighbors.
+- Let's make a function `moving_window_average(x, n_neighbors)` that takes a list `x` and the number of neighbors `n_neighbors` on either side to consider. For each value, the function computes the average of each value's neighbors, including themselves. Have the function return a list of these averaged values as long as the original list.  If there are not enough neighbors (for cases near the edge), substitute the original value as many times as there are missing neighbors.
 - Use your function to find the moving window sum of `x=[0,10,5,3,1,5]` and `n_neighbors=1`.
 
 *** =hint
@@ -669,11 +683,11 @@ random.seed(1)
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
-    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
+    x = [x[0]]*n_neighbors + x + [x[-1]]*n_neighbors
     return [sum(x[i:(i+width)]) / width for i in range(n)]
 
 x=[0,10,5,3,1,5]
-moving_window_average(x, 1)
+print(moving_window_average(x, 1))
 ```
 
 *** =sample_code
@@ -682,11 +696,12 @@ moving_window_average(x, 1)
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
-    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
-    return [sum(x[i:(i+width)]) / width for i in range(n)]
+    x = [x[0]]*n_neighbors + x + [x[-1]]*n_neighbors
+    # To complete the function,
+    # return a list of the mean of values from i to i+width for all values i from 0 to n-1.
 
 x=[0,10,5,3,1,5]
-moving_window_average(x, 1)    
+print(moving_window_average(x, 1))
 ```
 
 *** =sct
@@ -697,13 +712,11 @@ test_object("x",
 test_function("moving_window_average", index = 1,
               not_called_msg = "Make sure to use `moving_window_average`!",
               incorrect_msg = "Are you sure that your answer is correct?")
+test_function("print", index = 1,
+              not_called_msg = "Did you remember to print your output?",
+              incorrect_msg = "Are you sure that your answer is correct?")              
 success_msg("Great work!")
 ```
-
-
-
-
-
 
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:006c8d659a
@@ -712,7 +725,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.
 
 *** =instructions
-- Compute and store `R=1000` random values from 0-1 as `x`. Then, compute the moving window average several times for this list for the range of number of neighbors 1-9.  Store x and each of these averages as consecutive lists in a list called `X`.
+- The function `moving_window_average(x, n_neighbors)` is already shown. Compute and store `R=1000` random values from 0-1 as `x`. Then, compute the moving window average several times for this list for the range of `n_neighbors 1-9`.  Store `x` and each of these averages as consecutive lists in a list called `X`.
 
 *** =hint
 - You may be able to use a list comprehension here!  A `for` loop will also work.
@@ -740,15 +753,21 @@ def moving_window_average(x, n_neighbors=2):
 
 R=1000
 x = [random.random() for i in range(R)]
-X = [x] + [moving_window_average(x, i) for i in range(1,10)]
+X = [x] + [moving_window_average(x, i) for i in range(1, 10)]
 ```
 
 *** =sample_code
 ```{python}
+import random
+random.seed(1)
+def moving_window_average(x, n_neighbors=2):
+    n = len(x)
+    width = n_neighbors*2 + 1
+    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
+    return [sum(x[i:(i+width)]) / width for i in range(n)]
+    
 # write your code here!
-R=1000
-x = [random.random() for i in range(R)]
-X = [x] + [moving_window_average(x, i) for i in range(1,10)]
+
 ```
 
 *** =sct
@@ -766,10 +785,10 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.
 
 *** =instructions
-- For each list in `X`, calculate and store the range (the maximum minus the minimum) in a new list `ranges`, and print.  As the moving average window increases, does the range of each list increase or decrease? Why do you think that is?
+- `moving_window_average(x, n_neighbors=2)` and `X` is already loaded into memory.  For each list in `X`, calculate and store the range (the maximum minus the minimum) in a new list `ranges`, and print your answer.  As the moving average window increases, does the range of each list increase or decrease? Why do you think that is?
 
 *** =hint
-- Another `for` loop
+- A `for` loop or a list comprehension will work well here.
 
 *** =pre_exercise_code
 ```{python}
@@ -807,6 +826,7 @@ moving_window_average(x, n_neighbors=1)
 R=1000
 x = [random.random() for i in range(R)]
 X = [x] + [moving_window_average(x, i) for i in range(1,10)]
+
 ranges = [max(x)-min(x) for x in X]
 print(ranges)
 ```
