@@ -301,17 +301,14 @@ print(math.pi/4)
 
 *** =sct
 ```{python}
+test_student_typed("math.pi",
+              pattern=True,
+              not_typed_msg="Did you use `pi` from the `math` library?")
 test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!",
               incorrect_msg = "What you printed is not yet correct.")
 success_msg("Great work!")
 ```
-
-
-
-
-
-
 
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:7aa7dadeac
@@ -347,16 +344,10 @@ rand()
 
 *** =sample_code
 ```{python}
-# write your code here!
 import random
 random.seed(1)
 def rand():
-    """
-        Generates a random real number between -1 and 1.\n
-        This function uses random.random, which generates\n
-        random real number between 0 and 1.
-    """
-    return random.random()*2-1
+   # define `rand` here!
 
 rand()
 ```
@@ -364,11 +355,15 @@ rand()
 *** =sct
 ```{python}
 test_function("rand", index = 1,
-              not_called_msg = "Make sure to call `rand()`!",
-              incorrect_msg = "Did you define `rand` correctly?")
+              not_called_msg = "Make sure to call `rand()`!")
+              
+test_student_typed("random.random",
+              pattern=True,
+              not_typed_msg="Did you use `randm.random` to generate your answer?")              
+              random.random
+              
 success_msg("Great work!")
 ```
-
 
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:eabc2b80ff
@@ -377,7 +372,7 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- The formula for the distance between two points `x` and `y` is `sqrt(sum((x-y)**2))`.  Create a function `distance(x, y)` that takes two vectors and outputs the distance between them.  Use your function to find the distance between `(0,0)` and `1,1`.
+- The distance between two points `x` and `y` is the square root of the sum of squared differences along each dimension of `x` and `y`.  Create a function `distance(x, y)` that takes two vectors and outputs the distance between them.  Use your function to find the distance between `(0,0)` and `(1,1)`.
 
 *** =hint
 - Use the `sqrt` function in the `math` library to find square roots.  Finding the square can be done using the `pow` function in the `math` library, or exponentiating using `**2` after the number you would like to square.
@@ -407,20 +402,11 @@ distance((0,0),(1,1))
 
 *** =sample_code
 ```{python}
-# write your code here!
 import math
 def distance(x, y):
-    """
-        Given x and y, find their distance.\n
-        This is given by sqrt(sum((x-y)**2)).
-    """
-    if len(x) != len(y):
-        return "x and y do not have the same length!"
-    else:
-        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
-        return math.sqrt(sum(square_differences))
-
-distance((0,0),(1,1))
+   # define your function here!
+   
+   
 ```
 
 *** =sct
@@ -440,7 +426,7 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Make a function `in_circle(x)` that determines if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  Use your function to find whether the point `(1,1)` lies within the unit circle centered at the origin.
+- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x)` that determines if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  Use your function to find whether the point `(1,1)` lies within the unit circle centered at the origin.
 
 *** =hint
 - Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than 1!
@@ -494,25 +480,16 @@ in_circle((1,1))
 ```{python}
 # write your code here!
 def in_circle(x, origin = [0]*2):
-    """
-        This function determines if a two-dimensional point\n
-        falls within the\n unit circle.
-    """
-    if len(x) != 2:
-        return "x is not two-dimensional!"
-    elif distance(x, origin) < 1:
-        return True
-    else:
-        return False
+   # Define your function here!
+   
 
-in_circle((1,1))
 ```
 
 *** =sct
 ```{python}
 test_function("in_circle", index = 1,
               not_called_msg = "Did you use your `in_circle` function?",
-              incorrect_msg = "Is the output of `in_circle` correct?")
+              incorrect_msg = "Is the output of `in_circle` correct?")         
 success_msg("Great work!")
 ```
 
