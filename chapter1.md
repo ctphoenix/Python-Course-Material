@@ -356,7 +356,6 @@ rand()
 ```{python}
 test_function("rand", index = 1,
               not_called_msg = "Make sure to call `rand()`!")
-              
 test_student_typed("random.random",
               pattern=True,
               not_typed_msg="Did you use `randm.random` to generate your answer?")              
@@ -426,7 +425,7 @@ success_msg("Great work!")
 The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x)` that determines if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  Use your function to find whether the point `(1,1)` lies within the unit circle centered at the origin.
+- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  - Use your function to find whether the point `(1,1)` lies within the unit circle centered at the origin.
 
 *** =hint
 - Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than 1!
