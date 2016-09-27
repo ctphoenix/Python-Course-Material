@@ -22,10 +22,7 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =sample_code
 ```{python}
-# write your code here!
-
-import string
-alphabet = string.ascii_lowercase
+# Write your code here!
 
 ```
 
@@ -40,9 +37,6 @@ alphabet = string.ascii_lowercase
 test_student_typed("ascii_lowercase",
                        pattern=True,
                        not_typed_msg="Make sure to use `ascii_lowercase`!")
-#test_function("ascii_lowercase",
-#              not_called_msg = "Make sure to use `ascii_lowercase`!",
-#              incorrect_msg = "Check your usage of `ascii_lowercase` again.")
 test_object("alphabet",
             undefined_msg = "Did you define `alphabet`?",
             incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
@@ -57,6 +51,7 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
+- The lowercase English alphabet is stored as `alphabet`.
 - Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with each letter used as keys and the number of times each letter is used in this sentence as values.  Make sure that capital letters are counted!
 
 *** =hint
@@ -73,40 +68,31 @@ alphabet = string.ascii_lowercase
 ```{python}
 # write your code here!
 
-sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
+sentence = 'jim quickly realized that the beautiful gowns are expensive'
 
 count_letters = {}
-for letter in alphabet:
-    count_letter = 0
-    for character in sentence:
-        if character.casefold() == letter:
-            count_letter += 1
-    count_letters[letter] = count_letter
+# add values to count_letters here!
 
 ```
 
 *** =solution
 ```{python}
-sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
+sentence = 'jim quickly realized that the beautiful gowns are expensive'
 
 count_letters = {}
 for letter in alphabet:
     count_letter = 0
     for character in sentence:
-        if character.casefold() == letter:
+        if character == letter:
             count_letter += 1
     count_letters[letter] = count_letter
 ```
 
 *** =sct
 ```{python}
-
-test_object("sentence",
-            undefined_msg = "Did you define `sentence`?",
-            incorrect_msg = "It looks like `sentence` wasn't defined correctly.")
 test_object("count_letters",
             undefined_msg = "Did you define `count_letters`?",
-            incorrect_msg = "It looks like `count_letters` wasn't defined correctly.")
+            incorrect_msg = "It looks like `count_letters` does count the letters in `sentence` correctly.")
 success_msg("Great work!")
 ```
 
@@ -117,7 +103,7 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- Here is an example solution of part b.)  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.  Use your function to call `counter(sentence)`.
+- Here is an example solution of part *1b*.  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.  Use your function to call `counter(sentence)`.
 
 *** =hint
 - Add `def` at the beginning to define the function, indent the inner code, and use `return` at the end to ensure your function returns the output.
@@ -129,14 +115,14 @@ In this exercise, we will count the frequency of each letter in a document.
 *** =sample_code
 ```{python}
 import string
-sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
+sentence = 'jim quickly realized that the beautiful gowns are expensive'
 
 # edit this code!
 count_letters = {}
 for letter in string.ascii_lowercase:
     count_letter = 0
     for character in input_string:
-        if character.casefold() == letter:
+        if character == letter:
             count_letter += 1
     count_letters[letter] = count_letter
 
@@ -146,14 +132,14 @@ for letter in string.ascii_lowercase:
 *** =solution
 ```{python}
 import string 
-sentence = 'Jim quickly realized that the beautiful gowns are expensive.'
+sentence = 'jim quickly realized that the beautiful gowns are expensive'
 
 def counter(input_string):
     count_letters = {}
     for letter in string.ascii_lowercase:
         count_letter = 0
         for character in input_string:
-            if character.casefold() == letter:
+            if character == letter:
                 count_letter += 1
         count_letters[letter] = count_letter
     return count_letters
