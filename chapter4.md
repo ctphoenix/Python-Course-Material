@@ -9,6 +9,8 @@ attachments :
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+
 *** =instructions
 -  Create a function `word_count_distribution(text)` that takes a book (string) and outputs a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.  Can you accomplish this by using `count_words_fast(text)` in your function?
 - "Romeo and Juliet" is preloaded as `text`.  Call `word_count_distribution(text)`, and save the result as `distribution`.
@@ -39,21 +41,13 @@ def word_stats(word_counts):
     num_unique = len(word_counts)
     counts = word_counts.values()
     return (num_unique, counts)
-def word_stats(word_counts):
-    num_unique = len(word_counts)
-    counts = word_counts.values()
-    return (num_unique, counts)
 text = read_book("./Books/English/shakespeare/Romeo and Juliet.txt")    
 ```
 
 *** =sample_code
 ```{python}
-def word_count_distribution(text):
-    word_counts = count_words_fast(text)
-    count_distribution = Counter(word_counts.values())
-    return count_distribution
+# input your code here!
 
-distribution = word_count_distribution(text)    
 ```
 
 *** =solution
@@ -63,17 +57,17 @@ def word_count_distribution(text):
     count_distribution = Counter(word_counts.values())
     return count_distribution
 
-distribution = word_count_distribution(text)    
+distribution = word_count_distribution(text) 
 ```
 
 *** =sct
 ```{python}
-#test_function("print",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
-#test_object("",
-#            undefined_msg = "Did you define ``?",
-#            incorrect_msg = "It looks like `` wasn't defined correctly.")
+test_function("word_count_distribution",
+              not_called_msg = "Make sure to call `word_count_distribution`!",
+              incorrect_msg = "Check your definition of `word_count_distribution` again.")              
+test_object("distribution",
+            undefined_msg = "Did you define `distribution`?",
+            incorrect_msg = "It looks like `distribution` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -81,6 +75,8 @@ success_msg("Great work!")
 ## Exercise 2
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
+
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
 *** =instructions
 -  Edit the code used to read though each of the books in our library, and store each the word frequency distribution for each translation of William Shakespeare's "Hamlet" as a Pandas dataframe `hamlet`.  How many translations are there?  Which languages are they translated into?
@@ -124,7 +120,7 @@ def word_count_distribution(text):
 *** =sample_code
 ```{python}
 stats = pd.DataFrame(columns = ("language", "author", "title", "length", "unique"))
-#hamlets = pd.DataFrame(columns = ("language", "distribution"))
+hamlets = pd.DataFrame(columns = ("language", "distribution"))
 book_dir = "./Books"
 title_num = 1
 for language in os.listdir(book_dir):
@@ -138,9 +134,9 @@ for language in os.listdir(book_dir):
                     print(inputfile)
                     text = read_book(inputfile)
                     (num_unique, counts) = word_stats(count_words(text)) #replace!
-                    stats.loc[title_num] = language, author.title(), title.replace(".txt", "").title(), sum(counts), num_unique #replace!
-                    #frequencies = word_count_distribution(text) #include!
-                    #hamlets.loc[title_num] = language, frequencies #include!
+                    stats.loc[title_num] = language, author.title(), title.replace(".txt", "").title(), sum(counts), num_unique #DELETE!
+                    #frequencies = word_count_distribution(text) # INCLUDE!
+                    #hamlets.loc[title_num] = language, frequencies # INCLUDE!
                     title_num += 1
 ```
 
@@ -165,9 +161,6 @@ for language in os.listdir(book_dir):
 
 *** =sct
 ```{python}
-#test_function("print",
-#              not_called_msg = "Make sure to call `word_count_distribution`!",
-#              incorrect_msg = "Check your definition of `word_count_distribution` again.")
 test_object("hamlets",
             undefined_msg = "Did you define `hamlets`?",
             incorrect_msg = "It looks like `hamlets` wasn't defined correctly.")
@@ -179,12 +172,25 @@ success_msg("Great work!  There are three translations: English, German, and Por
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+
 *** =instructions
 -  Create a function `more_frequent(distribution)` that takes a word frequency dict (like that made in Exercise 2) and outputs a dict with the same keys as those in distribution (the number of times a group of words appears) in the text), and values corresponding to the fraction of words that occur with more frequency than that.
 -  Call `more_frequent(distribution)`.
 
 *** =hint
-- 
+- You might begin with sorting the counts of the distribution as follows: `counts = sorted(distribution.keys())`
+- Sorting the values of the distribution with `sorted(distribution.values(), reverse = True)` and finding the cumulative sum of these using `np.cumsum()` will get you close!
+- To obtain the fraction of words more frequent than this, divide this cumulative sum by its maximum, and subtract 1 from this value.  You're ready to make a dictionary with these as values and counts as keys!
+
+def more_frequent(distribution):
+    counts = sorted(distribution.keys())
+    sorted_frequencies = sorted(distribution.values(), reverse = True)
+    cumulative_frequencies = np.cumsum(sorted_frequencies)
+    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
+    return dict(zip(counts, more_frequent))
+    
+more_frequent(distribution)
 
 *** =pre_exercise_code
 ```{python}
@@ -235,14 +241,8 @@ for language in os.listdir(book_dir):
 
 *** =sample_code
 ```{python}
-def more_frequent(distribution):
-    counts = sorted(distribution.keys())
-    sorted_frequencies = sorted(distribution.values(), reverse = True)
-    cumulative_frequencies = np.cumsum(sorted_frequencies)
-    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
-    return dict(zip(counts, more_frequent))
-    
-more_frequent(distribution)    
+# input your code here!
+
 ```
 
 *** =solution
@@ -262,9 +262,6 @@ more_frequent(distribution)
 test_function("more_frequent",
               not_called_msg = "Make sure to call `more_frequent`!",
               incorrect_msg = "Check your definition of `more_frequent` again.")
-#test_object("",
-#            undefined_msg = "Did you define ``?",
-#            incorrect_msg = "It looks like `` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -273,11 +270,13 @@ success_msg("Great work!")
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+
 *** =instructions
 -  Plot the word frequency distributions of each translations on a single log-log plot.  Make sure to include a legend and a title!  Do the distributions differ?
 
 *** =hint
-- `plt.loglog` works just like `plt.plot`, except changes the axes to the log scale!
+- No hint for this one!
 
 *** =pre_exercise_code
 ```{python}
@@ -333,28 +332,39 @@ import numpy as np
 *** =sample_code
 ```{python}
 colors = ["crimson", "forestgreen", "blueviolet"]
-plot_file = PdfPages("distributions.pdf")
-fig = plt.figure()
+handles, hamlet_languages = [], []
+for index in range(hamlets.shape[0]):
+    language, distribution = hamlets.language[index+1], hamlets.distribution[index+1]
+    # call `more_frequent` with input `distribution`, and store as `dist`.
+    plot, = plt.loglog(sorted(list(dist.keys())),sorted(list(dist.values()),
+        reverse = True), color = colors[index], linewidth = 2)
+    handles.append(plot)
+    hamlet_languages.append(language)
+# call `plt.title` here, with a string argument for a title.
+xlabel  = "Word Frequency"
+ylabel  = "Probability of Words Being More Frequent"
+plt.xlabel(xlabel); plt.ylabel(ylabel)
+plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
+plt.show()
+```
+
+*** =solution
+```{python}
+colors = ["crimson", "forestgreen", "blueviolet"]
 handles, hamlet_languages = [], []
 for index in range(hamlets.shape[0]):
     language, distribution = hamlets.language[index+1], hamlets.distribution[index+1]# frequencies is count_distribution
     dist = more_frequent(distribution)
     plot, = plt.loglog(sorted(list(dist.keys())),sorted(list(dist.values()),
-        reverse = True), color = colors[index], linewidth = 2) #1
+        reverse = True), color = colors[index], linewidth = 2)
     handles.append(plot)
     hamlet_languages.append(language)
-plt.title("Distributions of Word Frequencies in Hamlet Translations") #2
-xlabel  = "Word Frequency" #3
-ylabel  = "Probability of Words Being More Frequent" #3
-plt.xlabel(xlabel); plt.ylabel(ylabel) #3
-plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1) #4
-plot_file.savefig(fig)
-plt.close()
-plot_file.close()
-```
-
-*** =solution
-```{python}
+plt.title("Distributions of Word Frequencies in Hamlet Translations")
+xlabel  = "Word Frequency"
+ylabel  = "Probability of Words Being More Frequent"
+plt.xlabel(xlabel); plt.ylabel(ylabel)
+plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
+plt.show()
 ```
 
 *** =sct
@@ -364,11 +374,7 @@ test_function("plt.show",
 test_function("plt.legend",
               not_called_msg = "Make sure to include a legend using `plt.legend`!")     
 test_function("plt.title",
-              not_called_msg = "Make sure to include a legend using `plt.legend`!")     
-              
-#test_object("",
-#            undefined_msg = "Did you define ``?",
-#            incorrect_msg = "It looks like `` wasn't defined correctly.")
+              not_called_msg = "Make sure to include a .title using `plt..title`!")     
 success_msg("Great work!  The distributions differ somewhat, but their basic shape is the same.  By the way, distributions that look like a straight line like these are called "scale-free," because the line looks the same no matter where on the x-axis you look!")
 ```
 
