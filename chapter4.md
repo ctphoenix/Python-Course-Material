@@ -128,12 +128,12 @@ for language in os.listdir(book_dir):
         for author in os.listdir(book_dir + "/" + language):
             if author[0] != ".":
                 for title in os.listdir(book_dir + "/" + language + "/" + author):
-                  #if title == "Hamlet.txt": #include!
+                  #if title == "Hamlet.txt": #INCLUDE!
                     title = title.replace('"', "'")
                     inputfile = book_dir + "/" + language + "/" + author + "/" + title
                     print(inputfile)
                     text = read_book(inputfile)
-                    (num_unique, counts) = word_stats(count_words(text)) #replace!
+                    (num_unique, counts) = word_stats(count_words(text)) #DELETE!
                     stats.loc[title_num] = language, author.title(), title.replace(".txt", "").title(), sum(counts), num_unique #DELETE!
                     #frequencies = word_count_distribution(text) # INCLUDE!
                     #hamlets.loc[title_num] = language, frequencies # INCLUDE!
@@ -364,7 +364,7 @@ xlabel  = "Word Frequency"
 ylabel  = "Probability of Words Being More Frequent"
 plt.xlabel(xlabel); plt.ylabel(ylabel)
 plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
-plt.show()
+# show your plot using `plt.show`!
 ```
 
 *** =sct
