@@ -106,8 +106,11 @@ birddata.n_time.head()
 
 *** =solution
 ```{python}
+## 
+birddata.date_time = pd.to_datetime(birddata.date_time)
+
 ## Create a new column of day of observation
-birddata['n_time'] = birddata.timestamp.dt.normalize()
+birddata['n_time'] = birddata.date_time.dt.date
 birddata.n_time.head()
 
 grouped_bydates = birddata.groupby('n_time')
@@ -147,16 +150,22 @@ import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
 birddata['n_time'] = birddata.timestamp.dt.normalize()
+
 ```
 
 *** =sample_code
 ```{python}
 grouped_birdday = ## YOUR CODE HERE ##
+max_altitudes_perday = grouped_birdday.altitude.max()
+max_altitudes_perday.head()
 ```
 
 *** =solution
 ```{python}
 grouped_birdday = birddata.groupby(['bird_name', 'n_time'])
+max_altitudes_perday = grouped_birdday.altitude.max()
+max_altitudes_perday.head()
+
 ```
 
 *** =sct
@@ -196,29 +205,30 @@ birddata['n_time'] = birddata.timestamp.dt.normalize()
 
 *** =sample_code
 ```{python}
-eric_daily_speed = grouped_birdday.speed_2d.mean()['Eric']
-eric_daily_speed.plot()
-plt.show()
-
+eric_daily_speed  = grouped_birdday.speed_2d.mean()['Eric']
 sanne_daily_speed = ## YOUR CODE HERE ##
-nico_daily_speed = ## YOUR CODE HERE ##
+nico_daily_speed  = ## YOUR CODE HERE ##
 
-## Don't modify below this line
 eric_daily_speed.plot(label="Eric")
 sanne_daily_speed.plot(label="Sanne")
 nico_daily_speed.plot(label="Nico")
 plt.legend(loc="upper left")
 plt.show()
+
 ```
 
 *** =solution
 ```{python}
-eric_daily_speed = grouped_birdday.speed_2d.mean()['Eric']
-eric_daily_speed.plot()
+eric_daily_speed  = grouped_birdday.speed_2d.mean()['Eric']
+sanne_daily_speed = grouped_birdday.speed_2d.mean()['Sanne']
+nico_daily_speed  = grouped_birdday.speed_2d.mean()['Nico']
+
+eric_daily_speed.plot(label="Eric")
+sanne_daily_speed.plot(label="Sanne")
+nico_daily_speed.plot(label="Nico")
+plt.legend(loc="upper left")
 plt.show()
 
-sanne_daily_speed = grouped_birdday.speed_2d.mean()['Sanne']
-nico_daily_speed = grouped_birdday.speed_2d.mean()['Nico']
 ```
 
 *** =sct
@@ -235,6 +245,10 @@ test_object("sanne_daily_speed",
 test_object("nico_daily_speed",
             undefined_msg = "Did you define `nico_daily_speed`?",
             incorrect_msg = "It looks like `nico_daily_speed` wasn't defined correctly.")
+test_student_typed("plt.show()",
+              pattern=False,
+              not_typed_msg="Did you make sure to plot the daily speeds?")
+            
 success_msg("Great work!")
 ```
 
