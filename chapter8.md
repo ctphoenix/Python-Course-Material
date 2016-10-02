@@ -10,7 +10,7 @@ attachments :
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird. Modify the code to assign the maximum altitudes of each bird into an object called `max_altitudes`.
+-  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird. Modify the code to assign the maximum altitudes of each bird into an object called `max_altitudes`.
 
 *** =hint
 - `grouped_birds` contains a column called `altitude`.  Find the maximum of this column!
@@ -72,11 +72,11 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` contains a useful type called `date_time`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the maximum altitude within that day.
+-  `pandas` contains a useful type called `tslib.Timestamp`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the maximum altitude within that day.
 -  Use `groupby` and calculate the maximum altitude per day. Save these results into an object called `max_altitudes_perday`.
 
 *** =hint
-- See `?pd.DataFrame.groupby` for help.
+- See `?pd.DataFrame.groupby` for help!
 
 *** =pre_exercise_code
 ```{python}
@@ -131,12 +131,12 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `birddata` already contains the `n_time`We will `groupby` using both `bird_name` and `n_time`. Then we will find the average speed per day, per bird.
--  First, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `n_time`.
+-  `birddata` already contains the `date` column.  We will `groupby` using both `bird_name` and `date` and find the average speed for each bird and day.
+-  First, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
 
 *** =hint
 - When grouping by more than one column, remember to use a `list`.
-- See `?pd.DataFrame.groupby` for help.
+- See `?pd.DataFrame.groupby` for help!
 
 *** =pre_exercise_code
 ```{python}
@@ -180,7 +180,7 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  Great! Now you have a dataframe called `grouped_birdday` that has grouped all of the `birddata` by `bird_name` and `date`. Now, we can perform the same operations as before – such as using `.mean()` on `speed_2d` to get the average speed per day per bird.
+-  Great! Now you have a dataframe called `grouped_birdday` that has grouped all of the `birddata` by `bird_name` and `date`. Now we can use `.mean()` on `speed_2d` to get the average speed for each bird and day.
 -  We’ve recreated the `Eric` plot using this method for you. Now create two more dataframes – one for `Sanne` and one for `Nico` – and plot all three speeds on the same plot.
 
 *** =hint
