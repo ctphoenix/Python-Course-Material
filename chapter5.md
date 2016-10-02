@@ -38,7 +38,9 @@ def knn_predict(p, points, outcomes, k=5):
 *** =sample_code
 ```{python}
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
+data = ## ENTER CODE HERE! ##
+
+
 ```
 
 *** =solution
@@ -49,9 +51,6 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 
 *** =sct
 ```{python}
-#test_function("print",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
 test_object("data",
             undefined_msg = "Did you define `data`?",
             incorrect_msg = "It looks like `data` wasn't defined correctly.")
@@ -68,6 +67,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =hint
 - Pandas dataframes contain the `drop` method - give that a try!
+- To make sure this is applied to the column, you might try including the parameter `axis=1`!
 
 *** =pre_exercise_code
 ```{python}
@@ -92,7 +92,9 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 
 *** =sample_code
 ```{python}
-numeric_data = data.drop("color", axis=1)
+numeric_data = ## ENTER CODE HERE! ##
+
+
 ```
 
 *** =solution
@@ -102,9 +104,6 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sct
 ```{python}
-#test_function("print",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
 test_object("numeric_data",
             undefined_msg = "Did you define `numeric_data`?",
             incorrect_msg = "It looks like `numeric_data` wasn't defined correctly.")
@@ -122,7 +121,8 @@ In these exercises, we will analyse a dataset consisting of many different wines
 - Principal components is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well they separate the data. The following code uses the scikit-learn (sklearn) library to find and store the two most informative angles, or principal components, of the data (a matrix with two columns corresponding to the principal components). Use this on your dataset to find and store the two principal components as `principal_components`.
 
 *** =hint
-- Use and store `sklearn.decomposition.PCA(2)`, and use the `fit` and `transform` methods to extract the first two principal components from `numeric_data`.
+- Use and store `sklearn.decomposition.PCA(2)` as `pca`
+- Use the `fit` and `transform` methods to extract the first two principal components from `numeric_data`.
 
 *** =pre_exercise_code
 ```{python}
@@ -151,8 +151,10 @@ numeric_data = data.drop("color", axis=1)
 numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
 
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(2)
-principal_components = pca.fit(numeric_data).transform(numeric_data)
+pca = ## ENTER CODE HERE! ##
+principal_components = ## ENTER CODE HERE! ##
+
+
 ```
 
 *** =solution
@@ -162,12 +164,14 @@ numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 
 import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)
-
 ```
 
 *** =sct
 ```{python}
-test_object("principal_components",
+test_object("pca",
+            undefined_msg = "Did you define `pca`?",
+            incorrect_msg = "It looks like `pca` wasn't defined correctly.")
+ test_object("principal_components",
             undefined_msg = "Did you define `principal_components`?",
             incorrect_msg = "It looks like `principal_components` wasn't defined correctly.")
 success_msg("Great work!")
@@ -182,7 +186,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 -  Plot the first two principal components.  Color the high and low quality wine as red and blue, respectively.  Are the two well separated by the first two principal components?
 
 *** =hint
-- `plt.scatter` will come in handy here!
+- `principal_components` is already ordered.  How can you index `principal_components` to draw the first two components?  Store these as `x` and `y`!
 
 *** =pre_exercise_code
 ```{python}
@@ -216,13 +220,17 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib.backends.backend_pdf import PdfPages
 observation_colormap = ListedColormap(['red', 'blue'])
+x = ## ENTER CODE HERE! ##
+y = ## ENTER CODE HERE! ##
 
 plt.title("Principal Components of Wine") #1
-plt.scatter(principal_components[:,0], principal_components[:,1], alpha = 0.2,
-    c = data['high_quality'], cmap = observation_colormap, edgecolors = 'none') #2
+plt.scatter(x, y, alpha = 0.2,
+    c = data['high_quality'], cmap = observation_colormap, edgecolors = 'none')
 plt.xlim(-8, 8); plt.ylim(-8, 8) #3
 plt.xlabel("Principal Component 1"); plt.ylabel("Principal Component 2") #4
 plt.show()
+
+
 ```
 
 *** =solution
@@ -231,12 +239,14 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib.backends.backend_pdf import PdfPages
 observation_colormap = ListedColormap(['red', 'blue'])
+x = principal_components[:,0]
+y = principal_components[:,1]
 
-plt.title("Principal Components of Wine") #1
-plt.scatter(principal_components[:,0], principal_components[:,1], alpha = 0.2,
-    c = data['high_quality'], cmap = observation_colormap, edgecolors = 'none') #2
-plt.xlim(-8, 8); plt.ylim(-8, 8) #3
-plt.xlabel("Principal Component 1"); plt.ylabel("Principal Component 2") #4
+plt.title("Principal Components of Wine")
+plt.scatter(x, y, alpha = 0.2,
+    c = data['high_quality'], cmap = observation_colormap, edgecolors = 'none')
+plt.xlim(-8, 8); plt.ylim(-8, 8)
+plt.xlabel("Principal Component 1"); plt.ylabel("Principal Component 2")
 plt.show()
 ```
 
@@ -257,11 +267,12 @@ success_msg("Great work!  Yes, these differ significantly.")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  We are now ready to fit the wine data to our KNN classifier.  Create a function accuracy(predictions, outcomes) that takes two lists of the same size, and outputs the fraction of elements that are equal for the two lists.
+-  We are now ready to fit the wine data to our KNN classifier.  Create a function accuracy(predictions, outcomes) that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
 -  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.
 
 *** =hint
 - The `==` operator will test for element-wise equality for numpy arrays (1 if equal, and 0 if not).  You can then use `numpy.mean` to find the fraction of these elements that are equal!
+- Remember that `numpy.mean` will find the fraction of equal values, not the percentage.  For this, you must multiply by `100`!
 
 *** =pre_exercise_code
 ```{python}
@@ -292,12 +303,14 @@ principal_components = pca.fit(numeric_data).transform(numeric_data)
 *** =sample_code
 ```{python}
 def accuracy(predictions, outcomes):
-    print(np.mean(predictions == outcomes)*100)
+    ## ENTER CODE HERE! ##
 
 x=np.array([1,2,3])
 y=np.array([1,2,4])
 
-accuracy(x,y)
+print(accuracy(x,y))
+
+
 ```
 
 *** =solution
@@ -306,12 +319,12 @@ def accuracy(predictions, outcomes):
     """
     Finds the percent of predictions that equal outcomes.
     """
-    print(np.mean(predictions == outcomes)*100)
+    return np.mean(predictions == outcomes)*100
 
 x=np.array([1,2,3])
 y=np.array([1,2,4])
 
-accuracy(x,y)    
+print(accuracy(x,y))
 ```
 
 *** =sct
@@ -361,17 +374,19 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    print(np.mean(predictions == outcomes)*100)    
+    return np.mean(predictions == outcomes)*100
 ```
 
 *** =sample_code
 ```{python}
-accuracy(0, data["high_quality"])
+print(accuracy(0, data["high_quality"]))
+
+
 ```
 
 *** =solution
 ```{python}
-accuracy(0, data["high_quality"])
+print(accuracy(0, data["high_quality"]))
 ```
 
 *** =sct
@@ -421,7 +436,7 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    print(np.mean(predictions == outcomes)*100)       
+    return np.mean(predictions == outcomes)*100
 ```
 
 *** =sample_code
@@ -430,7 +445,9 @@ from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
 library_predictions = knn.predict(numeric_data)
-accuracy(library_predictions, data["high_quality"])
+print(accuracy(library_predictions, data["high_quality"]))
+
+
 ```
 
 *** =solution
@@ -439,7 +456,7 @@ from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
 library_predictions = knn.predict(numeric_data)
-accuracy(library_predictions, data["high_quality"])
+print(accuracy(library_predictions, data["high_quality"]))
 ```
 
 *** =sct
@@ -489,12 +506,11 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    print(np.mean(predictions == outcomes)*100)   
+    return np.mean(predictions == outcomes)*100
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
 library_predictions = knn.predict(numeric_data)
-accuracy(library_predictions, data["high_quality"])    
 ```
 
 *** =sample_code
@@ -502,6 +518,8 @@ accuracy(library_predictions, data["high_quality"])
 random.seed(1)
 n_rows = data.shape[0]
 selection = random.sample(range(n_rows), 100)
+
+
 ```
 
 *** =solution
@@ -559,7 +577,7 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    print(np.mean(predictions == outcomes)*100)   
+    return np.mean(predictions == outcomes)*100
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
@@ -592,6 +610,8 @@ outcomes = np.array(data["high_quality"])
 my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
 percentage = accuracy(my_predictions, data.high_quality[selection])
 print(percentage)
+
+
 ```
 
 *** =solution
