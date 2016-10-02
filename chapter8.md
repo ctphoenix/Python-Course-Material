@@ -25,36 +25,36 @@ birddata = pd.read_csv("bird_tracking.csv")
 
 *** =sample_code
 ```{python}
-# First, use `groupby` to group up the data
+# First, use `groupby` to group up the data.
 grouped_birds = birddata.groupby('bird_name')
 
-# Now operations are performed on each group
+# Now operations are performed on each group.
 mean_speeds = grouped_birds.speed_2d.mean()
 
-# This works for **all** functions. For example, when
-# we use `head`, it takes the first 5 lines of each bird
+# The `head` method prints the first 5 lines of each bird.
 grouped_birds.head()
 
 # Find the maximum `altitude` for each bird.
-# Remember to assign this to `max_altitudes`
+# Assign this to `max_altitudes`.
 max_altitudes = ## YOUR CODE HERE ##
+
 ```
 
 *** =solution
 ```{python}
-# First, use `groupby` to group up the data
+# First, use `groupby` to group up the data.
 grouped_birds = birddata.groupby('bird_name')
 
-# Now operations are performed on each group
+# Now operations are performed on each group.
 mean_speeds = grouped_birds.speed_2d.mean()
 
-# This works for **all** functions. For example, when
-# we use `head`, it takes the first 5 lines of each bird
+# The `head` method prints the first 5 lines of each bird.
 grouped_birds.head()
 
 # Find the maximum `altitude` for each bird.
-# Remember to assign this to `max_altitudes`
+# Assign this to `max_altitudes`.
 max_altitudes = grouped_birds.altitude.max()
+
 ```
 
 *** =sct
