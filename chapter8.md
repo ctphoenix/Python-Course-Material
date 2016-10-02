@@ -25,49 +25,40 @@ birddata = pd.read_csv("bird_tracking.csv")
 
 *** =sample_code
 ```{python}
-## First, use `groupby` to group up the data
+# First, use `groupby` to group up the data
 grouped_birds = birddata.groupby('bird_name')
 
-## Now operations are performed on each group
+# Now operations are performed on each group
 mean_speeds = grouped_birds.speed_2d.mean()
 
-## This works for **all** functions. For example, when
-## we use `head`, it takes the first 5 lines of each bird
+# This works for **all** functions. For example, when
+# we use `head`, it takes the first 5 lines of each bird
 grouped_birds.head()
 
-## Find the maximum `altitude` for each bird.
-## Remember to assign this to `max_altitudes`
+# Find the maximum `altitude` for each bird.
+# Remember to assign this to `max_altitudes`
 max_altitudes = ## YOUR CODE HERE ##
 ```
 
 *** =solution
 ```{python}
-## First, use `groupby` to group up the data
+# First, use `groupby` to group up the data
 grouped_birds = birddata.groupby('bird_name')
 
-## Now operations are performed on each group
+# Now operations are performed on each group
 mean_speeds = grouped_birds.speed_2d.mean()
 
-## This works for **all** functions. For example, when
-## we use `head`, it takes the first 5 lines of each bird
+# This works for **all** functions. For example, when
+# we use `head`, it takes the first 5 lines of each bird
 grouped_birds.head()
 
-## Find the maximum `altitude` for each bird.
-## Remember to assign this to `max_altitudes`
+# Find the maximum `altitude` for each bird.
+# Remember to assign this to `max_altitudes`
 max_altitudes = grouped_birds.altitude.max()
 ```
 
 *** =sct
 ```{python}
-#test_function("",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
-test_object("grouped_birds",
-            undefined_msg = "Did you define `grouped_birds`?",
-            incorrect_msg = "It looks like `grouped_birds` wasn't defined correctly.")
-test_object("mean_speeds",
-            undefined_msg = "Did you define `mean_speeds`?",
-            incorrect_msg = "It looks like `mean_speeds` wasn't defined correctly.")
 test_object("max_altitudes",
             undefined_msg = "Did you define `max_altitudes`?",
             incorrect_msg = "It looks like `max_altitudes` wasn't defined correctly.")
@@ -81,11 +72,10 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` was designed for time series (i.e., **pan**el **da**ta) and has a useful function called `dt.normalize()` which (among other things) can be used to collapse timestamped data into days. Here’s an example of normalizing our `timestamp` into days.
--  Now `groupby` the data and calculate the maximum altitude per day. Save these results into an object called `max_altitudes_perday`.
+-  `pandas` contains a useful type called `date_time`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the maximum altitude within that day.
+-  Use `groupby` and calculate the maximum altitude per day. Save these results into an object called `max_altitudes_perday`.
 
 *** =hint
-- When grouping by more than one column, remember to use a `[list]`.
 - See `?pd.DataFrame.groupby` for help.
 
 *** =pre_exercise_code
@@ -97,12 +87,12 @@ birddata = pd.read_csv("bird_tracking.csv")
 
 *** =sample_code
 ```{python}
-## Convert birddata.date_time to the `pd.datetime` format.
+# Convert birddata.date_time to the `pd.datetime` format.
 birddata.date_time = pd.to_datetime(birddata.date_time)
 
-## Create a new column of day of observation
-birddata['n_time'] = birddata.date_time.dt.date
-birddata.n_time.head()
+# Create a new column of day of observation
+birddata['date'] = birddata.date_time.dt.date
+birddata.date.head()
 
 grouped_bydates = ## YOUR CODE HERE ##
 max_altitudes_perday = grouped_bydates.altitude.max()
@@ -111,14 +101,16 @@ max_altitudes_perday = grouped_bydates.altitude.max()
 
 *** =solution
 ```{python}
-## Convert birddata.date_time to the `pd.datetime` format.
+# Convert birddata.date_time to the `pd.datetime` format.
 birddata.date_time = pd.to_datetime(birddata.date_time)
 
-## Create a new column of day of observation
-birddata['n_time'] = birddata.date_time.dt.date
-birddata.n_time.head()
+# Create a new column of day of observation
+birddata['date'] = birddata.date_time.dt.date
 
-grouped_bydates = birddata.groupby('n_time')
+# Check the head of the column.
+birddata.date.head()
+
+grouped_bydates = birddata.groupby('date')
 max_altitudes_perday = grouped_bydates.altitude.max()
 ```
 
@@ -139,11 +131,11 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  Now, let’s combine the last two tasks to recreate one of the video lessons. We will `groupby` using both `bird_name` and `n_time`. Then we will find the average speed per day, per bird.
+-  `birddata` already contains the `n_time`We will `groupby` using both `bird_name` and `n_time`. Then we will find the average speed per day, per bird.
 -  First, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `n_time`.
 
 *** =hint
-- When grouping by more than one column, remember to use a `[list]`.
+- When grouping by more than one column, remember to use a `list`.
 - See `?pd.DataFrame.groupby` for help.
 
 *** =pre_exercise_code
@@ -152,35 +144,33 @@ import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
 birddata.date_time = pd.to_datetime(birddata.date_time)
-birddata['n_time'] = birddata.date_time.dt.date
+birddata['date'] = birddata.date_time.dt.date
 ```
 
 *** =sample_code
 ```{python}
 grouped_birdday = ## YOUR CODE HERE ##
 max_altitudes_perday = grouped_birdday.altitude.max()
+
+# look at the head of `max_altitudes_perday`.
 max_altitudes_perday.head()
 ```
 
 *** =solution
 ```{python}
-grouped_birdday = birddata.groupby(['bird_name', 'n_time'])
+grouped_birdday = birddata.groupby(['bird_name', 'date'])
 max_altitudes_perday = grouped_birdday.altitude.max()
+
+# look at the head of `max_altitudes_perday`.
 max_altitudes_perday.head()
 
 ```
 
 *** =sct
 ```{python}
-#test_function("",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
-test_object("df",
-            undefined_msg = "Did you define `df`?",
-            incorrect_msg = "It looks like `df` wasn't defined correctly.")
-test_object("df1",
-            undefined_msg = "Did you define `df1`?",
-            incorrect_msg = "It looks like `df1` wasn't defined correctly.")
+test_object("grouped_birdday",
+            undefined_msg = "Did you define `grouped_birdday`?",
+            incorrect_msg = "It looks like `grouped_birdday` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -190,19 +180,20 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  Great! Now you have a dataframe called `grouped_birdday` that has grouped all of the `birddata` by `bird_name` and `n_time`. Now, we can perform the same operations as before – such as using `.mean()` on `speed_2d` to get the average speed per day per bird.
+-  Great! Now you have a dataframe called `grouped_birdday` that has grouped all of the `birddata` by `bird_name` and `date`. Now, we can perform the same operations as before – such as using `.mean()` on `speed_2d` to get the average speed per day per bird.
 -  We’ve recreated the `Eric` plot using this method for you. Now create two more dataframes – one for `Sanne` and one for `Nico` – and plot all three speeds on the same plot.
 
 *** =hint
-- When grouping by more than one column, remember to use a `[list]`.
-- See `?pd.DataFrame.groupby` for help.
+- Call `grouped_birdday.speed_2d.mean()` and select `'Sanne'` and `'Nico'`, respectively.
 
 *** =pre_exercise_code
 ```{python}
 import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
-birddata['n_time'] = birddata.timestamp.dt.normalize()
+birddata.date_time = pd.to_datetime(birddata.date_time)
+birddata['date'] = birddata.date_time.dt.date
+grouped_bydates = birddata.groupby('date')
 ```
 
 *** =sample_code
@@ -235,9 +226,6 @@ plt.show()
 
 *** =sct
 ```{python}
-#test_function("",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
 test_object("eric_daily_speed",
             undefined_msg = "Did you define `eric_daily_speed`?",
             incorrect_msg = "It looks like `df` wasn't defined correctly.")
@@ -247,10 +235,9 @@ test_object("sanne_daily_speed",
 test_object("nico_daily_speed",
             undefined_msg = "Did you define `nico_daily_speed`?",
             incorrect_msg = "It looks like `nico_daily_speed` wasn't defined correctly.")
-test_student_typed("plt.show()",
-              pattern=False,
-              not_typed_msg="Did you make sure to plot the daily speeds?")
-            
+test_function("plt.show",
+              not_called_msg = "Did you make sure to plot the daily speeds?",
+              incorrect_msg = "The plot does not look correct.")            
 success_msg("Great work!")
 ```
 
