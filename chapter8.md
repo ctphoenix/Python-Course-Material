@@ -13,8 +13,8 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 -  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird. Modify the code to assign the maximum altitudes of each bird into an object called `max_altitudes`.
 
 *** =hint
-- When grouping by more than one column, remember to use a `[list]`.
-- See `?pd.DataFrame.groupby` for help.
+- `grouped_birds` contains a column called `altitude`.  Find the maximum of this column!
+- This can be done by calling the `max()` method of this column.
 
 *** =pre_exercise_code
 ```{python}
@@ -97,16 +97,21 @@ birddata = pd.read_csv("bird_tracking.csv")
 
 *** =sample_code
 ```{python}
+## Convert birddata.date_time to the `pd.datetime` format.
+birddata.date_time = pd.to_datetime(birddata.date_time)
+
 ## Create a new column of day of observation
-birddata['n_time'] = birddata.timestamp.dt.normalize()
+birddata['n_time'] = birddata.date_time.dt.date
 birddata.n_time.head()
 
-## YOUR CODE HERE ##
+grouped_bydates = ## YOUR CODE HERE ##
+max_altitudes_perday = grouped_bydates.altitude.max()
+
 ```
 
 *** =solution
 ```{python}
-## 
+## Convert birddata.date_time to the `pd.datetime` format.
 birddata.date_time = pd.to_datetime(birddata.date_time)
 
 ## Create a new column of day of observation
@@ -119,9 +124,6 @@ max_altitudes_perday = grouped_bydates.altitude.max()
 
 *** =sct
 ```{python}
-#test_function("",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
 test_object("grouped_bydates",
             undefined_msg = "Did you define `grouped_bydates`?",
             incorrect_msg = "It looks like `grouped_bydates` wasn't defined correctly.")
@@ -149,8 +151,8 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
-birddata['n_time'] = birddata.timestamp.dt.normalize()
-
+birddata.date_time = pd.to_datetime(birddata.date_time)
+birddata['n_time'] = birddata.date_time.dt.date
 ```
 
 *** =sample_code
