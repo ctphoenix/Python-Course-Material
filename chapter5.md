@@ -559,11 +559,12 @@ success_msg("Great work!")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality.
--  Compare these results to the scikit-learn accuracy using the `accuracy` function.  Store these results as `percentage`, and print.
+-  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]`, and store as `my_predictions`.  
+-  Compare these results to the `scikit-learn` accuracy using the `accuracy` function.  Store these results as `percentage`, and print.
 
 *** =hint
-- Use `knn_predict` for each value in `predictors[selection]`.
+- Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.
+- Use `accuracy` to compare your predictions to `data.high_quality[selection]`.  Make sure to print your answer!
 
 *** =pre_exercise_code
 ```{python}
@@ -602,22 +603,7 @@ selection = random.sample(range(n_rows), 100)
 
 *** =sample_code
 ```{python}
-import numpy as np, random, scipy.stats as ss
-def majority_vote_fast(votes):
-    mode, count = ss.mstats.mode(votes)
-    return mode
-def distance(p1, p2):
-    return np.sqrt(np.sum(np.power(p2 - p1, 2)))
-def find_nearest_neighbors(p, points, k=5):
-    distances = np.zeros(points.shape[0])
-    for i in range(len(distances)):
-        distances[i] = distance(p, points[i])
-    ind = np.argsort(distances)
-    return ind[:k]
-def knn_predict(p, points, outcomes, k=5):
-    ind = find_nearest_neighbors(p, points, k)
-    return majority_vote_fast(outcomes[ind])[0]
-    
+ 
 predictors = np.array(numeric_data)
 outcomes = np.array(data["high_quality"])
 my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
@@ -630,9 +616,11 @@ print(percentage)
 ```{python}
 predictors = np.array(numeric_data)
 outcomes = np.array(data["high_quality"])
-my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
-percentage = accuracy(my_predictions, data.high_quality[selection])
-print(percentage)
+my_predictions = ## ENTER CODE HERE! ##
+percentage = ## ENTER CODE HERE! ##
+
+
+
 ```
 
 *** =sct
