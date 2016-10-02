@@ -268,7 +268,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =instructions
 -  We are now ready to fit the wine data to our KNN classifier.  Create a function accuracy(predictions, outcomes) that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
--  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.
+-  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.  Print your answer.
 
 *** =hint
 - The `==` operator will test for element-wise equality for numpy arrays (1 if equal, and 0 if not).  You can then use `numpy.mean` to find the fraction of these elements that are equal!
@@ -305,10 +305,7 @@ principal_components = pca.fit(numeric_data).transform(numeric_data)
 def accuracy(predictions, outcomes):
     ## ENTER CODE HERE! ##
 
-x=np.array([1,2,3])
-y=np.array([1,2,4])
 
-print(accuracy(x,y))
 
 
 ```
@@ -329,12 +326,18 @@ print(accuracy(x,y))
 
 *** =sct
 ```{python}
+test_object("x",
+            undefined_msg = "Did you define `x`?",
+            incorrect_msg = "It looks like `x` wasn't defined correctly.")
+test_object("y",
+            undefined_msg = "Did you define `y`?",
+            incorrect_msg = "It looks like `y` wasn't defined correctly.")
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-#test_object("",
-#            undefined_msg = "Did you define ``?",
-#            incorrect_msg = "It looks like `` wasn't defined correctly.")
+test_function("print",
+              not_called_msg = "Make sure to call `print`!",
+              incorrect_msg = "It looks like your printed output is not correct.")
 success_msg("Great work!")
 ```
 
@@ -348,6 +351,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =hint
 - The `accuracy` function should work just fine, with `0` as the first argument!
+- Compare `0` with the `"high_quality"` column in `data`.  How can you do that?
 
 *** =pre_exercise_code
 ```{python}
@@ -394,9 +398,9 @@ print(accuracy(0, data["high_quality"]))
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-#test_object("",
-#            undefined_msg = "Did you define ``?",
-#            incorrect_msg = "It looks like `` wasn't defined correctly.")
+test_function("print",
+              not_called_msg = "Make sure to call `print`!",
+              incorrect_msg = "It looks like your printed output is not correct.")            
 success_msg("Great work!")
 ```
 
@@ -406,10 +410,13 @@ success_msg("Great work!")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  Use the scikit-learn classifier `KNeighborsClassifier`, to predict which wines are high and low quality.  Is this predictor better than the simple classifier in Question 6?
+-  Use the scikit-learn classifier `KNeighborsClassifier`, to predict which wines are high and low quality, and store as `library_predictions`.  Is this predictor better than the simple classifier in Question 6?
+- Use the `accuracy` function to compare `library_predictions` with the high quality wines.  Print your answer.
 
 *** =hint
-- A `KNeighborsClassifier` will contain a `predict` method --- try that!
+- A `KNeighborsClassifier` object will contain a `predict` method --- try that on `numeric_data`!
+- Make sure to use the `accuracy` function to compare `library_predictions` and `data["high_quality"]`!
+
 
 *** =pre_exercise_code
 ```{python}
@@ -444,8 +451,7 @@ def accuracy(predictions, outcomes):
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
-library_predictions = knn.predict(numeric_data)
-print(accuracy(library_predictions, data["high_quality"]))
+library_predictions = ## ENTER CODE HERE! ##
 
 
 ```
@@ -461,12 +467,15 @@ print(accuracy(library_predictions, data["high_quality"]))
 
 *** =sct
 ```{python}
+test_object("library_predictions",
+            undefined_msg = "Did you define `library_predictions`?",
+            incorrect_msg = "It looks like `library_predictions` wasn't defined correctly.")
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-#test_object("",
-#            undefined_msg = "Did you define ``?",
-#            incorrect_msg = "It looks like `` wasn't defined correctly.")
+test_function("print",
+              not_called_msg = "Make sure to call `print`!",
+              incorrect_msg = "It looks like your printed output is not correct.")                
 success_msg("Great work!  Yes, this is better!")
 ```
 
@@ -476,7 +485,7 @@ success_msg("Great work!  Yes, this is better!")
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade KNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed 123, and sample 100 wines from the dataset.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
+-  Unlike the `scikit-learn` function, our homemade KNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed 123, and sample 100 row indexes from the dataset.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
 
 *** =hint
 - `random.sample` ought to do the trick here.
@@ -515,22 +524,26 @@ library_predictions = knn.predict(numeric_data)
 
 *** =sample_code
 ```{python}
-random.seed(1)
 n_rows = data.shape[0]
-selection = random.sample(range(n_rows), 100)
+
+# Enter your code here.
 
 
 ```
 
 *** =solution
 ```{python}
-random.seed(1)
 n_rows = data.shape[0]
+
+random.seed(123)
 selection = random.sample(range(n_rows), 100)
 ```
 
 *** =sct
 ```{python}
+test_function("random.seed",
+              not_called_msg = "Make sure to call `random.seed`!",
+              incorrect_msg = "Did you set the seed value to `123`?")
 test_function("random.sample",
               not_called_msg = "Make sure to call `random.sample`!",
               incorrect_msg = "Check your definition of `random.sample` again.")
@@ -547,7 +560,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =instructions
 -  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality.
--  Compare these results to the scikit-learn accuracy using the `accuracy` function.  Store these results as `percentage`.
+-  Compare these results to the scikit-learn accuracy using the `accuracy` function.  Store these results as `percentage`, and print.
 
 *** =hint
 - Use `knn_predict` for each value in `predictors[selection]`.
@@ -610,7 +623,6 @@ outcomes = np.array(data["high_quality"])
 my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
 percentage = accuracy(my_predictions, data.high_quality[selection])
 print(percentage)
-
 
 ```
 
