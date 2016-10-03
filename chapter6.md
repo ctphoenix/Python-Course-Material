@@ -174,6 +174,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =hint
 - Use `zip` to combine `regions` and `cluster_colors`, and use `dict()` to convert this to a `dict`.
+- Make sure to print your answer!
 
 *** =pre_exercise_code
 ```{python}
@@ -184,9 +185,9 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
 regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
 
-region_colors = dict(zip(regions, cluster_colors))
+region_colors = ## ENTER CODE HERE! ##
 
-print(region_colors)
+
 ```
 
 *** =solution
@@ -204,6 +205,9 @@ print(region_colors)
 test_object("region_colors",
             undefined_msg = "Did you define `region_colors`?",
             incorrect_msg = "It looks like `region_colors` wasn't defined correctly.")
+test_function("print",
+              not_called_msg = "Make sure print your answer!",
+              incorrect_msg = "It looks like what you've printed is incorrect.")               
 success_msg("Great work!")
 ```
 
@@ -213,11 +217,13 @@ success_msg("Great work!")
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Let's define a matrix of colors for distillery pairs that make it clear what the patterns are.  Low correlations will be white, and high correlations will be a distinct color for distilleries from the same group, and gray otherwise.
-- Define a matrix `correlation_colors` with input `white` for each distillery pair whose correlation matrix value is less than 0.7.  For those greater than 0.7, if they share the same whisky Group, use the corresponding color from `cluster_colors`.  Otherwise, input `gray`.
+- Let's define a list of `correlation_colors` for distillery pairs that make it clear what the patterns are.  Low correlations will be white, and high correlations will be a distinct color for distilleries from the same group, and gray otherwise.  `correlations` is a matrix with rows and columns corresponding to distilleries, and matrix values coresponding to the correlation of the row/column pair.  Edit the code to define `correlation_colors` for each distillery pair to have input `'white'` then their correlation is less than 0.7.
+- `whisky.Group` is a `pandas` dataframe column consisting of distillery group memberships.  For distillery pairs with correlation greater than 0.7, if they share the same whisky group, use the corresponding color from `cluster_colors`.
+- Otherwise, define the `correlation_colors` value for that distillery pair as `'lightgrey'`.
 
 *** =hint
-- A series of `for` loops and `if` conditions will work here.
+- You can index the `(i,j)` distillery pair of `correlations` using `correlations[i,j]`.  How can you test if this value is less than 0.7?
+- You can find the group membership of distillery `i` or `j` using `whisky.Group[i]` or `whisky.Group[j]`.  How can you test for their equality?
 
 *** =pre_exercise_code
 ```{python}
@@ -247,10 +253,10 @@ distilleries = list(whisky.Distillery)
 correlation_colors = []
 for i in range(len(distilleries)):
     for j in range(len(distilleries)):
-        if correlations[i,j] < .70:                    # if low correlation,
+        if ## ENTER CODE HERE! ##                      # if low correlation,
             correlation_colors.append('white')         # just use white.
         else:                                          # otherwise,
-            if whisky.Group[i] == whisky.Group[j]:     # if the groups match,
+            if ## ENTER CODE HERE! ##                  # if the groups match,
                 correlation_colors.append(cluster_colors[whisky.Group[i]]) # color them by their mutual group.
             else:                                      # otherwise
                 correlation_colors.append('lightgrey') # color them gray.
@@ -288,7 +294,8 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 - Fill in the appropriate code to plot a grid of the distillery correlations.  Color each rectangle in the grid according to `correlation_colors`, and use the correlations themselves as alpha (transparency) values.  Also, when the cursor hovers over a rectangle, output the distillery pair, print both distilleries, as well as the correlation.  Note that `distilleries` contains the distillery names, and `correlations` contains the matrix of distillery correlations by flavor.
 
 *** =hint
-- To repeat each distillery in turn for `x`, use `np.repeat`.  To repeat the list of distilleries several times, use `*` on a list of distileries.  To convert a numpy matrix (such as `correlations`) to a list, use the `flatten` method.
+- For `"colors"`, the `correlation_colors` we defined in the last question will work as is.
+- To convert a numpy matrix (such as `correlations`) to a list, use the `flatten` method.  Try this for both `"alphas"` and `"correlations"`!
 
 *** =pre_exercise_code
 ```{python}
@@ -314,24 +321,24 @@ distilleries = list(whisky.Distillery)
 correlation_colors = []
 for i in range(len(distilleries)):
     for j in range(len(distilleries)):
-        if correlations[i,j] < .70:                    # if low correlation,
-            correlation_colors.append('white')         # just use white.
-        else:                                          # otherwise,
-            if whisky.Group[i] == whisky.Group[j]:     # if the groups match,
-                correlation_colors.append(cluster_colors[whisky.Group[i]]) # color them by their mutual group.
-            else:                                      # otherwise
-                correlation_colors.append('lightgrey') # color them gray.
+        if correlations[i,j] < .70:
+            correlation_colors.append('white')
+        else:
+            if whisky.Group[i] == whisky.Group[j]:
+                correlation_colors.append(cluster_colors[whisky.Group[i]])
+            else:
+                correlation_colors.append('lightgrey')
 ```
 
 *** =sample_code
 ```{python}
 source = ColumnDataSource(
     data = {
-        "x": ,
-        "y": ,
-        "colors": ,
-        "alphas": ,
-        "correlations": ,
+        "x": np.repeat(distilleries,len(distilleries)),
+        "y": list(distilleries)*len(distilleries),
+        "colors": ## ENTER CODE HERE! ##,
+        "alphas": ## ENTER CODE HERE! ##,
+        "correlations": ## ENTER CODE HERE! ##,
     }
 )
 
@@ -365,7 +372,7 @@ source = ColumnDataSource(
     data = {
         "x": np.repeat(distilleries,len(distilleries)),
         "y": list(distilleries)*len(distilleries),
-        "colors": correlation_colors, #2
+        "colors": correlation_colors,
         "alphas": correlations.flatten(),
         "correlations": correlations.flatten(),
     }
@@ -401,6 +408,9 @@ test_object("source",
             undefined_msg = "Did you define `source`?",
             incorrect_msg = "It looks like `source` wasn't defined correctly.")
 success_msg("Great work!")
+test_student_typed("show(fig)",
+              pattern=False,
+              not_typed_msg="Did you make sure to plot the figure?")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:8c4771d390
@@ -425,13 +435,14 @@ from bokeh.models import HoverTool, ColumnDataSource
 ```{python}
 points = [(0,0), (1,2), (3,1)]
 xs, ys = zip(*points)
+colors = ["red", "blue", "green"]
 
-output_file("Regional_Example.html", title="Regional Example")
+output_file("Spatial_Example.html", title="Regional Example")
 location_source = ColumnDataSource(
     data={
         "x": xs,
         "y": ys,
-        "colors": ["red", "blue", "green"],
+        "colors": colors,
     }
 )
 
@@ -453,13 +464,14 @@ show(fig)
 ```{python}
 points = [(0,0), (1,2), (3,1)]
 xs, ys = zip(*points)
+colors = ["red", "blue", "green"]
 
-output_file("Regional_Example.html", title="Regional Example")
+output_file("Spatial_Example.html", title="Regional Example")
 location_source = ColumnDataSource(
     data={
         "x": xs,
         "y": ys,
-        "colors": ["red", "blue", "green"],
+        "colors": colors,
     }
 )
 
@@ -479,9 +491,9 @@ show(fig)
 
 *** =sct
 ```{python}
-test_object("fig",
-            undefined_msg = "Did you define `fig`?",
-            incorrect_msg = "It looks like `fig` wasn't defined correctly.")
+test_student_typed("show(fig)",
+              pattern=False,
+              not_typed_msg="Did you make sure to plot the figure?")
 success_msg("Great work!")
 ```
 
@@ -491,10 +503,13 @@ success_msg("Great work!")
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Adapt the given code to define a function location_plot(title, colors) that take a string title and a list of colors corresponding to each distillery, and outputs a Bokeh plot of each distillery by latitude and longitude, and includes text of distillery, latitude, and longitude as the cursor hovers over each point.  Make sure each point is colored according to `colors`!
+- Adapt the given code to define a function `location_plot(title, colors)`.  This function takes a string title and a list of colors corresponding to each distillery, and outputs a Bokeh plot of each distillery by latitude and longitude, and includes text of distillery, latitude, and longitude as the cursor hovers over each point.
+- `whisky.Region` is a `pandas` column containing the regional group membership for each distillery.  Use a list comprehension to make a list of the value of `region_colors` for each distillery, and store this list as `region_cols`.
+- `location_plot` is still defined form the last exercise.  Use it to plot each distillery, colored by its regional grouping.
 
 *** =hint
--  Recall that the function needs to be defined by adding `def`.  Also make sure to add `show()` to create a Bokeh plot!
+-  Recall that the function needs to be defined by adding `def`.
+- You can iterate through `whisky.Region` by casting it as a `list`.
 
 *** =pre_exercise_code
 ```{python}
@@ -520,34 +535,37 @@ region_colors = dict(zip(regions, cluster_colors))
 
 *** =sample_code
 ```{python}
-def location_plot(title, colors):
-    output_file(title+".html")
-    location_source = ColumnDataSource(
-        data={
-            "x": whisky[" Latitude"],
-            "y": whisky[" Longitude"],
-            "colors": colors,
-            "regions": whisky.Region,
-            "distilleries": whisky.Distillery
-        }
-    )
+# edit this to make the function `location_plot`.
 
-    fig = figure(title = title, #1
-        x_axis_location = "above", tools="resize, hover, save")
-    fig.plot_height = 500
-    fig.plot_width = 400
-    fig.circle("x", "y", 10, 10, size=9, source=location_source,
-         color='colors', line_color = None) #2
-    fig.xaxis.major_label_orientation = np.pi/3
-    hover = fig.select(dict(type = HoverTool))
-    hover.tooltips = {
-        "Distillery": "@distilleries", #3
-        "Location": "(@x, @y)" #4
+output_file(title+".html")
+location_source = ColumnDataSource(
+    data={
+        "x": whisky[" Latitude"],
+        "y": whisky[" Longitude"],
+        "colors": colors,
+        "regions": whisky.Region,
+        "distilleries": whisky.Distillery
     }
-    show(fig)
-    
-region_cols = [region_colors[i] for i in list(whisky["Region"])]
-location_plot("Whisky Locations and Regions", region_cols)    
+)
+
+fig = figure(title = title, #1
+    x_axis_location = "above", tools="resize, hover, save")
+fig.plot_height = 500
+fig.plot_width = 400
+fig.circle("x", "y", 10, 10, size=9, source=location_source,
+     color='colors', line_color = None) #2
+fig.xaxis.major_label_orientation = np.pi/3
+hover = fig.select(dict(type = HoverTool))
+hover.tooltips = {
+    "Distillery": "@distilleries", #3
+    "Location": "(@x, @y)" #4
+}
+show(fig)
+
+region_cols = ## ENTER CODE HERE! ##
+location_plot("Whisky Locations and Regions", region_cols)
+
+
 ```
 
 *** =solution
@@ -584,8 +602,12 @@ location_plot("Whisky Locations and Regions", region_cols)
 
 *** =sct
 ```{python}
-test_function("location_plot", # I am not yet sure if this works.
-              incorrect_msg = "Check your definition of `` again.")
+test_student_typed("def location_plot(",
+              pattern=False,
+              not_typed_msg="Did you define `location_plot`?")
+test_object("region_cols",
+            undefined_msg = "Did you define `region_cols`?",
+            incorrect_msg = "It looks like `region_cols` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -595,10 +617,11 @@ success_msg("Great work!")
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Use your function to create two interactive plots of distilleries, one colored by defined region called `region_cols`, and one with colors defined by coclustering called `classification_cols`.
+- Use list comprehensions to find the the `region_cols` color corresponding to each whisky in `whisky.Region`.  Similarly, find the `cluster_cols` color corresponding to each cluster membership in `whisky.Group`.
+- `location_plot` is still loaded from the previous exercise.  Use it to create two interactive plots of distilleries, one colored by defined region called `region_cols`, and one with colors defined by coclustering called `classification_cols`.
 
 *** =hint
-- Use list comprehensions to find the the `region_colors` color corresponding to each whisky in `whisky["Region"]`.  Similarly, find the `cluster_colors` color corresponding to each cluster membership in `whisky["Group"]`.
+- This problem asks you to repeat part of the previous problem (for comparison), and to define a similar color classification for flavor clusters.
 
 *** =pre_exercise_code
 ```{python}
@@ -649,19 +672,19 @@ def location_plot(title, colors):
 
 *** =sample_code
 ```{python}
-region_cols = [region_colors[i] for i in list(whisky["Region"])]
-location_plot("Whisky Locations and Regions", region_cols)
+region_cols = ## ENTER CODE HERE! ##
+classification_cols = ## ENTER CODE HERE! ##
 
-classification_cols = [cluster_colors[i] for i in list(whisky["Group"])]
+location_plot("Whisky Locations and Regions", region_cols)
 location_plot("Whisky Locations and Groups", classification_cols)
 ```
 
 *** =solution
 ```{python}
-region_cols = [region_colors[i] for i in list(whisky["Region"])]
-location_plot("Whisky Locations and Regions", region_cols)
+region_cols = [region_colors[i] for i in list(whisky.Region)]
+classification_cols = [cluster_colors[i] for i in list(whisky.Group)]
 
-classification_cols = [cluster_colors[i] for i in list(whisky["Group"])]
+location_plot("Whisky Locations and Regions", region_cols)
 location_plot("Whisky Locations and Groups", classification_cols)
 ```
 
@@ -673,10 +696,9 @@ test_object("region_cols",
 test_object("classification_cols",
             undefined_msg = "Did you define `classification_cols`?",
             incorrect_msg = "It looks like `classification_cols` wasn't defined correctly.")
-test_function("location_plot",
-              not_called_msg = "Make sure to call `location_plot`!",
-              incorrect_msg = "Check your definition of `location_plot` again.")            
+test_student_typed("location_plot",
+              pattern=False,
+              not_typed_msg="Did you make sure to use `location_plot` to see your results?")         
 success_msg("Great work!")
 ```
-
 
