@@ -85,6 +85,7 @@ source = ColumnDataSource(
 )
 # We are ready to make our interactive Bokeh plot!
 
+output_file("Basic_Example.html", title="Basic Example")
 fig = figure(tools="resize, hover, save")
 fig.rect("x", "y", 0.9, 0.9, source=source, color="colors",alpha="alphas")
 hover = fig.select(dict(type=HoverTool))
@@ -145,6 +146,7 @@ source = ColumnDataSource(
 )
 # We are ready to make our interactive Bokeh plot!
 
+output_file("Basic_Example.html", title="Basic Example")
 fig = figure(tools="resize, hover, save")
 fig.rect("x", "y", 0.9, 0.9, source=source, color="colors",alpha="alphas")
 hover = fig.select(dict(type=HoverTool))
@@ -183,6 +185,8 @@ cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
 regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
 
 region_colors = dict(zip(regions, cluster_colors))
+
+print(region_colors)
 ```
 
 *** =solution
@@ -191,6 +195,8 @@ cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
 regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
 
 region_colors = dict(zip(regions, cluster_colors))
+
+print(region_colors)
 ```
 
 *** =sct
@@ -215,6 +221,9 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
+regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
+region_colors = dict(zip(regions, cluster_colors))
 from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
@@ -298,6 +307,20 @@ whisky = whisky.ix[np.argsort(model.row_labels_)]
 whisky = whisky.reset_index(drop=True)
 correlations = pd.DataFrame.corr(whisky.iloc[:,2:14].transpose())
 correlations = np.array(correlations)
+cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
+regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
+region_colors = dict(zip(regions, cluster_colors))
+distilleries = list(whisky.Distillery)
+correlation_colors = []
+for i in range(len(distilleries)):
+    for j in range(len(distilleries)):
+        if correlations[i,j] < .70:                    # if low correlation,
+            correlation_colors.append('white')         # just use white.
+        else:                                          # otherwise,
+            if whisky.Group[i] == whisky.Group[j]:     # if the groups match,
+                correlation_colors.append(cluster_colors[whisky.Group[i]]) # color them by their mutual group.
+            else:                                      # otherwise
+                correlation_colors.append('lightgrey') # color them gray.
 ```
 
 *** =sample_code
@@ -393,6 +416,9 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+from sklearn.cluster.bicluster import SpectralCoclustering
+from bokeh.plotting import figure, output_file, show
+from bokeh.models import HoverTool, ColumnDataSource
 ```
 
 *** =sample_code
@@ -614,20 +640,20 @@ def location_plot(title, colors):
 
 *** =sample_code
 ```{python}
-regions_cols = [region_colors[i] for i in list(whisky["Region"])]
-location_plot("Whisky Locations and Regions", regions_colors)
+region_cols = [region_colors[i] for i in list(whisky["Region"])]
+location_plot("Whisky Locations and Regions", region_cols)
 
 classification_cols = [cluster_colors[i] for i in list(whisky["Group"])]
-location_plot("Whisky Locations and Groups", classification_colors)
+location_plot("Whisky Locations and Groups", classification_cols)
 ```
 
 *** =solution
 ```{python}
-regions_cols = [region_colors[i] for i in list(whisky["Region"])]
-location_plot("Whisky Locations and Regions", regions_colors)
+region_cols = [region_colors[i] for i in list(whisky["Region"])]
+location_plot("Whisky Locations and Regions", region_cols)
 
 classification_cols = [cluster_colors[i] for i in list(whisky["Group"])]
-location_plot("Whisky Locations and Groups", classification_colors)
+location_plot("Whisky Locations and Groups", classification_cols)
 ```
 
 *** =sct
