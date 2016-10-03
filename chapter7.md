@@ -11,7 +11,7 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =instructions
 -  `individual_characteristics.dta` contains several characteristics for each individual in rural Indian social networks dataset, such as age, religion, and caste.  Use the pandas library to read in and store these characteristics as `df`.
--  We will focus only on villages 1 and 2:  Store separate datasets for individuals belonging to villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
+-  We will focus only on Villages 1 and 2:  Store separate datasets for individuals belonging to Villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
 - Use the `head` function to display the first few entries of `df1`.
 
 *** =hint
@@ -198,6 +198,7 @@ favorite_colors = {
 }
 
 chance_homophily(favorite_colors)
+
 ```
 
 *** =solution
@@ -261,7 +262,7 @@ religion2 = df2.set_index("pid")["religion"].to_dict()
 *** =sample_code
 ```{python}
 print("Village 1 chance of same sex:", chance_homophily(sex1))
-# continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
+# Continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
 
 
 ```
