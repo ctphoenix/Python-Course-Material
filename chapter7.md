@@ -236,7 +236,7 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Use your function to compute the chance homophily for sex, caste, and religion In villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
+- Use your function to compute the chance homophily for sex, caste, and religion In Villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
 
 *** =hint
 - Use `chance_homophily` on `sex1`, `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
@@ -261,7 +261,7 @@ religion2 = df2.set_index("pid")["religion"].to_dict()
 *** =sample_code
 ```{python}
 print("Village 1 chance of same sex:", chance_homophily(sex1))
-# continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`
+# continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
 
 
 ```
@@ -309,10 +309,10 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Now let's compute the actual homophily in our network.  Recall that our measure of homophily is the proportion of edges whose nodes in the pair share a characteristic.  Create a function `homophily(G, chars, IDs)` that takes a network, a dictionary of characteristics, and a list of personal IDs for the network, and outputs the homophily.
+- Now let's compute the actual homophily in our network.  Recall that our measure of homophily is the proportion of edges whose nodes in the pair share a characteristic.  `homophily(G, chars, IDs)` takes a network `G`, a dictionary of characteristics `chars`, and node IDs `IDs`.  For each node pair, determine whether a tie exists between them, as well as whether they share a characteristic.  The total count of these is `num_same_ties` and `num_ties`, and their ratio is the homophily of `chars` in `G`.  Complete the function by choosing where to increment `num_same_ties` and `num_ties`.
 
 *** =hint
-- For each edge in the network where both nodes have an ID, count up the fraction that have the same value of `chars`.  This is homophily!
+- You can increment an `int` variable `x` using the Python shorthand `x += 1`!
 
 *** =pre_exercise_code
 ```{python}
@@ -321,27 +321,32 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 *** =sample_code
 ```{python}
 def homophily(G, chars, IDs):
-    """Given a network G, a dict of characteristics chars for node IDs,\n
+    """
+    Given a network G, a dict of characteristics chars for node IDs,\n
     and dict of node IDs for each node in the network,\n
-    find the homophily of the network."""
+    find the homophily of the network.
+    """
     num_same_ties, num_ties = 0, 0
     for n1 in G.nodes():
         for n2 in G.nodes():
             if n1 > n2:   # do not double-count edges!
                 if IDs[n1] in chars and IDs[n2] in chars:
                     if G.has_edge(n1, n2):
-                        num_ties += 1
+                        # Should `num_ties` be incremented?  What about `num_same_ties`?
                         if chars[IDs[n1]] == chars[IDs[n2]]:
-                            num_same_ties += 1
+                            # Should `num_ties` be incremented?  What about `num_same_ties`?
     return (num_same_ties / num_ties)
+    
 ```
 
 *** =solution
 ```{python}
 def homophily(G, chars, IDs):
-    """Given a network G, a dict of characteristics chars for node IDs,\n
+    """
+    Given a network G, a dict of characteristics chars for node IDs,\n
     and dict of node IDs for each node in the network,\n
-    find the homophily of the network."""
+    find the homophily of the network.
+    """
     num_same_ties, num_ties = 0, 0
     for n1 in G.nodes():
         for n2 in G.nodes():
@@ -371,10 +376,10 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Recall that Villages 1 and 2 have been stored as networkx networks `G1` and `G2`.  Use your function to compute the actual homophily for sex, caste, and religion in Villages 1 and 2.  Are these values higher or lower than that expected by chance?
+- The networks for Villages 1 and 2 have been stored as `networkx` networks `G1` and `G2`.  Use your function to compute the actual homophily for sex, caste, and religion in Villages 1 and 2.  Are these values higher or lower than that expected by chance?
 
 *** =hint
-- Use your `homophily` function on `sex1`, `caste1`, and `religion1` with `pid1` and `sex2`, `caste2`, and `religion2` with `pid2`.
+- Use your `homophily` function on `sex1`, `caste1`, and `religion1` with `pid1`, and `sex2`, `caste2`, and `religion2` with `pid2`.
 
 *** =pre_exercise_code
 ```{python}
@@ -400,12 +405,9 @@ G2 = nx.to_networkx_graph(A2)
 *** =sample_code
 ```{python}
 print("Village 1 actual proportion of same sex:", homophily(G1, sex1, pid1))
-print("Village 1 actual proportion of same caste:", homophily(G1, caste1, pid1))
-print("Village 1 actual proportion of same religion:", homophily(G1, religion1, pid1))
+# continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
 
-print("Village 2 actual proportion of same sex:", homophily(G2, sex2, pid2))
-print("Village 2 actual proportion of same caste:", homophily(G2, caste2, pid2))
-print("Village 2 actual proportion of same religion:", homophily(G2, religion2, pid2))
+
 ```
 
 *** =solution
@@ -421,9 +423,27 @@ print("Village 2 actual proportion of same religion:", homophily(G2, religion2, 
 
 *** =sct
 ```{python}
-test_function("",
-              not_called_msg = "Make sure to call `homophily`!",
-              incorrect_msg = "Check your definition of `homophily` again.")
+test_student_typed("sex1",
+              pattern=False,
+              not_typed_msg="Did you use `homophily` for `sex1`?")              
+test_student_typed("caste1",
+              pattern=False,
+              not_typed_msg="Did you use `homophily` for `caste1`?")  
+test_student_typed("chance_homophily(religion1)",
+              pattern=False,
+              not_typed_msg="Did you use `homophily` for `religion1`?")  
+test_student_typed("sex2",
+              pattern=False,
+              not_typed_msg="Did you use `homophily` for `sex2`?")  
+test_student_typed("caste2",
+              pattern=False,
+              not_typed_msg="Did you use `homophily` for `caste2`?")  
+test_student_typed("religion2",
+              pattern=False,
+              not_typed_msg="Did you use `homophily` for `religion2`?")
+test_function("print",
+              not_called_msg = "Did you remember to print your answers?",
+              incorrect_msg = "It looks like what you've printed is not right!")   
 success_msg("Great work!")
 ```
 
