@@ -7,7 +7,7 @@ attachments :
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
-Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
 -  `individual_characteristics.dta` contains several characteristics for each individual in rural Indian social networks dataset, such as age, religion, and caste.  Use the pandas library to read in and store these characteristics as `df`.
@@ -57,7 +57,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:95681c66de
 ## Exercise 2
 
-Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
 -  The personal ID for each individual is found in the column "pid" in the stored data. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for villages 1 and 2, respectively.
@@ -98,7 +98,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:147facfc92
 ## Exercise 3
 
-Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
 - Define a Python dictionaries with personal IDs as keys and one of that individual's covariates as values.  Complete this for the sex, caste, and religion covariates, for villages 1 and 2.
@@ -163,7 +163,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:9f789af19a
 ## Exercise 4
 
-Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
 - Let's consider how similar individuals in this network are.  Recall that homophily occurs when nodes that are neighbors in a network also share a characteristic, such as sex or caste.  Our measure will be the proportion of edges whose nodes in the pair share a characteristic.  How much homophily do we expect by chance?  If a characteristics were distributed completely randomly, the probability that two nodes share a characteristic is simply the product of chances that both, independently, have that characteristic.  To get the chances they share ANY characteristic, we then simply sum the chances of sharing a particular characteristic.  How can we do this for our dataset?  Create a function chance_homophily(characteristics) that takes a dict of characteristics (from Question 3) and computes the chance homophily for that characteristic.
@@ -226,7 +226,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:6d28b82a47
 ## Exercise 5
 
-Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
 - Use your function to compute the chance homophily for sex, caste, and religion In villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
@@ -284,7 +284,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:49219b49be
 ## Exercise 6
 
-Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
 - Now let's compute the actual homophily in our network.  Recall that our measure of homophily is the proportion of edges whose nodes in the pair share a characteristic.  Create a function `homophily(G, chars, IDs)` that takes a network, a dictionary of characteristics, and a list of personal IDs for the network, and outputs the homophily.
@@ -346,7 +346,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:73e9f60471
 ## Exercise 7
 
-Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
 - Recall that Villages 1 and 2 have been stored as networkx networks `G1` and `G2`.  Use your function to compute the actual homophily for sex, caste, and religion in Villages 1 and 2.  Are these values higher or lower than that expected by chance?
