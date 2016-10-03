@@ -513,6 +513,9 @@ whisky = whisky.ix[np.argsort(model.row_labels_)]
 whisky = whisky.reset_index(drop=True)
 correlations = pd.DataFrame.corr(whisky.iloc[:,2:14].transpose())
 correlations = np.array(correlations)
+cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
+regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
+region_colors = dict(zip(regions, cluster_colors))
 ```
 
 *** =sample_code
@@ -542,6 +545,9 @@ def location_plot(title, colors):
         "Location": "(@x, @y)" #4
     }
     show(fig)
+    
+region_cols = [region_colors[i] for i in list(whisky["Region"])]
+location_plot("Whisky Locations and Regions", region_cols)    
 ```
 
 *** =solution
@@ -571,6 +577,9 @@ def location_plot(title, colors):
         "Location": "(@x, @y)" #4
     }
     show(fig)
+    
+region_cols = [region_colors[i] for i in list(whisky["Region"])]
+location_plot("Whisky Locations and Regions", region_cols)    
 ```
 
 *** =sct
@@ -658,15 +667,15 @@ location_plot("Whisky Locations and Groups", classification_cols)
 
 *** =sct
 ```{python}
-test_function("location_plot",
-              not_called_msg = "Make sure to call `location_plot`!",
-              incorrect_msg = "Check your definition of `location_plot` again.")
-test_object("regions_cols",
-            undefined_msg = "Did you define `regions_cols`?",
-            incorrect_msg = "It looks like `regions_cols` wasn't defined correctly.")
+test_object("region_cols",
+            undefined_msg = "Did you define `region_cols`?",
+            incorrect_msg = "It looks like `region_cols` wasn't defined correctly.")
 test_object("classification_cols",
             undefined_msg = "Did you define `classification_cols`?",
             incorrect_msg = "It looks like `classification_cols` wasn't defined correctly.")
+test_function("location_plot",
+              not_called_msg = "Make sure to call `location_plot`!",
+              incorrect_msg = "Check your definition of `location_plot` again.")            
 success_msg("Great work!")
 ```
 
