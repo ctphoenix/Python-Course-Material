@@ -448,7 +448,7 @@ location_source = ColumnDataSource(
 
 fig = figure(title = "Title",
     x_axis_location = "above", tools="resize, hover, save")
-fig.plot_width = 300
+fig.plot_width  = 300
 fig.plot_height = 380
 fig.circle("x", "y", 10, 10, size=10, source=location_source,
      color='colors', line_color = None)
@@ -477,7 +477,7 @@ location_source = ColumnDataSource(
 
 fig = figure(title = "Title",
     x_axis_location = "above", tools="resize, hover, save")
-fig.plot_width = 300
+fig.plot_width  = 300
 fig.plot_height = 380
 fig.circle("x", "y", 10, 10, size=10, source=location_source,
      color='colors', line_color = None)
@@ -550,8 +550,8 @@ location_source = ColumnDataSource(
 
 fig = figure(title = title, #1
     x_axis_location = "above", tools="resize, hover, save")
+fig.plot_width  = 400
 fig.plot_height = 500
-fig.plot_width = 400
 fig.circle("x", "y", 10, 10, size=9, source=location_source,
      color='colors', line_color = None) #2
 fig.xaxis.major_label_orientation = np.pi/3
@@ -584,8 +584,8 @@ def location_plot(title, colors):
 
     fig = figure(title = title, #1
         x_axis_location = "above", tools="resize, hover, save")
+    fig.plot_width  = 400
     fig.plot_height = 500
-    fig.plot_width = 400
     fig.circle("x", "y", 10, 10, size=9, source=location_source,
          color='colors', line_color = None) #2
     fig.xaxis.major_label_orientation = np.pi/3
