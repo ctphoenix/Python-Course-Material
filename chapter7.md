@@ -16,6 +16,8 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =hint
 - For reading in the dataset directly, try `pd.read_stata`!
+-  `df["village"]==1` tests if each row belongs to Village 1.  How can you use this to subset the rows of `df` belonging to Village 1?
+- Don't forget to call `df1.head()`!
 
 *** =pre_exercise_code
 ```{python}
@@ -24,24 +26,25 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 *** =sample_code
 ```{python}
 import pandas as pd
-df = pd.read_stata("individual_characteristics.dta")
-df1 = df[df["village"]==1]
-df2 = df[df["village"]==2]
+df  = ## ENTER CODE HERE! ##
+df1 = ## ENTER CODE HERE! ##
+df2 = ## ENTER CODE HERE! ##
+
+
 ```
 
 *** =solution
 ```{python}
 import pandas as pd
-df = pd.read_stata("individual_characteristics.dta")
+df  = pd.read_stata("individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
+
+df1.head()
 ```
 
 *** =sct
 ```{python}
-#test_function("",
-#              not_called_msg = "Make sure to call ``!",
-#              incorrect_msg = "Check your definition of `` again.")
 test_object("df",
             undefined_msg = "Did you define `df`?",
             incorrect_msg = "It looks like `df` wasn't defined correctly.")
@@ -50,7 +53,10 @@ test_object("df1",
             incorrect_msg = "It looks like `df1` wasn't defined correctly.")
 test_object("df2",
             undefined_msg = "Did you define `df2`?",
-            incorrect_msg = "It looks like `df2` wasn't defined correctly.")            
+            incorrect_msg = "It looks like `df2` wasn't defined correctly.")   
+test_student_typed("df1.head()",
+              pattern=False,
+              not_typed_msg="Did you call `df1.head()`?")            
 success_msg("Great work!")
 ```
 
@@ -60,7 +66,7 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
--  The personal ID for each individual is found in the column "pid" in the stored data. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for villages 1 and 2, respectively.
+-  The personal ID for each individual is found in the column `'pid'` in the stored data. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for Villages 1 and 2, respectively.  Store as `pid1` and `pid2`.
 
 
 
@@ -74,8 +80,8 @@ import numpy as np
 
 *** =sample_code
 ```{python}
-pid1 = np.loadtxt("key_vilno_1.csv", dtype=int)
-pid2 = np.loadtxt("key_vilno_2.csv", dtype=int)
+# Enter code here.
+
 ```
 
 *** =solution
@@ -101,10 +107,11 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Define a Python dictionaries with personal IDs as keys and one of that individual's covariates as values.  Complete this for the sex, caste, and religion covariates, for villages 1 and 2.
+- Define a Python dictionaries with personal IDs as keys and one of that individual's covariates as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
 
 *** =hint
--  For a string `characteristic`, try `df1.set_index("pid")[characteristic]`, and use `.to_dict()` to convert this object to a `dict`.
+-  For a string `'characteristic'`, try `df1.set_index("pid")[characteristic]`, and use `.to_dict()` to convert this object to a `dict`.
+-  How can you look at the column names of `df1` and `df2`?  Use these to find column names corresponding to sex, caste, and religion.
 
 *** =pre_exercise_code
 ```{python}
@@ -118,12 +125,12 @@ df2 = df[df["village"]==2]
 *** =sample_code
 ```{python}
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
-caste1    = df1.set_index("pid")["caste"].to_dict()
-religion1 = df1.set_index("pid")["religion"].to_dict()
+caste1    = ## ENTER CODE HERE! ##
+religion1 = ## ENTER CODE HERE! ##
 
-sex2      = df2.set_index("pid")["resp_gend"].to_dict()
-caste2    = df2.set_index("pid")["caste"].to_dict()
-religion2 = df2.set_index("pid")["religion"].to_dict()
+# Continue for df2 as well.
+
+
 ```
 
 *** =solution
@@ -166,12 +173,12 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Let's consider how similar individuals in this network are.  Recall that homophily occurs when nodes that are neighbors in a network also share a characteristic, such as sex or caste.  Our measure will be the proportion of edges whose nodes in the pair share a characteristic.  How much homophily do we expect by chance?  If a characteristics were distributed completely randomly, the probability that two nodes share a characteristic is simply the product of chances that both, independently, have that characteristic.  To get the chances they share ANY characteristic, we then simply sum the chances of sharing a particular characteristic.  How can we do this for our dataset?  Create a function chance_homophily(characteristics) that takes a dict of characteristics (from Question 3) and computes the chance homophily for that characteristic.
-- Use your function to compute the chance homophily for `hist = {1:3,2:1,3:1}`.
+- Let's consider how much homophily exists in these networks.  Our measure will be the proportion of edges whose nodes in the pair share a characteristic.  How much homophily do we expect by chance?  If a characteristics were distributed completely randomly, the probability that two nodes share a characteristic is simply the product of chances that both nodes, independently, have that characteristic.  To get the chances they share ANY characteristic, we then simply sum the chances of sharing a particular characteristic.  How can we do this for our dataset?  Create a function `chance_homophily(chars)` that takes a dict with individuals as keys and characteristics as values, and computes the chance homophily for that characteristic.
+- A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group.
 
 *** =hint
-- Try using `counter` in the `collections` library.  The values in a `counter` objects can be divided by the total count to get the proportion of individuals in each unique category.
-- Then, simply sum the squares of these probabilities!
+- The `Counter` function in the `collections` library takes a `list` and creates a `dict` with unique list values as keys and their count as values.  The values in a `Counter` object can be divided by the total count to get the proportion of individuals in each unique category.
+- Simply sum the squares of these proportions!
 
 *** =pre_exercise_code
 ```{python}
@@ -182,17 +189,15 @@ import numpy as np
 ```{python}
 from collections import Counter
 def chance_homophily(chars):
-    """
-    Computes the chance homophily of a characteristic,\n
-    specified as a dictionary, chars.
-    """
-    chars_counts_dict = Counter(chars.values())
-    chars_counts = np.array(list(chars_counts_dict.values()))
-    chars_props = chars_counts / sum(chars_counts)
-    return sum(chars_props**2)
+    ## ENTER CODE HERE! ##
 
-hist = {1:3,2:1,3:1}
-chance_homophily(hist)
+favorite_colors = {
+    "ankit": "red",
+    "xiaoyu": "blue",
+    "mary": "blue"
+}
+
+chance_homophily(favorite_colors)
 ```
 
 *** =solution
@@ -208,8 +213,13 @@ def chance_homophily(chars):
     chars_props = chars_counts / sum(chars_counts)
     return sum(chars_props**2)
 
-hist = {1:3,2:1,3:1}
-chance_homophily(hist)    
+favorite_colors = {
+    "ankit": "red",
+    "xiaoyu": "blue",
+    "mary": "blue"
+}
+
+chance_homophily(favorite_colors) 
 ```
 
 *** =sct
@@ -217,9 +227,6 @@ chance_homophily(hist)
 test_function("chance_homophily",
               not_called_msg = "Make sure to call `chance_homophily`!",
               incorrect_msg = "Check your definition of `chance_homophily` again.")
-test_object("",
-            undefined_msg = "Did you define `hist`?",
-            incorrect_msg = "It looks like `hist` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -232,7 +239,7 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 - Use your function to compute the chance homophily for sex, caste, and religion In villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
 
 *** =hint
-- Use `chance_homophily` on `sex1`, `caste1`, `religion1`; `sex2`, `caste2`, and `religion2`.
+- Use `chance_homophily` on `sex1`, `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
 
 *** =pre_exercise_code
 ```{python}
@@ -254,12 +261,9 @@ religion2 = df2.set_index("pid")["religion"].to_dict()
 *** =sample_code
 ```{python}
 print("Village 1 chance of same sex:", chance_homophily(sex1))
-print("Village 1 chance of same caste:", chance_homophily(caste1))
-print("Village 1 chance of same religion:", chance_homophily(religion1))
+# continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`
 
-print("Village 2 chance of same sex:", chance_homophily(sex2))
-print("Village 2 chance of same caste:", chance_homophily(caste2))
-print("Village 2 chance of same religion:", chance_homophily(religion2))
+
 ```
 
 *** =solution
@@ -275,9 +279,27 @@ print("Village 2 chance of same religion:", chance_homophily(religion2))
 
 *** =sct
 ```{python}
-test_function("chance_homophily",
-              not_called_msg = "Make sure to call `chance_homophily`!",
-              incorrect_msg = "Check your definition of `chance_homophily` again.")
+test_student_typed("chance_homophily(sex1)",
+              pattern=False,
+              not_typed_msg="Did you use `chance_homophily` for `sex1`?")              
+test_student_typed("chance_homophily(caste1)",
+              pattern=False,
+              not_typed_msg="Did you use `chance_homophily` for `caste1`?")  
+test_student_typed("chance_homophily(religion1)",
+              pattern=False,
+              not_typed_msg="Did you use `chance_homophily` for `religion1`?")  
+test_student_typed("chance_homophily(sex2)",
+              pattern=False,
+              not_typed_msg="Did you use `chance_homophily` for `sex2`?")  
+test_student_typed("chance_homophily(caste2)",
+              pattern=False,
+              not_typed_msg="Did you use `chance_homophily` for `caste2`?")  
+test_student_typed("chance_homophily(religion2)",
+              pattern=False,
+              not_typed_msg="Did you use `chance_homophily` for `religion2`?")
+test_function("print",
+              not_called_msg = "Did you remember to print your answers?",
+              incorrect_msg = "It looks like what you've printed is not right!")              
 success_msg("Great work!")
 ```
 
@@ -369,6 +391,10 @@ religion1 = df1.set_index("pid")["religion"].to_dict()
 sex2      = df2.set_index("pid")["resp_gend"].to_dict()
 caste2    = df2.set_index("pid")["caste"].to_dict()
 religion2 = df2.set_index("pid")["religion"].to_dict()
+A1 = np.loadtxt("adj_allVillageRelationships_vilno_1.csv", delimiter=",")
+A2 = np.loadtxt("adj_allVillageRelationships_vilno_2.csv", delimiter=",")
+G1 = nx.to_networkx_graph(A1)
+G2 = nx.to_networkx_graph(A2)
 ```
 
 *** =sample_code
