@@ -18,6 +18,7 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =sample_code
@@ -59,6 +60,7 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = string.ascii_lowercase
 ```
@@ -111,6 +113,7 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =sample_code
@@ -171,6 +174,7 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 def counter(input_string):
     count_letters = {}
@@ -227,6 +231,7 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 def counter(input_string):
     count_letters = {}
@@ -284,6 +289,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =solution
@@ -325,6 +331,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =solution
@@ -376,6 +383,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 random.seed(1)
 ```
@@ -433,6 +441,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
 random.seed(1)
 def distance(x, y):
@@ -513,6 +522,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
 random.seed(1)
 def rand():
@@ -583,6 +593,7 @@ The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
 random.seed(1)
 def rand():
@@ -647,6 +658,7 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 random.seed(1)
 ```
@@ -707,6 +719,7 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 random.seed(1)
 def moving_window_average(x, n_neighbors=2):
@@ -767,6 +780,7 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 random.seed(1)
 def moving_window_average(x, n_neighbors=2):
