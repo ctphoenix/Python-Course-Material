@@ -21,7 +21,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
-birddata = pd.read_csv("bird_tracking.csv")
+birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 ```
 
 *** =sample_code
@@ -84,7 +84,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
-birddata = pd.read_csv("bird_tracking.csv")
+birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 ```
 
 *** =sample_code
@@ -145,7 +145,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
-birddata = pd.read_csv("bird_tracking.csv")
+birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 birddata.date_time = pd.to_datetime(birddata.date_time)
 birddata['date'] = birddata.date_time.dt.date
 ```
@@ -194,7 +194,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
-birddata = pd.read_csv("bird_tracking.csv")
+birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 birddata.date_time = pd.to_datetime(birddata.date_time)
 birddata['date'] = birddata.date_time.dt.date
 grouped_bydates = birddata.groupby('date')
