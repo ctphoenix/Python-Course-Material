@@ -367,12 +367,6 @@ def homophily(G, chars, IDs):
 
 *** =sct
 ```{python}
-test_function("",
-              not_called_msg = "Make sure to call ``!",
-              incorrect_msg = "Check your definition of `` again.")
-test_object("",
-            undefined_msg = "Did you define ``?",
-            incorrect_msg = "It looks like `` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 

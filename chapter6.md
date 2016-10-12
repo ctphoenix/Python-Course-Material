@@ -42,7 +42,7 @@ correlations = np.array(correlations)
 # of what to plot in Bokeh.  Finally, we will use numpy for this section as well!
 
 from bokeh.models import HoverTool, ColumnDataSource
-import numpy as npre
+import numpy as np
 
 # Let's plot a simple 5x5 grid of squares, alternating in color as red and blue.
 
