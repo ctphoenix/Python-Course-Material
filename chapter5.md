@@ -172,9 +172,6 @@ principal_components = pca.fit(numeric_data).transform(numeric_data)
 
 *** =sct
 ```{python}
-test_object("pca",
-            undefined_msg = "Did you define `pca`?",
-            incorrect_msg = "It looks like `pca` wasn't defined correctly.")
 test_object("principal_components",
             undefined_msg = "Did you define `principal_components`?",
             incorrect_msg = "It looks like `principal_components` wasn't defined correctly.")
