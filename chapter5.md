@@ -639,5 +639,5 @@ test_function("print",
 test_object("percentage",
             undefined_msg = "Did you define `percentage`?",
             incorrect_msg = "It looks like `percentage` wasn't defined correctly.")
-success_msg("Great work! Our accuracy is comparable to the library's function (100% vs 99.9%)!")
+success_msg("Great work! Our accuracy is comparable to the library's function!")
 ```
