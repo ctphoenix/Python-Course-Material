@@ -21,6 +21,7 @@ We will perform this by converting letters to a number `0-26`, adding the key to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =sample_code
@@ -67,6 +68,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = string.ascii_lowercase + " "
 letters = dict(enumerate(alphabet))
@@ -109,6 +111,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = string.ascii_lowercase + " "
 message = "hi my name is caesar"
@@ -175,6 +178,7 @@ A cipher is a secret code for a language.  For these bonus exercises, we will ex
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = string.ascii_lowercase + " "
 message = "hi my name is caesar"
