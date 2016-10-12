@@ -10,8 +10,7 @@ attachments :
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
--  `individual_characteristics.dta` contains several characteristics for each individual in rural Indian social networks dataset, such as age, religion, and caste.  Use the pandas library to read in and store these characteristics as `df`.
--  We will focus only on Villages 1 and 2:  Store separate datasets for individuals belonging to Villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
+-  `individual_characteristics.dta` contains several characteristics for each individual in rural Indian social networks dataset, such as age, religion, and caste.  We will use the pandas library to read in and store these characteristics as `df`.  Store separate datasets for individuals belonging to Villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
 - Use the `head` function to display the first few entries of `df1`.
 
 *** =hint
@@ -21,14 +20,13 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
-import os
-os.chdir("https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets")
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =sample_code
 ```{python}
 import pandas as pd
-df  = ## ENTER CODE HERE! ##
+df  = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = ## ENTER CODE HERE! ##
 df2 = ## ENTER CODE HERE! ##
 
@@ -38,7 +36,7 @@ df2 = ## ENTER CODE HERE! ##
 *** =solution
 ```{python}
 import pandas as pd
-df  = pd.read_stata("individual_characteristics.dta")
+df  = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
 
@@ -77,6 +75,7 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np
 ```
 
@@ -88,8 +87,8 @@ import numpy as np
 
 *** =solution
 ```{python}
-pid1 = np.loadtxt("key_vilno_1.csv", dtype=int)
-pid2 = np.loadtxt("key_vilno_2.csv", dtype=int)
+pid1 = np.loadtxt(data_filepath + "key_vilno_1.csv", dtype=int)
+pid2 = np.loadtxt(data_filepath + "key_vilno_2.csv", dtype=int)
 ```
 
 *** =sct
@@ -117,9 +116,10 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
-df = pd.read_stata("individual_characteristics.dta")
+df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
 ```
@@ -184,6 +184,7 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np
 ```
 
@@ -246,13 +247,14 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
-df = pd.read_stata("individual_characteristics.dta")
+df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
-pid1 = np.loadtxt("key_vilno_1.csv", dtype=int)
-pid2 = np.loadtxt("key_vilno_2.csv", dtype=int)
+pid1 = np.loadtxt(data_filepath + "key_vilno_1.csv", dtype=int)
+pid2 = np.loadtxt(data_filepath + "key_vilno_2.csv", dtype=int)
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
 caste1    = df1.set_index("pid")["caste"].to_dict()
 religion1 = df1.set_index("pid")["religion"].to_dict()
@@ -319,6 +321,7 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =sample_code
@@ -386,9 +389,10 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
-df = pd.read_stata("individual_characteristics.dta")
+df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
 pid1 = np.loadtxt("key_vilno_1.csv", dtype=int)
