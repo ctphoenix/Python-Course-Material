@@ -36,7 +36,7 @@ df2 = ## ENTER CODE HERE! ##
 *** =solution
 ```{python}
 import pandas as pd
-df  = pd.read_stata("individual_characteristics.dta")
+df  = pd.read_stata("https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
 
