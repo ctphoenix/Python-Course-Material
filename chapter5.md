@@ -387,7 +387,7 @@ def accuracy(predictions, outcomes):
 
 *** =sample_code
 ```{python}
-print(accuracy(0, data["high_quality"]))
+# Enter code here.
 
 
 ```
@@ -610,12 +610,10 @@ selection = random.sample(range(n_rows), 100)
 
 *** =sample_code
 ```{python}
- 
 predictors = np.array(numeric_data)
 outcomes = np.array(data["high_quality"])
-my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
-percentage = accuracy(my_predictions, data.high_quality[selection])
-print(percentage)
+my_predictions = ## ENTER CODE HERE! ##
+percentage = ## ENTER CODE HERE! ##
 
 ```
 
@@ -623,9 +621,9 @@ print(percentage)
 ```{python}
 predictors = np.array(numeric_data)
 outcomes = np.array(data["high_quality"])
-my_predictions = ## ENTER CODE HERE! ##
-percentage = ## ENTER CODE HERE! ##
-
+my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
+percentage = accuracy(my_predictions, data.high_quality[selection])
+print(percentage)
 
 
 ```
