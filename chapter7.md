@@ -21,6 +21,8 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 
 *** =pre_exercise_code
 ```{python}
+import os
+os.chdir("https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets")
 ```
 
 *** =sample_code
@@ -36,7 +38,7 @@ df2 = ## ENTER CODE HERE! ##
 *** =solution
 ```{python}
 import pandas as pd
-df  = pd.read_stata("https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/individual_characteristics.dta")
+df  = pd.read_stata("individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
 
