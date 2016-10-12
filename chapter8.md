@@ -202,7 +202,7 @@ grouped_bydates = birddata.groupby(['bird_name', 'date'])
 
 *** =sample_code
 ```{python}
-eric_daily_speed  = grouped_birdday.speed_2d.mean()['Eric']
+eric_daily_speed  = grouped_bydates.speed_2d.mean()['Eric']
 sanne_daily_speed = ## YOUR CODE HERE ##
 nico_daily_speed  = ## YOUR CODE HERE ##
 
