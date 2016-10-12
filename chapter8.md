@@ -194,6 +194,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 birddata.date_time = pd.to_datetime(birddata.date_time)
 birddata['date'] = birddata.date_time.dt.date
