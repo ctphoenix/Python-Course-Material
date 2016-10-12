@@ -166,7 +166,7 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- The course repository (with string `data_filepath` containing its URL) contains Abraham Lincoln's Gettysburg Address, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
+- The course data repository (with string `data_filepath` containing its URL) contains Abraham Lincoln's Gettysburg Address, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
 - Print `address_count`.
 
 *** =hint
