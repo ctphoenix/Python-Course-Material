@@ -22,12 +22,16 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import pandas as pd
 import numpy as np
 birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
+birddata.date_time = pd.to_datetime(birddata.date_time)
+birddata["date"] = birddata.date_time.dt.date
+grouped_bydates = birddata.groupby(["bird_name", "date"])
+
 ```
 
 *** =sample_code
 ```{python}
 # First, use `groupby` to group up the data.
-grouped_birds = birddata.groupby('bird_name')
+grouped_birds = birddata.groupby("bird_name")
 
 # Now operations are performed on each group.
 mean_speeds = grouped_birds.speed_2d.mean()
@@ -41,10 +45,13 @@ mean_altitudes = ## YOUR CODE HERE ##
 
 ```
 
+
+
+
 *** =solution
 ```{python}
 # First, use `groupby` to group up the data.
-grouped_birds = birddata.groupby('bird_name')
+grouped_birds = birddata.groupby("bird_name")
 
 # Now operations are performed on each group.
 mean_speeds = grouped_birds.speed_2d.mean()
@@ -93,8 +100,9 @@ birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 birddata.date_time = pd.to_datetime(birddata.date_time)
 
 # Create a new column of day of observation
-birddata['date'] = birddata.date_time.dt.date
+birddata["date"] = birddata.date_time.dt.date
 birddata.date.head()
+
 
 grouped_bydates = ## YOUR CODE HERE ##
 mean_altitudes_perday = grouped_bydates.altitude.mean()
@@ -107,14 +115,17 @@ mean_altitudes_perday = grouped_bydates.altitude.mean()
 birddata.date_time = pd.to_datetime(birddata.date_time)
 
 # Create a new column of day of observation
-birddata['date'] = birddata.date_time.dt.date
+birddata["date"] = birddata.date_time.dt.date
 
 # Check the head of the column.
 birddata.date.head()
 
-grouped_bydates = birddata.groupby('date')
+grouped_bydates = birddata.groupby("date")
 mean_altitudes_perday = grouped_bydates.altitude.mean()
 ```
+
+
+
 
 *** =sct
 ```{python}
@@ -161,7 +172,7 @@ mean_altitudes_perday.head()
 
 *** =solution
 ```{python}
-grouped_birdday = birddata.groupby(['bird_name', 'date'])
+grouped_birdday = birddata.groupby(["bird_name", "date"])
 mean_altitudes_perday = grouped_birdday.altitude.mean()
 
 # look at the head of `mean_altitudes_perday`.
@@ -197,13 +208,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 birddata.date_time = pd.to_datetime(birddata.date_time)
-birddata['date'] = birddata.date_time.dt.date
-grouped_bydates = birddata.groupby(['bird_name', 'date'])
+birddata["date"] = birddata.date_time.dt.date
+grouped_bydates = birddata.groupby(["bird_name", "date"])
 ```
 
 *** =sample_code
 ```{python}
-eric_daily_speed  = grouped_bydates.speed_2d.mean()['Eric']
+eric_daily_speed  = grouped_bydates.speed_2d.mean()["Eric"]
 sanne_daily_speed = ## YOUR CODE HERE ##
 nico_daily_speed  = ## YOUR CODE HERE ##
 
@@ -217,9 +228,9 @@ plt.show()
 
 *** =solution
 ```{python}
-eric_daily_speed  = grouped_bydates.speed_2d.mean()['Eric']
-sanne_daily_speed = grouped_bydates.speed_2d.mean()['Sanne']
-nico_daily_speed  = grouped_bydates.speed_2d.mean()['Nico']
+eric_daily_speed  = grouped_bydates.speed_2d.mean()["Eric"]
+sanne_daily_speed = grouped_bydates.speed_2d.mean()["Sanne"]
+nico_daily_speed  = grouped_bydates.speed_2d.mean()["Nico"]
 
 eric_daily_speed.plot(label="Eric")
 sanne_daily_speed.plot(label="Sanne")
