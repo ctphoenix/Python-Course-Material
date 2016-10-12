@@ -240,9 +240,9 @@ test_object("sanne_daily_speed",
 test_object("nico_daily_speed",
             undefined_msg = "Did you define `nico_daily_speed`?",
             incorrect_msg = "It looks like `nico_daily_speed` wasn't defined correctly.")
-test_function("plt.show",
-              not_called_msg = "Did you make sure to plot the daily speeds?",
-              incorrect_msg = "The plot does not look correct.")            
+test_student_typed("plt.show",
+              pattern=False,
+              not_typed_msg="Did you use `plt.show`?")       
 success_msg("Great work!")
 ```
 

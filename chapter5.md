@@ -254,12 +254,12 @@ plt.show()
 
 *** =sct
 ```{python}
-#test_function("plt.show", # Use pythonwhat to do this!
-#              not_called_msg = "Make sure to call `plt.show`!",
-#              incorrect_msg = "Check your definition of `plt.show` again.")
-#test_object("",
-#            undefined_msg = "Did you define ``?",
-#            incorrect_msg = "It looks like `` wasn't defined correctly.")
+test_student_typed("principal_components",
+              pattern=False,
+              not_typed_msg="Did you use `principal_components` to define `x` and y`?")
+test_student_typed("plt.show",
+              pattern=False,
+              not_typed_msg="Did you use `plt.show`?")
 success_msg("Great work!  Yes, these differ significantly.")
 ```
 
