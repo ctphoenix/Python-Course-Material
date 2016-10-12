@@ -18,6 +18,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
@@ -80,6 +81,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
@@ -140,6 +142,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
@@ -188,6 +191,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 birddata = pd.read_csv("bird_tracking.csv")
