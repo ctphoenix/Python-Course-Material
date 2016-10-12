@@ -630,7 +630,7 @@ print(inside/R - math.pi/4)
 *** =sample_code
 ```{python}
 # write your code here!
-print(inside/R - math.pi/4)
+
 ```
 
 *** =sct
