@@ -21,6 +21,7 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import os
 import pandas as pd
 import numpy as np
@@ -86,6 +87,7 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import os
 import pandas as pd
 import numpy as np
@@ -194,6 +196,7 @@ more_frequent(distribution)
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import os
 import pandas as pd
 import numpy as np
@@ -280,6 +283,7 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import os
 import pandas as pd
 import numpy as np
