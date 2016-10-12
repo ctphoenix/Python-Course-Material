@@ -166,7 +166,7 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- In the course repository of the Abraham Lincoln's Gettysburg Address, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
+- The course repository (with string `data_filepath` containing its URL) contains Abraham Lincoln's Gettysburg Address, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
 - Print `address_count`.
 
 *** =hint
@@ -189,7 +189,7 @@ def counter(input_string):
 
 *** =sample_code
 ```{python}
-with open('gettysburg.txt', 'r') as f:
+with open(data_filepath + 'gettysburg.txt', 'r') as f:
     address = f.read()
     # define address_count here!
     
@@ -198,7 +198,7 @@ with open('gettysburg.txt', 'r') as f:
 
 *** =solution
 ```{python}
-with open('gettysburg.txt', 'r') as f:
+with open(data_filepath + 'gettysburg.txt', 'r') as f:
     address = f.read()
     address_count = counter(address)
     
@@ -243,7 +243,7 @@ def counter(input_string):
         count_letters[letter] = count_letter
     return count_letters
     
-with open('gettysburg.txt', 'r') as f:
+with open(data_filepath + 'gettysburg.txt', 'r') as f:
     address = f.read()
     address_count = counter(address)
 ```
@@ -640,9 +640,6 @@ test_function("print", index = 1,
               not_called_msg = "Make sure to print your answer!")              
 success_msg("Great work!")
 ```
-
-
-
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:807ffbdc6f
 ## Exercise 3a
