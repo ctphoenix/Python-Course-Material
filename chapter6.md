@@ -17,6 +17,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
@@ -178,6 +179,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
 *** =sample_code
@@ -227,6 +229,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
 regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
 region_colors = dict(zip(regions, cluster_colors))
@@ -299,6 +302,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
@@ -426,6 +430,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
@@ -513,6 +518,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
@@ -625,6 +631,7 @@ In these exercises, we have prepared step-by-step instructions for you on how to
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
