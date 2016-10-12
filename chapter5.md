@@ -18,6 +18,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -71,6 +72,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -126,6 +128,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -190,6 +193,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -276,6 +280,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -355,6 +360,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -420,6 +426,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -492,6 +499,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
@@ -568,6 +576,7 @@ In these exercises, we will analyse a dataset consisting of many different wines
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np, random, scipy.stats as ss
 def majority_vote_fast(votes):
     mode, count = ss.mstats.mode(votes)
