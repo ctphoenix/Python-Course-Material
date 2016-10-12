@@ -10,11 +10,11 @@ attachments :
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird. Modify the code to assign the maximum altitudes of each bird into an object called `max_altitudes`.
+-  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird. Modify the code to assign the mean altitudes of each bird into an object called `mean_altitudes`.
 
 *** =hint
-- `grouped_birds` contains a column called `altitude`.  Find the maximum of this column!
-- This can be done by calling the `max()` method of this column.
+- `grouped_birds` contains a column called `altitude`.  Find the mean of this column!
+- This can be done by calling the `mean()` method of this column.
 
 *** =pre_exercise_code
 ```{python}
@@ -35,9 +35,9 @@ mean_speeds = grouped_birds.speed_2d.mean()
 # The `head` method prints the first 5 lines of each bird.
 grouped_birds.head()
 
-# Find the maximum `altitude` for each bird.
-# Assign this to `max_altitudes`.
-max_altitudes = ## YOUR CODE HERE ##
+# Find the mean `altitude` for each bird.
+# Assign this to `mean_altitudes`.
+mean_altitudes = ## YOUR CODE HERE ##
 
 ```
 
@@ -52,17 +52,17 @@ mean_speeds = grouped_birds.speed_2d.mean()
 # The `head` method prints the first 5 lines of each bird.
 grouped_birds.head()
 
-# Find the maximum `altitude` for each bird.
-# Assign this to `max_altitudes`.
-max_altitudes = grouped_birds.altitude.max()
+# Find the mean `altitude` for each bird.
+# Assign this to `mean_altitudes`.
+mean_altitudes = grouped_birds.altitude.mean()
 
 ```
 
 *** =sct
 ```{python}
-test_object("max_altitudes",
-            undefined_msg = "Did you define `max_altitudes`?",
-            incorrect_msg = "It looks like `max_altitudes` wasn't defined correctly.")
+test_object("mean_altitudes",
+            undefined_msg = "Did you define `mean_altitudes`?",
+            incorrect_msg = "It looks like `mean_altitudes` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -73,8 +73,8 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` contains a useful type called `tslib.Timestamp`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the maximum altitude within that day.
--  Use `groupby` and calculate the maximum altitude per day. Save these results into an object called `max_altitudes_perday`.
+-  `pandas` contains a useful type called `tslib.Timestamp`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the mean altitude within that day.
+-  Use `groupby` and calculate the mean altitude per day. Save these results into an object called `mean_altitudes_perday`.
 
 *** =hint
 - See `?pd.DataFrame.groupby` for help!
@@ -97,7 +97,7 @@ birddata['date'] = birddata.date_time.dt.date
 birddata.date.head()
 
 grouped_bydates = ## YOUR CODE HERE ##
-max_altitudes_perday = grouped_bydates.altitude.max()
+mean_altitudes_perday = grouped_bydates.altitude.mean()
 
 ```
 
@@ -113,7 +113,7 @@ birddata['date'] = birddata.date_time.dt.date
 birddata.date.head()
 
 grouped_bydates = birddata.groupby('date')
-max_altitudes_perday = grouped_bydates.altitude.max()
+mean_altitudes_perday = grouped_bydates.altitude.mean()
 ```
 
 *** =sct
@@ -121,9 +121,9 @@ max_altitudes_perday = grouped_bydates.altitude.max()
 test_object("grouped_bydates",
             undefined_msg = "Did you define `grouped_bydates`?",
             incorrect_msg = "It looks like `grouped_bydates` wasn't defined correctly.")
-test_object("max_altitudes_perday",
-            undefined_msg = "Did you define `max_altitudes_perday`?",
-            incorrect_msg = "It looks like `max_altitudes_perday` wasn't defined correctly.")
+test_object("mean_altitudes_perday",
+            undefined_msg = "Did you define `mean_altitudes_perday`?",
+            incorrect_msg = "It looks like `mean_altitudes_perday` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -153,19 +153,19 @@ birddata['date'] = birddata.date_time.dt.date
 *** =sample_code
 ```{python}
 grouped_birdday = ## YOUR CODE HERE ##
-max_altitudes_perday = grouped_birdday.altitude.max()
+mean_altitudes_perday = grouped_birdday.altitude.mean()
 
-# look at the head of `max_altitudes_perday`.
-max_altitudes_perday.head()
+# look at the head of `mean_altitudes_perday`.
+mean_altitudes_perday.head()
 ```
 
 *** =solution
 ```{python}
 grouped_birdday = birddata.groupby(['bird_name', 'date'])
-max_altitudes_perday = grouped_birdday.altitude.max()
+mean_altitudes_perday = grouped_birdday.altitude.mean()
 
-# look at the head of `max_altitudes_perday`.
-max_altitudes_perday.head()
+# look at the head of `mean_altitudes_perday`.
+mean_altitudes_perday.head()
 
 ```
 
