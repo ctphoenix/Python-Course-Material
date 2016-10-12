@@ -45,9 +45,6 @@ mean_altitudes = ## YOUR CODE HERE ##
 
 ```
 
-
-
-
 *** =solution
 ```{python}
 # First, use `groupby` to group up the data.
@@ -72,6 +69,79 @@ test_object("mean_altitudes",
             incorrect_msg = "It looks like `mean_altitudes` wasn't defined correctly.")
 success_msg("Great work!")
 ```
+
+
+
+--- type:NormalExercise lang:python xp:100 skills:1 key:c5edc7b67f
+## Exercise 1b
+
+In these exercises, we will continue taking a look at patterns of bird flights over time.
+
+*** =instructions
+-  Great! Now you have a dataframe called `grouped_birdday` that has grouped all of the `birddata` by `bird_name` and `date`. Now we can use `.mean()` on `speed_2d` to get the average speed for each bird and day.
+-  We’ve recreated the `Eric` plot using this method for you. Now create two more dataframes – one for `Sanne` and one for `Nico` – and plot all three speeds on the same plot.
+
+*** =hint
+- Call `grouped_birdday.speed_2d.mean()` and select `'Sanne'` and `'Nico'`, respectively.
+
+*** =pre_exercise_code
+```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+import pandas as pd
+import numpy as np
+birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
+birddata.date_time = pd.to_datetime(birddata.date_time)
+birddata["date"] = birddata.date_time.dt.date
+grouped_bydates = birddata.groupby(["bird_name", "date"])
+```
+
+*** =sample_code
+```{python}
+# First, use `groupby` to group up the data.
+grouped_birds = birddata.groupby("bird_name")
+
+# Now operations are performed on each group.
+mean_speeds = grouped_birds.speed_2d.mean()
+
+# The `head` method prints the first 5 lines of each bird.
+grouped_birds.head()
+
+# Find the mean `altitude` for each bird.
+# Assign this to `mean_altitudes`.
+mean_altitudes = ## YOUR CODE HERE ##
+
+```
+
+*** =solution
+```{python}
+# First, use `groupby` to group up the data.
+grouped_birds = birddata.groupby("bird_name")
+
+# Now operations are performed on each group.
+mean_speeds = grouped_birds.speed_2d.mean()
+
+# The `head` method prints the first 5 lines of each bird.
+grouped_birds.head()
+
+# Find the mean `altitude` for each bird.
+# Assign this to `mean_altitudes`.
+mean_altitudes = grouped_birds.altitude.mean()
+
+```
+
+*** =sct
+```{python}
+test_object("mean_altitudes",
+            undefined_msg = "Did you define `eric_daily_speed`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.")
+success_msg("Great work!")
+```
+
+
+
+
+
+
 
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:88166cd5b1
@@ -188,7 +258,7 @@ test_object("grouped_birdday",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:c5edc7b67f
+--- type:NormalExercise lang:python xp:100 skills:1 key:98d1b86767
 ## Exercise 4
 
 In these exercises, we will continue taking a look at patterns of bird flights over time.
