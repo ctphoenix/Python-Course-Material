@@ -19,6 +19,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -68,6 +69,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -122,6 +124,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -173,6 +176,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -234,6 +238,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -302,6 +307,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -369,6 +375,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -442,6 +449,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -509,6 +517,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -600,6 +609,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -692,6 +702,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 import matplotlib.pyplot as plt
@@ -794,6 +805,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 random.seed(1)
@@ -904,6 +916,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
 import matplotlib.pyplot as plt
