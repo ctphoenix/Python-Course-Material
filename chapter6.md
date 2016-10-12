@@ -22,8 +22,8 @@ from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
 import numpy as np, pandas as pd
-whisky = pd.read_csv("whiskies.txt")
-whisky["Region"] = pd.read_csv("regions.txt")
+whisky = pd.read_csv(data_filepath + "whiskies.txt")
+whisky["Region"] = pd.read_csv(data_filepath + "regions.txt")
 model = SpectralCoclustering(n_clusters=6, random_state=0)
 flavors = whisky.iloc[:,2:14] # extract flavor attributes
 corr_whisky = pd.DataFrame.corr(flavors.transpose())
@@ -237,8 +237,8 @@ from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
 import numpy as np, pandas as pd
-whisky = pd.read_csv("whiskies.txt")
-whisky["Region"] = pd.read_csv("regions.txt")
+whisky = pd.read_csv(data_filepath + "whiskies.txt")
+whisky["Region"] = pd.read_csv(data_filepath + "regions.txt")
 model = SpectralCoclustering(n_clusters=6, random_state=0)
 flavors = whisky.iloc[:,2:14] # extract flavor attributes
 corr_whisky = pd.DataFrame.corr(flavors.transpose())
@@ -307,8 +307,8 @@ from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
 import numpy as np, pandas as pd
-whisky = pd.read_csv("whiskies.txt")
-whisky["Region"] = pd.read_csv("regions.txt")
+whisky = pd.read_csv(data_filepath + "whiskies.txt")
+whisky["Region"] = pd.read_csv(data_filepath + "regions.txt")
 model = SpectralCoclustering(n_clusters=6, random_state=0)
 flavors = whisky.iloc[:,2:14] # extract flavor attributes
 corr_whisky = pd.DataFrame.corr(flavors.transpose())
@@ -523,8 +523,8 @@ from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
 import numpy as np, pandas as pd
-whisky = pd.read_csv("whiskies.txt")
-whisky["Region"] = pd.read_csv("regions.txt")
+whisky = pd.read_csv(data_filepath + "whiskies.txt")
+whisky["Region"] = pd.read_csv(data_filepath + "regions.txt")
 model = SpectralCoclustering(n_clusters=6, random_state=0)
 flavors = whisky.iloc[:,2:14] # extract flavor attributes
 corr_whisky = pd.DataFrame.corr(flavors.transpose())
@@ -636,8 +636,8 @@ from sklearn.cluster.bicluster import SpectralCoclustering
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
 import numpy as np, pandas as pd
-whisky = pd.read_csv("whiskies.txt")
-whisky["Region"] = pd.read_csv("regions.txt")
+whisky = pd.read_csv(data_filepath + "whiskies.txt")
+whisky["Region"] = pd.read_csv(data_filepath + "regions.txt")
 model = SpectralCoclustering(n_clusters=6, random_state=0)
 flavors = whisky.iloc[:,2:14] # extract flavor attributes
 corr_whisky = pd.DataFrame.corr(flavors.transpose())
