@@ -126,9 +126,6 @@ mean_altitudes_perday = grouped_bydates.altitude.mean()
 
 *** =sct
 ```{python}
-test_object("grouped_bydates",
-            undefined_msg = "Did you define `grouped_bydates`?",
-            incorrect_msg = "It looks like `grouped_bydates` wasn't defined correctly.")
 test_object("mean_altitudes_perday",
             undefined_msg = "Did you define `mean_altitudes_perday`?",
             incorrect_msg = "It looks like `mean_altitudes_perday` wasn't defined correctly.")
