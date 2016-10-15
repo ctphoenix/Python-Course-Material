@@ -398,10 +398,10 @@ religion1 = df1.set_index("pid")["religion"].to_dict()
 sex2      = df2.set_index("pid")["resp_gend"].to_dict()
 caste2    = df2.set_index("pid")["caste"].to_dict()
 religion2 = df2.set_index("pid")["religion"].to_dict()
-A1 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_1.csv", delimiter=",")
-A2 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_2.csv", delimiter=",")
-G1 = nx.to_networkx_graph(A1)
-G2 = nx.to_networkx_graph(A2)
+A1 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_1.csv", delimiter=",", header = None)
+A2 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_2.csv", delimiter=",", header = None)
+G1 = nx.to_networkx_graph(np.array(A1))
+G2 = nx.to_networkx_graph(np.array(A2))
 ```
 
 *** =sample_code
