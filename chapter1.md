@@ -222,7 +222,7 @@ In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
 - What is the most common letter used in the Gettysburg Address?
-- Store this letter as `letter`, and print your answer.
+- Store this letter as `most_frequent_letter`, and print your answer.
 
 *** =hint
 - You will have to find the key that corresponds to the maximum value in `address_count`!
@@ -251,9 +251,10 @@ address_count = counter(address)
 maximum, letter_maximum  = 0, ""
 for letter in address_count.keys():
     if address_count[letter] > maximum:
-        letter_maximum = letter
+        maximum = address_count[letter]
+        most_frequent_letter = letter
 
-print(letter)
+print(most_frequent_letter)
 ```
 
 *** =sample_code
@@ -264,9 +265,9 @@ print(letter)
 
 *** =sct
 ```{python}
-test_object("letter",
-              undefined_msg = "Make sure to define `letter`!",
-              incorrect_msg = "Are you sure `letter` is defined correctly?")
+test_object("most_frequent_letter",
+              undefined_msg = "Make sure to define `most_frequent_letter`!",
+              incorrect_msg = "Are you sure `most_frequent_letter` is defined correctly?")
 test_function("print", index = 1,
               not_called_msg = "Make sure to use `print`!",
               incorrect_msg = "Check your usage of `print` again.")                
