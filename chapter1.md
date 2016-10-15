@@ -265,7 +265,7 @@ print(letter)
 *** =sct
 ```{python}
 test_object("letter",
-              not_called_msg = "Make sure to define `letter`!",
+              undefined_msg = "Make sure to define `letter`!",
               incorrect_msg = "Are you sure `letter` is defined correctly?")
 test_function("print", index = 1,
               not_called_msg = "Make sure to use `print`!",
