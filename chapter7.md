@@ -455,9 +455,9 @@ test_student_typed("caste2",
 test_student_typed("religion2",
               pattern=False,
               not_typed_msg="Did you use `homophily` for `religion2`?")
-test_function("print",
-              not_called_msg = "Did you remember to print your answers?",
-              incorrect_msg = "It looks like what you've printed is not right!")   
+test_student_typed("print",
+              pattern=False,
+              not_typed_msg="Did you print your answers?") 
 success_msg("Great work!")
 ```
 
