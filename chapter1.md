@@ -206,7 +206,7 @@ print(address_count)
 *** =sct
 ```{python}
 test_object("address_count",
-              not_called_msg = "Make sure to define `address_count`!",
+              undefined_msg = "Make sure to define `address_count`!",
               incorrect_msg = "Are you sure `address_count` is correct?")
 test_function("print", index = 1,
               not_called_msg = "Make sure to use `print`!",
