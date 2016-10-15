@@ -402,6 +402,17 @@ A1 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_1.csv", deli
 A2 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_2.csv", delimiter=",", header = None)
 G1 = nx.to_networkx_graph(np.array(A1))
 G2 = nx.to_networkx_graph(np.array(A2))
+def homophily(G, chars, IDs):
+    num_same_ties, num_ties = 0, 0
+    for n1 in G.nodes():
+        for n2 in G.nodes():
+            if n1 > n2:   # do not double-count edges!
+                if IDs[n1] in chars and IDs[n2] in chars:
+                    if G.has_edge(n1, n2):
+                        num_ties += 1
+                        if chars[IDs[n1]] == chars[IDs[n2]]:
+                            num_same_ties += 1
+    return (num_same_ties / num_ties)
 ```
 
 *** =sample_code
