@@ -66,17 +66,18 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
--  The personal ID for each individual is found in the column `'pid'` in the stored data. The course data repository is a URL stored as the string `data_filepath`. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for Villages 1 and 2, respectively.  Store as `pid1` and `pid2`.
+-  The personal ID for each individual is found in the column `'pid'` in the stored data. The course data repository is a URL stored as the string `data_filepath`. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for Villages 1 and 2, respectively.  This file has no header, so make sure to include the parameter `header = None`.
+-  Store as `pid1` and `pid2`.
 
 
 
 *** =hint
--  Use `np.loadtxt` to load the two files.  You might want to store these as type `int` using the parameter `dtype=int`!
+-  Use `pd.read_csv` to load the two files.  You might want to store these as type `int` using the parameter `dtype=int`!
 
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import numpy as np
+import pandas as pd
 ```
 
 *** =sample_code
@@ -87,8 +88,8 @@ import numpy as np
 
 *** =solution
 ```{python}
-pid1 = np.loadtxt(data_filepath + "key_vilno_1.csv", dtype=int)
-pid2 = np.loadtxt(data_filepath + "key_vilno_2.csv", dtype=int)
+pid1 = pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int, header = None)
+pid2 = pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int, header = None)
 ```
 
 *** =sct
@@ -261,6 +262,11 @@ religion1 = df1.set_index("pid")["religion"].to_dict()
 sex2      = df2.set_index("pid")["resp_gend"].to_dict()
 caste2    = df2.set_index("pid")["caste"].to_dict()
 religion2 = df2.set_index("pid")["religion"].to_dict()
+def chance_homophily(chars):
+    chars_counts_dict = Counter(chars.values())
+    chars_counts = np.array(list(chars_counts_dict.values()))
+    chars_props  = chars_counts / sum(chars_counts)
+    return sum(chars_props**2)
 ```
 
 *** =sample_code
