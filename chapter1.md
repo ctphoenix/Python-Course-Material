@@ -241,9 +241,9 @@ def counter(input_string):
         count_letters[letter] = count_letter
     return count_letters
     
-with open(data_filepath + 'gettysburg.txt', 'r') as f:
-    address = f.read()
-    address_count = counter(address)
+import pandas as pd    
+address = str(pd.read_csv(data_filepath + 'gettysburg.txt', error_bad_lines = False))    
+address_count = counter(address)
 ```
 
 *** =solution
