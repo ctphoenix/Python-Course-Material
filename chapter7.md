@@ -387,7 +387,7 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import pandas as pd
 import numpy as np
 import networkx as nx
-df = pd.read_stata("individual_characteristics.dta")
+df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
 pid1 = np.array(pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int, header = None)[0])
