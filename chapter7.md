@@ -66,18 +66,17 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
--  The personal ID for each individual is found in the column `'pid'` in the stored data. The course data repository is a URL stored as the string `data_filepath`. The `pandas` library is loaded as `pd`.  Use `pandas` to read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for Villages 1 and 2, respectively.
--  Store as `pid1` and `pid2`.
+-  The personal ID for each individual is found in the column `'pid'` in the stored data. The course data repository is a URL stored as the string `data_filepath`. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for Villages 1 and 2, respectively.  Store as `pid1` and `pid2`.
 
 
 
 *** =hint
--  Use `pd.read_csv` to load the two files.  You might want to store these as type `int` using the parameter `dtype=int`!
+-  Use `np.loadtxt` to load the two files.  You might want to store these as type `int` using the parameter `dtype=int`!
 
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
+import numpy as np
 ```
 
 *** =sample_code
@@ -88,15 +87,12 @@ import pandas as pd
 
 *** =solution
 ```{python}
-pid1 = pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int)
-pid2 = pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int)
+pid1 = np.loadtxt(data_filepath + "key_vilno_1.csv", dtype=int)
+pid2 = np.loadtxt(data_filepath + "key_vilno_2.csv", dtype=int)
 ```
 
 *** =sct
 ```{python}
-test_student_typed("read_csv",
-              pattern=False,
-              not_typed_msg="Did you use `pd.read_csv`?")   
 test_object("pid1",
             undefined_msg = "Did you define `pid1`?",
             incorrect_msg = "It looks like `pid1` wasn't defined correctly.")
@@ -122,6 +118,7 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
+import numpy as np
 df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
@@ -256,24 +253,14 @@ import numpy as np
 df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
-pid1 = pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int)
-pid2 = pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int)
+pid1 = np.loadtxt(data_filepath + "key_vilno_1.csv", dtype=int)
+pid2 = np.loadtxt(data_filepath + "key_vilno_2.csv", dtype=int)
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
 caste1    = df1.set_index("pid")["caste"].to_dict()
 religion1 = df1.set_index("pid")["religion"].to_dict()
 sex2      = df2.set_index("pid")["resp_gend"].to_dict()
 caste2    = df2.set_index("pid")["caste"].to_dict()
 religion2 = df2.set_index("pid")["religion"].to_dict()
-from collections import Counter
-def chance_homophily(chars):
-    """
-    Computes the chance homophily of a characteristic,\n
-    specified as a dictionary, chars.
-    """
-    chars_counts_dict = Counter(chars.values())
-    chars_counts = np.array(list(chars_counts_dict.values()))
-    chars_props  = chars_counts / sum(chars_counts)
-    return sum(chars_props**2)
 ```
 
 *** =sample_code
@@ -402,8 +389,8 @@ import numpy as np
 df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
-pid1 = np.loadtxt(data_filepath + "key_vilno_1.csv", dtype=int)
-pid2 = np.loadtxt(data_filepath + "key_vilno_2.csv", dtype=int)
+pid1 = pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int)
+pid2 = pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int)
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
 caste1    = df1.set_index("pid")["caste"].to_dict()
 religion1 = df1.set_index("pid")["religion"].to_dict()
