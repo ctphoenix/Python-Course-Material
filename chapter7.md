@@ -443,7 +443,7 @@ test_student_typed("sex1",
 test_student_typed("caste1",
               pattern=False,
               not_typed_msg="Did you use `homophily` for `caste1`?")  
-test_student_typed("chance_homophily(religion1)",
+test_student_typed("religion1",
               pattern=False,
               not_typed_msg="Did you use `homophily` for `religion1`?")  
 test_student_typed("sex2",
