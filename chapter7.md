@@ -256,8 +256,8 @@ import numpy as np
 df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
-pid1 = np.loadtxt(data_filepath + "key_vilno_1.csv", dtype=int)
-pid2 = np.loadtxt(data_filepath + "key_vilno_2.csv", dtype=int)
+pid1 = pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int)
+pid2 = pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int)
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
 caste1    = df1.set_index("pid")["caste"].to_dict()
 religion1 = df1.set_index("pid")["religion"].to_dict()
