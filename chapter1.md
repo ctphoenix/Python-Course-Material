@@ -68,7 +68,7 @@ alphabet = string.ascii_lowercase
 
 *** =sample_code
 ```{python}
-# write your code here!
+# Write your code here!
 
 sentence = 'jim quickly realized that the beautiful gowns are expensive'
 
@@ -166,11 +166,11 @@ success_msg("Great work!")
 In this exercise, we will count the frequency of each letter in a document.
 
 *** =instructions
-- The course data repository (with string `data_filepath` containing its URL) contains Abraham Lincoln's Gettysburg Address, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
+- Abraham Lincoln's Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
 - Print `address_count`.
 
 *** =hint
--  Read in the Gettysbug Address using `open`.  Can you use `counter` to do count the frequency of each letter?
+-  Can you use `counter` to do count the frequency of each letter?
 
 *** =pre_exercise_code
 ```{python}
@@ -185,24 +185,22 @@ def counter(input_string):
                 count_letter += 1
         count_letters[letter] = count_letter
     return count_letters
+import pandas as pd    
+address = str(pd.read_csv(data_filepath + 'gettysburg.txt'))    
 ```
 
 *** =sample_code
 ```{python}
-with open(data_filepath + 'gettysburg.txt', 'r') as f:
-    address = f.read()
-    # define address_count here!
-    
+# Write your code here!
+
 
 ```
 
 *** =solution
 ```{python}
-with open(data_filepath + 'gettysburg.txt', 'r') as f:
-    address = f.read()
-    address_count = counter(address)
-    
+address_count = counter(address)
 print(address_count)
+
 ```
 
 *** =sct
