@@ -387,21 +387,21 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import pandas as pd
 import numpy as np
 import networkx as nx
-df = pd.read_stata(data_filepath + "individual_characteristics.dta")
+df = pd.read_stata("individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
-pid1 = pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int, header = None)
-pid2 = pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int, header = None)
+pid1 = np.array(pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int, header = None)[0])
+pid2 = np.array(pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int, header = None)[0])
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
 caste1    = df1.set_index("pid")["caste"].to_dict()
 religion1 = df1.set_index("pid")["religion"].to_dict()
 sex2      = df2.set_index("pid")["resp_gend"].to_dict()
 caste2    = df2.set_index("pid")["caste"].to_dict()
 religion2 = df2.set_index("pid")["religion"].to_dict()
-A1 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_1.csv", delimiter=",", header = None)
-A2 = pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_2.csv", delimiter=",", header = None)
-G1 = nx.to_networkx_graph(np.array(A1))
-G2 = nx.to_networkx_graph(np.array(A2))
+A1 = np.array(pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_1.csv", delimiter=",", header = None))
+A2 = np.array(pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_2.csv", delimiter=",", header = None))
+G1 = nx.to_networkx_graph(A1)
+G2 = nx.to_networkx_graph(A2)
 def homophily(G, chars, IDs):
     num_same_ties, num_ties = 0, 0
     for n1 in G.nodes():
@@ -412,7 +412,8 @@ def homophily(G, chars, IDs):
                         num_ties += 1
                         if chars[IDs[n1]] == chars[IDs[n2]]:
                             num_same_ties += 1
-    return (num_same_ties / num_ties)
+    return (num_same_ties / num_ties)    
+    
 ```
 
 *** =sample_code
