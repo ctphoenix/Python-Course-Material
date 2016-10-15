@@ -386,6 +386,7 @@ Homophily is a network characteristic.  Homophily occurs when nodes that share a
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
+import networkx as nx
 df = pd.read_stata(data_filepath + "individual_characteristics.dta")
 df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
