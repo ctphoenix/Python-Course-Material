@@ -428,11 +428,9 @@ print("Village 1 actual proportion of same sex:", homophily(G1, sex1, pid1))
 ```{python}
 print("Village 1 actual proportion of same sex:", homophily(G1, sex1, pid1))
 print("Village 1 actual proportion of same caste:", homophily(G1, caste1, pid1))
-print("Village 1 actual proportion of same religion:", homophily(G1, religion1, pid1))
 
 print("Village 2 actual proportion of same sex:", homophily(G2, sex2, pid2))
 print("Village 2 actual proportion of same caste:", homophily(G2, caste2, pid2))
-print("Village 2 actual proportion of same religion:", homophily(G2, religion2, pid2))
 ```
 
 *** =sct
@@ -443,18 +441,12 @@ test_student_typed("sex1",
 test_student_typed("caste1",
               pattern=False,
               not_typed_msg="Did you use `homophily` for `caste1`?")  
-test_student_typed("religion1",
-              pattern=False,
-              not_typed_msg="Did you use `homophily` for `religion1`?")  
 test_student_typed("sex2",
               pattern=False,
               not_typed_msg="Did you use `homophily` for `sex2`?")  
 test_student_typed("caste2",
               pattern=False,
               not_typed_msg="Did you use `homophily` for `caste2`?")  
-test_student_typed("religion2",
-              pattern=False,
-              not_typed_msg="Did you use `homophily` for `religion2`?")
 test_student_typed("print",
               pattern=False,
               not_typed_msg="Did you print your answers?") 
