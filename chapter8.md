@@ -176,9 +176,9 @@ mean_altitudes_perday.head()
 
 *** =sct
 ```{python}
-test_object("grouped_birdday",
-            undefined_msg = "Did you define `grouped_birdday`?",
-            incorrect_msg = "It looks like `grouped_birdday` wasn't defined correctly.")
+test_object("mean_altitudes_perday",
+            undefined_msg = "Did you define `mean_altitudes_perday`?",
+            incorrect_msg = "It looks like `mean_altitudes_perday` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
