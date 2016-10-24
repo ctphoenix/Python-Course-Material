@@ -112,7 +112,7 @@ def word_stats(word_counts):
     num_unique = len(word_counts)
     counts = word_counts.values()
     return (num_unique, counts)
-text = read_book("./Books/English/shakespeare/Romeo and Juliet.txt")    
+text = read_book(data_filepath + "Books/English/shakespeare/Romeo+and+Juliet.txt")    
 def word_count_distribution(text):
     word_counts = count_words_fast(text)
     count_distribution = Counter(word_counts.values())
