@@ -82,6 +82,7 @@ In these exercises, we will continue taking a look at patterns of bird flights o
 
 *** =hint
 - See `?pd.DataFrame.groupby` for help!
+- For `mean_altitudes_perday`, you can use the  `mean()` method on `grouped_bydates.altitude`.
 
 *** =pre_exercise_code
 ```{python}
@@ -102,8 +103,8 @@ birddata["date"] = birddata.date_time.dt.date
 # Check the head of the column.
 birddata.date.head()
 
-grouped_bydates = birddata.groupby("date")
-mean_altitudes_perday = grouped_bydates.altitude.mean()
+grouped_bydates = ## YOUR CODE HERE ##
+mean_altitudes_perday = ## YOUR CODE HERE ##
 ```
 
 *** =solution

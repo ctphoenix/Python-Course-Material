@@ -338,25 +338,6 @@ import numpy as np
 colors = ["crimson", "forestgreen", "blueviolet"]
 handles, hamlet_languages = [], []
 for index in range(hamlets.shape[0]):
-    language, distribution = hamlets.language[index+1], hamlets.distribution[index+1]
-    # call `more_frequent` with input `distribution`, and store as `dist`.
-    plot, = plt.loglog(sorted(list(dist.keys())),sorted(list(dist.values()),
-        reverse = True), color = colors[index], linewidth = 2)
-    handles.append(plot)
-    hamlet_languages.append(language)
-# call `plt.title` here, with a string argument for a title.
-xlabel  = "Word Frequency"
-ylabel  = "Probability of Words Being More Frequent"
-plt.xlabel(xlabel); plt.ylabel(ylabel)
-plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
-plt.show()
-```
-
-*** =solution
-```{python}
-colors = ["crimson", "forestgreen", "blueviolet"]
-handles, hamlet_languages = [], []
-for index in range(hamlets.shape[0]):
     language, distribution = hamlets.language[index+1], hamlets.distribution[index+1]# frequencies is count_distribution
     dist = more_frequent(distribution)
     plot, = plt.loglog(sorted(list(dist.keys())),sorted(list(dist.values()),
@@ -369,6 +350,25 @@ ylabel  = "Probability of Words Being More Frequent"
 plt.xlabel(xlabel); plt.ylabel(ylabel)
 plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
 # show your plot using `plt.show`!
+```
+
+*** =solution
+```{python}
+colors = ["crimson", "forestgreen", "blueviolet"]
+handles, hamlet_languages = [], []
+for index in range(hamlets.shape[0]):
+    language, distribution = hamlets.language[index+1], hamlets.distribution[index+1]
+    # call `more_frequent` with input `distribution`, and store as `dist`.
+    plot, = plt.loglog(sorted(list(dist.keys())),sorted(list(dist.values()),
+        reverse = True), color = colors[index], linewidth = 2)
+    handles.append(plot)
+    hamlet_languages.append(language)
+# call `plt.title` here, with a string argument for a title.
+xlabel  = "Word Frequency"
+ylabel  = "Probability of Words Being More Frequent"
+plt.xlabel(xlabel); plt.ylabel(ylabel)
+plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
+plt.show()
 ```
 
 *** =sct
