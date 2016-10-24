@@ -284,6 +284,30 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+book_titles = {
+    "English": {
+        "shakespeare": ("A Midsummer Night's Dream", "Hamlet", "Macbeth", "Othello", "Richard III", "Romeo and Juliet", "The Merchant of Venice")
+    },
+    "French": {
+        "chevalier":     ("L'enfer et le paradis de l'autre monde", "L'i%CC%82le de sable", "La capitaine","La fille des indiens rouges", "La fille du pirate", "Le chasseur noir", "Les derniers Iroquois"),
+        "de Maupassant": ("Boule de Suif", "Claire de Lune", "Contes de la Becasse", "L'inutile beaute%CC%81", "La Main Gauche", "La Maison Tellier", "La petite roque", "Le Horla", "%C5%92uvres comple%CC%80tes de Guy de Maupassant"),
+        "diderot":       ("Ceci n'est pas un conte", "Entretien d'un pe%CC%80re avec ses enfants", "L'oiseau blanc", "Les deux amis de Bourbonne", "Regrets sur ma vieille robe de chambre"),
+        "sand":          ("Jacques le fataliste et son mai%CC%82tre", "L' Orco", "La Coupe; Lupo Liverani; Le Toast; Garnier; Le Contrebandier; La Re%CC%82verie a%CC%80  Paris", "La Marquise", "Le Piccinino", "Le poe%CC%88me de Myrza", "Mattea", "Metella", "Oeuvres illustre%CC%81es de George Sand", "Pauline", "cora")
+    },
+    "German": {
+        "lessing":       ("der freigeist", "der junge gelehrte", "die juden", "emilia galotti", "hamburgische dramaturgie", "minna von barnhelm", "miss sara sampson", "philotas"),
+        "raimund":       ("Das Ma%CC%88dchen aus der Feenwelt", "Der Alpenko%CC%88nig und der Menschenfeind", "Der Barometermacher auf der Zauberinsel", "Der Diamant des Geisterko%CC%88nigs", "Der Verschwender", "Die gefesselte Phantasie", "Die unheilbringende Krone", "Moisasurs Zauberfluch"),
+        "schiller":      ("Der Neffe als Onkel", "Der Parasit, oder die Kunst, sein Glu%CC%88ck zu machen",  "Die Jungfrau von Orleans", "Die Piccolomini", "Die Verschwo%CC%88rung des Fiesco zu Genua", "Kabale und Liebe", "Turandot, Prinzessin von China", "Wallensteins Lager", "Wallensteins Tod", "die braut von messina"),
+        "shakespeare":   ("Der Kaufmann von Venedig", "Ein Sommernachtstraum", "Hamlet", "Macbeth", "Othello", "Richard III", "Romeo und Julia")
+    },
+    "Portuguese": {
+        "Queiros":       ("A Cidade e as Serras", "A Illustre Casa de Ramires", "A Reli%CC%81quia", "A corresponde%CC%82ncia de Fradique Mendes", "Cartas de Inglaterra", "O Mandarim", "O Primo Bazilio", "O crime do padre Amaro", "Os Maias"),
+        "branco":        ("A Filha do Arcediago", "A Neta do Arcediago", "A Queda d'um Anjo", "Agulha em Palheiro", "Amor de Perdic%CC%A7a%CC%83o", "Amor de Salvac%CC%A7a%CC%83o", "Annos de Prosa", "Carlota Angela", "Estrellas Funestas", "Estrellas Propi%CC%81cias", "Lagrimas Abenc%CC%A7oadas", "Livro de Consolac%CC%A7a%CC%83o", "O Olho de Vidro", "O Regicida", "O que fazem mulheres", "Scenas Contemporaneas"),
+        "dinis":         ("A Morgadinha dos Cannaviaes", "Os fidalgos da Casa Mourisca", "Uma fami%CC%81lia ingleza"),
+        "shakespeare":   ("Hamlet", )
+    }
+}
+
 import os
 import pandas as pd
 import numpy as np
@@ -295,10 +319,10 @@ def count_words_fast(text):
         text = text.replace(ch, "")
     word_counts = Counter(text.split(" "))
     return word_counts
+
 def read_book(title_path):
-    with open(title_path, "r", encoding="utf8") as current_file:
-        text = current_file.read()
-        text = text.replace("\n", "").replace("\r", "")
+    text   = pd.read_csv(title_path, sep = "\n", engine='python', encoding="utf8")
+    text = text.to_string(index = False)
     return text
 def word_stats(word_counts):
     num_unique = len(word_counts)
@@ -311,26 +335,30 @@ def word_stats(word_counts):
 def word_count_distribution(text):
     word_counts = count_words_fast(text)
     count_distribution = Counter(word_counts.values())
-    return count_distribution     
-text = read_book("./Books/English/shakespeare/Romeo and Juliet.txt")    
+    return count_distribution
+def more_frequent(distribution):
+    counts = sorted(distribution.keys())
+    sorted_frequencies = sorted(distribution.values(), reverse = True)
+    cumulative_frequencies = np.cumsum(sorted_frequencies)
+    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
+    return dict(zip(counts, more_frequent))
 hamlets = pd.DataFrame(columns = ("language", "distribution"))
-book_dir = "./Books"
+book_dir = "Books"
 title_num = 1
-for language in os.listdir(book_dir):
-    if language[0] != ".":
-        for author in os.listdir(book_dir + "/" + language):
-            if author[0] != ".":
-                for title in os.listdir(book_dir + "/" + language + "/" + author):
-                    if title == "Hamlet.txt":
-                        inputfile = book_dir + "/" + language + "/" + author + "/" + title
-                        text = read_book(inputfile)
-                        frequencies = word_count_distribution(text)
-                        hamlets.loc[title_num] = language, frequencies
-                        title_num += 1         
+for language in book_titles:
+    for author in book_titles[language]:
+        for title in book_titles[language][author]:
+            if title == "Hamlet":
+                inputfile = data_filepath + "Books/" + language + "/" + author + "/" + title + ".txt"
+                text = read_book(inputfile)
+                frequencies = word_count_distribution(text)
+                hamlets.loc[title_num] = language, frequencies
+                title_num += 1
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 from collections import OrderedDict
 import numpy as np
+
 ```
 
 *** =sample_code
@@ -345,9 +373,10 @@ for index in range(hamlets.shape[0]):
     handles.append(plot)
     hamlet_languages.append(language)
 plt.title("Distributions of Word Frequencies in Hamlet Translations")
+xlim    = [0, 2e3]
 xlabel  = "Word Frequency"
 ylabel  = "Probability of Words Being More Frequent"
-plt.xlabel(xlabel); plt.ylabel(ylabel)
+plt.xlim(xlim); plt.xlabel(xlabel); plt.ylabel(ylabel)
 plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
 # show your plot using `plt.show`!
 ```
@@ -357,16 +386,17 @@ plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
 colors = ["crimson", "forestgreen", "blueviolet"]
 handles, hamlet_languages = [], []
 for index in range(hamlets.shape[0]):
-    language, distribution = hamlets.language[index+1], hamlets.distribution[index+1]
-    # call `more_frequent` with input `distribution`, and store as `dist`.
+    language, distribution = hamlets.language[index+1], hamlets.distribution[index+1]# frequencies is count_distribution
+    dist = more_frequent(distribution)
     plot, = plt.loglog(sorted(list(dist.keys())),sorted(list(dist.values()),
         reverse = True), color = colors[index], linewidth = 2)
     handles.append(plot)
     hamlet_languages.append(language)
-# call `plt.title` here, with a string argument for a title.
+plt.title("Distributions of Word Frequencies in Hamlet Translations")
+xlim    = [0, 2e3]
 xlabel  = "Word Frequency"
 ylabel  = "Probability of Words Being More Frequent"
-plt.xlabel(xlabel); plt.ylabel(ylabel)
+plt.xlim(xlim); plt.xlabel(xlabel); plt.ylabel(ylabel)
 plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
 plt.show()
 ```
