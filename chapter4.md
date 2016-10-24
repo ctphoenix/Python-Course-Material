@@ -225,7 +225,7 @@ for language in book_titles:
             if title == "Hamlet":
                 inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
                 text = read_book(inputfile)
-                frequencies = word_count_distribution(text)
+                frequencies = ## Enter code here! ###
                 hamlets.loc[title_num] = language, frequencies
                 title_num += 1
 ```
@@ -241,7 +241,7 @@ for language in book_titles:
             if title == "Hamlet":
                 inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
                 text = read_book(inputfile)
-                frequencies =  ## Enter code here! ###
+                frequencies = word_count_distribution(text)
                 hamlets.loc[title_num] = language, frequencies
                 title_num += 1
 ```
