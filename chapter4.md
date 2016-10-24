@@ -343,7 +343,7 @@ for index in range(hamlets.shape[0]):
         reverse = True), color = colors[index], linewidth = 2)
     handles.append(plot)
     hamlet_languages.append(language)
-plt.title("Distributions of Word Frequencies in Hamlet Translations")
+plt.title("Word Frequencies in Hamlet Translations")
 xlim    = [0, 2e3]
 xlabel  = "Word Frequency"
 ylabel  = "Probability of Words Being More Frequent"
@@ -377,7 +377,7 @@ plt.show()
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you use `plt.show`?")   
-success_msg("Great work!  The distributions differ somewhat, but their basic shape is the same.  By the way, distributions that look like a straight line like these are called "scale-free," because the line looks the same no matter where on the x-axis you look!")
+success_msg("Great work!  The distributions differ somewhat, but their basic shape is the same.  By the way, distributions that look like a straight line like these are called 'scale-free,' because the line looks the same no matter where on the x-axis you look!")
 ```
 
 
