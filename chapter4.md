@@ -71,7 +71,7 @@ test_object("distribution",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:0fc5cd1ce9
+--- type:NormalExercise lang:python xp:100 skills:1 key:f2cef742ec
 ## Exercise 2
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
@@ -79,110 +79,7 @@ In these bonus exercises, we will find and plot the distribution of word frequen
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
 *** =instructions
--  Edit the code used to read though each of the books in our library, and store each the word frequency distribution for each translation of William Shakespeare's "Hamlet" as a Pandas dataframe `hamlet`.  How many translations are there?  Which languages are they translated into?
-
-*** =hint
-- Define `hamlets` with columns `language` and `distribution`.  Then, add the results from `word_count_distribution(text)` as a row for all books with the title "Hamlet".
-
-*** =pre_exercise_code
-```{python}
-data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
-    "English": {
-        "shakespeare": ("A Midsummer Night's Dream", "Hamlet", "Macbeth", "Othello", "Richard III", "Romeo and Juliet", "The Merchant of Venice")
-    },
-    "French": {
-        "chevalier":     ("L'enfer et le paradis de l'autre monde", "L'i%CC%82le de sable", "La capitaine","La fille des indiens rouges", "La fille du pirate", "Le chasseur noir", "Les derniers Iroquois")
-    },
-    "German": {
-        "shakespeare":   ("Der Kaufmann von Venedig", "Ein Sommernachtstraum", "Hamlet", "Macbeth", "Othello", "Richard III", "Romeo und Julia")
-    },
-    "Portuguese": {
-        "shakespeare":   ("Hamlet", )
-    }
-}
-import os
-import pandas as pd
-import numpy as np
-from collections import Counter
-def count_words_fast(text):
-    text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
-    for ch in skips:
-        text = text.replace(ch, "")
-    word_counts = Counter(text.split(" "))
-    return word_counts
-def read_book(title_path):
-    text   = pd.read_csv(title_path, sep = "\n", engine='python', encoding="utf8")
-    text = text.to_string(index = False)
-    return text
-def word_stats(word_counts):
-    num_unique = len(word_counts)
-    counts = word_counts.values()
-    return (num_unique, counts)
-def word_count_distribution(text):
-    word_counts = count_words_fast(text)
-    count_distribution = Counter(word_counts.values())
-    return count_distribution
-def more_frequent(distribution):
-    counts = sorted(distribution.keys())
-    sorted_frequencies = sorted(distribution.values(), reverse = True)
-    cumulative_frequencies = np.cumsum(sorted_frequencies)
-    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
-    return dict(zip(counts, more_frequent))
-```
-
-*** =sample_code
-```{python}
-hamlets = pd.DataFrame(columns = ("language", "distribution"))
-book_dir = "Books"
-title_num = 1
-for language in book_titles:
-    for author in book_titles[language]:
-        for title in book_titles[language][author]:
-            if title == "Hamlet":
-                inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
-                inputfile.replace(" ","+")
-                text = read_book(inputfile)
-                frequencies = word_count_distribution(text)
-                hamlets.loc[title_num] = language, frequencies
-                title_num += 1
-```
-
-*** =solution
-```{python}
-hamlets = pd.DataFrame(columns = ("language", "distribution"))
-book_dir = "Books"
-title_num = 1
-for language in book_titles:
-    for author in book_titles[language]:
-        for title in book_titles[language][author]:
-            if title == "Hamlet":
-                inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
-                inputfile.replace(" ","+")
-                text = read_book(inputfile)
-                frequencies = word_count_distribution(text)
-                hamlets.loc[title_num] = language, frequencies
-                title_num += 1
-```
-
-*** =sct
-```{python}
-test_object("hamlets",
-            undefined_msg = "Did you define `hamlets`?",
-            incorrect_msg = "It looks like `hamlets` wasn't defined correctly.")
-success_msg("Great work!  There are three translations: English, German, and Portuguese.")
-```
-
---- type:NormalExercise lang:python xp:100 skills:1 key:f2cef742ec
-## Exercise 3
-
-In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
-
-For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
-
-*** =instructions
--  Create a function `more_frequent(distribution)` that takes a word frequency dict (like that made in Exercise 2) and outputs a dict with the same keys as those in distribution (the number of times a group of words appears) in the text), and values corresponding to the fraction of words that occur with more frequency than that.
+-  Create a function `more_frequent(distribution)` that takes a word frequency dict (like that made in Exercise 1) and outputs a dict with the same keys as those in distribution (the number of times a group of words appears) in the text), and values corresponding to the fraction of words that occur with more frequency than that.
 -  Call `more_frequent(distribution)`.
 
 *** =hint
@@ -253,6 +150,107 @@ test_function("more_frequent",
               not_called_msg = "Make sure to call `more_frequent`!",
               incorrect_msg = "Check your definition of `more_frequent` again.")
 success_msg("Great work!")
+```
+
+--- type:NormalExercise lang:python xp:100 skills:1 key:0fc5cd1ce9
+## Exercise 3
+
+In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
+
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+
+*** =instructions
+-  Edit the code used to read though each of the books in our library, and store each the word frequency distribution for each translation of William Shakespeare's "Hamlet" as a Pandas dataframe `hamlet`.  How many translations are there?  Which languages are they translated into?
+
+*** =hint
+- Define `hamlets` with columns `language` and `distribution`.  Then, add the results from `word_count_distribution(text)` as a row for all books with the title "Hamlet".
+
+*** =pre_exercise_code
+```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
+    "English": {
+        "shakespeare": ("A+Midsummer+Night's+Dream", "Hamlet", "Macbeth", "Othello", "Richard+III", "Romeo+and+Juliet", "The+Merchant+of+Venice")
+    },
+    "French": {
+        "chevalier":     ("L'enfer+et+le+paradis+de+l'autre+monde", "L'i%CC%82le+de+sable", "La+capitaine","La+fille+des+indiens+rouges", "La+fille+du+pirate", "Le+chasseur+noir", "Les+derniers+Iroquois")
+    },
+    "German": {
+        "shakespeare":   ("Der+Kaufmann+von+Venedig", "Ein+Sommernachtstraum", "Hamlet", "Macbeth", "Othello", "Richard+III", "Romeo+und+Julia")
+    },
+    "Portuguese": {
+        "shakespeare":   ("Hamlet", )
+    }
+}
+import os
+import pandas as pd
+import numpy as np
+from collections import Counter
+def count_words_fast(text):
+    text = text.lower()
+    skips = [".", ",", ";", ":", "'", '"']
+    for ch in skips:
+        text = text.replace(ch, "")
+    word_counts = Counter(text.split(" "))
+    return word_counts
+def read_book(title_path):
+    text   = pd.read_csv(title_path, sep = "\n", engine='python', encoding="utf8")
+    text = text.to_string(index = False)
+    return text
+def word_stats(word_counts):
+    num_unique = len(word_counts)
+    counts = word_counts.values()
+    return (num_unique, counts)
+def word_count_distribution(text):
+    word_counts = count_words_fast(text)
+    count_distribution = Counter(word_counts.values())
+    return count_distribution
+def more_frequent(distribution):
+    counts = sorted(distribution.keys())
+    sorted_frequencies = sorted(distribution.values(), reverse = True)
+    cumulative_frequencies = np.cumsum(sorted_frequencies)
+    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
+    return dict(zip(counts, more_frequent))
+```
+
+*** =sample_code
+```{python}
+hamlets = ## Enter code here! ###
+book_dir = "Books"
+title_num = 1
+for language in book_titles:
+    for author in book_titles[language]:
+        for title in book_titles[language][author]:
+            if title == "Hamlet":
+                inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
+                text = read_book(inputfile)
+                frequencies = word_count_distribution(text)
+                hamlets.loc[title_num] = language, frequencies
+                title_num += 1
+```
+
+*** =solution
+```{python}
+hamlets = pd.DataFrame(columns = ("language", "distribution"))
+book_dir = "Books"
+title_num = 1
+for language in book_titles:
+    for author in book_titles[language]:
+        for title in book_titles[language][author]:
+            if title == "Hamlet":
+                inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
+                text = read_book(inputfile)
+                frequencies = word_count_distribution(text)
+                hamlets.loc[title_num] = language, frequencies
+                title_num += 1
+```
+
+*** =sct
+```{python}
+test_object("hamlets",
+            undefined_msg = "Did you define `hamlets`?",
+            incorrect_msg = "It looks like `hamlets` wasn't defined correctly.")
+success_msg("Great work!  There are three translations: English, German, and Portuguese.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:62f73c5919
@@ -364,7 +362,7 @@ for index in range(hamlets.shape[0]):
         reverse = True), color = colors[index], linewidth = 2)
     handles.append(plot)
     hamlet_languages.append(language)
-plt.title("Distributions of Word Frequencies in Hamlet Translations")
+plt.title("Word Frequencies in Hamlet Translations")
 xlim    = [0, 2e3]
 xlabel  = "Word Frequency"
 ylabel  = "Probability of Words Being More Frequent"
