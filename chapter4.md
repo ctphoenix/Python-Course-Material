@@ -99,65 +99,57 @@ def count_words_fast(text):
     word_counts = Counter(text.split(" "))
     return word_counts
 def read_book(title_path):
-    with open(title_path, "r", encoding="utf8") as current_file:
-        text = current_file.read()
-        text = text.replace("\n", "").replace("\r", "")
+    text   = pd.read_csv(title_path, sep = "\n", engine='python', encoding="utf8")
+    text = text.to_string(index = False)
     return text
 def word_stats(word_counts):
     num_unique = len(word_counts)
     counts = word_counts.values()
     return (num_unique, counts)
-def word_stats(word_counts):
-    num_unique = len(word_counts)
-    counts = word_counts.values()
-    return (num_unique, counts)
-text = read_book(data_filepath + "Books/English/shakespeare/Romeo+and+Juliet.txt")    
 def word_count_distribution(text):
     word_counts = count_words_fast(text)
     count_distribution = Counter(word_counts.values())
-    return count_distribution   
+    return count_distribution
+def more_frequent(distribution):
+    counts = sorted(distribution.keys())
+    sorted_frequencies = sorted(distribution.values(), reverse = True)
+    cumulative_frequencies = np.cumsum(sorted_frequencies)
+    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
+    return dict(zip(counts, more_frequent))
 ```
 
 *** =sample_code
 ```{python}
-stats = pd.DataFrame(columns = ("language", "author", "title", "length", "unique"))
 hamlets = pd.DataFrame(columns = ("language", "distribution"))
-book_dir = "./Books"
+book_dir = "Books"
 title_num = 1
-for language in os.listdir(book_dir):
-    if language[0] != ".":
-        for author in os.listdir(book_dir + "/" + language):
-            if author[0] != ".":
-                for title in os.listdir(book_dir + "/" + language + "/" + author):
-                  #if title == "Hamlet.txt": #INCLUDE!
-                    title = title.replace('"', "'")
-                    inputfile = book_dir + "/" + language + "/" + author + "/" + title
-                    print(inputfile)
-                    text = read_book(inputfile)
-                    (num_unique, counts) = word_stats(count_words(text)) #DELETE!
-                    stats.loc[title_num] = language, author.title(), title.replace(".txt", "").title(), sum(counts), num_unique #DELETE!
-                    #frequencies = word_count_distribution(text) # INCLUDE!
-                    #hamlets.loc[title_num] = language, frequencies # INCLUDE!
-                    title_num += 1
+for language in book_titles:
+    for author in book_titles[language]:
+        for title in book_titles[language][author]:
+            if title == "Hamlet":
+                inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
+                inputfile.replace(" ","+")
+                text = read_book(inputfile)
+                frequencies = word_count_distribution(text)
+                hamlets.loc[title_num] = language, frequencies
+                title_num += 1
 ```
 
 *** =solution
 ```{python}
 hamlets = pd.DataFrame(columns = ("language", "distribution"))
-book_dir = "./Books"
+book_dir = "Books"
 title_num = 1
-for language in os.listdir(book_dir):
-    if language[0] != ".":
-        for author in os.listdir(book_dir + "/" + language):
-            if author[0] != ".":
-                for title in os.listdir(book_dir + "/" + language + "/" + author):
-                    if title == "Hamlet.txt":
-                        inputfile = book_dir + "/" + language + "/" + author + "/" + title
-                        print(inputfile)
-                        text = read_book(inputfile)
-                        frequencies = word_count_distribution(text)
-                        hamlets.loc[title_num] = language, frequencies
-                        title_num += 1  
+for language in book_titles:
+    for author in book_titles[language]:
+        for title in book_titles[language][author]:
+            if title == "Hamlet":
+                inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
+                inputfile.replace(" ","+")
+                text = read_book(inputfile)
+                frequencies = word_count_distribution(text)
+                hamlets.loc[title_num] = language, frequencies
+                title_num += 1
 ```
 
 *** =sct
