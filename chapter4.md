@@ -308,56 +308,54 @@ book_titles = {
     }
 }
 
-import os
-import pandas as pd
-import numpy as np
-from collections import Counter
-def count_words_fast(text):
-    text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
-    for ch in skips:
-        text = text.replace(ch, "")
-    word_counts = Counter(text.split(" "))
-    return word_counts
-
-def read_book(title_path):
-    text   = pd.read_csv(title_path, sep = "\n", engine='python', encoding="utf8")
-    text = text.to_string(index = False)
-    return text
-def word_stats(word_counts):
-    num_unique = len(word_counts)
-    counts = word_counts.values()
-    return (num_unique, counts)
-def word_stats(word_counts):
-    num_unique = len(word_counts)
-    counts = word_counts.values()
-    return (num_unique, counts)
-def word_count_distribution(text):
-    word_counts = count_words_fast(text)
-    count_distribution = Counter(word_counts.values())
-    return count_distribution
-def more_frequent(distribution):
-    counts = sorted(distribution.keys())
-    sorted_frequencies = sorted(distribution.values(), reverse = True)
-    cumulative_frequencies = np.cumsum(sorted_frequencies)
-    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
-    return dict(zip(counts, more_frequent))
-hamlets = pd.DataFrame(columns = ("language", "distribution"))
-book_dir = "Books"
-title_num = 1
-for language in book_titles:
-    for author in book_titles[language]:
-        for title in book_titles[language][author]:
-            if title == "Hamlet":
-                inputfile = data_filepath + "Books/" + language + "/" + author + "/" + title + ".txt"
-                text = read_book(inputfile)
-                frequencies = word_count_distribution(text)
-                hamlets.loc[title_num] = language, frequencies
-                title_num += 1
-from matplotlib import pyplot as plt
-from matplotlib.backends.backend_pdf import PdfPages
-from collections import OrderedDict
-import numpy as np
+#import pandas as pd
+#import numpy as np
+#from collections import Counter
+#def count_words_fast(text):
+#    text = text.lower()
+#    skips = [".", ",", ";", ":", "'", '"']
+#    for ch in skips:
+#        text = text.replace(ch, "")
+#    word_counts = Counter(text.split(" "))
+#    return word_counts
+#
+#def read_book(title_path):
+#    text   = pd.read_csv(title_path, sep = "\n", engine='python', encoding="utf8")
+#    text = text.to_string(index = False)
+#    return text
+#def word_stats(word_counts):
+#    num_unique = len(word_counts)
+#    counts = word_counts.values()
+#    return (num_unique, counts)
+#def word_stats(word_counts):
+#    num_unique = len(word_counts)
+#    counts = word_counts.values()
+#    return (num_unique, counts)
+#def word_count_distribution(text):
+#    word_counts = count_words_fast(text)
+#    count_distribution = Counter(word_counts.values())
+#    return count_distribution
+#def more_frequent(distribution):
+#    counts = sorted(distribution.keys())
+#    sorted_frequencies = sorted(distribution.values(), reverse = True)
+#    cumulative_frequencies = np.cumsum(sorted_frequencies)
+#    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
+#    return dict(zip(counts, more_frequent))
+#hamlets = pd.DataFrame(columns = ("language", "distribution"))
+#book_dir = "Books"
+#title_num = 1
+#for language in book_titles:
+#    for author in book_titles[language]:
+#        for title in book_titles[language][author]:
+#            if title == "Hamlet":
+#                inputfile = data_filepath + "Books/" + language + "/" + author + "/" + title + ".txt"
+#                text = read_book(inputfile)
+#                frequencies = word_count_distribution(text)
+#                hamlets.loc[title_num] = language, frequencies
+#                title_num += 1
+#from matplotlib import pyplot as plt
+#from matplotlib.backends.backend_pdf import PdfPages
+#from collections import OrderedDict
 
 ```
 
