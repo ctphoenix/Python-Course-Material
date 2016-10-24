@@ -34,15 +34,14 @@ def count_words_fast(text):
     word_counts = Counter(text.split(" "))
     return word_counts
 def read_book(title_path):
-    with open(title_path, "r", encoding="utf8") as current_file:
-        text = current_file.read()
-        text = text.replace("\n", "").replace("\r", "")
+    text   = pd.read_csv(title_path, sep = "\n", engine='python', encoding="utf8")
+    text = text.to_string(index = False)
     return text
 def word_stats(word_counts):
     num_unique = len(word_counts)
     counts = word_counts.values()
     return (num_unique, counts)
-text = read_book("./Books/English/shakespeare/Romeo and Juliet.txt")    
+text = read_book(data_filepath + "Books/English/shakespeare/Romeo+and+Juliet.txt") 
 ```
 
 *** =sample_code
