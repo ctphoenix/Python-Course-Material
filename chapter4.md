@@ -87,6 +87,20 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+book_titles = {
+    "English": {
+        "shakespeare": ("A Midsummer Night's Dream", "Hamlet", "Macbeth", "Othello", "Richard III", "Romeo and Juliet", "The Merchant of Venice")
+    },
+    "French": {
+        "chevalier":     ("L'enfer et le paradis de l'autre monde", "L'i%CC%82le de sable", "La capitaine","La fille des indiens rouges", "La fille du pirate", "Le chasseur noir", "Les derniers Iroquois")
+    },
+    "German": {
+        "shakespeare":   ("Der Kaufmann von Venedig", "Ein Sommernachtstraum", "Hamlet", "Macbeth", "Othello", "Richard III", "Romeo und Julia")
+    },
+    "Portuguese": {
+        "shakespeare":   ("Hamlet", )
+    }
+}
 import os
 import pandas as pd
 import numpy as np
