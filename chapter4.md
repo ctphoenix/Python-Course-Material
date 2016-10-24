@@ -164,6 +164,7 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 
 *** =hint
 - Define `hamlets` with columns `language` and `distribution`.  Then, add the results from `word_count_distribution(text)` as a row for all books with the title "Hamlet".
+- Try using `pd.DataFrame`.  Make sure to include the `columns` argument!
 
 *** =pre_exercise_code
 ```{python}
@@ -240,7 +241,7 @@ for language in book_titles:
             if title == "Hamlet":
                 inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
                 text = read_book(inputfile)
-                frequencies = word_count_distribution(text)
+                frequencies =  ## Enter code here! ###
                 hamlets.loc[title_num] = language, frequencies
                 title_num += 1
 ```
