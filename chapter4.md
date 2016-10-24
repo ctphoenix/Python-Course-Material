@@ -375,12 +375,9 @@ plt.show()
 
 *** =sct
 ```{python}
-test_function("plt.show",
-              not_called_msg = "Make sure to show your plot using `plt.show`!")
-test_function("plt.legend",
-              not_called_msg = "Make sure to include a legend using `plt.legend`!")     
-test_function("plt.title",
-              not_called_msg = "Make sure to include a .title using `plt..title`!")     
+test_student_typed("plt.show()",
+              pattern=False,
+              not_typed_msg="Did you use `plt.show`?")   
 success_msg("Great work!  The distributions differ somewhat, but their basic shape is the same.  By the way, distributions that look like a straight line like these are called "scale-free," because the line looks the same no matter where on the x-axis you look!")
 ```
 
