@@ -159,6 +159,8 @@ show(fig)
 
 *** =sct
 ```{python}
+test_object("fig",
+            undefined_msg = "Did you run all the code?")
 success_msg("Great work!")
 ```
 
@@ -406,13 +408,8 @@ show(fig)
 
 *** =sct
 ```{python}
-test_object("source",
-            undefined_msg = "Did you define `source`?",
-            incorrect_msg = "It looks like `source` wasn't defined correctly.")
+
 success_msg("Great work!")
-test_student_typed("show(fig)",
-              pattern=False,
-              not_typed_msg="Did you make sure to plot the figure?")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:8c4771d390
