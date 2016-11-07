@@ -159,8 +159,6 @@ show(fig)
 
 *** =sct
 ```{python}
-test_object("fig",
-            undefined_msg = "Did you run all the code?")
 success_msg("Great work!")
 ```
 
