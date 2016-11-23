@@ -1,13 +1,13 @@
 ---
-title       : Module 4 (Whisky) Extra Exercises
-description : Exercises for Homework
+title       : Homework: Visualizing Whisky Classification
+description : In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
-In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
+In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
 -  Here we provide a basic demonstration of an interactive grid plot using Bokeh.  Execute the following code, and follow along the comments. We will later adapt this code to plot the correlations among distillery flavor profiles, as well as a geographical map of distilleries colored by region and flavor profile.

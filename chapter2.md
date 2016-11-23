@@ -1,6 +1,6 @@
 ---
 title       : Homework 2
-description : Exercises for Homework (Week 2)
+description : Exercises for Homework (Week 2).  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe (noughts and crosses) simulator, and evaluate basic winning strategies.
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   

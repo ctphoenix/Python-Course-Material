@@ -1,13 +1,13 @@
 ---
-title       : Module 2 (Language Processing) Extra Exercises
-description : Exercises for Homework
+title       : Homework: Translations of Hamlet
+description : In this homework, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
-In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
+In this homework, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 

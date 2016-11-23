@@ -1,13 +1,13 @@
 ---
-title       : Module 6 (Bird Watching) Extra Exercises
-description : Exercises for Homework
+title       : Homework: Bird Migration
+description : In these exercises, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
-In these exercises, we will continue taking a look at patterns of bird flights over time.
+In these exercises, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
 
 *** =instructions
 -  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird. Modify the code to assign the mean altitudes of each bird into an object called `mean_altitudes`.
