@@ -1,6 +1,6 @@
 ---
 title       : Homework: Practice with Classification
-description : In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+description : In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
   
@@ -8,7 +8,7 @@ attachments :
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
-In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 -  Read in the data as a `pandas` dataframe.  The data can be found at `https://s3.amazonaws.com/demo-datasets/wine.csv`.
