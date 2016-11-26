@@ -514,10 +514,11 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- The functions `rand` and `in_circle` are defined from previous exercises.  From `R=1000` two-dimensional points selected at random from `[-1,1]^2`, find the fraction that fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two areas!
+- The functions `rand` and `in_circle` are defined from previous exercises.  Using these functions, code is pre-entered that creates a list `x` of `R=10000` two-dimensional points.  Create a list of `10000` booleans called `inside` that are `True` if and only if the point in `x` with that index falls within the unit circle.
+- Print your answer.  This proportion is an estimate of the ratio of the two areas!
 
 *** =hint
--  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  Using these functions, create a list of 1000 points, test if they fall within the unit circle.  Store your answers as a list of booleans called `inside`.
+-  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  
 - Print the fraction that do fit inside the circle!
 
 *** =pre_exercise_code
@@ -548,25 +549,34 @@ def in_circle(x, origin = [0]*2):
 
 *** =solution
 ```{python}
-R=1000
-inside = 0
+R = 10000
+x, inside = [], []
 for i in range(R):
-    x = [rand(), rand()]
-    inside += int(in_circle(x))
-print(inside/R)
+    point = [rand(), rand()]
+    x.append(point)
+    inside.append(in_circle(point))
+
+print(sum(inside)/R)
 ```
 
 *** =sample_code
 ```{python}
-# write your code here!
+R = 10000
+x, inside = [], []
+for i in range(R):
+    point = [rand(), rand()]
+    x.append(point)
+    # Enter your code here! #
+
+# Enter your code here! #
 
 ```
 
 *** =sct
 ```{python}
-test_function("print", index = 1,
-              not_called_msg = "Make sure to print your answer!",
-              incorrect_msg = "Are you sure that your answer is correct?")
+test_student_typed("print", index = 1,
+              pattern=False,
+              not_typed_msg = "Make sure to print your answer!")
 test_student_typed("rand()",
                        pattern=False,
                        not_typed_msg="Make sure to use `rand()`!")      
@@ -615,16 +625,17 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
-R=10000
-inside = 0
+R = 10000
+x, inside = [], []
 for i in range(R):
-    x = [rand(), rand()]
-    inside += int(in_circle(x))        
+    point = [rand(), rand()]
+    x.append(point)
+    inside.append(in_circle(point))       
 ```
 
 *** =solution
 ```{python}
-print(inside/R - math.pi/4)
+print(sum(inside)/R - math.pi/4)
 ```
 
 *** =sample_code
