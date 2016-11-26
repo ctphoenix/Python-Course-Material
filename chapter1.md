@@ -7,14 +7,14 @@ attachments :
 --- type:NormalExercise lang:python xp:100 skills:1 key:e637b6eee9
 ## Exercise 1a
 
-In this exercise, we will count the frequency of each letter in a document.
+In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
 
 *** =instructions
-- The lowercase English alphabet can be found using `ascii_lowercase` attribute in the `string` library.  Store this as `alphabet`.
+- The lowercase and uppercase English alphabet can be found using `ascii_letters` attribute in the `string` library.  Store this as `alphabet`.
 
 *** =hint
 - Use `import` to import the `string` library.
-- Use `=` to assign `ascii_lowercase` to `alphabet`.
+- Use `=` to assign `ascii_letters` to `alphabet`.
 
 *** =pre_exercise_code
 ```{python}
@@ -30,14 +30,14 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 *** =solution
 ```{python}
 import string
-alphabet = string.ascii_lowercase
+alphabet = string.ascii_letters
 ```
 
 *** =sct
 ```{python}
-test_student_typed("ascii_lowercase",
+test_student_typed("ascii_letters",
                        pattern=False,
-                       not_typed_msg="Make sure to use `ascii_lowercase`!")
+                       not_typed_msg="Make sure to use `ascii_letters`!")
 test_object("alphabet",
             undefined_msg = "Did you define `alphabet`?",
             incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
@@ -49,11 +49,11 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:89cba9d6a8
 ## Exercise 1b
 
-In this exercise, we will count the frequency of each letter in a document.
+In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
 
 *** =instructions
-- The lowercase English alphabet is stored as `alphabet`.
-- Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with each letter used as keys and the number of times each letter is used in this sentence as values.  Make sure that capital letters are counted!
+- The lower and upper cases of the English alphabet is stored as `alphabet`.
+- Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with each letter used as keys and the number of times each letter is used in this sentence as values.
 
 *** =hint
 - Can you think of a way to use `for` loops to count up the frequency of each letter used in the sentence? 
@@ -62,7 +62,7 @@ In this exercise, we will count the frequency of each letter in a document.
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
-alphabet = string.ascii_lowercase
+alphabet = string.ascii_letters
 ```
 
 
@@ -70,7 +70,7 @@ alphabet = string.ascii_lowercase
 ```{python}
 # Write your code here!
 
-sentence = 'jim quickly realized that the beautiful gowns are expensive'
+sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 count_letters = {}
 # add values to count_letters here!
@@ -79,7 +79,7 @@ count_letters = {}
 
 *** =solution
 ```{python}
-sentence = 'jim quickly realized that the beautiful gowns are expensive'
+sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 count_letters = {}
 for letter in alphabet:
@@ -102,7 +102,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:8cb1c4bf90
 ## Exercise 1c
 
-In this exercise, we will count the frequency of each letter in a document.
+In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
 
 *** =instructions
 - Here is an example solution of part **1b**.  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.
@@ -119,11 +119,11 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 *** =sample_code
 ```{python}
 import string
-sentence = 'jim quickly realized that the beautiful gowns are expensive'
+sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 # edit the code below to make your function!
 count_letters = {}
-for letter in string.ascii_lowercase:
+for letter in string.ascii_letters:
     count_letter = 0
     for character in input_string:
         if character == letter:
@@ -136,11 +136,11 @@ for letter in string.ascii_lowercase:
 *** =solution
 ```{python}
 import string 
-sentence = 'jim quickly realized that the beautiful gowns are expensive'
+sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 def counter(input_string):
     count_letters = {}
-    for letter in string.ascii_lowercase:
+    for letter in string.ascii_letters:
         count_letter = 0
         for character in input_string:
             if character == letter:
@@ -163,7 +163,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:a0932fb3c4
 ## Exercise 1d
 
-In this exercise, we will count the frequency of each letter in a document.
+In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
 
 *** =instructions
 - Abraham Lincoln's Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
@@ -178,7 +178,7 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import string
 def counter(input_string):
     count_letters = {}
-    for letter in string.ascii_lowercase:
+    for letter in string.ascii_letters:
         count_letter = 0
         for character in input_string:
             if character == letter:
@@ -218,7 +218,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:bb70667667
 ## Exercise 1e
 
-In this exercise, we will count the frequency of each letter in a document.
+In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
 
 *** =instructions
 - What is the most common letter used in the Gettysburg Address?
@@ -233,7 +233,7 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import string
 def counter(input_string):
     count_letters = {}
-    for letter in string.ascii_lowercase:
+    for letter in string.ascii_letters:
         count_letter = 0
         for character in input_string:
             if character.casefold() == letter:
