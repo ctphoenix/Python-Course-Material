@@ -548,7 +548,6 @@ def in_circle(x, origin = [0]*2):
 
 *** =solution
 ```{python}
-random.seed(1)
 R = 10000
 x, inside = [], []
 for i in range(R):
@@ -561,7 +560,6 @@ print(sum(inside)/R)
 
 *** =sample_code
 ```{python}
-random.seed(1)
 R = 10000
 x, inside = [], []
 for i in range(R):
