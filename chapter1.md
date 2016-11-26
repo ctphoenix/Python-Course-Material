@@ -433,7 +433,8 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  - Use your function to print whether the point `(1,1)` lies within the unit circle centered at the origin.
+- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x, origin)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle with a given origin.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.
+- Use your function to print whether the point `(1,1)` lies within the unit circle centered at `(0,0)`.
 
 *** =hint
 - Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than 1!
@@ -513,7 +514,7 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- The functions `rand` and `in_circle` are Find how many of `R=1000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two volumes!
+- The functions `rand` and `in_circle` are defined from previous exercises.  Find how many of `R=1000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two areas!
 
 *** =hint
 -  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  Using these functions, create a list of 1000 points, test if they fall within the unit circle.  Store your answers as a list of booleans called `inside`.
@@ -585,7 +586,7 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Note: `inside` and `R` are defined from the previous subproblem.  Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find and print the difference between this value and your estimate in part `2e`.
+- Note: `inside` and `R` are defined from the previous subproblem.  Recall the true ratio of the area of of the unit circle to the area to the inscribing square is pi/4. Find and print the difference between this value and your estimate in part `2e`.
 
 *** =hint
 - Take your estimate from the last exercise, and subtract `math.pi/4`.  Make sure to print your answer!
