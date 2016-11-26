@@ -524,6 +524,7 @@ The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In t
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+random.seed(1)
 import random, math
 def rand():
     return random.uniform(-1,1)
