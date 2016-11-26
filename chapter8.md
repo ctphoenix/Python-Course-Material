@@ -1,5 +1,5 @@
 ---
-title       : Homework: Bird Migration
+title       : Homework - Bird Migration
 description : In this homework, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
 attachments :
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
