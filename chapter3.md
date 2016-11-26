@@ -1,6 +1,6 @@
 ---
 title       : Homework: Caesar Cipher
-description : 
+description : abc
 attachments :
     slides_link:
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
