@@ -1,9 +1,6 @@
 title                : Using Python for Research
 author_field         : ctphoenix
-description          :
-This course bridges the gap between introductory and advanced courses in Python. While there are many excellent introductory Python courses available, most typically do not go deep enough for you to apply your Python skills to research projects. In this course, after first reviewing the basics of Python 3, we learn about tools commonly used in research settings.
-
-Using a combination of a guided introduction and more independent in-depth exploration, you will get to practice your new Python skills with various case studies chosen for their scientific breadth and their coverage of different Python features.This consists of the homeworks for each week.
+description          : This course bridges the gap between introductory and advanced courses in Python. While there are many excellent introductory Python courses available, most typically do not go deep enough for you to apply your Python skills to research projects. In this course, after first reviewing the basics of Python 3, we learn about tools commonly used in research settings.\nUsing a combination of a guided introduction and more independent in-depth exploration, you will get to practice your new Python skills with various case studies chosen for their scientific breadth and their coverage of different Python features.This consists of the homeworks for each week.
 author_bio           : Patrick Staples is a TA for this course.  Hi!
 university           : Harvard University
 difficulty_level     : 2
