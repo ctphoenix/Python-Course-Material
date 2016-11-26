@@ -717,7 +717,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.
 
 *** =instructions
-- The function `moving_window_average(x, n_neighbors)` is already shown. Compute and store `R=1000` random values from 0-1 as `x`. Then, compute the moving window average several times for this list for the range of `n_neighbors 1-9`.  Store `x` and each of these averages as consecutive lists in a list called `X`.
+- The function `moving_window_average(x, n_neighbors)` is already shown. Compute and store `R=1000` random values from 0-1 as `x`. Then, compute the moving window average several times for this list for the range of `n_neighbors 1-9`.  Store `x` and each of these averages as consecutive lists in a list called `Y`.
 
 *** =hint
 - You may be able to use a list comprehension here!  A `for` loop will also work.
@@ -746,7 +746,7 @@ def moving_window_average(x, n_neighbors=2):
 
 R=1000
 x = [random.random() for i in range(R)]
-X = [x] + [moving_window_average(x, i) for i in range(1, 10)]
+Y = [x] + [moving_window_average(x, i) for i in range(1, 10)]
 ```
 
 *** =sample_code
@@ -765,9 +765,9 @@ def moving_window_average(x, n_neighbors=2):
 
 *** =sct
 ```{python}
-test_object("X",
-              undefined_msg="Make sure to define `X`!",
-              incorrect_msg="Check your usage of `X` again.")
+test_object("Y",
+              undefined_msg="Make sure to define `Y`!",
+              incorrect_msg="Check your usage of `Y` again.")
 success_msg("Great work!")
 ```
 
@@ -778,7 +778,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.
 
 *** =instructions
-- `moving_window_average(x, n_neighbors=2)` and `X` is already loaded into memory.  For each list in `X`, calculate and store the range (the maximum minus the minimum) in a new list `ranges`, and print your answer.  As the moving average window increases, does the range of each list increase or decrease? Why do you think that is?
+- `moving_window_average(x, n_neighbors=2)` and `Y` is already loaded into memory.  For each list in `Y`, calculate and store the range (the maximum minus the minimum) in a new list `ranges`, and print your answer.  As the moving average window increases, does the range of each list increase or decrease? Why do you think that is?
 
 *** =hint
 - A `for` loop or a list comprehension will work well here.
@@ -800,35 +800,19 @@ moving_window_average(x, n_neighbors=1)
 
 R=1000
 x = [random.random() for i in range(R)]
-X = [x] + [moving_window_average(x, i) for i in range(1,10)]
+Y = [x] + [moving_window_average(x, i) for i in range(1,10)]
 ```
 
 *** =solution
 ```{python}
-import random
-random.seed(1)
-def moving_window_average(x, n_neighbors=2):
-    n = len(x)
-    width = n_neighbors*2 + 1
-    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
-    return [sum(x[i:(i+width)]) / width for i in range(n)]
-
-x=[0,10,5,3,1,5]
-
-moving_window_average(x, n_neighbors=1)
-
-R=1000
-x = [random.random() for i in range(R)]
-X = [x] + [moving_window_average(x, i) for i in range(1,10)]
-
-ranges = [max(x)-min(x) for x in X]
+ranges = [max(x)-min(x) for x in Y]
 print(ranges)
 ```
 
 *** =sample_code
 ```{python}
 # write your code here!
-ranges = [max(x)-min(x) for x in X]
+ranges = [max(x)-min(x) for x in Y]
 print(ranges)
 ```
 
