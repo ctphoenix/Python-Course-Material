@@ -2,8 +2,6 @@
 title       : Homework: Bird Migration
 description : In this homework, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
 attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
-
 --- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
 ## Exercise 1
 
