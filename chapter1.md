@@ -321,11 +321,11 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Using `random.random`, create a function `rand()` that generate real numbers between -1 and 1.
+- Using `random.uniform`, create a function `rand()` that generate real numbers between -1 and 1.
 - Call `rand()` once.
 
 *** =hint
--  `random.random` creates random numbers between 0 and 1.  How can you stretch and shift this range to get random values between -1 and 1?
+-  `random.uniform` generates a random value between the first argument and the second argument.  Try using this to get random values between -1 and 1.
 
 *** =pre_exercise_code
 ```{python}
@@ -342,7 +342,7 @@ def rand():
         This function uses random.random, which generates\n
         random real number between 0 and 1.
     """
-    return random.random()*2-1
+    return random.uniform(-1,1)
 
 rand()
 ```
@@ -361,9 +361,9 @@ rand()
 ```{python}
 test_function("rand", index = 1,
               not_called_msg = "Make sure to call `rand()`!")
-test_student_typed("random.random",
+test_student_typed("random.uniform",
               pattern=False,
-              not_typed_msg="Did you use `random.random` to generate your answer?")                            
+              not_typed_msg="Did you use `random.uniform` to generate your answer?")                            
 success_msg("Great work!")
 ```
 
@@ -514,7 +514,7 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- The functions `rand` and `in_circle` are defined from previous exercises.  Find how many of `R=1000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two areas!
+- The functions `rand` and `in_circle` are defined from previous exercises.  From `R=1000` two-dimensional points selected at random from `[-1,1]^2`, find the fraction that fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two areas!
 
 *** =hint
 -  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  Using these functions, create a list of 1000 points, test if they fall within the unit circle.  Store your answers as a list of booleans called `inside`.
@@ -526,7 +526,7 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import random, math
 random.seed(1)
 def rand():
-    return random.random()*2-1
+    return random.uniform(-1,1)
 def distance(x, y):
     """
         Given x and y, find their distance.\n
@@ -597,7 +597,7 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import random, math
 random.seed(1)
 def rand():
-    return random.random()*2-1
+    return random.uniform(-1,1)
 def distance(x, y):
     """
         Given x and y, find their distance.\n
