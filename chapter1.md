@@ -514,7 +514,7 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
-- The functions `rand` and `in_circle` are defined from previous exercises.  Using these functions, code is pre-entered that creates a list `x` of `R=10000` two-dimensional points.  Create a list of `10000` booleans called `inside` that are `True` if and only if the point in `x` with that index falls within the unit circle.
+- The functions `rand` and `in_circle` are defined from previous exercises.  Using these functions, code is pre-entered that creates a list `x` of `R=10000` two-dimensional points.  Create a list of `10000` booleans called `inside` that are `True` if and only if the point in `x` with that index falls within the unit circle.  Make sure to use `in_circle`!
 - Print your answer.  This proportion is an estimate of the ratio of the two areas!
 
 *** =hint
