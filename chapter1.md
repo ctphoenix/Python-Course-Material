@@ -525,7 +525,6 @@ The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In t
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
-random.seed(1)
 def rand():
     return random.uniform(-1,1)
 def distance(x, y):
@@ -549,6 +548,7 @@ def in_circle(x, origin = [0]*2):
 
 *** =solution
 ```{python}
+random.seed(1)
 R = 10000
 x, inside = [], []
 for i in range(R):
@@ -561,6 +561,7 @@ print(sum(inside)/R)
 
 *** =sample_code
 ```{python}
+random.seed(1)
 R = 10000
 x, inside = [], []
 for i in range(R):
