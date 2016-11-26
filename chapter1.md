@@ -515,7 +515,6 @@ The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In t
 
 *** =instructions
 - The functions `rand` and `in_circle` are defined from previous exercises.  Using these functions, code is pre-entered that creates a list `x` of `R=10000` two-dimensional points.  Create a list of `10000` booleans called `inside` that are `True` if and only if the point in `x` with that index falls within the unit circle.  Make sure to use `in_circle`!
-- Print your answer.  This proportion is an estimate of the ratio of the two areas!
 
 *** =hint
 -  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  
@@ -555,8 +554,6 @@ for i in range(R):
     point = [rand(), rand()]
     x.append(point)
     inside.append(in_circle(point))
-
-print(sum(inside)/R)
 ```
 
 *** =sample_code
@@ -568,18 +565,11 @@ for i in range(R):
     x.append(point)
     # Enter your code here! #
 
-# Enter your code here! #
 
 ```
 
 *** =sct
 ```{python}
-test_student_typed("print",
-              pattern=False,
-              not_typed_msg = "Make sure to print your answer!")
-test_student_typed("rand()",
-                       pattern=False,
-                       not_typed_msg="Make sure to use `rand()`!")      
 test_student_typed("in_circle",
                        pattern=False,
                        not_typed_msg="Make sure to use `in_circle()`!")                  
