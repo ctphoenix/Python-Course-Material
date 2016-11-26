@@ -574,7 +574,7 @@ for i in range(R):
 
 *** =sct
 ```{python}
-test_student_typed("print", index = 1,
+test_student_typed("print",
               pattern=False,
               not_typed_msg = "Make sure to print your answer!")
 test_student_typed("rand()",
