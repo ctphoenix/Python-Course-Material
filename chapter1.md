@@ -778,7 +778,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  One way to smooth it out is to consider the average of each value's neighbors, including the value itself.
 
 *** =instructions
-- `moving_window_average(x, n_neighbors=2)` and `Y` is already loaded into memory.  For each list in `Y`, calculate and store the range (the maximum minus the minimum) in a new list `ranges`, and print your answer.  As the moving average window increases, does the range of each list increase or decrease? Why do you think that is?
+- `moving_window_average(x, n_neighbors=2)` and `Y` are already loaded into memory.  For each list in `Y`, calculate and store the range (the maximum minus the minimum) in a new list `ranges`, and print your answer.  As the moving average window increases, does the range of each list increase or decrease? Why do you think that is?
 
 *** =hint
 - A `for` loop or a list comprehension will work well here.
