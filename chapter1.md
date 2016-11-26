@@ -278,7 +278,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:8b40a3f09f
 ## Exercise 2a
 
-The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - Using the math library, calculate and print the value of pi/4.
@@ -300,8 +300,7 @@ print(math.pi/4)
 *** =sample_code
 ```{python}
 # write your code here!
-import math
-print(math.pi/4)
+
 ```
 
 *** =sct
@@ -319,7 +318,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:7aa7dadeac
 ## Exercise 2b
 
-The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - Using `random.random`, create a function `rand()` that generate real numbers between -1 and 1.
@@ -372,10 +371,11 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:eabc2b80ff
 ## Exercise 2c
 
-The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - The distance between two points `x` and `y` is the square root of the sum of squared differences along each dimension of `x` and `y`.  Create a function `distance(x, y)` that takes two vectors and outputs the distance between them.  Use your function to find the distance between `(0,0)` and `(1,1)`.
+- Print your answer.
 
 *** =hint
 - Use the `sqrt` function in the `math` library to find square roots.  Finding the square can be done using the `pow` function in the `math` library, or exponentiating using `**2` after the number you would like to square.
@@ -430,7 +430,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:89310e2304
 ## Exercise 2d
 
-The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.  - Use your function to print whether the point `(1,1)` lies within the unit circle centered at the origin.
@@ -510,7 +510,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:c7c20038ea
 ## Exercise 2e
 
-The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - The functions `rand` and `in_circle` are Find how many of `R=1000` two-dimensional points selected at random from `[-1,1]^2` fall within the unit circle, and print your answer.  This proportion is an estimate of the ratio of the two volumes!
@@ -582,7 +582,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:d3950c2ef5
 ## Exercise 2f
 
-The ratio of the volumes of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In this exercise, we will find a way to approximate this value.
 
 *** =instructions
 - Note: `inside` and `R` are defined from the previous subproblem.  Recall the true ratio of the volume of of the unit circle to the volume to the inscribing square is pi/4. Find and print the difference between this value and your estimate in part `2e`.
