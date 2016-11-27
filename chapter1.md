@@ -812,8 +812,8 @@ print(ranges)
 *** =sample_code
 ```{python}
 # write your code here!
-ranges = [max(x)-min(x) for x in Y]
-print(ranges)
+
+
 ```
 
 *** =sct
