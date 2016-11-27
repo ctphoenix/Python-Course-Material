@@ -25,6 +25,8 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 ```{python}
 # Write your code here!
 
+
+
 ```
 
 *** =solution
@@ -194,6 +196,7 @@ address = str(pd.read_csv(data_filepath + 'gettysburg.txt', error_bad_lines = Fa
 # Write your code here!
 
 
+
 ```
 
 *** =solution
@@ -261,6 +264,8 @@ print(most_frequent_letter)
 ```{python}
 # write your code here!
 
+
+
 ```
 
 *** =sct
@@ -300,6 +305,8 @@ print(math.pi/4)
 *** =sample_code
 ```{python}
 # write your code here!
+
+
 
 ```
 
@@ -411,6 +418,7 @@ def distance(x, y):
    # define your function here!
    
    
+   
 ```
 
 *** =sct
@@ -490,6 +498,7 @@ print(in_circle((1,1)))
 # write your code here!
 def in_circle(x, origin = [0]*2):
    # Define your function here!
+   
    
 
 ```
@@ -638,6 +647,8 @@ print(math.pi/4 - sum(inside)/R)
 *** =sample_code
 ```{python}
 # write your code here!
+
+
 
 ```
 
@@ -812,6 +823,7 @@ print(ranges)
 *** =sample_code
 ```{python}
 # write your code here!
+
 
 
 ```

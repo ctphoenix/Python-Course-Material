@@ -29,6 +29,8 @@ random.seed(1)
 ```{python}
 # write your code here!
 
+
+
 ```
 
 *** =solution
@@ -81,6 +83,8 @@ def create_board():
 *** =sample_code
 ```{python}
 # write your code here!
+
+
 
 ```
 
@@ -143,6 +147,8 @@ board = place(board, 1, (0, 0))
 ```{python}
 # write your code here!
 
+
+
 ```
 
 *** =solution
@@ -196,6 +202,8 @@ def possibilities(board):
 *** =sample_code
 ```{python}
 # write your code here!
+
+
 
 ```
 
@@ -335,6 +343,8 @@ for i in range(3):
 ```{python}
 # write your code here!
 
+
+
 ```
 
 *** =solution
@@ -402,13 +412,9 @@ for i in range(3):
 *** =sample_code
 ```{python}
 # write your code here!
-def col_win(board, player):
-    if np.any(np.all(board==player,axis=0)):
-        return True
-    else:
-        return False
 
-col_win(board, 2)
+
+
 ```
 
 *** =solution
@@ -476,6 +482,8 @@ for i in range(3):
 *** =sample_code
 ```{python}
 # write your code here!
+
+
 
 ```
 
@@ -657,6 +665,8 @@ def evaluate(board):
 ```{python}
 # write your code here!
 
+
+
 ```
 
 *** =solution
@@ -759,6 +769,8 @@ def play_game():
 *** =sample_code
 ```{python}
 # write your code here!
+
+
 
 ```
 
@@ -983,6 +995,8 @@ def play_strategic_game():
 *** =sample_code
 ```{python}
 # write your code here!
+
+
 
 ```
 

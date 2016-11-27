@@ -39,6 +39,7 @@ import pandas as pd
 data = ## ENTER CODE HERE! ##
 
 
+
 ```
 
 *** =solution
@@ -92,6 +93,7 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 *** =sample_code
 ```{python}
 numeric_data = ## ENTER CODE HERE! ##
+
 
 
 ```
@@ -307,7 +309,6 @@ def accuracy(predictions, outcomes):
 
 
 
-
 ```
 
 *** =solution
@@ -384,7 +385,8 @@ def accuracy(predictions, outcomes):
 
 *** =sample_code
 ```{python}
-# Enter code here.
+# Enter code here!
+
 
 
 ```

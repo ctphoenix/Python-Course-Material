@@ -161,6 +161,7 @@ mean_altitudes_perday = grouped_birdday.altitude.mean()
 
 # look at the head of `mean_altitudes_perday`.
 mean_altitudes_perday.head()
+
 ```
 
 *** =solution

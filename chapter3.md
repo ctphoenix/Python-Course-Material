@@ -80,6 +80,8 @@ letters = dict(enumerate(alphabet))
 key = 3
 # define `coded_letters` here!
 
+
+
 ```
 
 *** =solution
@@ -194,6 +196,8 @@ coded_message = caesar(message, key=3)
 
 *** =sample_code
 ```{python}
+
+
 
 ```
 

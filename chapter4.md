@@ -46,6 +46,8 @@ text = read_book(data_filepath + "Books/English/shakespeare/Romeo+and+Juliet.txt
 ```{python}
 # input your code here!
 
+
+
 ```
 
 *** =solution
@@ -127,6 +129,8 @@ distribution = word_count_distribution(text)
 *** =sample_code
 ```{python}
 # input your code here!
+
+
 
 ```
 
@@ -348,6 +352,8 @@ ylabel  = "Probability of Words Being More Frequent"
 plt.xlim(xlim); plt.xlabel(xlabel); plt.ylabel(ylabel)
 plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
 # show your plot using `plt.show`!
+
+
 ```
 
 *** =solution
