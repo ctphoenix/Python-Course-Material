@@ -22,6 +22,7 @@ This week, we will create a tic-tac-toe (noughts and crosses) simulator and eval
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
+
 random.seed(1)
 ```
 
@@ -37,7 +38,9 @@ random.seed(1)
 ```{python}
 import random
 import numpy as np
+
 random.seed(1)
+
 def create_board():
     board = np.zeros((3,3), dtype=int)
     return board
@@ -269,11 +272,10 @@ def random_place(board, player):
 
 *** =sample_code
 ```{python}
-#edit these!
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
-        # use `random_place` to play a game, and store on `board`.
+        # add here!
 
 print(board)
 ```

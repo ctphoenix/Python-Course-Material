@@ -138,6 +138,7 @@ for letter in string.ascii_letters:
 *** =solution
 ```{python}
 import string 
+
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 def counter(input_string):
@@ -233,7 +234,9 @@ In this five-part exercise, we will count the frequency of each letter in a give
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+
 import string
+
 def counter(input_string):
     count_letters = {}
     for letter in string.ascii_letters:
@@ -251,7 +254,8 @@ address_count = counter(address)
 
 *** =solution
 ```{python}
-maximum, letter_maximum  = 0, ""
+maximum = 0
+letter_maximum = ""
 for letter in address_count.keys():
     if address_count[letter] > maximum:
         maximum = address_count[letter]
@@ -342,7 +346,9 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 *** =solution
 ```{python}
 import random
+
 random.seed(1)
+
 def rand():
     """
         Generates a random real number between -1 and 1.\n
@@ -357,7 +363,9 @@ rand()
 *** =sample_code
 ```{python}
 import random
+
 random.seed(1)
+
 def rand():
    # define `rand` here!
 
@@ -397,6 +405,7 @@ random.seed(1)
 *** =solution
 ```{python}
 import math
+
 def distance(x, y):
     """
         Given x and y, find their distance.\n
@@ -414,6 +423,7 @@ print(distance((0,0),(1,1)))
 *** =sample_code
 ```{python}
 import math
+
 def distance(x, y):
    # define your function here!
    
@@ -451,7 +461,9 @@ The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In t
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
+
 random.seed(1)
+
 def distance(x, y):
     """
         Given x and y, find their distance.\n
@@ -467,17 +479,9 @@ def distance(x, y):
 *** =solution
 ```{python}
 import random, math
+
 random.seed(1)
-def distance(x, y):
-    """
-        Given x and y, find their distance.\n
-        This is given by sqrt(sum((x-y)**2)).
-    """
-    if len(x) != len(y):
-        return "x and y do not have the same length!"
-    else:
-        square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
-        return math.sqrt(sum(square_differences))
+        
 def in_circle(x, origin = [0]*2):
     """
         This function determines if a two-dimensional point\n
@@ -495,7 +499,10 @@ print(in_circle((1,1)))
 
 *** =sample_code
 ```{python}
-# write your code here!
+import random, math
+
+random.seed(1)
+
 def in_circle(x, origin = [0]*2):
    # Define your function here!
    
@@ -534,9 +541,12 @@ The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In t
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
+
 random.seed(1)
+
 def rand():
     return random.uniform(-1,1)
+    
 def distance(x, y):
     """
         Given x and y, find their distance.\n
@@ -547,6 +557,7 @@ def distance(x, y):
     else:
         square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
         return math.sqrt(sum(square_differences))    
+        
 def in_circle(x, origin = [0]*2):
     if len(x) != 2:
         return "x is not two-dimensional!"
@@ -554,12 +565,14 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
+        
 ```
 
 *** =solution
 ```{python}
 R = 10000
-x, inside = [], []
+x = []
+inside = []
 for i in range(R):
     point = [rand(), rand()]
     x.append(point)
@@ -571,7 +584,8 @@ print(sum(inside)/R)
 *** =sample_code
 ```{python}
 R = 10000
-x, inside = [], []
+x = []
+inside = []
 for i in range(R):
     point = [rand(), rand()]
     x.append(point)
@@ -611,9 +625,12 @@ The ratio of the areas of a circle and the square inscribing it is `pi/4`.  In t
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
+
 random.seed(1)
+
 def rand():
     return random.uniform(-1,1)
+    
 def distance(x, y):
     """
         Given x and y, find their distance.\n
@@ -623,7 +640,8 @@ def distance(x, y):
         return "x and y do not have the same length!"
     else:
         square_differences = [(x[i]-y[i])**2 for i in range(len(x))]
-        return math.sqrt(sum(square_differences))    
+        return math.sqrt(sum(square_differences)) 
+        
 def in_circle(x, origin = [0]*2):
     if len(x) != 2:
         return "x is not two-dimensional!"
@@ -631,8 +649,10 @@ def in_circle(x, origin = [0]*2):
         return True
     else:
         return False
+        
 R = 10000
-x, inside = [], []
+x = []
+inside = []
 for i in range(R):
     point = [rand(), rand()]
     x.append(point)
@@ -682,7 +702,9 @@ random.seed(1)
 *** =solution
 ```{python}
 import random
+
 random.seed(1)
+
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
@@ -695,7 +717,10 @@ print(moving_window_average(x, 1))
 
 *** =sample_code
 ```{python}
-# write your code here!
+import random
+
+random.seed(1)
+
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
@@ -748,13 +773,15 @@ def moving_window_average(x, n_neighbors=2):
 *** =solution
 ```{python}
 import random
+
 random.seed(1)
+
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
     return [sum(x[i:(i+width)]) / width for i in range(n)]
-
+    
 R=1000
 x = [random.random() for i in range(R)]
 Y = [x] + [moving_window_average(x, i) for i in range(1, 10)]
@@ -763,7 +790,9 @@ Y = [x] + [moving_window_average(x, i) for i in range(1, 10)]
 *** =sample_code
 ```{python}
 import random
+
 random.seed(1)
+
 def moving_window_average(x, n_neighbors=2):
     n = len(x)
     width = n_neighbors*2 + 1
