@@ -168,7 +168,7 @@ success_msg("Great work!")
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
-- Abraham Lincoln was the president during the American Civil War.  His famous 1863 Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
+- Abraham Lincoln was a president during the American Civil War.  His famous 1863 Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
 - Print `address_count`.
 
 *** =hint
