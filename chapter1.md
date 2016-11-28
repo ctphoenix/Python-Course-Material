@@ -7,7 +7,7 @@ attachments :
 --- type:NormalExercise lang:python xp:100 skills:1 key:e637b6eee9
 ## Exercise 1a
 
-In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
+In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
 - The lowercase and uppercase English alphabet can be found using `ascii_letters` attribute in the `string` library.  Store this as `alphabet`.
@@ -51,7 +51,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:89cba9d6a8
 ## Exercise 1b
 
-In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
+In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
 - The lower and upper cases of the English alphabet is stored as `alphabet`.
@@ -104,7 +104,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:8cb1c4bf90
 ## Exercise 1c
 
-In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
+In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
 - Here is an example solution of part **1b**.  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.
@@ -165,7 +165,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:a0932fb3c4
 ## Exercise 1d
 
-In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
+In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
 - Abraham Lincoln's Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
@@ -221,7 +221,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:bb70667667
 ## Exercise 1e
 
-In this five-part exercise, we will count the frequency of each letter in a given plain `ascii` `.txt` document.
+In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
 - What is the most common letter used in the Gettysburg Address?
