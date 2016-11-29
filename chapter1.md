@@ -113,21 +113,22 @@ In this five-part exercise, we will count the frequency of each letter in a give
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+import string
+alphabet = string.ascii_letters
 ```
 
 *** =sample_code
 ```{python}
-import string
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 # edit the code below to make your function!
 count_letters = {}
-for letter in string.ascii_letters:
-    count_letter = 0
-    for character in input_string:
-        if character == letter:
-            count_letter += 1
-    count_letters[letter] = count_letter
+for letter in sentence:
+    if letter in alphabet:
+        if letter in count_letters:
+            count_letters[letter] += 1
+        else:
+            count_letters[letter] = 1
 
 
 ```
@@ -140,12 +141,12 @@ sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 def counter(input_string):
     count_letters = {}
-    for letter in string.ascii_letters:
-        count_letter = 0
-        for character in input_string:
-            if character == letter:
-                count_letter += 1
-        count_letters[letter] = count_letter
+    for letter in sentence:
+        if letter in alphabet:
+            if letter in count_letters:
+                count_letters[letter] += 1
+            else:
+                count_letters[letter] = 1
     return count_letters
     
 counter(sentence)
