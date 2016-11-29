@@ -12,7 +12,7 @@ The Caesar cipher shifts each letter of this message to another letter in the al
 We will perform this by converting letters and the space character to a number `0-26`, adding the key to each number, and looking up the character corresponding to that number. To undo our cipher, we simply perform the same steps number (adding or subtracting `27` making sure each number stays within `0-26`).
 
 *** =instructions
--  Create a dictionary "letters" that maps each character in `alphabet` to the numbers `0-26`.
+-  Create a dictionary "letters" that maps each number in `0-26` to each character in `alphabet`.
 
 *** =hint
 - `dict` and `enumerate` could come in handy!
