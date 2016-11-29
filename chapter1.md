@@ -612,7 +612,10 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Note: `inside` and `R` are defined from the previous subproblem.  Recall the true ratio of the area of of the unit circle to the area to the inscribing square is `pi / 4`. Find and print the difference between this value and your estimate in part `2e`.
+- Note: `inside` and `R` are defined as in Exercise `2e`.  Recall the true ratio of the area of of the unit circle to the area to the inscribing square is `pi / 4`.
+- Find and print the difference between this value and your estimate from part `2e`.
+
+
 
 *** =hint
 - Take your estimate from the last exercise, and subtract `math.pi / 4`.  Make sure to print your answer!
