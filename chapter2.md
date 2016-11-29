@@ -1,6 +1,6 @@
 ---
 title       : Homework 2
-description : Exercises for Homework (Week 2).  Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+description : Exercises for Homework (Week 2).  Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 --- type:NormalExercise lang:python xp:100 skills:2 key:cfd2bb78d3
 ## Exercise 1
 
@@ -20,7 +20,6 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import random
 import numpy as np
 
-random.seed(1)
 ```
 
 *** =sample_code
@@ -39,8 +38,6 @@ random.seed(1)
 ```{python}
 import random
 import numpy as np
-
-random.seed(1)
 
 def create_board():
     board = np.zeros((3,3), dtype=int)
@@ -63,7 +60,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:12006fdb5a
 ## Exercise 2
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Players 1 and 2 will take turns changing values of this array from a 0 to a 1 or 2, indicating the number of the player who places there.  Create a function `place(board, player, position)` with `player` being the current player (an integer 1 or 2), and `position` a tuple of length 2 specifying a desired location to place their marker.  Only allow the current player to place a piece on the board (change the board position to their number) if that position is empty (zero).
@@ -78,7 +75,6 @@ Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two play
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
-random.seed(1)
 def create_board():
     board = np.zeros((3,3), dtype=int)
     return board
@@ -124,7 +120,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:a336ef36ee
 ## Exercise 3
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Create a function `possibilities(board)` that returns a list of all positions (`tuples`) on the board that are not occupied (`0`).
@@ -181,7 +177,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:e511ea8d2b
 ## Exercise 4
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Create a function `random_place(board, player)` that places a marker for the current player at random among all the available positions (those currently set to 0).
@@ -249,7 +245,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:436b7ed3e4
 ## Exercise 5
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - `board` is already defined from previous exercises.  Use `random_place(board, player)` to place three pieces on `board` each for players 1 and 2.
@@ -318,7 +314,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:2d47bf75c5
 ## Exercise 6
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Now that players may place their pieces, how will they know they've won?  Make a function `row_win(board, player)` that takes the player (integer), and determines if any row consists of only their marker.  Have it return `True` of this condition is met, and `False` otherwise.
@@ -392,7 +388,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:1b692c47fe
 ## Exercise 7
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Create a similar function `col_win(board, player)` that takes the player (integer), and determines if any column consists of only their marker.  Have it return `True` if this condition is met, and `False` otherwise.
@@ -465,7 +461,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:c059adbd6b
 ## Exercise 8
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Finally, create a function `diag_win(board, player)` that tests if either diagonal of the board consists of only their marker. Have it return `True` if this condition is met, and `False` otherwise.
@@ -540,7 +536,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:5fc2ecbc43
 ## Exercise 9
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Create a function `evaluate(board)` that uses `row_win`, `col_win`, and `diag_win` functions for both players.  If one of them has won, return that player's number.  If the board is full but no one has won, return `-1`.  Otherwise, return `0`.
@@ -634,7 +630,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:c55bf90a13
 ## Exercise 10
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - `create_board()`, `random_place(board, player)`, and `evaluate(board)` have been created from previous exercises.  Create a function `play_game()` that creates a board, calls alternates between two players (beginning with Player 1), and evaluates the board for a winner after every placement.  Play the game until one player wins (returning `1` or `2` to reflect the winning player), or the game is a draw (returning `-1`).
@@ -733,7 +729,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:a22dfc2ad8
 ## Exercise 11
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - Use the `play_game()` function to play 1,000 random games, where Player 1 always goes first.
@@ -843,7 +839,7 @@ success_msg("Great work!  We see that Player 1 wins slightly more than Player 2.
 --- type:NormalExercise lang:python xp:100 skills:2 key:b02cc12320
 ## Exercise 12
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - This result is expected --- when guessing at random, it's better to go first.  Let's see if Player 1 can improve their strategy.  `create_board()`, `random_place(board, player)`, and `evaluate(board)` have been created from previous exercises.  Create a function `play_strategic_game()`, where Player 1 always starts with the middle square, and otherwise both players place their markers randomly.
@@ -957,7 +953,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:d99f988283
 ## Exercise 13
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - The results from Exercise 12 have been stored.  Use the `play_strategic_game()` function to play 1,000 random games.
