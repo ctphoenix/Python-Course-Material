@@ -354,7 +354,7 @@ fig.axis.axis_line_color = None
 fig.axis.major_tick_line_color = None
 fig.axis.major_label_text_font_size = "5pt"
 fig.axis.major_label_standoff = 0
-fig.xaxis.major_label_orientation = np.pi/3
+fig.xaxis.major_label_orientation = np.pi / 3
 fig.title_text_font_size="1"
 
 fig.rect('x', 'y', .9, .9, source=source, #1
@@ -390,7 +390,7 @@ fig.axis.axis_line_color = None
 fig.axis.major_tick_line_color = None
 fig.axis.major_label_text_font_size = "5pt"
 fig.axis.major_label_standoff = 0
-fig.xaxis.major_label_orientation = np.pi/3
+fig.xaxis.major_label_orientation = np.pi / 3
 fig.title_text_font_size="1"
 
 fig.rect('x', 'y', .9, .9, source=source, #1
@@ -557,7 +557,7 @@ fig.plot_width  = 400
 fig.plot_height = 500
 fig.circle("x", "y", 10, 10, size=9, source=location_source,
      color='colors', line_color = None) #2
-fig.xaxis.major_label_orientation = np.pi/3
+fig.xaxis.major_label_orientation = np.pi / 3
 hover = fig.select(dict(type = HoverTool))
 hover.tooltips = {
     "Distillery": "@distilleries", #3
@@ -591,7 +591,7 @@ def location_plot(title, colors):
     fig.plot_height = 500
     fig.circle("x", "y", 10, 10, size=9, source=location_source,
          color='colors', line_color = None) #2
-    fig.xaxis.major_label_orientation = np.pi/3
+    fig.xaxis.major_label_orientation = np.pi / 3
     hover = fig.select(dict(type = HoverTool))
     hover.tooltips = {
         "Distillery": "@distilleries", #3
@@ -665,7 +665,7 @@ def location_plot(title, colors):
     fig.plot_width = 400
     fig.circle("x", "y", 10, 10, size=9, source=location_source,
          color='colors', line_color = None) #2
-    fig.xaxis.major_label_orientation = np.pi/3
+    fig.xaxis.major_label_orientation = np.pi / 3
     hover = fig.select(dict(type = HoverTool))
     hover.tooltips = {
         "Distillery": "@distilleries", #3
