@@ -123,11 +123,11 @@ success_msg("Great work!")
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
-- Create a function `possibilities(board)` that returns a list of all positions (`tuples`) on the board that are not occupied (`0`).
+- Create a function `possibilities(board)` that returns a list of all positions (`tuples`) on the board that are not occupied (`0`).  (Hint: `numpy.where` is a handy function that returns a list of indexes that meet a condition.)
 - `board` is already defined from previous exercises.  Call `possibilities(board)` to see what it returns!
 
 *** =hint
-- `numpy.where` is a handy function that returns a list of positions that meet a condition.  Try using `numpy.where(board == 0)`!
+- Try using `numpy.where(board == 0)`.
 - You can also use a `for` loop for each position in the array, and check if `board[position] == 0`.
 
 *** =pre_exercise_code
