@@ -100,7 +100,7 @@ def place(board, player, position):
         return board
 
 board = create_board()
-board = place(board, 1, (0, 0))
+place(board, 1, (0, 0))
 ```
 
 *** =sct
@@ -135,7 +135,6 @@ Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two play
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 import numpy as np
-random.seed(1)
 def create_board():
     board = np.zeros((3,3), dtype=int)
     return board
@@ -144,7 +143,7 @@ def place(board, player, position):
     if board[position] == 0:
         board[position] = player
         return board
-board = place(board, 1, (0, 0))
+place(board, 1, (0, 0))
 ```
 
 *** =sample_code
@@ -200,7 +199,7 @@ def place(board, player, position):
     if board[position] == 0:
         board[position] = player
         return board
-board = place(board, 1, (0, 0))
+place(board, 1, (0, 0))
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 ```
@@ -223,7 +222,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 
 random_place(board, 2)
@@ -273,7 +272,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 ```
 
@@ -342,7 +341,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 board = create_board()
 for i in range(3):
@@ -416,7 +415,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 board = create_board()
 for i in range(3):
@@ -490,7 +489,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 board = create_board()
 for i in range(3):
@@ -564,7 +563,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 def row_win(board, player):
     winner = False
@@ -659,7 +658,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 def row_win(board, player):
     winner = False
@@ -759,7 +758,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 def row_win(board, player):
     winner = False
@@ -867,7 +866,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 def row_win(board, player):
     winner = False
@@ -983,7 +982,7 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        board = place(board, player, selection)
+        place(board, player, selection)
     return board
 def row_win(board, player):
     winner = False
