@@ -752,7 +752,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
 
 *** =instructions
-- The function `moving_window_average(x, n_neighbors)` is already shown. Compute and store `R=1000` random values from 0-1 as `x`. Then, compute the moving window average several times for this list for the range of `n_neighbors 1-9`.  Store `x` and each of these averages as consecutive lists in a list called `Y`.
+- Using your function `moving_window_average(x, n_neighbors)`, compute and store `R=1000` random values from 0-1 as `x`. Then, compute the moving window average several times for this list for the range of `n_neighbors 1-9`.  Store `x` and each of these averages as consecutive lists in a list called `Y`.
 
 *** =hint
 - You may be able to use a list comprehension here!  A `for` loop will also work.
@@ -773,13 +773,8 @@ def moving_window_average(x, n_neighbors=2):
 ```{python}
 import random
 
-random.seed(1)
-
-def moving_window_average(x, n_neighbors=2):
-    n = len(x)
-    width = n_neighbors*2 + 1
-    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
-    return [sum(x[i:(i+width)]) / width for i in range(n)]
+random.seed(1) # This line fixes the value called by your function,
+               # and is used for answer-checking.
     
 R=1000
 x = [random.random() for i in range(R)]
