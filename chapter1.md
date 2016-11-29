@@ -325,7 +325,7 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Using `random.uniform`, create a function `rand()` that generate real numbers between -1 and 1.
+- Using `random.uniform`, create a function `rand()` that generates real numbers between `-1` and `1`.
 - Call `rand()` once.  So we can check your solution, we will use `random.seed` to fix the value called by your function.
 
 *** =hint
@@ -340,8 +340,8 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 ```{python}
 import random
 
-random.seed(1) # So we can check your solution, this command
-               # ensures that random values are fixed.
+random.seed(1) # This line fixes the value called by your function,
+               # and is used for answer-checking.
 
 def rand():
     """
@@ -359,8 +359,8 @@ rand()
 ```{python}
 import random
 
-random.seed(1) # So we can check your solution, this command
-               # ensures that random values are fixed.
+random.seed(1) # This line fixes the value called by your function,
+               # and is used for answer-checking.
 
 def rand():
    # define `rand` here!
