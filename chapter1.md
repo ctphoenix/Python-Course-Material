@@ -830,7 +830,7 @@ def moving_window_average(x, n_neighbors=2):
 
 x=[0,10,5,3,1,5]
 
-moving_window_average(x, n_neighbors=1)
+moving_window_average(x, n_neighbors=2)
 
 R=1000
 x = [random.random() for i in range(R)]
