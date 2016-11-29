@@ -256,7 +256,7 @@ address_count = counter(address)
 ```{python}
 maximum = 0
 letter_maximum = ""
-for letter in address_count.keys():
+for letter in address_count:
     if address_count[letter] > maximum:
         maximum = address_count[letter]
         most_frequent_letter = letter
@@ -351,8 +351,8 @@ random.seed(1)
 
 def rand():
     """
-        Generates a random real number between -1 and 1.\n
-        This function uses random.random, which generates\n
+        Generates a random real number between -1 and 1.
+        This function uses random.random, which generates
         random real number between 0 and 1.
     """
     return random.uniform(-1,1)
@@ -408,7 +408,7 @@ import math
 
 def distance(x, y):
     """
-        Given x and y, find their distance.\n
+        Given x and y, find their distance.
         This is given by sqrt(sum((x-y)**2)).
     """
     if len(x) != len(y):
@@ -466,7 +466,7 @@ random.seed(1)
 
 def distance(x, y):
     """
-        Given x and y, find their distance.\n
+        Given x and y, find their distance.
         This is given by sqrt(sum((x-y)**2)).
     """
     if len(x) != len(y):
@@ -484,8 +484,8 @@ random.seed(1)
         
 def in_circle(x, origin = [0]*2):
     """
-        This function determines if a two-dimensional point\n
-        falls within the\n unit circle.
+        This function determines if a two-dimensional point
+        falls within the unit circle.
     """
     if len(x) != 2:
         return "x is not two-dimensional!"
@@ -549,7 +549,7 @@ def rand():
     
 def distance(x, y):
     """
-        Given x and y, find their distance.\n
+        Given x and y, find their distance.
         This is given by sqrt(sum((x-y)**2)).
     """
     if len(x) != len(y):
@@ -633,7 +633,7 @@ def rand():
     
 def distance(x, y):
     """
-        Given x and y, find their distance.\n
+        Given x and y, find their distance.
         This is given by sqrt(sum((x-y)**2)).
     """
     if len(x) != len(y):

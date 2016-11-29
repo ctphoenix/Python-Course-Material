@@ -210,7 +210,7 @@ chance_homophily(favorite_colors)
 from collections import Counter
 def chance_homophily(chars):
     """
-    Computes the chance homophily of a characteristic,\n
+    Computes the chance homophily of a characteristic,
     specified as a dictionary, chars.
     """
     chars_counts_dict = Counter(chars.values())
@@ -335,8 +335,8 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 ```{python}
 def homophily(G, chars, IDs):
     """
-    Given a network G, a dict of characteristics chars for node IDs,\n
-    and dict of node IDs for each node in the network,\n
+    Given a network G, a dict of characteristics chars for node IDs,
+    and dict of node IDs for each node in the network,
     find the homophily of the network.
     """
     num_same_ties, num_ties = 0, 0
@@ -356,8 +356,8 @@ def homophily(G, chars, IDs):
 ```{python}
 def homophily(G, chars, IDs):
     """
-    Given a network G, a dict of characteristics chars for node IDs,\n
-    and dict of node IDs for each node in the network,\n
+    Given a network G, a dict of characteristics chars for node IDs,
+    and dict of node IDs for each node in the network,
     find the homophily of the network.
     """
     num_same_ties, num_ties = 0, 0
