@@ -45,7 +45,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:89cba9d6a8
+--- type:NormalExercise lang:python xp:100 skills:2 key:89cba9d6a8
 ## Exercise 1b
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
@@ -98,7 +98,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:8cb1c4bf90
+--- type:NormalExercise lang:python xp:100 skills:2 key:8cb1c4bf90
 ## Exercise 1c
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
@@ -156,7 +156,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:a0932fb3c4
+--- type:NormalExercise lang:python xp:100 skills:2 key:a0932fb3c4
 ## Exercise 1d
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
@@ -212,7 +212,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:bb70667667
+--- type:NormalExercise lang:python xp:100 skills:2 key:bb70667667
 ## Exercise 1e
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
@@ -277,7 +277,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:8b40a3f09f
+--- type:NormalExercise lang:python xp:100 skills:2 key:8b40a3f09f
 ## Exercise 2a
 
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
@@ -319,7 +319,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:7aa7dadeac
+--- type:NormalExercise lang:python xp:100 skills:2 key:7aa7dadeac
 ## Exercise 2b
 
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
@@ -379,7 +379,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:eabc2b80ff
+--- type:NormalExercise lang:python xp:100 skills:2 key:eabc2b80ff
 ## Exercise 2c
 
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
@@ -441,7 +441,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:89310e2304
+--- type:NormalExercise lang:python xp:100 skills:2 key:89310e2304
 ## Exercise 2d
 
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
@@ -520,7 +520,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:c7c20038ea
+--- type:NormalExercise lang:python xp:100 skills:2 key:c7c20038ea
 ## Exercise 2e
 
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
@@ -606,7 +606,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:d3950c2ef5
+--- type:NormalExercise lang:python xp:100 skills:2 key:d3950c2ef5
 ## Exercise 2f
 
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
@@ -679,7 +679,7 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:807ffbdc6f
+--- type:NormalExercise lang:python xp:100 skills:2 key:807ffbdc6f
 ## Exercise 3a
 
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
@@ -746,13 +746,15 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:006c8d659a
+--- type:NormalExercise lang:python xp:100 skills:2 key:006c8d659a
 ## Exercise 3b
 
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
 
 *** =instructions
-- Using your function `moving_window_average(x, n_neighbors)`, compute and store `R=1000` random values from 0-1 as `x`. Then, compute the moving window average several times for this list for the range of `n_neighbors 1-9`.  Store `x` and each of these averages as consecutive lists in a list called `Y`.
+- Using your function `moving_window_average(x, n_neighbors)` from `3a`, compute and store `R=1000` random values from 0-1 as `x`.  Remember that you can use the solution code from Exercise 3a if you weren't able to write the function on your own.
+- Compute the moving window average several times for this list for the range of `n_neighbors 1-9`.
+- Store `x` and each of these averages as consecutive lists in a list called `Y`.  
 
 *** =hint
 - You may be able to use a list comprehension here!  A `for` loop will also work.
@@ -791,6 +793,8 @@ random.seed(1) # This line fixes the value called by your function,
 # write your code here!
 
 
+
+
 ```
 
 *** =sct
@@ -802,7 +806,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:7f5873e828
+--- type:NormalExercise lang:python xp:100 skills:2 key:7f5873e828
 ## Exercise 3c
 
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
