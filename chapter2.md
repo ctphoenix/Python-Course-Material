@@ -230,7 +230,7 @@ def random_place(board, player):
         board = place(board, player, selection)
     return board
 
-board = random_place(board, 2)
+random_place(board, 2)
 ```
 
 *** =sct
@@ -297,7 +297,7 @@ print(board)
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
-        board = random_place(board, player)
+        random_place(board, player)
 
 print(board)
 
@@ -351,7 +351,7 @@ def random_place(board, player):
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
-        board = random_place(board, player)
+        random_place(board, player)
 ```
 
 *** =sample_code
@@ -425,7 +425,7 @@ def random_place(board, player):
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
-        board = random_place(board, player)
+        random_place(board, player)
 ```
 
 *** =sample_code
@@ -499,7 +499,7 @@ def random_place(board, player):
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
-        board = random_place(board, player)
+        random_place(board, player)
 ```
 
 *** =sample_code
@@ -589,7 +589,7 @@ def diag_win(board, player):
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
-        board = random_place(board, player)
+        random_place(board, player)
 ```
 
 *** =sample_code
@@ -709,7 +709,7 @@ def play_game():
     board, winner = create_board(), 0
     while winner == 0:
         for player in [1, 2]:
-            board = random_place(board, player)
+            random_place(board, player)
             winner = evaluate(board)
             if winner != 0:
                 break
@@ -793,7 +793,7 @@ def play_game():
     board, winner = create_board(), 0
     while winner == 0:
         for player in [1, 2]:
-            board = random_place(board, player)
+            random_place(board, player)
             winner = evaluate(board)
             if winner != 0:
                 break
@@ -901,7 +901,7 @@ def play_game():
     board, winner = create_board(), 0
     while winner == 0:
         for player in [1, 2]:
-            board = random_place(board, player)
+            random_place(board, player)
             winner = evaluate(board)
             if winner != 0:
                 break
@@ -933,7 +933,7 @@ def play_strategic_game():
     board[1,1] = 1
     while winner == 0:
         for player in [2,1]:
-            board = random_place(board, player)
+            random_place(board, player)
             winner = evaluate(board)
             if winner != 0:
                 break
@@ -1017,7 +1017,7 @@ def play_game():
     board, winner = create_board(), 0
     while winner == 0:
         for player in [1, 2]:
-            board = random_place(board, player)
+            random_place(board, player)
             winner = evaluate(board)
             if winner != 0:
                 break
@@ -1027,7 +1027,7 @@ def play_strategic_game():
     board[1,1] = 1
     while winner == 0:
         for player in [2,1]:
-            board = random_place(board, player)
+            random_place(board, player)
             winner = evaluate(board)
             if winner != 0:
                 break
