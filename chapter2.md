@@ -101,9 +101,10 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 
-create_board()
-place(board, 1, (0, 0))
+board = create_board()
+board = place(board, 1, (0, 0))
 ```
 
 *** =sct
@@ -146,8 +147,8 @@ board = create_board()
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
-
-place(board, 1, (0, 0))
+        return board
+board = place(board, 1, (0, 0))
 ```
 
 *** =sample_code
@@ -202,8 +203,8 @@ board = create_board()
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
-
-place(board, 1, (0, 0))
+        return board
+board = place(board, 1, (0, 0))
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 ```
@@ -226,8 +227,8 @@ def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
-
+        board = place(board, player, selection)
+    return board
 
 random_place(board, 2)
 ```
@@ -269,13 +270,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 ```
 
 *** =sample_code
@@ -336,13 +339,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
@@ -408,14 +413,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
-
+        board = place(board, player, selection)
+    return board
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
@@ -481,13 +487,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 board = create_board()
 for i in range(3):
     for player in [1, 2]:
@@ -553,13 +561,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 def row_win(board, player):
     winner = False
     if np.any(np.all(board==player,axis=1)):
@@ -646,13 +656,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 def row_win(board, player):
     winner = False
     if np.any(np.all(board==player,axis=1)):
@@ -744,13 +756,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 def row_win(board, player):
     winner = False
     if np.any(np.all(board==player,axis=1)):
@@ -850,13 +864,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 def row_win(board, player):
     winner = False
     if np.any(np.all(board==player,axis=1)):
@@ -964,13 +980,15 @@ def create_board():
 def place(board, player, position):
     if board[position] == 0:
         board[position] = player
+        return board
 def possibilities(board):
     return list(zip(*np.where(board == 0)))
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
         selection = random.choice(selections)
-        place(board, player, selection)
+        board = place(board, player, selection)
+    return board
 def row_win(board, player):
     winner = False
     if np.any(np.all(board==player,axis=1)):
