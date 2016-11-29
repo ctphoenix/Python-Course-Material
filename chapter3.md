@@ -53,7 +53,7 @@ success_msg("Great work!")
 
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:2288897c84
+--- type:NormalExercise lang:python xp:100 skills:2 key:2288897c84
 ## Exercise 2
 
 A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
@@ -103,7 +103,7 @@ test_object("coded_message",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:95e2d3c0a4
+--- type:NormalExercise lang:python xp:100 skills:2 key:95e2d3c0a4
 ## Exercise 3
 
 A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
@@ -171,7 +171,7 @@ test_object("coded_message",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:99f93f9512
+--- type:NormalExercise lang:python xp:100 skills:2 key:99f93f9512
 ## Exercise 4
 
 A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.

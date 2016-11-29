@@ -55,7 +55,7 @@ test_object("data",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:68c6754822
+--- type:NormalExercise lang:python xp:100 skills:2 key:68c6754822
 ## Exercise 2
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
@@ -111,7 +111,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:8515d59a47
+--- type:NormalExercise lang:python xp:100 skills:2 key:8515d59a47
 ## Exercise 3
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
@@ -176,7 +176,7 @@ test_object("principal_components",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:1b705ec875
+--- type:NormalExercise lang:python xp:100 skills:2 key:1b705ec875
 ## Exercise 4
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
@@ -261,7 +261,7 @@ test_student_typed("plt.show",
 success_msg("Great work!  Yes, these differ significantly.")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:5817bdff2e
+--- type:NormalExercise lang:python xp:100 skills:2 key:5817bdff2e
 ## Exercise 5
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
@@ -341,7 +341,7 @@ test_function("print",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:533b201c9b
+--- type:NormalExercise lang:python xp:100 skills:2 key:533b201c9b
 ## Exercise 6
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
@@ -406,7 +406,7 @@ test_function("print",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:3ae1696ed5
+--- type:NormalExercise lang:python xp:100 skills:2 key:3ae1696ed5
 ## Exercise 7
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
@@ -482,7 +482,7 @@ test_function("print",
 success_msg("Great work!  Yes, this is better!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:428c9e7854
+--- type:NormalExercise lang:python xp:100 skills:2 key:428c9e7854
 ## Exercise 8
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
@@ -557,7 +557,7 @@ test_object("selection",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:b8395f53bf
+--- type:NormalExercise lang:python xp:100 skills:2 key:b8395f53bf
 ## Exercise 9
 
 In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.

@@ -57,7 +57,7 @@ test_student_typed("df1.head()",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:95681c66de
+--- type:NormalExercise lang:python xp:100 skills:2 key:95681c66de
 ## Exercise 2
 
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
@@ -102,7 +102,7 @@ test_object("pid2",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:147facfc92
+--- type:NormalExercise lang:python xp:100 skills:2 key:147facfc92
 ## Exercise 3
 
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
@@ -169,7 +169,7 @@ test_object("religion2",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:9f789af19a
+--- type:NormalExercise lang:python xp:100 skills:2 key:9f789af19a
 ## Exercise 4
 
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
@@ -234,7 +234,7 @@ test_function("chance_homophily",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:6d28b82a47
+--- type:NormalExercise lang:python xp:100 skills:2 key:6d28b82a47
 ## Exercise 5
 
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
@@ -314,7 +314,7 @@ test_function("print",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:49219b49be
+--- type:NormalExercise lang:python xp:100 skills:2 key:49219b49be
 ## Exercise 6
 
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
@@ -376,7 +376,7 @@ def homophily(G, chars, IDs):
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:73e9f60471
+--- type:NormalExercise lang:python xp:100 skills:2 key:73e9f60471
 ## Exercise 7
 
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.

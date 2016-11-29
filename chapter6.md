@@ -162,7 +162,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:1 key:5f8ea1133d
+--- type:NormalExercise lang:python xp:100 skills:2 key:5f8ea1133d
 ## Exercise 2
 
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
@@ -210,7 +210,7 @@ test_function("print",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:3f6fcf71bc
+--- type:NormalExercise lang:python xp:100 skills:2 key:3f6fcf71bc
 ## Exercise 3
 
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
@@ -285,7 +285,7 @@ test_object("correlation_colors",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:a95b5fe144
+--- type:NormalExercise lang:python xp:100 skills:2 key:a95b5fe144
 ## Exercise 4
 
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
@@ -414,7 +414,7 @@ test_student_typed("show(fig)",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:8c4771d390
+--- type:NormalExercise lang:python xp:100 skills:2 key:8c4771d390
 ## Exercise 5
 
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
@@ -499,7 +499,7 @@ test_student_typed("show(fig)",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:fd58851485
+--- type:NormalExercise lang:python xp:100 skills:2 key:fd58851485
 ## Exercise 6
 
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
@@ -614,7 +614,7 @@ test_object("region_cols",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:2952d41efd
+--- type:NormalExercise lang:python xp:100 skills:2 key:2952d41efd
 ## Exercise 7
 
 In these exercises, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.

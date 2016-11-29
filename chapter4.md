@@ -70,7 +70,7 @@ test_object("distribution",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:f2cef742ec
+--- type:NormalExercise lang:python xp:100 skills:2 key:f2cef742ec
 ## Exercise 2
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
@@ -153,7 +153,7 @@ test_function("more_frequent",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:0fc5cd1ce9
+--- type:NormalExercise lang:python xp:100 skills:2 key:0fc5cd1ce9
 ## Exercise 3
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
@@ -255,7 +255,7 @@ test_object("hamlets",
 success_msg("Great work!  There are three translations: English, German, and Portuguese.")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:1 key:62f73c5919
+--- type:NormalExercise lang:python xp:100 skills:2 key:62f73c5919
 ## Exercise 4
 
 In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
