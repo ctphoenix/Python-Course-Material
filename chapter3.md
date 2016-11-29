@@ -9,7 +9,7 @@ A cipher is a secret code for a language.  In this homework, we will explore a c
 
 The Caesar cipher shifts each letter of this message to another letter in the alphabet, which is a fixed number of letters away from the original.  If our key was 1, we would shift `h` to the next letter `i`, `i` to the next letter `j`, and so on.  If we reach the end of the alphabet, which for us is the space character, we simply loop back to `a`. To decode the message, we make a similar shift, except move the same number of steps backwards in the alphabet.
 
-We will perform this by converting letters to a number `0-26`, adding the key to each number, and looking up the letter corresponding to that number. To undo our cipher, we simply perform the same steps number (adding or subtracting `27` making sure each number stays within `0-26`).
+We will perform this by converting letters and the space character to a number `0-26`, adding the key to each number, and looking up the letter corresponding to that number. To undo our cipher, we simply perform the same steps number (adding or subtracting `27` making sure each number stays within `0-26`).
 
 *** =instructions
 -  Create a dictionary "letters" that maps each letter in `alphabet` to the numbers `0-26`.
