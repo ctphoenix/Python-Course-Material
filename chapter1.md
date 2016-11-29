@@ -81,12 +81,12 @@ count_letters = {}
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 count_letters = {}
-for letter in alphabet:
-    count_letter = 0
-    for character in sentence:
-        if character == letter:
-            count_letter += 1
-    count_letters[letter] = count_letter
+for letter in sentence:
+    if letter in alphabet:
+        if letter in count_letters:
+            count_letters[letter] += 1
+        else:
+            count_letters[letter] = 1
 ```
 
 *** =sct
