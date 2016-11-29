@@ -845,7 +845,7 @@ Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two play
 - Call `play_strategic_game` once.
 
 *** =hint
-- First assign the middle position to Player 1 directly, then alternate between players 2 and 1 using `for` loops to place randomly!
+- First assign the middle position to Player 1 directly, then alternate between Players 2 and 1 using `for` loops to place randomly!
 
 *** =pre_exercise_code
 ```{python}
