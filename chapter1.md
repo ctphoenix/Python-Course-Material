@@ -280,10 +280,10 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:8b40a3f09f
 ## Exercise 2a
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Using the math library, calculate and print the value of pi/4.
+- Using the math library, calculate and print the value of pi / 4.
 
 *** =hint
 - The `math` library contains a float `pi` --- try using that!
@@ -322,7 +322,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:7aa7dadeac
 ## Exercise 2b
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
 - Using `random.uniform`, create a function `rand()` that generate real numbers between -1 and 1.
@@ -379,7 +379,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:eabc2b80ff
 ## Exercise 2c
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
 - The distance between two points `x` and `y` is the square root of the sum of squared differences along each dimension of `x` and `y`.  Create a function `distance(x, y)` that takes two vectors and outputs the distance between them.  Use your function to find the distance between `(0,0)` and `(1,1)`.
@@ -441,7 +441,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:89310e2304
 ## Exercise 2d
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
 - `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x, origin)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle with a given origin.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.
@@ -520,7 +520,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:c7c20038ea
 ## Exercise 2e
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
 - The functions `rand` and `in_circle` are defined from previous exercises.  Using these functions, code is pre-entered that creates a list `x` of `R=10000` two-dimensional points.  Create a list of `10000` booleans called `inside` that are `True` if and only if the point in `x` with that index falls within the unit circle.  Make sure to use `in_circle`!
@@ -606,7 +606,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:1 key:d3950c2ef5
 ## Exercise 2f
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this exercise, we will find a way to approximate this value.
+The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
 - Note: `inside` and `R` are defined from the previous subproblem.  Recall the true ratio of the area of of the unit circle to the area to the inscribing square is `pi / 4`. Find and print the difference between this value and your estimate in part `2e`.
