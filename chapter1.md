@@ -67,12 +67,12 @@ alphabet = string.ascii_letters
 
 *** =sample_code
 ```{python}
-# Write your code here!
-
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 count_letters = {}
-# add values to count_letters here!
+#write your code here!
+
+
 
 ```
 
