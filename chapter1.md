@@ -685,7 +685,7 @@ success_msg("Great work!")
 A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
 
 *** =instructions
-- Let's make a function `moving_window_average(x, n_neighbors)` that takes a list `x` and the number of neighbors `n_neighbors` on either side to consider. For each value, the function computes the average of each value's neighbors, including themselves. Have the function return a list of these averaged values as long as the original list.  If there are not enough neighbors (for cases near the edge), substitute the original value as many times as there are missing neighbors.
+- Let's make a function `moving_window_average(x, n_neighbors)` that takes a list `x` and the number of neighbors `n_neighbors` on either side to consider. For each value, the function computes the average of each value's neighbors, including themselves. Have the function return a list of these averaged values that is the same length as the original list.  If there are not enough neighbors (for cases near the edge), substitute the original value as many times as there are missing neighbors.
 - Use your function to find the moving window sum of `x=[0,10,5,3,1,5]` and `n_neighbors=1`.
 
 *** =hint
@@ -704,7 +704,7 @@ import random
 
 random.seed(1)
 
-def moving_window_average(x, n_neighbors=2):
+def moving_window_average(x, n_neighbors=1):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[-1]]*n_neighbors
@@ -720,7 +720,7 @@ import random
 
 random.seed(1)
 
-def moving_window_average(x, n_neighbors=2):
+def moving_window_average(x, n_neighbors=1):
     n = len(x)
     width = n_neighbors*2 + 1
     x = [x[0]]*n_neighbors + x + [x[-1]]*n_neighbors
