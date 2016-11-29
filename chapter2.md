@@ -636,7 +636,7 @@ Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two play
 - Call `play_game` once.
 
 *** =hint
-- Use a `while` loop to check if anyone has won, or the game is a draw.  While no one has, keep alternating between Pplayers 1 and 2 using a `for` loop and `random_place`!
+- Use a `while` loop to check if anyone has won, or the game is a draw.  While no one has, keep alternating between Players 1 and 2 using a `for` loop and `random_place`!
 - Once either player has won or the game is a draw, you could use `break` to quit the `while` loop.
 
 *** =pre_exercise_code
