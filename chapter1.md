@@ -104,7 +104,7 @@ success_msg("Great work!")
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
-- Here is an example solution of part **1b**.  Rewrite this code to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.
+- Rewrite your code from  **1b** to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.  If you were unable to complete **1b**, you can use the solution by selecting `Show Answer`.
 - Use your function to call `counter(sentence)`.
 
 *** =hint
@@ -121,15 +121,7 @@ alphabet = string.ascii_letters
 ```{python}
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
-# edit the code below to make your function!
-count_letters = {}
-for letter in sentence:
-    if letter in alphabet:
-        if letter in count_letters:
-            count_letters[letter] += 1
-        else:
-            count_letters[letter] = 1
-
+# Create your function here!
 
 ```
 
