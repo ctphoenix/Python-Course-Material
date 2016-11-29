@@ -785,15 +785,11 @@ Y = [x] + [moving_window_average(x, i) for i in range(1, 10)]
 ```{python}
 import random
 
-random.seed(1)
-
-def moving_window_average(x, n_neighbors=2):
-    n = len(x)
-    width = n_neighbors*2 + 1
-    x = [x[0]]*n_neighbors + x + [x[n-1]]*n_neighbors
-    return [sum(x[i:(i+width)]) / width for i in range(n)]
+random.seed(1) # This line fixes the value called by your function,
+               # and is used for answer-checking.
     
 # write your code here!
+
 
 ```
 
