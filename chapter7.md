@@ -1,7 +1,7 @@
 ---
 title       : Homework - Social Network Analysis
 description : Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In this homework, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
---- type:NormalExercise lang:python xp:100 skills:1 key:07ea54b341
+--- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 ## Exercise 1
 
 Homophily is a network characteristic.  Homophily occurs when nodes that are neighbors in a network also share a characteristic more often than nodes that are not network neighbors.  In this homework, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
