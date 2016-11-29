@@ -326,10 +326,10 @@ The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In
 
 *** =instructions
 - Using `random.uniform`, create a function `rand()` that generate real numbers between -1 and 1.
-- Call `rand()` once.
+- Call `rand()` once.  So we can check your solution, we will use `random.seed` to fix the value called by your function.
 
 *** =hint
--  `random.uniform` generates a random value between the first argument and the second argument.  Try using this to get random values between -1 and 1.
+-  `random.uniform` generates a random value between the first argument and the second argument.  Try using this to get random values between `-1` and `1`.
 
 *** =pre_exercise_code
 ```{python}
@@ -340,13 +340,15 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 ```{python}
 import random
 
-random.seed(1)
+random.seed(1) # So we can check your solution, this command
+               # ensures that random values are fixed.
 
 def rand():
     """
         Generates a random real number between -1 and 1.
-        This function uses random.random, which generates
-        random real number between 0 and 1.
+        This function uses random.uniform, which generates
+        random real number between its first and second
+        arguments.
     """
     return random.uniform(-1,1)
 
@@ -357,7 +359,8 @@ rand()
 ```{python}
 import random
 
-random.seed(1)
+random.seed(1) # So we can check your solution, this command
+               # ensures that random values are fixed.
 
 def rand():
    # define `rand` here!
