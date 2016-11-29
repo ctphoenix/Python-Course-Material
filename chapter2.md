@@ -29,6 +29,10 @@ random.seed(1)
 
 
 
+
+
+
+
 ```
 
 *** =solution
@@ -83,6 +87,10 @@ def create_board():
 *** =sample_code
 ```{python}
 # write your code here!
+
+
+
+
 
 
 
@@ -149,6 +157,8 @@ board = place(board, 1, (0, 0))
 
 
 
+
+
 ```
 
 *** =solution
@@ -202,6 +212,10 @@ def possibilities(board):
 *** =sample_code
 ```{python}
 # write your code here!
+
+
+
+
 
 
 
@@ -275,6 +289,7 @@ for i in range(3):
         # add here!
 
 print(board)
+
 ```
 
 *** =solution
@@ -285,6 +300,7 @@ for i in range(3):
         board = random_place(board, player)
 
 print(board)
+
 ```
 
 *** =sct
@@ -341,6 +357,10 @@ for i in range(3):
 *** =sample_code
 ```{python}
 # write your code here!
+
+
+
+
 
 
 
@@ -414,6 +434,10 @@ for i in range(3):
 
 
 
+
+
+
+
 ```
 
 *** =solution
@@ -481,6 +505,10 @@ for i in range(3):
 *** =sample_code
 ```{python}
 # write your code here!
+
+
+
+
 
 
 
@@ -574,6 +602,9 @@ def evaluate(board):
         winner = -1
     return winner
 
+# add your code here.
+
+
 ```
 
 *** =solution
@@ -663,6 +694,10 @@ def evaluate(board):
 *** =sample_code
 ```{python}
 # write your code here!
+
+
+
+
 
 
 
@@ -768,6 +803,10 @@ def play_game():
 *** =sample_code
 ```{python}
 # write your code here!
+
+
+
+
 
 
 
@@ -882,7 +921,9 @@ def play_strategic_game():
                 break
     return winner
 
-play_strategic_game()     
+play_strategic_game()  
+
+
 ```
 
 *** =solution
@@ -899,6 +940,8 @@ def play_strategic_game():
     return winner
 
 play_strategic_game()
+
+
 ```
 
 *** =sct
@@ -997,6 +1040,10 @@ def play_strategic_game():
 
 
 
+
+
+
+
 ```
 
 *** =solution
@@ -1008,6 +1055,8 @@ stop = time.time()
 print(stop - start)
 plt.hist(games)
 plt.show()
+
+
 ```
 
 *** =sct
