@@ -1,9 +1,6 @@
 ---
 title       : Homework 2
 description : Exercises for Homework (Week 2).  Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
-  
 --- type:NormalExercise lang:python xp:100 skills:1 key:cfd2bb78d3
 ## Exercise 1
 
