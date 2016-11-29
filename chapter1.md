@@ -55,7 +55,7 @@ In this five-part exercise, we will count the frequency of each letter in a give
 - Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with keys consisting of each unique letter in the sentence and values consisting of the number of times each letter is used in this sentence.
 
 *** =hint
-- Can you think of a way to use `for` loops to count up the frequency of each letter used in the sentence? 
+- Can you think of a way to use a `for` loop to count up the frequency of each letter used in the sentence? 
 
 *** =pre_exercise_code
 ```{python}
