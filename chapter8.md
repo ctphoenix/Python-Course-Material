@@ -7,8 +7,7 @@ description : In this homework, we will continue taking a look at patterns of fl
 In this homework, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
 
 *** =instructions
--  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird.
--  Modify the code to assign the mean altitudes of each bird into an object called `mean_altitudes`.
+-  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird.  Modify the code to assign the mean altitudes of each bird into an object called `mean_altitudes`.
 
 *** =hint
 - `grouped_birds` contains a column called `altitude`.  Find the mean of this column!
