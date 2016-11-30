@@ -7,7 +7,7 @@ description : Homophily is a network characteristic.  Homophily occurs when node
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
--  `individual_characteristics.dta` contains several characteristics for each individual in rural Indian social networks dataset, such as age, religion, and caste.  We will use the pandas library to read in and store these characteristics as `df`.  Store separate datasets for individuals belonging to Villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
+-  `individual_characteristics.dta` contains several characteristics for each individual in rural Indian social networks dataset, such as age, religion, and caste.  We will use the `pandas` library to read in and store these characteristics as `df`.  Store separate datasets for individuals belonging to Villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
 - Use the `head` function to display the first few entries of `df1`.
 
 *** =hint
@@ -24,10 +24,10 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 ```{python}
 import pandas as pd
 df  = pd.read_stata(data_filepath + "individual_characteristics.dta")
-df1 = ## ENTER CODE HERE! ##
-df2 = ## ENTER CODE HERE! ##
+df1 = # Enter code here!
+df2 = # Enter code here!
 
-
+# Enter code here!
 ```
 
 *** =solution
@@ -127,8 +127,8 @@ df2 = df[df["village"]==2]
 *** =sample_code
 ```{python}
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
-caste1    = ## ENTER CODE HERE! ##
-religion1 = ## ENTER CODE HERE! ##
+caste1    = # Enter code here!
+religion1 = # Enter code here!
 
 # Continue for df2 as well.
 
@@ -192,7 +192,7 @@ import numpy as np
 ```{python}
 from collections import Counter
 def chance_homophily(chars):
-    ## ENTER CODE HERE! ##
+    # Enter code here!
 
 favorite_colors = {
     "ankit":  "red",
