@@ -626,7 +626,7 @@ In this homework, we have prepared step-by-step instructions for you on how to p
 
 *** =hint
 - This problem asks you to repeat part of the previous problem (for comparison), and to define a similar color classification for flavor clusters.  Two straightforward list comprehensions will do the trick.
-- Consider casting `whisky.Region` and `whisky.Group` and lists!
+- Consider casting `whisky.Region` and `whisky.Group` as lists!
 
 *** =pre_exercise_code
 ```{python}
