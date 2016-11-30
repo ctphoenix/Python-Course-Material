@@ -358,12 +358,12 @@ fig.axis.major_label_standoff = 0
 fig.xaxis.major_label_orientation = np.pi / 3
 fig.title_text_font_size="1"
 
-fig.rect('x', 'y', .9, .9, source=source, #1
+fig.rect('x', 'y', .9, .9, source=source,
      color='colors', alpha='alphas')
 hover = fig.select(dict(type=HoverTool))
 hover.tooltips = {
-    "Whiskies": "@x, @y", #2
-    "Correlation": "@correlations", #3
+    "Whiskies": "@x, @y",
+    "Correlation": "@correlations",
 }
 show(fig)
 ```
@@ -394,12 +394,12 @@ fig.axis.major_label_standoff = 0
 fig.xaxis.major_label_orientation = np.pi / 3
 fig.title_text_font_size="1"
 
-fig.rect('x', 'y', .9, .9, source=source, #1
+fig.rect('x', 'y', .9, .9, source=source,
      color='colors', alpha='alphas')
 hover = fig.select(dict(type=HoverTool))
 hover.tooltips = {
-    "Whiskies": "@x, @y", #2
-    "Correlation": "@correlations", #3
+    "Whiskies": "@x, @y",
+    "Correlation": "@correlations",
 }
 show(fig)
 ```
