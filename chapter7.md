@@ -108,7 +108,7 @@ success_msg("Great work!")
 Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Define a Python dictionaries with personal IDs as keys and one of that individual's covariates as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
+- Define Python dictionaries with personal IDs as keys and one of that individual's covariates as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
 
 *** =hint
 -  For a string `'characteristic'`, try `df1.set_index("pid")[characteristic]`, and use `.to_dict()` to convert this object to a `dict`.
