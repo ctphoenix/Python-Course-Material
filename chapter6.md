@@ -552,17 +552,17 @@ location_source = ColumnDataSource(
     }
 )
 
-fig = figure(title = title, #1
+fig = figure(title = title,
     x_axis_location = "above", tools="resize, hover, save")
 fig.plot_width  = 400
 fig.plot_height = 500
 fig.circle("x", "y", 10, 10, size=9, source=location_source,
-     color='colors', line_color = None) #2
+     color='colors', line_color = None)
 fig.xaxis.major_label_orientation = np.pi / 3
 hover = fig.select(dict(type = HoverTool))
 hover.tooltips = {
-    "Distillery": "@distilleries", #3
-    "Location": "(@x, @y)" #4
+    "Distillery": "@distilleries",
+    "Location": "(@x, @y)"
 }
 show(fig)
 
@@ -586,17 +586,17 @@ def location_plot(title, colors):
         }
     )
 
-    fig = figure(title = title, #1
+    fig = figure(title = title,
         x_axis_location = "above", tools="resize, hover, save")
     fig.plot_width  = 400
     fig.plot_height = 500
     fig.circle("x", "y", 10, 10, size=9, source=location_source,
-         color='colors', line_color = None) #2
+         color='colors', line_color = None)
     fig.xaxis.major_label_orientation = np.pi / 3
     hover = fig.select(dict(type = HoverTool))
     hover.tooltips = {
-        "Distillery": "@distilleries", #3
-        "Location": "(@x, @y)" #4
+        "Distillery": "@distilleries",
+        "Location": "(@x, @y)"
     }
     show(fig)
     
@@ -621,7 +621,7 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Use list comprehensions to find the `region_cols` color corresponding to each whisky in `whisky.Region`.  Similarly, find the `cluster_cols` color corresponding to each cluster membership in `whisky.Group`.
+- Use list comprehensions to create the list `region_cols` consisting of the color corresponding to each whisky in `whisky.Region`.  Similarly, create a list `classification_cols` consisting of the color corresponding to each cluster membership in `whisky.Group`.
 - `location_plot` is still loaded from the previous exercise.  Use it to create two interactive plots of distilleries, one colored by defined region called `region_cols`, and one with colors defined by coclustering called `classification_cols`.
 
 *** =hint
@@ -660,17 +660,17 @@ def location_plot(title, colors):
         }
     )
 
-    fig = figure(title = title, #1
+    fig = figure(title = title,
         x_axis_location = "above", tools="resize, hover, save")
     fig.plot_height = 500
     fig.plot_width = 400
     fig.circle("x", "y", 10, 10, size=9, source=location_source,
-         color='colors', line_color = None) #2
+         color='colors', line_color = None)
     fig.xaxis.major_label_orientation = np.pi / 3
     hover = fig.select(dict(type = HoverTool))
     hover.tooltips = {
-        "Distillery": "@distilleries", #3
-        "Location": "(@x, @y)" #4
+        "Distillery": "@distilleries",
+        "Location": "(@x, @y)"
     }
     show(fig)
 ```
