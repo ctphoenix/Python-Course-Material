@@ -443,7 +443,7 @@ def col_win(board, player):
     else:
         return False
 
-col_win(board, 2)
+col_win(board, 1)
 ```
 
 *** =sct
