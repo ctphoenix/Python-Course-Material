@@ -506,7 +506,7 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Adapt the given code to define a function `location_plot(title, colors)`.  This function takes a string title and a list of colors corresponding to each distillery, and outputs a Bokeh plot of each distillery by latitude and longitude, and includes text of distillery, latitude, and longitude as the cursor hovers over each point.
+- Adapt the given code to define a function `location_plot(title, colors)`.  This function takes a `string` title and a list of colors corresponding to each distillery, and outputs a Bokeh plot of each distillery by latitude and longitude, and includes text of distillery, latitude, and longitude as the cursor hovers over each point.
 - `whisky.Region` is a `pandas` column containing the regional group membership for each distillery.  Use a list comprehension to make a list of the value of `region_colors` for each distillery, and store this list as `region_cols`.
 - `location_plot` is still defined from the last exercise.  Use it to plot each distillery, colored by its regional grouping.
 
