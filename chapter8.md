@@ -74,8 +74,8 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` contains a useful type called `tslib.Timestamp`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the mean altitude within that day.
--  Use `groupby` and calculate the mean altitude per day. Save these results into an object called `mean_altitudes_perday`.
+-  `pandas` contains a useful type called `tslib.Timestamp`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the mean altitude within that day.  Use `groupby` and calculate the mean altitude per day.
+-  Save these results into an object called `mean_altitudes_perday`.
 
 *** =hint
 - See `?pd.DataFrame.groupby` for help!
@@ -136,8 +136,7 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `birddata` already contains the `date` column.  We will `groupby` using both `bird_name` and `date` and find the average speed for each bird and day.
--  First, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
+-  `birddata` already contains the `date` column.  We will `groupby` using both `bird_name` and `date` and find the average speed for each bird and day.  Create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
 
 *** =hint
 - When grouping by more than one column, remember to use a `list`.
