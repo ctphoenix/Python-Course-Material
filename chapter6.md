@@ -621,11 +621,12 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Use list comprehensions to create the list `region_cols` consisting of the color corresponding to each whisky in `whisky.Region`.  Similarly, create a list `classification_cols` consisting of the color corresponding to each cluster membership in `whisky.Group`.
+- Use list comprehensions to create the list `region_cols` consisting of the color in `region_colors` corresponding to each whisky in `whisky.Region`.  Similarly, create a list `classification_cols` consisting of the color in `cluster_colors` corresponding to each cluster membership in `whisky.Group`.
 - `location_plot` is still loaded from the previous exercise.  Use it to create two interactive plots of distilleries, one colored by defined region called `region_cols`, and one with colors defined by coclustering called `classification_cols`.
 
 *** =hint
-- This problem asks you to repeat part of the previous problem (for comparison), and to define a similar color classification for flavor clusters.
+- This problem asks you to repeat part of the previous problem (for comparison), and to define a similar color classification for flavor clusters.  Two straightforward list comprehensions will do the trick.
+- Consider casting `whisky.Region` and `whisky.Group` and lists!
 
 *** =pre_exercise_code
 ```{python}
