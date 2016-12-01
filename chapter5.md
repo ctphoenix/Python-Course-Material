@@ -274,7 +274,7 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 
 *** =hint
 - The `==` operator will test for element-wise equality for `numpy` arrays (1 if equal, and 0 if not).  You can then use `np.mean` to find the fraction of these elements that are equal!
-- Note that `np.mean`, when used as described above, will find the fraction of equal values between the lists, not the percentage.
+- Note that `np.mean`, when used as described above, will find the fraction of equal values between the lists, not the percentage!
 
 *** =pre_exercise_code
 ```{python}
