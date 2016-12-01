@@ -415,11 +415,12 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Use the scikit-learn classifier `KNeighborsClassifier`, to predict which wines are high and low quality, and store as `library_predictions`.  Is this predictor better than the simple classifier in Question 6?
-- Use the `accuracy` function to compare `library_predictions` with the high quality wines.  Print your answer.
+-  Use the scikit-learn classifier `KNeighborsClassifier` to predict which wines are high and low quality and store the result as `library_predictions`.
+- Use `accuracy` to find the accuracy of `library_predictions`.
+- Print your answer.  Is this prediction better than the simple classifier in Exercise 6?
 
 *** =hint
-- A `KNeighborsClassifier` object will contain a `predict` method --- try that on `numeric_data`!
+- A `KNeighborsClassifier` object contains a `predict` method --- try that on `numeric_data`!
 - Make sure to use the `accuracy` function to compare `library_predictions` and `data["high_quality"]`!
 
 
@@ -457,7 +458,8 @@ def accuracy(predictions, outcomes):
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
-library_predictions = # Enter your code here!
+# Enter your code here!
+
 
 
 ```
@@ -491,7 +493,7 @@ success_msg("Great work!  Yes, this is better!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed `123`, and sample 10 row indexes from the dataset using `random.sample`.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
+-  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, use `random.sample` to sample 10 row indices from the dataset.  In this case, use seed `123` to select the row indices of your sample.  Store this selection of indices as `selection`.  Based on this random sample, is our accuracy comparable to the library's function?
 
 *** =hint
 - Try sampling from the rows using `range(n_rows)`.
