@@ -349,8 +349,8 @@ output_file("Whisky Correlations.html", title="Whisky Correlations")
 fig = figure(title="Whisky Correlations",
     x_axis_location="above", tools="resize,hover,save",
     x_range=list(reversed(distilleries)), y_range=distilleries)
-fig.plot_width  = 400
-fig.plot_height = 400
+#fig.plot_width  = 400
+#fig.plot_height = 400
 fig.grid.grid_line_color = None
 fig.axis.axis_line_color = None
 fig.axis.major_tick_line_color = None
@@ -385,8 +385,8 @@ output_file("Whisky Correlations.html", title="Whisky Correlations")
 fig = figure(title="Whisky Correlations",
     x_axis_location="above", tools="resize,hover,save",
     x_range=list(reversed(distilleries)), y_range=distilleries)
-fig.plot_width  = 400
-fig.plot_height = 400
+#fig.plot_width  = 400
+#fig.plot_height = 400
 fig.grid.grid_line_color = None
 fig.axis.axis_line_color = None
 fig.axis.major_tick_line_color = None
