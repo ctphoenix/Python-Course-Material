@@ -7,7 +7,7 @@ description : In this homework, we have prepared step-by-step instructions for y
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
--  Here we provide a basic demonstration of an interactive grid plot using Bokeh.  Execute the following code and follow along with the comments. We will later adapt this code to plot the correlations among distillery flavor profiles, as well as a geographical map of distilleries colored by region and flavor profile.
+-  Here we provide a basic demonstration of an interactive grid plot using Bokeh.  Execute the following code and follow along with the comments. We will later adapt this code to plot the correlations among distillery flavor profiles as well as plot a geographical map of distilleries colored by region and flavor profile.
 
 *** =hint
 - Just execute and read along with the code given!
@@ -34,8 +34,8 @@ correlations = np.array(correlations)
 
 *** =sample_code
 ```{python}
-# First, we import a tool to allow text to pop up on the plot when the cursor
-# hovers over it.  Also, we import a data structure used to store definitions
+# First, we import a tool to allow text to pop up on a plot when the cursor
+# hovers over it.  Also, we import a data structure used to store arguments
 # of what to plot in Bokeh.  Finally, we will use numpy for this section as well!
 
 from bokeh.models import HoverTool, ColumnDataSource
@@ -166,7 +166,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:5f8ea1133d
 ## Exercise 2
 
-In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
+In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
 - Let's create the names and colors we will use to plot the correlation matrix.  Later, we will also use these colors plot each distillery geographically.  Create a dictionary `region_colors` with regions as keys and cluster colors as values.
@@ -215,7 +215,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:3f6fcf71bc
 ## Exercise 3
 
-In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
+In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
 - Let's define a list `correlation_colors` for distillery pairs that make it clear what the patterns are.  Low correlations will be white, and high correlations will be a distinct color for distilleries from the same group, and gray otherwise.  `correlations` is a matrix with rows and columns corresponding to distilleries, and matrix values coresponding to the correlation of the row/column pair.  Edit the code to define `correlation_colors` for each distillery pair to have input `'white'` then their correlation is less than 0.7.
@@ -290,7 +290,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:a95b5fe144
 ## Exercise 4
 
-In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
+In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
 - Fill in the appropriate code to plot a grid of the distillery correlations.  Color each rectangle in the grid according to `correlation_colors`, and use the correlations themselves as alpha (transparency) values.  Also, when the cursor hovers over a rectangle, output the distillery pair, print both distilleries, as well as the correlation.  Note that `distilleries` contains the distillery names, and `correlations` contains the matrix of distillery correlations by flavor.  To convert a numpy matrix (such as `correlations`) to a list, use the `flatten` method.
@@ -414,7 +414,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:8c4771d390
 ## Exercise 5
 
-In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
+In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
 - Next, we provide an example of plotting geographical points. Run the following code, to be adapted in the next section.  Compare this code to that used in plotting the distillery correlations.
@@ -499,7 +499,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:fd58851485
 ## Exercise 6
 
-In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
+In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
 - Adapt the given code to define a function `location_plot(title, colors)`.  This function takes a `string` title and a list of colors corresponding to each distillery, and outputs a Bokeh plot of each distillery by latitude and longitude, and includes text of distillery, latitude, and longitude as the cursor hovers over each point.
