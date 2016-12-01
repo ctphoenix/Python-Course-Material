@@ -593,7 +593,7 @@ def knn_predict(p, points, outcomes, k=5):
 import pandas as pd
 data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
 numeric_data = data.drop("color", axis=1)
-numeric_data = # Enter your code here!
+numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
 import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
