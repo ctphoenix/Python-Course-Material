@@ -268,7 +268,7 @@ success_msg("Great work!  Yes, these differ significantly.")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  We are now ready to fit the wine data to our KNN classifier.  Create a function accuracy(predictions, outcomes) that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
+-  We are now ready to fit the wine data to our KNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
 -  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.  Print your answer.
 
 *** =hint
