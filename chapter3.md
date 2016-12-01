@@ -57,7 +57,7 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  In this homework, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
--  `alphabet` and `letters` are shown below.    Create a dictionary `coded_message` that map with keys being the characters in `alphabet`, and values being numbers from `0-26` shifted by an integer `key`.  Define these alphabetically, starting with `a` mapped to `key=3`.
+-  `alphabet` and `letters` are shown below.    Create a dictionary `coded_message` with keys being the characters in `alphabet`, and values being numbers from `0-26` shifted by an integer `key`.  Define these alphabetically, starting with `a` mapped to `key=3`.
 
 *** =hint
 - You can simply add `key` to the place value of each letter.  To reduce this `sum` by `27` if it exceeds `27`, use `sum%27`!
