@@ -9,7 +9,6 @@ A cipher is a secret code for a language.  In this homework, we will explore a c
 
 The Caesar cipher shifts each letter of this message to another letter in the alphabet, which is a fixed number of letters away from the original.  If our key was 1, we would shift `h` to the next letter `i`, `i` to the next letter `j`, and so on.  If we reach the end of the alphabet, which for us is the space character, we simply loop back to `a`. To decode the message, we make a similar shift, except move the same number of steps backwards in the alphabet.
 
-
 *** =instructions
 -  Create a dictionary "letters" that maps each number from 0 to 26 to each character in `alphabet`.
 
@@ -58,7 +57,7 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  In this homework, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
--  `alphabet` and `letters` are shown below.    Create a dictionary `coded_message` that map the characters of `alphabet` as keys to numbers from `0-26` for values.  Define these alphabetically, starting with `a` mapped to  `key=3`.
+-  `alphabet` and `letters` are shown below.    Create a dictionary `coded_message` that map with keys being the characters in `alphabet`, and values being numbers from `0-26` shifted by an integer `key`.  Define these alphabetically, starting with `a` mapped to `key=3`.
 
 *** =hint
 - You can simply add `key` to the place value of each letter.  To reduce this `sum` by `27` if it exceeds `27`, use `sum%27`!
