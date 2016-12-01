@@ -565,12 +565,12 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
--  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]`, and store as `my_predictions`.  
+-  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]` with `k=5`, and store as an `np.array` object called `my_predictions`.
 -  Compare these results to the `scikit-learn` accuracy using the `accuracy` function.  Store these results as `percentage`.
 -  Print your answer.
 
 *** =hint
-- Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.
+- Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.  This can be done quickly using a for loop or a list comprehension!
 - Use `accuracy` to compare your predictions to `data.high_quality[selection]`.
 - Make sure to print your answer!
 
