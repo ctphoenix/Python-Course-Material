@@ -136,7 +136,7 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `birddata` already contains the `date` column.  We will `groupby` using both `bird_name` and `date` and find the average speed for each bird and day.  Create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
+-  `birddata` already contains the `date` column.  To find the average speed for each bird and day, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
 
 *** =hint
 - When grouping by more than one column, remember to use a `list`.
