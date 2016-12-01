@@ -7,7 +7,7 @@ description : In this homework, we will continue taking a look at patterns of fl
 In this homework, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
 
 *** =instructions
--  `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird.  Modify the code to assign the mean altitudes of each bird into an object called `mean_altitudes`.
+- `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird.  Modify the code to assign the mean altitudes of each bird into an object called `mean_altitudes`.
 
 *** =hint
 - `grouped_birds` contains a column called `altitude`.  Find the mean of this column!
@@ -136,7 +136,7 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `birddata` already contains the `date` column.  To find the average speed for each bird and day, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
+- `birddata` already contains the `date` column.  To find the average speed for each bird and day, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
 
 *** =hint
 - When grouping by more than one column, remember to use a `list`.
@@ -186,10 +186,11 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  Great! Now you have a dataframe called `grouped_birdday` that has grouped all of the `birddata` by `bird_name` and `date`. Now we can use `.mean()` on `speed_2d` to get the average speed for each bird and day.  We’ve recreated the `Eric` plot using this method for you. Now create two more dataframes – one for `Sanne` and one for `Nico` – and plot all three speeds on the same plot.
+-  Great!  Now find the average speed for each bird and day.  Create three dataframes – one for each bird.
+-  Use the plotting code provided to plot the average speeds for each bird.
 
 *** =hint
-- Call `grouped_birdday.speed_2d.mean()` and select `'Sanne'` and `'Nico'`, respectively.
+- To find the average, consider how you to use `speed_2d` and `mean` for all three birds.
 
 *** =pre_exercise_code
 ```{python}
@@ -205,9 +206,9 @@ grouped_bydates = birddata.groupby(["bird_name", "date"])
 
 *** =sample_code
 ```{python}
-eric_daily_speed  = grouped_bydates.speed_2d.mean()["Eric"]
-sanne_daily_speed = ## YOUR CODE HERE ##
-nico_daily_speed  = ## YOUR CODE HERE ##
+eric_daily_speed  = # Enter your code here.
+sanne_daily_speed = # Enter your code here.
+nico_daily_speed  = # Enter your code here.
 
 eric_daily_speed.plot(label="Eric")
 sanne_daily_speed.plot(label="Sanne")
