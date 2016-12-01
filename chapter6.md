@@ -349,15 +349,11 @@ output_file("Whisky Correlations.html", title="Whisky Correlations")
 fig = figure(title="Whisky Correlations",
     x_axis_location="above", tools="resize,hover,save",
     x_range=list(reversed(distilleries)), y_range=distilleries)
-#fig.plot_width  = 400
-#fig.plot_height = 400
 fig.grid.grid_line_color = None
 fig.axis.axis_line_color = None
 fig.axis.major_tick_line_color = None
 fig.axis.major_label_text_font_size = "5pt"
-#fig.axis.major_label_standoff = 0
 fig.xaxis.major_label_orientation = np.pi / 3
-#fig.title_text_font_size="1"
 
 fig.rect('x', 'y', .9, .9, source=source,
      color='colors', alpha='alphas')
@@ -385,15 +381,11 @@ output_file("Whisky Correlations.html", title="Whisky Correlations")
 fig = figure(title="Whisky Correlations",
     x_axis_location="above", tools="resize,hover,save",
     x_range=list(reversed(distilleries)), y_range=distilleries)
-#fig.plot_width  = 400
-#fig.plot_height = 400
 fig.grid.grid_line_color = None
 fig.axis.axis_line_color = None
 fig.axis.major_tick_line_color = None
 fig.axis.major_label_text_font_size = "5pt"
-#fig.axis.major_label_standoff = 0
 fig.xaxis.major_label_orientation = np.pi / 3
-#fig.title_text_font_size="1"
 
 fig.rect('x', 'y', .9, .9, source=source,
      color='colors', alpha='alphas')
