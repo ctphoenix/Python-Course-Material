@@ -58,7 +58,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:68c6754822
 ## Exercise 2
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 - The dataset remains stored as `data`.  It contains a variable called `is_red`, making `color` redundant. Drop the color variable from the dataset, and save the new dataset as `numeric_data`.
@@ -114,7 +114,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:8515d59a47
 ## Exercise 3
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 - To ensure that each variable contributes equally to the KNN classifier, standardize the data.  That is, subtract each variable by its mean, and divide it by its standard deviation.  Store this again as `numeric_data`.
@@ -179,7 +179,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:1b705ec875
 ## Exercise 4
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 -  Plot the first two principal components.  Color the high and low quality wine as red and blue, respectively.  Are the two well separated by the first two principal components?
@@ -264,7 +264,7 @@ success_msg("Great work!  Yes, these differ significantly.")
 --- type:NormalExercise lang:python xp:100 skills:2 key:5817bdff2e
 ## Exercise 5
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 -  We are now ready to fit the wine data to our KNN classifier.  Create a function accuracy(predictions, outcomes) that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
@@ -344,7 +344,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:533b201c9b
 ## Exercise 6
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 -  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, a very simple classifier predicts that all wines are of low accuracy.  Use the accuracy function to calculate how many wines in the dataset are of low quality.
@@ -409,7 +409,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:3ae1696ed5
 ## Exercise 7
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 -  Use the scikit-learn classifier `KNeighborsClassifier`, to predict which wines are high and low quality, and store as `library_predictions`.  Is this predictor better than the simple classifier in Question 6?
@@ -485,7 +485,7 @@ success_msg("Great work!  Yes, this is better!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:428c9e7854
 ## Exercise 8
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 -  Unlike the `scikit-learn` function, our homemade KNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed 123, and sample 100 row indexes from the dataset.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
@@ -560,7 +560,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:b8395f53bf
 ## Exercise 9
 
-In these exercises, we will analyse a dataset consisting of many different wines classified into "high quality" and "low quality", and will use K-nearest neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
+In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
 -  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]`, and store as `my_predictions`.  
