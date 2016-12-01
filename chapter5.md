@@ -117,11 +117,12 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified into "high quality" and "low quality", and will use k-Nearest Neighbors to predict whether or not other information about the wine helps us correctly guess whether a new wine will be of high quality.
 
 *** =instructions
-- To ensure that each variable contributes equally to the KNN classifier, standardize the data.  That is, subtract each variable by its mean, and divide it by its standard deviation.  Store this again as `numeric_data`.
+- To ensure that each variable contributes equally to the KNN classifier, standardize the data.  That is, subtract each variable in `numeric_data` by its mean, and divide it by its standard deviation.  Store this again as `numeric_data`.
 - Principal components is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well they align with variation in the data. Use the `PCA` function in the scikit-learn (sklearn) library to find and store the two most informative principal components of the data (a matrix with two columns corresponding to the principal components), and store as `pca`.
 - Use the `fit` and `transform` methods on `numeric_data` to extract the first two principal components, and store as `principal_components`.
 
 *** =hint
+- You can find the mean and standard deviation along each column by selecting `axis=0` in `np.mean` and `np.std`, respectively.
 - The method that returns the top two principal components is `sklearn.decomposition.PCA(2)`.  Store this as `pca`!
 
 *** =pre_exercise_code
@@ -160,7 +161,7 @@ principal_components = # Enter your code here!
 
 *** =solution
 ```{python}
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+numeric_data = (numeric_data - np.mean(numeric_data, axis=0)) / np.std(numeric_data, axis=0)
 
 import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
