@@ -220,7 +220,7 @@ In this homework, we have prepared step-by-step instructions for you on how to p
 *** =instructions
 - Let's define a list `correlation_colors` for distillery pairs that make it clear what the patterns are.  Low correlations will be white, and high correlations will be a distinct color for distilleries from the same group, and gray otherwise.  `correlations` is a matrix with rows and columns corresponding to distilleries, and matrix values coresponding to the correlation of the row/column pair.  Edit the code to define `correlation_colors` for each distillery pair to have input `'white'` then their correlation is less than 0.7.
 - `whisky.Group` is a `pandas` dataframe column consisting of distillery group memberships.  For distillery pairs with correlation greater than 0.7, if they share the same whisky group, use the corresponding color from `cluster_colors`.
-- Otherwise, define the `correlation_colors` value for that distillery pair as `'lightgrey'`.
+- Otherwise, define the `correlation_colors` value for that distillery pair as `'lightgray'`.
 
 *** =hint
 - You can index the `(i,j)` distillery pair of `correlations` using `correlations[i,j]`.  How can you test if this value is less than 0.7?
@@ -261,7 +261,7 @@ for i in range(len(distilleries)):
             if ## ENTER CODE HERE! ##                  # if the groups match,
                 correlation_colors.append(cluster_colors[whisky.Group[i]]) # color them by their mutual group.
             else:                                      # otherwise
-                correlation_colors.append('lightgrey') # color them lightgrey.
+                correlation_colors.append('lightgray') # color them lightgray.
 ```
 
 *** =solution
@@ -276,7 +276,7 @@ for i in range(len(distilleries)):
             if whisky.Group[i] == whisky.Group[j]:     # if the groups match,
                 correlation_colors.append(cluster_colors[whisky.Group[i]]) # color them by their mutual group.
             else:                                      # otherwise
-                correlation_colors.append('lightgrey') # color them lightgrey.
+                correlation_colors.append('lightgray') # color them lightgray.
 ```
 
 *** =sct
@@ -330,7 +330,7 @@ for i in range(len(distilleries)):
             if whisky.Group[i] == whisky.Group[j]:
                 correlation_colors.append(cluster_colors[whisky.Group[i]])
             else:
-                correlation_colors.append('lightgrey')
+                correlation_colors.append('lightgray')
 ```
 
 *** =sample_code
