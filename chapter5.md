@@ -149,7 +149,7 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sample_code
 ```{python}
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+numeric_data = # Enter your code here!
 
 import sklearn.decomposition
 pca = # Enter your code here!
