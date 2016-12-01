@@ -493,7 +493,7 @@ success_msg("Great work!  Yes, this is better!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, use `random.sample` to sample 10 row indices from the dataset.  In this case, use seed `123` to select the row indices of your sample.  Store this selection of indices as `selection`.  Based on this random sample, is our accuracy comparable to the library's function?
+-  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, use `random.sample` to sample 10 row indices from the dataset.  In this case, use seed `123` to select the row indices of your sample.  Store this selection of indices as `selection`.
 
 *** =hint
 - Try sampling from the rows using `range(n_rows)`.
@@ -568,12 +568,12 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Use our homemade kNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]` with `k=5`, and store as an `np.array` object called `my_predictions`.
--  Using the `accuracy` function, compare these results to the selected rows in the `high_quality` variable in `data`.  Store these results as `percentage`.
+-  Use our homemade kNN classifier `knn_predict` on this sampled dataset to predict wine quality using `k=5`, and store the result as an `np.array` called `my_predictions`.  Note that `selection` is already defined from Exercise 8, and `knn_predict` is already defined as in the Case 3 videos.
+-  Using the `accuracy` function, compare these results to the selected rows from the `high_quality` variable in `data`.  Store these results as `percentage`.
 -  Print your answer.
 
 *** =hint
-- Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.  This can be done quickly using a `for` loop or a list comprehension!
+- Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.
 - Use `accuracy` to compare your predictions to `data.high_quality[selection]`.
 - Make sure to print your answer!
 
