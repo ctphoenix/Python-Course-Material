@@ -349,11 +349,11 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, a very simple classifier would be to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.
+-  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.
 
 *** =hint
-- The `accuracy` function should work just fine, with `0` as the first argument!
-- Compare `0` with the `"high_quality"` column in `data`.  How can you do that?
+- The `accuracy` function should work just fine with `0` as the first argument!
+- Compare `0` with the `high_quality` column in `data`.  How can you do that?
 
 *** =pre_exercise_code
 ```{python}
