@@ -183,7 +183,7 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Plot the first two principal components.  Color the high and low quality wine using red and blue, respectively.  How well are the two groups of wines separated by the first two principal components?
+-  Plot the first two principal components.  The high and low quality wines will be colored using red and blue, respectively.  How well are the two groups of wines separated by the first two principal components?
 
 *** =hint
 - The columns of `principal_components` are already ordered.  How can you index `principal_components` to plot the first two components?  Store these as `x` and `y`!
