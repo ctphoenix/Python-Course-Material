@@ -119,7 +119,7 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 *** =instructions
 - To ensure that each variable contributes equally to the kNN classifier, we need to standardize the data.  First, from each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store this again as `numeric_data`.
 - Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. Use the `PCA` function in the scikit-learn (`sklearn`) library to find and store the two most informative principal components of the data (a matrix with two columns corresponding to the principal components), and store it as `pca`.
-- Use the `fit` and `transform` methods on `numeric_data` to extract the first two principal components, and store as `principal_components`.
+- Use the `fit` and `transform` methods on `numeric_data` to extract the first two principal components and store them as `principal_components`.
 
 *** =hint
 - You can find the mean and standard deviation along each column by selecting `axis=0` in `np.mean` and `np.std`, respectively.
