@@ -293,11 +293,11 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Fill in the appropriate code to plot a grid of the distillery correlations.  Color each rectangle in the grid according to `correlation_colors`, and use the correlations themselves as alpha (transparency) values.  Also, when the cursor hovers over a rectangle, output the distillery pair, print both distilleries, as well as the correlation.  Note that `distilleries` contains the distillery names, and `correlations` contains the matrix of distillery correlations by flavor.
+- Fill in the appropriate code to plot a grid of the distillery correlations.  Color each rectangle in the grid according to `correlation_colors`, and use the correlations themselves as alpha (transparency) values.  Also, when the cursor hovers over a rectangle, output the distillery pair, print both distilleries, as well as the correlation.  Note that `distilleries` contains the distillery names, and `correlations` contains the matrix of distillery correlations by flavor.  To convert a numpy matrix (such as `correlations`) to a list, use the `flatten` method.
 
 *** =hint
 - For `"colors"`, the `correlation_colors` we defined in the last question will work as is.
-- To convert a numpy matrix (such as `correlations`) to a list, use the `flatten` method.  Try this for both `"alphas"` and `"correlations"`!
+- Use the `flatten` method for both `"alphas"` and `"correlations"`!
 
 *** =pre_exercise_code
 ```{python}
@@ -407,12 +407,15 @@ show(fig)
 
 *** =sct
 ```{python}
-test_object("source",
-            undefined_msg = "Did you define `source`?",
-            incorrect_msg = "It looks like `source` wasn't defined correctly.")
-test_student_typed("show(fig)",
-              pattern=False,
-              not_typed_msg="Did you make sure to plot the figure?")
+#test_student_typed("show(fig)",
+#              pattern=False,
+#              not_typed_msg="Did you make sure to plot the figure?")
+#test_student_typed("correlation_colors",
+#              pattern=False,
+#              not_typed_msg="Did you define `colors` correctly?")              
+#test_student_typed("flatten",
+#              pattern=False,
+#              not_typed_msg="Did you use `flatten` to define `alphas` and `correlations`?")        
 success_msg("Great work!")
 ```
 
