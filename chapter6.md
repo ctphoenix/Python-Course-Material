@@ -407,12 +407,12 @@ show(fig)
 
 *** =sct
 ```{python}
-#test_student_typed("show(fig)",
-#              pattern=False,
-#              not_typed_msg="Did you make sure to plot the figure?")
-#test_student_typed("correlation_colors",
-#              pattern=False,
-#              not_typed_msg="Did you define `colors` correctly?")              
+test_student_typed("show(fig)",
+              pattern=False,
+              not_typed_msg="Did you make sure to plot the figure?")
+test_student_typed("correlation_colors",
+              pattern=False,
+              not_typed_msg="Did you define `colors` correctly?")              
 test_student_typed("flatten",
               pattern=False,
               not_typed_msg="Did you use `flatten` to define `alphas` and `correlations`?")        
