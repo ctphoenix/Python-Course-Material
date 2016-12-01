@@ -160,9 +160,9 @@ print(coded_message)
 test_function("caesar",
               not_called_msg = "Make sure to call `caesar`!",
               incorrect_msg = "Check your definition of `caesar` again.")
-test_function("print",
-              not_called_msg = "Make sure to call `print`!",
-              incorrect_msg = "Check your definition of `print` again.")
+test_student_typed("print",
+              pattern=False,
+              not_typed_msg="Make sure to call `print`!")                
 test_object("coded_message",
             undefined_msg = "Did you define `coded_message`?",
             incorrect_msg = "It looks like `coded_message` wasn't defined correctly.")
@@ -175,8 +175,9 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  In this homework, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
-- Decode and save `coded_message` using `caesar` and `key = -3`.
-- Store this as `decoded_message`, and print.  Does this recover your original message?
+- `coded_message` is already loaded from the previous problem.  Decode and save `coded_message` using `caesar` and `key = -3`.
+- Store this as `decoded_message`.
+- Print `decoded message`.  Does this recover your original message?
 
 *** =hint
 - This should not require any changes to the function `caesar`!
@@ -211,9 +212,9 @@ print(decoded_message)
 
 *** =sct
 ```{python}
-test_function("print",
-              not_called_msg = "Make sure to call `print`!",
-              incorrect_msg = "Check your definition of `decoded_message` again.")
+test_student_typed("print",
+              pattern=False,
+              not_typed_msg="Make sure to call `print`!")  
 test_object("decoded_message",
             undefined_msg = "Did you define `decoded_message`?",
             incorrect_msg = "It looks like `decoded_message` wasn't defined correctly.")
