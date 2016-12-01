@@ -10,7 +10,7 @@ Network homophily occurs when nodes that share an edge share a characteristic mo
 *** =instructions
 -  `individual_characteristics.dta` contains several characteristics for each individual in the dataset such as age, religion, and caste.  Use the `pandas` library to read in and store these characteristics as a dataframe called `df`.
 -  Store separate datasets for individuals belonging to Villages 1 and 2 as `df1` and `df2`, respectively.  (Note that some attributes may be missing for some individuals. Here, investigate only those pairs of nodes where the attributes are known for both nodes. This means that we're effectively assuming that the data are missing completely at random.)
-- Use the `head` function to display the first few entries of `df1`.
+- Use the `head` method to display the first few entries of `df1`.
 
 *** =hint
 - For reading in the dataset directly, try `pd.read_stata`!
