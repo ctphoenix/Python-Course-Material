@@ -570,7 +570,7 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 -  Print your answer.
 
 *** =hint
-- Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.  This can be done quickly using a for loop or a list comprehension!
+- Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.  This can be done quickly using a `for` loop or a list comprehension!
 - Use `accuracy` to compare your predictions to `data.high_quality[selection]`.
 - Make sure to print your answer!
 
