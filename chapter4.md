@@ -155,7 +155,7 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 -  Edit the code used to read though each of the books in our library, and store each the word frequency distribution for each translation of William Shakespeare's "Hamlet" as a Pandas dataframe `hamlets`.  How many translations are there?  Which languages are they translated into?
 
 *** =hint
-- Define `hamlets` with columns `language` and `distribution`.  Then, add the results from `word_count_distribution(text)` as a row for all books with the title "Hamlet".
+- Define `hamlets` with columns `language` and `distribution`.  Then, store the results from `word_count_distribution(text)` to `frequencies` to add a row if the book has the title "Hamlet"!
 - Try using `pd.DataFrame`.  Make sure to include the `columns` argument!
 
 *** =pre_exercise_code
