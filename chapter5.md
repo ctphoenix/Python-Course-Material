@@ -269,11 +269,12 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 
 *** =instructions
 -  We are now ready to fit the wine data to our KNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
--  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.  Print your answer.
+-  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.
+-  Print your answer.
 
 *** =hint
-- The `==` operator will test for element-wise equality for numpy arrays (1 if equal, and 0 if not).  You can then use `numpy.mean` to find the fraction of these elements that are equal!
-- Remember that `numpy.mean` will find the fraction of equal values, not the percentage.  For this, you must multiply by `100`!
+- The `==` operator will test for element-wise equality for numpy arrays (1 if equal, and 0 if not).  You can then use `np.mean` to find the fraction of these elements that are equal!
+- Remember that `np.mean` will find the fraction of equal values, not the percentage.  For this, you must multiply by `100`!
 
 *** =pre_exercise_code
 ```{python}
@@ -336,9 +337,9 @@ test_object("y",
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-test_function("print",
-              not_called_msg = "Make sure to call `print`!",
-              incorrect_msg = "It looks like your printed output is not correct.")
+test_student_typed("print",
+              pattern=False,
+              not_typed_msg="Make sure to call `print`!")              
 success_msg("Great work!")
 ```
 
@@ -401,9 +402,9 @@ print(accuracy(0, data["high_quality"]))
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-test_function("print",
-              not_called_msg = "Make sure to call `print`!",
-              incorrect_msg = "It looks like your printed output is not correct.")            
+test_student_typed("print",
+              pattern=False,
+              not_typed_msg="Make sure to call `print`!")            
 success_msg("Great work!")
 ```
 
@@ -477,9 +478,9 @@ test_object("library_predictions",
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-test_function("print",
-              not_called_msg = "Make sure to call `print`!",
-              incorrect_msg = "It looks like your printed output is not correct.")                
+test_student_typed("print",
+              pattern=False,
+              not_typed_msg="Make sure to call `print`!")            
 success_msg("Great work!  Yes, this is better!")
 ```
 
@@ -632,9 +633,9 @@ print(percentage)
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
               incorrect_msg = "Check your definition of `accuracy` again.")
-test_function("print",
-              not_called_msg = "Make sure to call `print`!",
-              incorrect_msg = "Check your definition of `print` again.")
+test_student_typed("print",
+              pattern=False,
+              not_typed_msg="Make sure to call `print`!")  
 test_object("percentage",
             undefined_msg = "Did you define `percentage`?",
             incorrect_msg = "It looks like `percentage` wasn't defined correctly.")
