@@ -156,8 +156,9 @@ show(fig)
 
 *** =sct
 ```{python}
-	test_object("fig",
-            undefined_msg = "Did you run all the code?")
+test_student_typed("show(fig)",
+              pattern=False,
+              not_typed_msg="Did you make sure to plot the figure?")
 success_msg("Great work!")
 ```
 
