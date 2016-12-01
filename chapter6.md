@@ -97,8 +97,8 @@ show(fig)
 
 *** =solution
 ```{python}
-# First, we import a tool to allow text to pop up on the plot when the cursor
-# hovers over it.  Also, we import a data structure used to store definitions
+# First, we import a tool to allow text to pop up on a plot when the cursor
+# hovers over it.  Also, we import a data structure used to store arguments
 # of what to plot in Bokeh.  Finally, we will use numpy for this section as well!
 
 from bokeh.models import HoverTool, ColumnDataSource
@@ -129,7 +129,7 @@ colors = [plot_colors[i%2] for i in range(len(grid))]
 print(colors)
 
 # Finally, let's determine the strength of transparency (alpha) for each point,
-# where 0 is completely see-through.
+# where 0 is completely transparent.
 
 alphas = np.linspace(0, 1, len(grid))
 
