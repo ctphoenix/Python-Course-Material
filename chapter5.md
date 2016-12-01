@@ -117,8 +117,8 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
-- To ensure that each variable contributes equally to the KNN classifier, standardize the data.  That is, subtract each variable in `numeric_data` by its mean, and divide it by its standard deviation.  Store this again as `numeric_data`.
-- Principal components is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well they align with variation in the data. Use the `PCA` function in the scikit-learn (sklearn) library to find and store the two most informative principal components of the data (a matrix with two columns corresponding to the principal components), and store as `pca`.
+- To ensure that each variable contributes equally to the kNN classifier, we need to standardize the data.  First, from each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store this again as `numeric_data`.
+- Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. Use the `PCA` function in the scikit-learn (`sklearn`) library to find and store the two most informative principal components of the data (a matrix with two columns corresponding to the principal components), and store it as `pca`.
 - Use the `fit` and `transform` methods on `numeric_data` to extract the first two principal components, and store as `principal_components`.
 
 *** =hint
@@ -268,7 +268,7 @@ success_msg("Great work!  Yes, these differ significantly.")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  We are now ready to fit the wine data to our KNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
+-  We are now ready to fit the wine data to our kNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
 -  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.
 -  Print your answer.
 
@@ -490,7 +490,7 @@ success_msg("Great work!  Yes, this is better!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade KNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed `123`, and sample 10 row indexes from the dataset using `random.sample`.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
+-  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each wine, so it is probably too slow to perform on a single computer.  Use the `random` library to select the seed `123`, and sample 10 row indexes from the dataset using `random.sample`.  Store this selection as `selection`.  Is our accuracy comparable to the library's function?
 
 *** =hint
 - Try sampling from the rows using `range(n_rows)`.
@@ -565,7 +565,7 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]` with `k=5`, and store as an `np.array` object called `my_predictions`.
+-  Use our homemade kNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]` with `k=5`, and store as an `np.array` object called `my_predictions`.
 -  Using the `accuracy` function, compare these results to the selected rows in the `high_quality` variable in `data`.  Store these results as `percentage`.
 -  Print your answer.
 
