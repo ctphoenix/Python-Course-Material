@@ -35,7 +35,7 @@ def knn_predict(p, points, outcomes, k=5):
 *** =sample_code
 ```{python}
 import pandas as pd
-data = ## ENTER CODE HERE! ##
+data = # Enter your code here!
 
 
 
@@ -91,7 +91,7 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 
 *** =sample_code
 ```{python}
-numeric_data = ## ENTER CODE HERE! ##
+numeric_data = # Enter your code here!
 
 
 
@@ -152,8 +152,8 @@ numeric_data = data.drop("color", axis=1)
 numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
 
 import sklearn.decomposition
-pca = ## ENTER CODE HERE! ##
-principal_components = ## ENTER CODE HERE! ##
+pca = # Enter your code here!
+principal_components = # Enter your code here!
 
 
 ```
@@ -220,8 +220,8 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib.backends.backend_pdf import PdfPages
 observation_colormap = ListedColormap(['red', 'blue'])
-x = ## ENTER CODE HERE! ##
-y = ## ENTER CODE HERE! ##
+x = # Enter your code here!
+y = # Enter your code here!
 
 plt.title("Principal Components of Wine")
 plt.scatter(x, y, alpha = 0.2,
@@ -304,7 +304,7 @@ principal_components = pca.fit(numeric_data).transform(numeric_data)
 *** =sample_code
 ```{python}
 def accuracy(predictions, outcomes):
-    ## ENTER CODE HERE! ##
+    # Enter your code here!
 
 
 
@@ -454,7 +454,7 @@ def accuracy(predictions, outcomes):
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
-library_predictions = ## ENTER CODE HERE! ##
+library_predictions = # Enter your code here!
 
 
 ```
@@ -591,7 +591,7 @@ def knn_predict(p, points, outcomes, k=5):
 import pandas as pd
 data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
 numeric_data = data.drop("color", axis=1)
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+numeric_data = # Enter your code here!
 import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
@@ -610,8 +610,8 @@ selection = random.sample(range(n_rows), 10)
 ```{python}
 predictors = np.array(numeric_data)
 outcomes = np.array(data["high_quality"])
-my_predictions = ## ENTER CODE HERE! ##
-percentage = ## ENTER CODE HERE! ##
+my_predictions = # Enter your code here!
+percentage = # Enter your code here!
 
 ```
 
