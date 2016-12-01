@@ -122,7 +122,7 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 - Use the `fit` and `transform` methods on `numeric_data` to extract the first two principal components and store them as `principal_components`.
 
 *** =hint
-- You can find the mean and standard deviation along each column by selecting `axis=0` in `np.mean` and `np.std`, respectively.
+- You can find the mean and standard deviation along each column of a dataframe by selecting `axis=0` in `np.mean` and `np.std`, respectively.
 - The method that returns the top two principal components is `sklearn.decomposition.PCA(2)`.  Store this as `pca`.
 
 *** =pre_exercise_code
