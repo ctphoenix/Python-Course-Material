@@ -566,7 +566,7 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 
 *** =instructions
 -  Use our homemade KNN classifier `knn_predict` on this sampled dataset to predict wine quality for each value in `predictors[selection]` with `k=5`, and store as an `np.array` object called `my_predictions`.
--  Compare these results to the `scikit-learn` accuracy using the `accuracy` function.  Store these results as `percentage`.
+-  Using the `accuracy` function, compare these results to the selected rows in the `high_quality` variable in `data`.  Store these results as `percentage`.
 -  Print your answer.
 
 *** =hint
