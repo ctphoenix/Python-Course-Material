@@ -13,7 +13,6 @@ Network homophily occurs when nodes that share an edge share a characteristic mo
 - Use the `head` method to display the first few entries of `df1`.
 
 *** =hint
-- For reading in the dataset directly, try `pd.read_stata`!
 -  `df["village"]==1` tests if each row belongs to Village 1.  How can you use this to subset the rows of `df` belonging to Village 1?
 - Don't forget to call `df1.head()`!
 
@@ -65,13 +64,10 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
--  The personal ID for each individual is found in the column `'pid'` in the stored data. The course data repository is a URL stored as the string `data_filepath`. Read in and store the `key_vilno_1.csv` and `key_vilno_2.csv`, consisting of the personal IDs for Villages 1 and 2, respectively.  This file has no header, so make sure to include the parameter `header = None`.
--  Store as `pid1` and `pid2`.
-
-
+-  In this dataset, each individual has a personal ID, or PID, stored in `key_vilno_1.csv` and `key_vilno_2.csv` for villages 1 and 2, respectively. `data_filepath` contains the base URL to the datasets used in this exercise. Use `pd.read_csv` to read in and store `key_vilno_1.csv` and `key_vilno_2.csv` as `pid1` and `pid2` respectively.  The `csv` files have no headers, so make sure to include the parameter `header = None`.
 
 *** =hint
--  Use `pd.read_csv` to load the two files.  You might want to store these as type `int` using the parameter `dtype=int`!
+-   You might want to store these as type `int` using the parameter `dtype=int`!
 
 *** =pre_exercise_code
 ```{python}
@@ -110,7 +106,7 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Define Python dictionaries with personal IDs as keys and one of that individual's covariates as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
+- Define Python dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
 
 *** =hint
 -  For a string `'characteristic'`, try `df1.set_index("pid")[characteristic]`, and use `.to_dict()` to convert this object to a `dict`.
@@ -128,7 +124,7 @@ df2 = df[df["village"]==2]
 
 *** =sample_code
 ```{python}
-sex1      = df1.set_index("pid")["resp_gend"].to_dict()
+sex1      = # Enter code here!
 caste1    = # Enter code here!
 religion1 = # Enter code here!
 
