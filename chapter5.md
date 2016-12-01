@@ -605,9 +605,10 @@ from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
 library_predictions = knn.predict(numeric_data)
-random.seed(1)
 n_rows = data.shape[0]
+random.seed(123)
 selection = random.sample(range(n_rows), 10)
+
 ```
 
 *** =sample_code
