@@ -9,6 +9,7 @@ In this homework, we have prepared step-by-step instructions for you on how to p
 *** =instructions
 -  Here we provide a basic demonstration of an interactive grid plot using Bokeh.  Execute the following code and follow along with the comments. We will later adapt this code to plot the correlations among distillery flavor profiles as well as plot a geographical map of distilleries colored by region and flavor profile.
 -  Make sure to study this code now, as we will edit similar code in the exercises that follow.
+-  Once you have plotted the code, hover, click, and drag your cursor on the plot to interact with it.  Additionally, explore the icons in the top-right corner of the plot for more interactive options!
 
 *** =hint
 - Just execute and read along with the code given!
@@ -170,11 +171,11 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Let's create the names and colors we will use to plot the correlation matrix.  Later, we will also use these colors plot each distillery geographically.  Create a dictionary `region_colors` with regions as keys and cluster colors as values.
+- Let's create the names and colors we will use to plot the correlation matrix of whisky flavors.  Later, we will also use these colors to plot each distillery geographically.  Create a dictionary `region_colors` with regions as keys and `cluster_colors` as values.
 - Print `region_colors`.
 
 *** =hint
-- Use `zip` to combine `regions` and `cluster_colors`, and use `dict()` to convert this to a `dict`.
+- Use `zip` to combine `regions` and `cluster_colors` and use `dict()` to convert this to a `dict`.
 - Make sure to print your answer!
 
 *** =pre_exercise_code
@@ -219,13 +220,12 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Let's define a list `correlation_colors` for distillery pairs that make it clear what the patterns are.  Low correlations will be white, and high correlations will be a distinct color for distilleries from the same group, and gray otherwise.  `correlations` is a matrix with rows and columns corresponding to distilleries, and matrix values coresponding to the correlation of the row/column pair.  Edit the code to define `correlation_colors` for each distillery pair to have input `'white'` then their correlation is less than 0.7.
-- `whisky.Group` is a `pandas` dataframe column consisting of distillery group memberships.  For distillery pairs with correlation greater than 0.7, if they share the same whisky group, use the corresponding color from `cluster_colors`.
-- Otherwise, define the `correlation_colors` value for that distillery pair as `'lightgray'`.
+- Let's define a list `correlation_colors`.  Low correlations will be white, and high correlations will be a distinct color for distilleries from the same group, and gray otherwise.  `correlations` is a two-dimensional `np.array` with both rows and columns corresponding to distilleries and elements corresponding to the correlation of each row/column pair.  Edit the code to define `correlation_colors` for each distillery pair to have input `'white'` if their correlation is less than 0.7.
+- `whisky.Group` is a `pandas` dataframe column consisting of distillery group memberships.  For distillery pairs with correlation greater than 0.7, if they share the same whisky group, use the corresponding color from `cluster_colors`.  Otherwise, define the `correlation_colors` value for that distillery pair as `'lightgray'`.
 
 *** =hint
 - You can index the `(i,j)` distillery pair of `correlations` using `correlations[i,j]`.  How can you test if this value is less than 0.7?
-- You can find the group membership of distillery `i` or `j` using `whisky.Group[i]` or `whisky.Group[j]`.  How can you test for their equality?
+- You can find the group membership of distillery `i` using `whisky.Group[i]`.
 
 *** =pre_exercise_code
 ```{python}
@@ -294,7 +294,7 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Fill in the appropriate code to plot a grid of the distillery correlations.  Color each rectangle in the grid according to `correlation_colors`, and use the correlations themselves as alpha (transparency) values.  Also, when the cursor hovers over a rectangle, output the distillery pair, print both distilleries, as well as the correlation.  Note that `distilleries` contains the distillery names, and `correlations` contains the matrix of distillery correlations by flavor.  To convert a numpy matrix (such as `correlations`) to a list, use the `flatten` method.
+- Fill in the appropriate code to plot a grid of the distillery correlations.  Color each rectangle in the grid according to `correlation_colors` and use the correlations themselves as alpha (transparency) values.  Also, when the cursor hovers over a rectangle, output the distillery pair, show both distilleries as well as their correlation coefficient.  Note that `distilleries` contains the distillery names and `correlations` contains the array of distillery correlations by flavor.  To convert a `numpy` array (such as `correlations`) to a list, use the `flatten` method.
 
 *** =hint
 - For `"colors"`, the `correlation_colors` we defined in the last question will work as is.
@@ -418,7 +418,7 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Next, we provide an example of plotting geographical points. Run the following code, to be adapted in the next section.  Compare this code to that used in plotting the distillery correlations.
+- Next, we provide an example of plotting points geographically. Run the following code, to be adapted in the next section.  Compare this code to that used in plotting the distillery correlations.
 
 *** =hint
 - Just run the code and follow along!
@@ -503,12 +503,12 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Adapt the given code to define a function `location_plot(title, colors)`.  This function takes a `string` title and a list of colors corresponding to each distillery, and outputs a Bokeh plot of each distillery by latitude and longitude, and includes text of distillery, latitude, and longitude as the cursor hovers over each point.
-- `whisky.Region` is a `pandas` column containing the regional group membership for each distillery.  Use a list comprehension to make a list of the value of `region_colors` for each distillery, and store this list as `region_cols`.
-- `location_plot` is still defined from the last exercise.  Use it to plot each distillery, colored by its regional grouping.
+- Adapt the given code to define a function `location_plot(title, colors)`.  This function takes a `string` title and a list of colors corresponding to each distillery and outputs a Bokeh plot of each distillery by latitude and longitude.  As the cursor hovers over each point, it displays the distillery name, latitude, and longitude.
+- `whisky.Region` is a `pandas` column containing the regional group membership for each distillery.  Use a list comprehension to make a list of the value of `region_colors` for each distillery and store this list as `region_cols`.
+- `location_plot` is stored from the last exercise.  Use it to plot each distillery, colored by its regional grouping.
 
 *** =hint
--  Recall that the function needs to be defined by adding `def`.
+- Remember to define the function!
 - You can iterate through `whisky.Region` by casting it as a `list`.
 
 *** =pre_exercise_code
@@ -618,8 +618,9 @@ success_msg("Great work!")
 In this homework, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Use list comprehensions to create the list `region_cols` consisting of the color in `region_colors` corresponding to each whisky in `whisky.Region`.  Similarly, create a list `classification_cols` consisting of the color in `cluster_colors` corresponding to each cluster membership in `whisky.Group`.
-- `location_plot` is still loaded from the previous exercise.  Use it to create two interactive plots of distilleries, one colored by defined region called `region_cols`, and one with colors defined by coclustering called `classification_cols`.
+- Use list comprehensions to create the list `region_cols` consisting of the color in `region_colors` that corresponds to each whisky in `whisky.Region`.
+- Similarly, create a list `classification_cols` consisting of the color in `cluster_colors` that corresponds to each cluster membership in `whisky.Group`.
+- `location_plot` remains stored from the previous exercise.  Use it to create two interactive plots of distilleries, one colored by defined region called `region_cols` and the other with colors defined by coclustering designation called `classification_cols`.  How well do the coclustering groupings match the regional groupings?
 
 *** =hint
 - This problem asks you to repeat part of the previous problem (for comparison), and to define a similar color classification for flavor clusters.  Two straightforward list comprehensions will do the trick.
