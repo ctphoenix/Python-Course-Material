@@ -118,11 +118,11 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 
 *** =instructions
 - To ensure that each variable contributes equally to the KNN classifier, standardize the data.  That is, subtract each variable by its mean, and divide it by its standard deviation.  Store this again as `numeric_data`.
-- Principal components is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well they separate the data. The following code uses the scikit-learn (sklearn) library to find and store the two most informative angles, or principal components, of the data (a matrix with two columns corresponding to the principal components). Use this on your dataset to find and store the two principal components as `principal_components`.
+- Principal components is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well they align with variation in the data. Use the `PCA` function in the scikit-learn (sklearn) library to find and store the two most informative principal components of the data (a matrix with two columns corresponding to the principal components), and store as `pca`.
+- Use the `fit` and `transform` methods on `numeric_data` to extract the first two principal components, and store as `principal_components`.
 
 *** =hint
-- Use and store `sklearn.decomposition.PCA(2)` as `pca`
-- Use the `fit` and `transform` methods to extract the first two principal components from `numeric_data`.
+- The method that returns the top two principal components is `sklearn.decomposition.PCA(2)`.  Store this as `pca`!
 
 *** =pre_exercise_code
 ```{python}
