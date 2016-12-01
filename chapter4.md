@@ -78,7 +78,7 @@ In these bonus exercises, we will find and plot the distribution of word frequen
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
 *** =instructions
--  Create a function `more_frequent(distribution)` that takes a word frequency dict (like that made in Exercise 1) and outputs a dict with the same keys as those in distribution (the number of times a group of words appears in the text), and values corresponding to the fraction of words that occur with more frequency than that.
+-  Create a function `more_frequent(distribution)` that takes a word frequency dictionary (like that made in Exercise 1) and outputs a dictionary with the same keys as those in distribution (the number of times a group of words appears in the text), and values corresponding to the fraction of words that occur with more frequency than that.
 -  Call `more_frequent(distribution)`.
 
 *** =hint
