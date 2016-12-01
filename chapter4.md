@@ -86,15 +86,6 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 - Sorting the values of the distribution with `sorted(distribution.values(), reverse = True)` and finding the cumulative sum of these using `np.cumsum()` will get you close!
 - To obtain the fraction of words more frequent than this, divide this cumulative sum by its maximum, and subtract 1 from this value.  You're ready to make a dictionary with these as values and counts as keys!
 
-def more_frequent(distribution):
-    counts = sorted(distribution.keys())
-    sorted_frequencies = sorted(distribution.values(), reverse = True)
-    cumulative_frequencies = np.cumsum(sorted_frequencies)
-    more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
-    return dict(zip(counts, more_frequent))
-    
-more_frequent(distribution)
-
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
@@ -142,7 +133,7 @@ def more_frequent(distribution):
     more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
     return dict(zip(counts, more_frequent))
     
-more_frequent(distribution)    
+more_frequent(distribution)   
 ```
 
 *** =sct
