@@ -254,10 +254,10 @@ In this homework, we will find and plot the distribution of word frequencies for
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
 *** =instructions
--  Plot the word frequency distributions of each translations on a single log-log plot.  Do the distributions differ?
+-  Plot the word frequency distributions of each translations on a single log-log plot.  Note that we have already done most of the work for you.  Do the distributions of each translation differ?
 
 *** =hint
-- No hint for this one!
+- No hint for this one: don't overthink it!
 
 *** =pre_exercise_code
 ```{python}
