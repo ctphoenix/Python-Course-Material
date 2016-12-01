@@ -67,7 +67,7 @@ colors = [plot_colors[i%2] for i in range(len(grid))]
 print(colors)
 
 # Finally, let's determine the strength of transparency (alpha) for each point,
-# where 0 is completely see-through.
+# where 0 is completely transparent.
 
 alphas = np.linspace(0, 1, len(grid))
 
