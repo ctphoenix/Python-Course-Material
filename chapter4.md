@@ -9,7 +9,7 @@ In this homework, we will find and plot the distribution of word frequencies for
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
 *** =instructions
--  Create a function `word_count_distribution(text)` that takes a book (string) and outputs a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.  Can you accomplish this by using `count_words_fast(text)` in your function?
+-  Create a function `word_count_distribution(text)` that takes a book `string` and outputs a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.  Can you accomplish this by using `count_words_fast(text)` in your function?
 - "Romeo and Juliet" is preloaded as `text`.  Call `word_count_distribution(text)`, and save the result as `distribution`.
 
 
@@ -73,7 +73,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:f2cef742ec
 ## Exercise 2
 
-In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
+In this homework, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
@@ -147,7 +147,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:0fc5cd1ce9
 ## Exercise 3
 
-In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
+In this homework, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
@@ -249,12 +249,12 @@ success_msg("Great work!  There are three translations: English, German, and Por
 --- type:NormalExercise lang:python xp:100 skills:2 key:62f73c5919
 ## Exercise 4
 
-In these bonus exercises, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
+In this homework, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
 
 *** =instructions
--  Plot the word frequency distributions of each translations on a single log-log plot.  Make sure to include a legend and a title!  Do the distributions differ?
+-  Plot the word frequency distributions of each translations on a single log-log plot.  Do the distributions differ?
 
 *** =hint
 - No hint for this one!
