@@ -56,7 +56,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:2288897c84
 ## Exercise 2
 
-A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
+A cipher is a secret code for a language.  In this homework, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
 -  `alphabet` and `letters` are shown below.    Create a dictionary `coded_message` that map the letters of the alphabet (and the space) for keys, and numbers from `0-26` for values.  Define these alphabetically, starting with `a` mapped to  `key=3`.
@@ -106,7 +106,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:95e2d3c0a4
 ## Exercise 3
 
-A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
+A cipher is a secret code for a language.  In this homework, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
 - `alphabet` and `letters` are preloaded from the previous problem.  Create a function `caesar(message, key)` that includes `coded_message` to encode a message with the caesar cipher.
@@ -174,7 +174,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:99f93f9512
 ## Exercise 4
 
-A cipher is a secret code for a language.  For these bonus exercises, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
+A cipher is a secret code for a language.  In this homework, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
 - Decode and save `coded_message` using `caesar` and `key = -3`.
