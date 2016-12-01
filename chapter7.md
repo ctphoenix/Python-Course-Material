@@ -106,7 +106,7 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Define Python dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
+- Define Python dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.  Store these into variables named `sex1`, `caste1`, and `religion1` for Village 1 and `sex2`, `caste2`, and `religion2` for Village 2.
 
 *** =hint
 -  For a string `'characteristic'`, try `df1.set_index("pid")[characteristic]`, and use `.to_dict()` to convert this object to a `dict`.
@@ -173,7 +173,7 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Let's consider how much homophily exists in these networks.  Our measure will be the proportion of edges whose nodes in the pair share a characteristic.  How much homophily do we expect by chance?  If a characteristics were distributed completely randomly, the probability that two nodes share a characteristic is simply the product of chances that both nodes, independently, have that characteristic.  To get the chances they share ANY characteristic, we then simply sum the chances of sharing a particular characteristic.  How can we do this for our dataset?  Create a function `chance_homophily(chars)` that takes a dict with individuals as keys and characteristics as values, and computes the chance homophily for that characteristic.
+- Let's consider how much homophily exists in these networks.  For a given characteristic, our measure of homophily will be the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes share a characteristic is simply the product of chances that each node independently has that characteristic.  To find the probability they share a given characteristic, we then simply sum the chances of sharing that characteristic.  How can we do this for our dataset?  Create a function `chance_homophily(chars)` that takes a dictionary with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
 - A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group.
 
 *** =hint
