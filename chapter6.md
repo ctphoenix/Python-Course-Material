@@ -8,6 +8,7 @@ In this homework, we have prepared step-by-step instructions for you on how to p
 
 *** =instructions
 -  Here we provide a basic demonstration of an interactive grid plot using Bokeh.  Execute the following code and follow along with the comments. We will later adapt this code to plot the correlations among distillery flavor profiles as well as plot a geographical map of distilleries colored by region and flavor profile.
+-  Make sure to study this code now, as we will edit similar code in the exercises that follow.
 
 *** =hint
 - Just execute and read along with the code given!
