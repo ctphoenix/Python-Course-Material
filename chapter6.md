@@ -413,9 +413,9 @@ show(fig)
 #test_student_typed("correlation_colors",
 #              pattern=False,
 #              not_typed_msg="Did you define `colors` correctly?")              
-#test_student_typed("flatten",
-#              pattern=False,
-#              not_typed_msg="Did you use `flatten` to define `alphas` and `correlations`?")        
+test_student_typed("flatten",
+              pattern=False,
+              not_typed_msg="Did you use `flatten` to define `alphas` and `correlations`?")        
 success_msg("Great work!")
 ```
 
