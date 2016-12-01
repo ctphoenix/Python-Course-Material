@@ -11,7 +11,7 @@ In this homework, we will continue taking a look at patterns of flight for each 
 
 *** =hint
 - `grouped_birds` contains a column called `altitude`.  Find the mean of this column!
-- This can be done by calling the `mean()` method of this column.
+- This can be done by calling the `mean()` method on this column.
 
 *** =pre_exercise_code
 ```{python}
@@ -74,12 +74,12 @@ success_msg("Great work!")
 In these exercises, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  `pandas` contains a useful type called `tslib.Timestamp`, which allows you to describe the date with `dt.date`. In this problem, we will group the flight times by date, and calculate the mean altitude within that day.  Use `groupby` and calculate the mean altitude per day.
--  Save these results into an object called `mean_altitudes_perday`.
+-  In this exercise, we will group the flight times by date and calculate the mean altitude within that day.  Use `groupby` to group the data by date.
+-  Calculate the mean altitude per day and store these results as `mean_altitudes_perday`.
 
 *** =hint
 - See `?pd.DataFrame.groupby` for help!
-- For `mean_altitudes_perday`, you can use the  `mean()` method on `grouped_bydates.altitude`.
+- For `mean_altitudes_perday`, you can use the `mean()` method on `grouped_bydates.altitude`.
 
 *** =pre_exercise_code
 ```{python}
