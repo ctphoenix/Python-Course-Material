@@ -318,10 +318,10 @@ def accuracy(predictions, outcomes):
     """
     Finds the percent of predictions that equal outcomes.
     """
-    return np.mean(predictions == outcomes)*100
+    return 100*np.mean(predictions == outcomes)
 
-x=np.array([1,2,3])
-y=np.array([1,2,4])
+x = np.array([1,2,3])
+y = np.array([1,2,4])
 
 print(accuracy(x,y))
 ```
@@ -349,7 +349,7 @@ success_msg("Great work!")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, a very simple classifier predicts that all wines are of low accuracy.  Use the accuracy function to calculate how many wines in the dataset are of low quality.
+-  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, a very simple classifier would be to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.
 
 *** =hint
 - The `accuracy` function should work just fine, with `0` as the first argument!
@@ -381,7 +381,7 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    return np.mean(predictions == outcomes)*100
+    return 100*np.mean(predictions == outcomes)
 ```
 
 *** =sample_code
@@ -448,7 +448,7 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    return np.mean(predictions == outcomes)*100
+    return 100*np.mean(predictions == outcomes)
 ```
 
 *** =sample_code
@@ -521,7 +521,7 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    return np.mean(predictions == outcomes)*100
+    return 100*np.mean(predictions == outcomes)
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
@@ -600,7 +600,7 @@ import sklearn.decomposition
 pca = sklearn.decomposition.PCA(2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)    
 def accuracy(predictions, outcomes):
-    return np.mean(predictions == outcomes)*100
+    return 100*np.mean(predictions == outcomes)
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
