@@ -27,11 +27,3 @@ This material will be available soon!
 ```{python}
 ```
 
-
-
-
-
-
-
-
-
