@@ -350,6 +350,7 @@ In this homework, we will analyze a dataset consisting of an assortment of wines
 
 *** =instructions
 -  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.
+-  Print your result.
 
 *** =hint
 - The `accuracy` function should work just fine with `0` as the first argument!
