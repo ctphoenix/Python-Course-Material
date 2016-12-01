@@ -268,13 +268,13 @@ success_msg("Great work!  Yes, these differ significantly.")
 In this homework, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  We are now ready to fit the wine data to our kNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size, and returns percent of elements that are equal for the two lists.
--  Use `accuracy` to compare the percentage of similar elements in `x=np.array([1,2,3])` and `y=np.array([1,2,4])`.
+-  We are now ready to fit the wine data to our kNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size as arguments and returns a single number, which is the percentage of elements that are equal for the two lists.
+-  Use `accuracy` to compare the percentage of similar elements in `x = np.array([1,2,3])` and `y = np.array([1,2,4])`.
 -  Print your answer.
 
 *** =hint
-- The `==` operator will test for element-wise equality for numpy arrays (1 if equal, and 0 if not).  You can then use `np.mean` to find the fraction of these elements that are equal!
-- Remember that `np.mean` will find the fraction of equal values, not the percentage.  For this, you must multiply by `100`!
+- The `==` operator will test for element-wise equality for `numpy` arrays (1 if equal, and 0 if not).  You can then use `np.mean` to find the fraction of these elements that are equal!
+- Note that `np.mean`, when used as described above, will find the fraction of equal values between the lists, not the percentage.
 
 *** =pre_exercise_code
 ```{python}
