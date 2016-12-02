@@ -177,8 +177,7 @@ Network homophily occurs when nodes that share an edge share a characteristic mo
 - A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group.
 
 *** =hint
-- The `Counter` function in the `collections` library takes a `list` and creates a `dict` with unique list values as keys and their count as values.  The values in a `Counter` object can be divided by the total count to get the proportion of individuals in each unique category.
-- Simply sum the squares of these proportions!
+- Recall that the `Counter` method takes a `list` and creates a dictionary-like object with unique list values as keys and their counts as values.
 
 *** =pre_exercise_code
 ```{python}
@@ -238,7 +237,7 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Use your function to compute the chance homophily for sex, caste, and religion In Villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
+- Use `chance_homophily` to compute the chance homophily for sex, caste, and religion In Villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
 
 *** =hint
 - Use `chance_homophily` on `sex1`, `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
