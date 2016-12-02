@@ -384,7 +384,8 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- The networks for Villages 1 and 2 have been stored as `networkx` graph objects `G1` and `G2`.  Use your `homophily` function to compute the observed homophily for sex, caste, and religion in Villages 1 and 2.  Are these values higher or lower than that expected by chance?
+- The networks for Villages 1 and 2 have been stored as `networkx` graph objects `G1` and `G2`.  Use your `homophily` function to compute the observed homophily for sex, caste, and religion in Villages 1 and 2.
+- Print all six values.  Are these values higher or lower than that expected by chance?
 
 *** =hint
 - Use your `homophily` function on `sex1`, `caste1`, and `religion1` with `pid1`, and `sex2`, `caste2`, and `religion2` with `pid2`.
@@ -426,21 +427,24 @@ def homophily(G, chars, IDs):
 
 *** =sample_code
 ```{python}
-print("Village 1 actual proportion of same sex:", homophily(G1, sex1, pid1))
-# continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
+print("Village 1 observed proportion of same sex:", homophily(G1, sex1, pid1))
+# Enter your code here!
+
+
+
 
 
 ```
 
 *** =solution
 ```{python}
-print("Village 1 actual proportion of same sex:", homophily(G1, sex1, pid1))
-print("Village 1 actual proportion of same caste:", homophily(G1, caste1, pid1))
-print("Village 1 actual proportion of same religion:", homophily(G1, religion1, pid1))
+print("Village 1 observed proportion of same sex:", homophily(G1, sex1, pid1))
+print("Village 1 observed proportion of same caste:", homophily(G1, caste1, pid1))
+print("Village 1 observed proportion of same religion:", homophily(G1, religion1, pid1))
 
-print("Village 2 actual proportion of same sex:", homophily(G2, sex2, pid2))
-print("Village 2 actual proportion of same caste:", homophily(G2, caste2, pid2))
-print("Village 2 actual proportion of same religion:", homophily(G2, religion2, pid2))
+print("Village 2 observed proportion of same sex:", homophily(G2, sex2, pid2))
+print("Village 2 observed proportion of same caste:", homophily(G2, caste2, pid2))
+print("Village 2 observed proportion of same religion:", homophily(G2, religion2, pid2))
 
 ```
 
