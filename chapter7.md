@@ -237,10 +237,11 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Use `chance_homophily` to compute the chance homophily for sex, caste, and religion In Villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
+- `sex1`, `caste1`, `religion1`, `sex2`, `caste2`, and `religion2` are already defined from previous exercises.  Use `chance_homophily` to compute the chance homophily for sex, caste, and religion In Villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
 
 *** =hint
 - Use `chance_homophily` on `sex1`, `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
+- Print all six values.
 
 *** =pre_exercise_code
 ```{python}
@@ -269,7 +270,11 @@ def chance_homophily(chars):
 *** =sample_code
 ```{python}
 print("Village 1 chance of same sex:", chance_homophily(sex1))
-# Continue for `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
+# Enter your code here.
+
+
+
+
 
 
 ```
@@ -317,7 +322,7 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Now let's compute the actual homophily in our network.  Recall that our measure of homophily is the proportion of edges whose nodes in the pair share a characteristic.  `homophily(G, chars, IDs)` takes a network `G`, a dictionary of characteristics `chars`, and node IDs `IDs`.  For each node pair, determine whether a tie exists between them, as well as whether they share a characteristic.  The total count of these is `num_same_ties` and `num_ties`, and their ratio is the homophily of `chars` in `G`.  Complete the function by choosing where to increment `num_same_ties` and `num_ties`.
+- Now let's compute the observed homophily in our network.  Recall that our measure of homophily is the proportion of edges whose nodes share a characteristic.  `homophily(G, chars, IDs)` takes a network `G`, a dictionary of characteristics `chars`, and node IDs `IDs`.  For each node pair, determine whether a tie exists between them, as well as whether they share a characteristic.  The total count of these is `num_same_ties` and `num_ties` respectively, and their ratio is the homophily of `chars` in `G`.  Complete the function by choosing where to increment `num_same_ties` and `num_ties`.
 
 *** =hint
 - You can increment an `int` variable `x` using the Python shorthand `x += 1`!
