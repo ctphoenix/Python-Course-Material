@@ -169,6 +169,9 @@ possibilities(board)
 test_function("possibilities",
               not_called_msg = "Make sure to call `possibilities`!",
               incorrect_msg = "Check your definition of `possibilities` again.")
+test_student_typed("==",
+              pattern=False,
+              not_typed_msg="Do you test which board positions are equal to 0?")              
 success_msg("Great work!")
 ```
 
