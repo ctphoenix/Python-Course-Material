@@ -1,6 +1,6 @@
 ---
-title       : Homework - Social Network Analysis
-description : Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In these exercises, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+title       : Case Study 5 - Bird Migration
+description : In this case study, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
 --- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 
 ## Exercise 1

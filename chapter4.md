@@ -1,6 +1,6 @@
 ---
-title       : Homework - Translations of Hamlet
-description : In this homework, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
+title       : Case Study 2 - Translations of Hamlet
+description : In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 --- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 
 ## Exercise 1
