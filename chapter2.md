@@ -732,7 +732,7 @@ Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two play
 
 *** =instructions
 - Use the `play_game()` function to play 1,000 random games, where Player 1 always goes first.
-- When doing this, use the `time` library to call the `time` function both before and after in order to evaluate how long this takes per game.
+- When doing this, import and use the `time` library to call the `time` function both before and after in order to evaluate how long this takes per game.
 - The library `matplotlib.pyplot` has already been stored as `plt`.  Use `plt.hist` and `plt.show` to plot a histogram of the results.  Does Player 1 win more than Player 2? Does either player win more than each player draws?
 
 *** =hint
