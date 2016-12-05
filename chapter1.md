@@ -162,11 +162,11 @@ success_msg("Great work!")
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
-- Abraham Lincoln was a president during the American Civil War.  His famous 1863 Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to count the number of letters in this address, and save this as `address_count`.
+- Abraham Lincoln was a president during the American Civil War.  His famous 1863 Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to return a dictionary consisting of the count of each letter in this address, and save this as `address_count`.
 - Print `address_count`.
 
 *** =hint
--  Can you use `counter` to do count the frequency of each letter?
+-  Can you use `counter` to return the frequency of each letter?
 
 *** =pre_exercise_code
 ```{python}
