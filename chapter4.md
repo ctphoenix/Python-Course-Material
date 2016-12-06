@@ -6,7 +6,7 @@ description : In this case study, we will find and plot the distribution of word
 
 In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
-For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x).
 
 *** =instructions
 -  Create a function `word_count_distribution(text)` that takes a book `string` and outputs a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.  Can you accomplish this by using `count_words_fast(text)` in your function?
@@ -75,10 +75,10 @@ success_msg("Great work!")
 
 In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
-For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 *** =instructions
--  Create a function `more_frequent(distribution)` that takes a word frequency dictionary (like that made in Exercise 1) and outputs a dictionary with the same keys as those in distribution (the number of times a group of words appears in the text), and values corresponding to the fraction of words that occur with more frequency than that.
+-  Create a function `more_frequent(distribution)` that takes a word frequency dictionary (like that made in Exercise 1) and outputs a dictionary with the same keys as those in distribution (the number of times a group of words appears in the text), and values corresponding to the fraction of words that occur with more frequency than that key.
 -  Call `more_frequent(distribution)`.
 
 *** =hint
@@ -149,7 +149,7 @@ success_msg("Great work!")
 
 In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
-For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 *** =instructions
 -  Edit the code used to read though each of the books in our library, and store each the word frequency distribution for each translation of William Shakespeare's `"Hamlet"` as a Pandas dataframe `hamlets`.  How many translations are there?  Which languages are they translated into?
@@ -251,7 +251,7 @@ success_msg("Great work!  There are three translations: English, German, and Por
 
 In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
-For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined from the main module.
+For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 *** =instructions
 -  Plot the word frequency distributions of each translations on a single log-log plot.  Note that we have already done most of the work for you.  Do the distributions of each translation differ?
@@ -337,8 +337,8 @@ for index in range(hamlets.shape[0]):
     hamlet_languages.append(language)
 plt.title("Word Frequencies in Hamlet Translations")
 xlim    = [0, 2e3]
-xlabel  = "Word Frequency"
-ylabel  = "Fraction of Words with Greater Frequency"
+xlabel  = "Frequency of Word $W$"
+ylabel  = "Fraction of Words\nWith Greater Frequency than $W$"
 plt.xlim(xlim); plt.xlabel(xlabel); plt.ylabel(ylabel)
 plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
 # show your plot using `plt.show`!
@@ -359,8 +359,8 @@ for index in range(hamlets.shape[0]):
     hamlet_languages.append(language)
 plt.title("Word Frequencies in Hamlet Translations")
 xlim    = [0, 2e3]
-xlabel  = "Word Frequency"
-ylabel  = "Fraction of Words with Greater Frequency"
+xlabel  = "Frequency of Word $W$"
+ylabel  = "Fraction of Words\nWith Greater Frequency than $W$"
 plt.xlim(xlim); plt.xlabel(xlabel); plt.ylabel(ylabel)
 plt.legend(handles, hamlet_languages, loc = "upper right", numpoints = 1)
 plt.show()
