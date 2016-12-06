@@ -468,7 +468,7 @@ test_student_typed("caste2",
 test_student_typed("religion2",
               pattern=False,
               not_typed_msg="Did you use `homophily` for `religion2`?")               
-success_msg("Great work!")
+success_msg("Great work!  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
 ```
 
 

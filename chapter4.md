@@ -371,7 +371,7 @@ plt.show()
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you use `plt.show`?")   
-success_msg("Great work!  The distributions differ somewhat, but their basic shape is the same.  By the way, distributions that look like a straight line like these are called 'scale-free,' because the line looks the same no matter where on the x-axis you look!")
+success_msg("Great work!  The distributions differ somewhat, but their basic shape is the same.  By the way, distributions that look like a straight line like these are called 'scale-free,' because the line looks the same no matter where on the x-axis you look!  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
 ```
 
 

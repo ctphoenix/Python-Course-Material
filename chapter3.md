@@ -218,6 +218,6 @@ test_student_typed("print",
 test_object("decoded_message",
             undefined_msg = "Did you define `decoded_message`?",
             incorrect_msg = "It looks like `decoded_message` wasn't defined correctly.")
-success_msg("Great work!")
+success_msg("Great work!  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
 ```
 
