@@ -157,9 +157,12 @@ print(coded_message)
 
 *** =sct
 ```{python}
-test_function("caesar",
-              not_called_msg = "Make sure to call `caesar`!",
-              incorrect_msg = "Check your definition of `caesar` again.")
+test_student_typed("caesar",
+              pattern=False,
+              not_typed_msg="Make sure to call the function `caesar`!") 
+#test_function("caesar",
+#              not_called_msg = "Make sure to call `caesar`!",
+#              incorrect_msg = "Check your definition of `caesar` again.")
 test_student_typed("print",
               pattern=False,
               not_typed_msg="Make sure to call `print`!")                
