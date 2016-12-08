@@ -217,8 +217,8 @@ for language in book_titles:
             if title == "Hamlet":
                 inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
                 text = read_book(inputfile)
-                frequencies = ## Enter code here! ###
-                hamlets.loc[title_num] = language, frequencies
+                distribution = ## Enter code here! ###
+                hamlets.loc[title_num] = language, distribution
                 title_num += 1
 ```
 
@@ -233,8 +233,8 @@ for language in book_titles:
             if title == "Hamlet":
                 inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
                 text = read_book(inputfile)
-                frequencies = word_count_distribution(text)
-                hamlets.loc[title_num] = language, frequencies
+                distribution = word_count_distribution(text)
+                hamlets.loc[title_num] = language, distribution
                 title_num += 1
 ```
 
@@ -315,8 +315,8 @@ for language in book_titles:
                 inputfile = data_filepath+"Books/"+language+"/"+author+"/"+title+".txt"
                 inputfile.replace(" ","+")
                 text = read_book(inputfile)
-                frequencies = word_count_distribution(text)
-                hamlets.loc[title_num] = language, frequencies
+                distribution = word_count_distribution(text)
+                hamlets.loc[title_num] = language, distribution
                 title_num += 1
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
