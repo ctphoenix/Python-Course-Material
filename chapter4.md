@@ -152,7 +152,7 @@ In this case study, we will find and plot the distribution of word frequencies f
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 *** =instructions
--  Edit the code used to read though each of the books in our library, and store the word frequency distribution for each translation of William Shakespeare's "Hamlet" as a Pandas dataframe `hamlets`. `word_count_distribution` is preloaded from Exercise 1. How many translations are there? Which languages are they translated into?
+-  Edit the code used to read though each of the books in our library, and store the word frequency distribution for each translation of William Shakespeare's "Hamlet" as a Pandas dataframe `hamlets` with columns named `"language"` and `"distribution"`. `word_count_distribution` is preloaded from Exercise 1. How many translations are there? Which languages are they translated into?
 
 *** =hint
 - Define `hamlets` with columns `language` and `distribution`.  Then, store the results from `word_count_distribution(text)` to `frequencies` to add a row if the book has the title "Hamlet"!
