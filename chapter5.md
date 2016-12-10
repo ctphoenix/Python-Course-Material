@@ -7,7 +7,7 @@ description : In this case study, we will analyze a dataset consisting of an ass
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Read in the data as a `pandas` dataframe.  The data can be found at `https://s3.amazonaws.com/demo-datasets/wine.csv`.
+-  Read in the data as a `pandas` dataframe using `pd.read_csv`.  The data can be found at `https://s3.amazonaws.com/demo-datasets/wine.csv`.
 
 *** =hint
 - `pd.read_csv` will work directly!
