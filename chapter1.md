@@ -136,7 +136,7 @@ sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 def counter(input_string):
     count_letters = {}
-    for letter in sentence:
+    for letter in input_string:
         if letter in alphabet:
             if letter in count_letters:
                 count_letters[letter] += 1
