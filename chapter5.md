@@ -493,10 +493,10 @@ success_msg("Great work!  Yes, this is better!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, use `random.sample` to sample 10 row indices from the dataset.  In this case, use seed `123` to select the row indices of your sample.  Store this selection of indices as `selection`.
+-  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, use `random.sample` and `range(n_rows)` to sample 10 row indices from the dataset.  In this case, use seed `123` to select the row indices of your sample.  Store this selection of indices as `selection`.
 
 *** =hint
-- Try sampling from the rows using `range(n_rows)`.
+- Make sure to use a `range` object for sampling!
 
 *** =pre_exercise_code
 ```{python}
