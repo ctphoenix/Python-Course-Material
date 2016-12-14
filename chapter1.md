@@ -229,6 +229,7 @@ In this five-part exercise, we will count the frequency of each letter in a give
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 
 import string
+alphabet = string.ascii_letters
 
 def counter(input_string):
     count_letters = {}
