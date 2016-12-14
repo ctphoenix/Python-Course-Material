@@ -186,7 +186,7 @@ Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two play
 - `board` is already defined from previous exercises.  Call `random_place(board, player)` to place a random marker for Player 2, and store this as `board` to update its value.
 
 *** =hint
-- The `choice` function in the `random` library will randomly select one item from an iterable!
+- The `random.choice` function in the `random` library will randomly select one item from an iterable!
 
 *** =pre_exercise_code
 ```{python}
