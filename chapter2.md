@@ -838,7 +838,7 @@ test_student_typed("plt.hist",
 test_student_typed("play_game()",
               pattern=False,
               not_typed_msg="Did you use `play_game()`?")              
-success_msg("Great work!  We see that Player 1 wins slightly more than Player 2.  Draws are about as common as a win for Player 1.  The total amount of time taken is about a dozen seconds, but will vary from machine to machine.")
+success_msg("Great work!  We see that Player 1 wins more than Player 2, and the game sometimes ends in draws.  The total amount of time taken is about a few seconds, but will vary from machine to machine.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:b02cc12320
@@ -1074,7 +1074,7 @@ test_student_typed("plt.hist",
 test_student_typed("play_strategic_game()",
               pattern=False,
               not_typed_msg="Did you use `play_strategic_game()`?")
-success_msg("Great work!  Yes, starting in the middle square is a large advantage when play is otherwise random.  Also, each game takes less time to play, because each victory is decided earlier.  Player 1 wins more than both players draw, and Player 2 wins less than both of these outcomes.")
+success_msg("Great work!  Yes, starting in the middle square is a large advantage when play is otherwise random.  Also, each game takes less time to play, because each victory is decided earlier.  Player 1 wins much more than Player 2, and draws are less common.")
 ```
 
 
