@@ -83,7 +83,7 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 
 *** =hint
 - You might begin with sorting the counts of the distribution as follows: `counts = sorted(distribution.keys())`
-- Sorting the values of the distribution with `sorted(distribution.values(), reverse = True)` and finding the cumulative sum of these using `np.cumsum()` will get you close!
+- Sort the values of the distribution with `sorted(distribution.values(), reverse = True)`.  `numpy` is preloaded into memory as `np`: find the cumulative sum of these using `np.cumsum()`.
 - To obtain the fraction of words more frequent than this, divide this cumulative sum by its maximum, and subtract this value from 1.  You're ready to make a dictionary with these as values and counts as keys!
 
 *** =pre_exercise_code
