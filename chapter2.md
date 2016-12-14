@@ -596,7 +596,7 @@ def evaluate(board):
     winner = 0
     for player in [1, 2]:
         # Check if `row_win`, `col_win`, or `diag_win` apply.  if so, store `player` as `winner`.
-    if np.all(board != 0):
+    if np.all(board != 0) and winner == 0:
         winner = -1
     return winner
 
@@ -612,7 +612,7 @@ def evaluate(board):
     for player in [1, 2]:
         if row_win(board, player) or col_win(board, player) or diag_win(board, player):
             winner = player
-    if np.all(board != 0):
+    if np.all(board != 0) and winner == 0:
         winner = -1
     return winner
 
@@ -684,7 +684,7 @@ def evaluate(board):
     for player in [1, 2]:
         if row_win(board, player) or col_win(board, player) or diag_win(board, player):
             winner = player
-    if np.all(board != 0):
+    if np.all(board != 0) and winner == 0:
         winner = -1
     return winner
 ```
@@ -784,7 +784,7 @@ def evaluate(board):
     for player in [1, 2]:
         if row_win(board, player) or col_win(board, player) or diag_win(board, player):
             winner = player
-    if np.all(board != 0):
+    if np.all(board != 0) and winner == 0:
         winner = -1
     return winner
 def play_game():
@@ -895,7 +895,7 @@ def evaluate(board):
     for player in [1, 2]:
         if row_win(board, player) or col_win(board, player) or diag_win(board, player):
             winner = player
-    if np.all(board != 0):
+    if np.all(board != 0) and winner == 0:
         winner = -1
     return winner
 def play_game():
@@ -1011,7 +1011,7 @@ def evaluate(board):
     for player in [1, 2]:
         if row_win(board, player) or col_win(board, player) or diag_win(board, player):
             winner = player
-    if np.all(board != 0):
+    if np.all(board != 0) and winner == 0:
         winner = -1
     return winner
 def play_game():
