@@ -568,9 +568,10 @@ success_msg("Great work!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Use our homemade kNN classifier `knn_predict` on this sampled dataset to predict wine quality using `k=5`, and store the result as an `np.array` called `my_predictions`.  Note that `selection` is already defined from Exercise 8, and `knn_predict` is already defined as in the Case 3 videos.
+- Complete `my_prediction` with a `numpy` array. This array will contain predicted values of the wine's quality (i.e., like `"high_quality"` column in data).  You need to use the `knn_predict()` function with `k=5` to get these values from a subset of the data array (e.g., where indices match `selection`).  Note that `selection` is already defined from Exercise 8, and `knn_predict` is already defined as in the Case 3 videos.
 -  Using the `accuracy` function, compare these results to the selected rows from the `high_quality` variable in `data`.  Store these results as `percentage`.
 -  Print your answer.
+
 
 *** =hint
 - Use `knn_predict` for each value in `predictors[selection]`, with `predictors`, `outcomes` and `k=5` as additional parameters.
