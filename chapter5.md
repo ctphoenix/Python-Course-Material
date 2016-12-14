@@ -478,6 +478,8 @@ print(accuracy(library_predictions, data["high_quality"]))
 test_object("library_predictions",
             undefined_msg = "Did you define `library_predictions`?",
             incorrect_msg = "It looks like `library_predictions` wasn't defined correctly.")
+test_function("accuracy",
+              not_called_msg = "Make sure to call `accuracy`!")
 test_student_typed("print",
               pattern=False,
               not_typed_msg="Make sure to call `print`!")            
