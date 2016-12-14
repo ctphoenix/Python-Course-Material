@@ -82,10 +82,11 @@ sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 count_letters = {}
 for letter in sentence:
-    if letter in count_letters:
-        count_letters[letter] += 1
-    else:
-        count_letters[letter] = 1
+    if letter in alphabet:
+        if letter in count_letters:
+            count_letters[letter] += 1
+        else:
+            count_letters[letter] = 1
 ```
 
 *** =sct
@@ -136,10 +137,11 @@ sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 def counter(input_string):
     count_letters = {}
     for letter in input_string:
-        if letter in count_letters:
-            count_letters[letter] += 1
-        else:
-            count_letters[letter] = 1
+        if letter in alphabet:
+            if letter in count_letters:
+                count_letters[letter] += 1
+            else:
+                count_letters[letter] = 1
     return count_letters
     
 counter(sentence)
@@ -172,12 +174,12 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import string
 def counter(input_string):
     count_letters = {}
-    for letter in string.ascii_letters:
-        count_letter = 0
-        for character in input_string:
-            if character == letter:
-                count_letter += 1
-        count_letters[letter] = count_letter
+    for letter in input_string:
+        if letter in alphabet:
+            if letter in count_letters:
+                count_letters[letter] += 1
+            else:
+                count_letters[letter] = 1
     return count_letters
 import pandas as pd    
 address = str(pd.read_csv(data_filepath + 'gettysburg.txt', error_bad_lines = False))    
@@ -230,12 +232,12 @@ import string
 
 def counter(input_string):
     count_letters = {}
-    for letter in string.ascii_letters:
-        count_letter = 0
-        for character in input_string:
-            if character.casefold() == letter:
-                count_letter += 1
-        count_letters[letter] = count_letter
+    for letter in input_string:
+        if letter in alphabet:
+            if letter in count_letters:
+                count_letters[letter] += 1
+            else:
+                count_letters[letter] = 1
     return count_letters
     
 import pandas as pd    
