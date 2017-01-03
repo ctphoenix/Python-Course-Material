@@ -567,7 +567,7 @@ success_msg("Great work!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
-- Complete `my_prediction` with a `numpy` array. This array will contain predicted values of the wine's quality (i.e., like `"high_quality"` column in data).  You need to use the `knn_predict()` function with `k=5` to get these values from a subset of the data array (e.g., where indices match `selection`).  Note that `selection` is already defined from Exercise 8, and `knn_predict` is already defined as in the Case 3 videos.
+- A random sample of `10` row indices `numeric_data` are stored as `selection`.  Use the `knn_predict()` function with `k=5` on these indices, and store as a `np.array` called `my_predictions`.  Note that `knn_predict` is already defined as in the Case 3 videos.
 -  Using the `accuracy` function, compare these results to the selected rows from the `high_quality` variable in `data`.  Store these results as `percentage`.
 -  Print your answer.
 
@@ -609,7 +609,7 @@ knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
 library_predictions = knn.predict(numeric_data)
 n_rows = data.shape[0]
-random.seed(123)
+random.seed(10)
 selection = random.sample(range(n_rows), 10)
 
 ```
@@ -617,16 +617,23 @@ selection = random.sample(range(n_rows), 10)
 *** =sample_code
 ```{python}
 predictors = np.array(numeric_data)
+training_indices = [i for i in range(len(predictors)) if i not in selection]
+predictors = predictors[training_indices,:]
 outcomes = np.array(data["high_quality"])
+
 my_predictions = # Enter your code here!
 percentage = # Enter your code here!
+
 
 ```
 
 *** =solution
 ```{python}
 predictors = np.array(numeric_data)
+training_indices = [i for i in range(len(predictors)) if i not in selection]
+predictors = predictors[training_indices,:]
 outcomes = np.array(data["high_quality"])
+
 my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
 percentage = accuracy(my_predictions, data.high_quality[selection])
 print(percentage)
