@@ -118,12 +118,11 @@ In this case study, we will analyze a dataset consisting of an assortment of win
 
 *** =instructions
 - To ensure that each variable contributes equally to the kNN classifier, we need to standardize the data.  First, from each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store this again as `numeric_data`.
-- Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. Use the `PCA` function in the scikit-learn (`sklearn`) library to find and store the two most informative principal components of the data (a matrix with two columns corresponding to the principal components), and store it as `pca`.
-- Use the `fit` and `transform` methods on `numeric_data` to extract the first two principal components and store them as `principal_components`.
+- Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components).  This has been stored as `pca` with `n_components=2`.  Use the `fit` and `transform` methods on `pca` (with `numeric_data` as input for each method) to extract the first two principal components.  Store these as `principal_components`.
 
 *** =hint
 - You can find the mean and standard deviation along each column of a dataframe by selecting `axis=0` in `np.mean` and `np.std`, respectively.
-- The method that returns the top two principal components is `sklearn.decomposition.PCA(2)`.  Store this as `pca`.
+- Both the `fit` and `transform` function require `numeric_data` as input.
 
 *** =pre_exercise_code
 ```{python}
@@ -153,7 +152,7 @@ numeric_data = data.drop("color", axis=1)
 numeric_data = # Enter your code here!
 
 import sklearn.decomposition
-pca = # Enter your code here!
+pca = sklearn.decomposition.PCA(n_components=2)
 principal_components = # Enter your code here!
 
 
@@ -164,7 +163,7 @@ principal_components = # Enter your code here!
 numeric_data = (numeric_data - np.mean(numeric_data, axis=0)) / np.std(numeric_data, axis=0)
 
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(2)
+pca = sklearn.decomposition.PCA(n_components=2)
 principal_components = pca.fit(numeric_data).transform(numeric_data)
 
 ```
