@@ -608,7 +608,7 @@ knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(numeric_data, data['high_quality'])
 library_predictions = knn.predict(numeric_data)
 n_rows = data.shape[0]
-random.seed(10)
+random.seed(9)
 selection = random.sample(range(n_rows), 10)
 
 ```
@@ -617,7 +617,6 @@ selection = random.sample(range(n_rows), 10)
 ```{python}
 predictors = np.array(numeric_data)
 training_indices = [i for i in range(len(predictors)) if i not in selection]
-predictors = predictors[training_indices,:]
 outcomes = np.array(data["high_quality"])
 
 my_predictions = # Enter your code here!
@@ -630,10 +629,9 @@ percentage = # Enter your code here!
 ```{python}
 predictors = np.array(numeric_data)
 training_indices = [i for i in range(len(predictors)) if i not in selection]
-predictors = predictors[training_indices,:]
 outcomes = np.array(data["high_quality"])
 
-my_predictions = np.array([knn_predict(p, predictors, outcomes, 5) for p in predictors[selection]])
+my_predictions = np.array([knn_predict(p, predictors[training_indices,:], outcomes, 5) for p in predictors[selection]])
 percentage = accuracy(my_predictions, data.high_quality[selection])
 print(percentage)
 
