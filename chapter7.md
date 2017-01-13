@@ -186,7 +186,7 @@ success_msg("Great work!")
 In this case study, we will continue taking a look at patterns of bird flights over time.
 
 *** =instructions
--  Great!  Now find the average speed for each bird and day.  Create three `pandas` Series objects – one for each bird.
+-  Great!  Now find the average speed for each bird and day.  Store these are three `pandas` Series objects – one for each bird.
 -  Use the plotting code provided to plot the average speeds for each bird.
 
 *** =hint
