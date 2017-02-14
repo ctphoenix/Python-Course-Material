@@ -294,7 +294,10 @@ success_msg("Great work!")
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Fill in the appropriate code to plot a grid of the distillery correlations.  Color each rectangle in the grid according to `correlation_colors` and use the correlations themselves as alpha (transparency) values.  Also, when the cursor hovers over a rectangle, output the distillery pair, show both distilleries as well as their correlation coefficient.  Note that `distilleries` contains the distillery names and `correlations` contains the array of distillery correlations by flavor.  To convert a `numpy` array (such as `correlations`) to a list, use the `flatten` method.
+- We will edit the following code to make an interactive grid of the correlations among distillery pairs using `correlation_colors` and `correlations`. `correlation_colors` is a list of each distillery pair.  To convert `correlations` from a `np.array` to a `list`, we will use the `flatten` method.  Define the `color` of each rectangle in the grid using to `correlation_colors`.
+- Define the `alpha` (transparency) values using `correlations.flatten()`.
+- Define `correlations` and using `correlations.flatten()`.  When the cursor hovers over a rectangle, this will output the distillery pair, show both distilleries as well as their correlation coefficient.
+
 
 *** =hint
 - For `"colors"`, the `correlation_colors` we defined in the last question will work as is.
@@ -503,9 +506,10 @@ success_msg("Great work!")
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 *** =instructions
-- Adapt the given code to define a function `location_plot(title, colors)`.  This function takes a `string` title and a list of colors corresponding to each distillery and outputs a Bokeh plot of each distillery by latitude and longitude.  As the cursor hovers over each point, it displays the distillery name, latitude, and longitude.
-- `whisky.Region` is a `pandas` column containing the regional group membership for each distillery.  Use a list comprehension to make a list of the value of `region_colors` for each distillery and store this list as `region_cols`.
-- `location_plot` is stored from the last exercise.  Use it to plot each distillery, colored by its regional grouping.
+- Adapt the given code from the beginning to `show(fig)` in order to define a function `location_plot(title, colors)`.  This function takes a string `title` and a list of colors corresponding to each distillery and outputs a Bokeh plot of each distillery by latitude and longitude.  As the cursor hovers over each point, it displays the distillery name, latitude, and longitude.
+- `whisky.Region` is a `pandas` column containing the regional group membership for each distillery.  Make a list consisting of the value of `region_colors` for each distillery, and store this list as `region_cols`.
+- Use `location_plot` to plot each distillery, colored by its regional grouping.	
+
 
 *** =hint
 - Remember to define the function!

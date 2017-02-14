@@ -117,8 +117,9 @@ success_msg("Great work!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
-- To ensure that each variable contributes equally to the kNN classifier, we need to standardize the data.  First, from each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store this again as `numeric_data`.
-- Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components).  This has been stored as `pca` with `n_components=2`.  Use the `fit` and `transform` methods on `pca` (with `numeric_data` as input for each method) to extract the first two principal components.  Store these as `principal_components`.
+- To ensure that each variable contributes equally to the kNN classifier, we need to standardize the data.  First, from each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store your standardized result as `numeric_data`.
+- Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components).  Use `pca.fit(numeric_data).transform(numeric_data)` to extract the first two principal components from the data.  Store this as `principal_components`.
+
 
 *** =hint
 - You can find the mean and standard deviation along each column of a dataframe by selecting `axis=0` in `np.mean` and `np.std`, respectively.
@@ -182,7 +183,7 @@ success_msg("Great work!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Plot the first two principal components.  The high and low quality wines will be colored using red and blue, respectively.  How well are the two groups of wines separated by the first two principal components?
+-  The first two principal components can be accessed using `principal_components[:,0]` and `principal_components[:,1]`.  Store these as `x` and `y` respectively, and plot the first two principal components.  The high and low quality wines will be colored using red and blue.  How well are the two groups of wines separated by the first two principal components?
 
 *** =hint
 - The columns of `principal_components` are already ordered.  How can you index `principal_components` to plot the first two components?  Store these as `x` and `y`!
@@ -348,8 +349,9 @@ success_msg("Great work!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.
+-  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.  Accomplish this by calling `accuracy` with `0` as the first argument, and `data["high_quality"]` as the second argument.
 -  Print your result.
+
 
 *** =hint
 - The `accuracy` function should work just fine with `0` as the first argument!
@@ -414,9 +416,10 @@ success_msg("Great work!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Use the scikit-learn classifier `KNeighborsClassifier` to predict which wines are high and low quality and store the result as `library_predictions`.
-- Use `accuracy` to find the accuracy of `library_predictions`.
+- Use `knn.predict(numeric_data)` to predict which wines are high and low quality and store the result as `library_predictions`.
+- Use `accuracy` to find the accuracy of your predictions, using `library_predictions` as the first argument and `data["high_quality"]` as the second argument.
 - Print your answer.  Is this prediction better than the simple classifier in Exercise 6?
+
 
 *** =hint
 - A `KNeighborsClassifier` object contains a `predict` method --- try that on `numeric_data`!
@@ -491,7 +494,7 @@ success_msg("Great work!  Yes, this is better!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, use `random.sample` and `range(n_rows)` to sample 10 row indices from the dataset.  In this case, use seed `123` to select the row indices of your sample.  Store this selection of indices as `selection`.
+-  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, fix the random generator using `random.seed(123)`, and select 10 rows from the dataset using `random.sample(range(n_nrows), 10`.  Store this selection as `selection`.
 
 *** =hint
 - Make sure to use a `range` object for sampling!
@@ -566,9 +569,10 @@ success_msg("Great work!")
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
 *** =instructions
-- A random sample of `10` row indices `numeric_data` are stored as `selection`.  Use the `knn_predict()` function with `k=5` on these indices, and store as a `np.array` called `my_predictions`.  Note that `knn_predict` is already defined as in the Case 3 videos.
--  Using the `accuracy` function, compare these results to the selected rows from the `high_quality` variable in `data`.  Store these results as `percentage`.
+-  The sample of `10` row indices are stored as `selection` from the previous exercise.  For each predictor `p` in `predictors[selection]`, use `knn_predict(p, predictors[training_indices,:], outcomes, k=5)` to predict the quality of each wine in the prediction set, and store these predictions as a `np.array` called `my_predictions`.  Note that `knn_predict` is already defined as in the Case 3 videos.
+-  Using the `accuracy` function, compare these results to the selected rows from the `high_quality` variable in `data` using `my_predictions` as the first argument and `data.high_quality[selection]` as the second argument.  Store these results as `percentage`.
 -  Print your answer.
+
 
 
 *** =hint

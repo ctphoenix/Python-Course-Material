@@ -182,11 +182,15 @@ success_msg("Great work!")
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
-- Create a function `random_place(board, player)` that places a marker for the current player at random among all the available positions (those currently set to 0).
+- Write a function `random_place(board, player)` that places a marker for the current player at random among all the available positions (those currently set to 0).
+- Find possible placements with `possibilities(board)`.
+- Select one possible placement at random using `np.random.choice(selection)`.
 - `board` is already defined from previous exercises.  Call `random_place(board, player)` to place a random marker for Player 2, and store this as `board` to update its value.
 
+
+
 *** =hint
-- The `random.choice` function in the `random` library will randomly select one item from an iterable!
+- The `choice` function in the `np.random` library will randomly select one item from an iterable.
 
 *** =pre_exercise_code
 ```{python}
@@ -224,7 +228,7 @@ def possibilities(board):
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
-        selection = random.choice(selections)
+        selection = np.random.choice(selections)
         place(board, player, selection)
     return board
 

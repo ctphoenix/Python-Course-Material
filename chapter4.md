@@ -9,12 +9,13 @@ In this case study, we will find and plot the distribution of word frequencies f
 For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x).
 
 *** =instructions
--  Create a function `word_count_distribution(text)` that takes a book `string` and outputs a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.  Can you accomplish this by using `count_words_fast(text)` in your function?
-- "Romeo and Juliet" is preloaded as `text`.  Call `word_count_distribution(text)`, and save the result as `distribution`.
-
+- Write a function `word_count_distribution(text)` that takes a book `string` and returns a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.
+- First use `count_words_fast(text)` to create a dictionary called `word_counts` with unique words in the dictionary as keys and their frequency in the book as values.
+- Next, create and return a new dictionary `count_distribution` with unique values from `word_counts` as keys and their frequency as values.  For example, `'you are what you eat'` contains three words that occur once and one word that occurs twice, so `word_count_distribution('you are what you eat')` should return a dictionary `{1:3, 2:1}`.
+- 'Romeo and Juliet' is preloaded as `text`.  Call `word_count_distribution(text)`, and save the result as `distribution`.
 
 *** =hint
-- Using `count_words_fast(text)` and the values from `Counter` ought to do the trick!
+- Using `Counter` on the values from `count_words_fast(text)` ought to do the trick!
 
 *** =pre_exercise_code
 ```{python}
@@ -53,7 +54,7 @@ text = read_book(data_filepath + "Books/English/shakespeare/Romeo+and+Juliet.txt
 ```{python}
 def word_count_distribution(text):
     word_counts = count_words_fast(text)
-    count_distribution = Counter(word_counts.values())
+    count_distribution = dict(Counter(word_counts.values()))
     return count_distribution
 
 distribution = word_count_distribution(text) 

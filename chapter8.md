@@ -109,8 +109,10 @@ Network homophily occurs when nodes that share an edge share a characteristic mo
 - Define Python dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.  Store these into variables named `sex1`, `caste1`, and `religion1` for Village 1 and `sex2`, `caste2`, and `religion2` for Village 2.
 
 *** =hint
--  For a string `'characteristic'`, try `df1.set_index("pid")[characteristic]`, and use `.to_dict()` to convert this object to a `dict`.
--  How can you look at the column names of `df1` and `df2`?  Use these to find column names corresponding to sex, caste, and religion.
+- Define Python dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
+- For Village 1, store these dictionaries into variables named `sex1`, `caste1`, and `religion1`.
+- For Village 2, store these dictionaries into variables named `sex2`, `caste2`, and `religion2`.
+
 
 *** =pre_exercise_code
 ```{python}
