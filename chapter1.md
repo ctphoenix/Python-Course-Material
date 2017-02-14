@@ -7,11 +7,13 @@ description : Exercises for homework (Week 1).  In this homework, we will use ob
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
-- The lowercase and uppercase English alphabet can be found using `ascii_letters` attribute in the `string` library.  Store this as `alphabet`.
+- Import the `string` library.
+- Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` attribute of the `string` library.
 
 *** =hint
 - Use `import` to import the `string` library.
 - Use `=` to assign `ascii_letters` to `alphabet`.
+
 
 *** =pre_exercise_code
 ```{python}
@@ -220,7 +222,7 @@ success_msg("Great work!")
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
-- What is the most common letter used in the Gettysburg Address?
+- The frequency of each letter in the Gettysburg Address is already stored as `address_count`.  Use this dictionary to find the most common letter in the Gettysburg address.
 - Store this letter as `most_frequent_letter`, and print your answer.
 
 *** =hint
@@ -450,8 +452,9 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- `distance(x, y)` is pre-loaded from part **2c**.  Make a function `in_circle(x, origin)` that uses `distance` to determine if a two-dimensional point falls within the the unit circle with a given origin.  That is, find if a two-dimensional point has distance `<1` from the origin `(0,0)`.
-- Use your function to print whether the point `(1,1)` lies within the unit circle centered at `(0,0)`.
+- `distance(x, y)` is pre-loaded from part `2c`. Write a function `in_circle(x, origin)` that determines whether a two-dimensional point falls within a unit circle surrounding a given origin. Your function should return a boolean that is `True` if the distance between `x` and `origin` is less than 1, and `False` otherwise.
+- Use your function to determine whether the point (1,1) lies within the unit circle centered at `(0,0)`.
+- Print your answer.
 
 *** =hint
 - Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than 1!
@@ -529,8 +532,9 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- The functions `rand` and `in_circle` are defined from previous exercises.  Using these functions, code is pre-entered that creates a list `x` of `R=10000` two-dimensional points.  Create a list of `10000` booleans called `inside` that are `True` if and only if the point in `x` with that index falls within the unit circle.  Make sure to use `in_circle`!
-- Print the proportion of points within the circle.  This proportion is an estimate of the ratio of the two areas!
+- Create a list of `R=10000` booleans called `inside` that determines whether each point in `x` falls within the unit circle centered at `(0,0)`.  Make sure to use `in_circle`.
+- Find the proportion of points within the circle by summing the count of `True` in `inside`, and dividing by `10000`.
+- Print your answer.  This proportion is an estimate of the ratio of the two areas!
 
 *** =hint
 -  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  
@@ -615,8 +619,9 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Note: `inside` and `R` are defined as in Exercise `2e`.  Recall the true ratio of the area of of the unit circle to the area to the inscribing square is `pi / 4`.
-- Find and print the difference between this value and your estimate from part `2e`.
+- Note: `inside` and `R` are defined as in Exercise `2e`.  Recall that the true ratio of the area of the unit circle to the area to the inscribing square is `pi / 4`.
+- Find the difference between your estimate from part `2e` and `math.pi / 4`.
+- Print your answer.
 
 
 
@@ -756,8 +761,9 @@ A list of numbers can be very unsmooth, meaning very high numbers can be right n
 
 *** =instructions
 - Compute and store `R=1000` random values from 0-1 as `x`.
-- `moving_window_average(x, n_neighbors)` is pre-loaded into memory from `3a`.  Compute the moving window average for `x` for the range of `n_neighbors 1-9`.
-- Store `x` as well as each of these averages as consecutive lists in a list called `Y`.  
+- `moving_window_average(x, n_neighbors)` is pre-loaded into memory from `3a`.  Compute the moving window average for `x` for values of `n_neighbors` ranging from 1 to 9 inclusive.
+- Store `x` as well as each of these averages as consecutive lists in a list called `Y`. 
+
 
 *** =hint
 - You may be able to use a list comprehension here!  A `for` loop will also work.
