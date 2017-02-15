@@ -175,8 +175,9 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Let's consider how much homophily exists in these networks.  For a given characteristic, our measure of homophily will be the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes share a characteristic is simply the product of chances that each node independently has that characteristic.  To find the probability they share a given characteristic, we then simply sum the chances of sharing that characteristic.  How can we do this for our dataset?  Create a function `chance_homophily(chars)` that takes a dictionary with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
-- A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group.
+- Let's consider how much homophily exists in these networks.  For a given characteristic, our measure of homophily will be the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes `x` and `y` share characteristic `a` is the probability both nodes have characteristic `a`, which is the frequency of `a` squared.  The total probability that nodes `x` and `y` share their characteristic is therefore the sum of the frequency of each characteristic in the network.  For example, in the dictionary `favorite_colors` provided, the frequency of `red` and `blue` is 1/3 and 2/3 respectively, so the chance homophily is (1/3)^2+(2/3)^2 = 5/9.  Create a function `chance_homophily(chars)` that takes a dictionary with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
+- A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group, and store as `color_homophily`.
+- Print `color_homophily`.
 
 *** =hint
 - Recall that the `Counter` method takes a `list` and creates a dictionary-like object with unique list values as keys and their counts as values.
@@ -199,7 +200,8 @@ favorite_colors = {
     "mary":   "blue"
 }
 
-chance_homophily(favorite_colors)
+color_homophily = chance_homophily(favorite_colors)
+print(color_homophily)
 
 ```
 
@@ -222,7 +224,9 @@ favorite_colors = {
     "mary":   "blue"
 }
 
-chance_homophily(favorite_colors) 
+color_homophily = chance_homophily(favorite_colors)
+print(color_homophily)
+
 ```
 
 *** =sct
@@ -230,6 +234,12 @@ chance_homophily(favorite_colors)
 test_function("chance_homophily",
               not_called_msg = "Make sure to call `chance_homophily`!",
               incorrect_msg = "Check your definition of `chance_homophily` again.")
+test_object("color_homophily",
+            undefined_msg = "Did you define `color_homophily`?",
+            incorrect_msg = "It looks like `color_homophily` wasn't defined correctly.")              
+test_student_typed("print",
+			  pattern=False,
+              not_typed_msg = "Did you remember to print your answer?")             
 success_msg("Great work!")
 ```
 

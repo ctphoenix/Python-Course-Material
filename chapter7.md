@@ -201,7 +201,7 @@ import matplotlib.pyplot as plt
 birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 birddata.date_time = pd.to_datetime(birddata.date_time)
 birddata["date"] = birddata.date_time.dt.date
-grouped_bydates = birddata.groupby(["bird_name", "date"])
+grouped_birdday = birddata.groupby(["bird_name", "date"])
 ```
 
 *** =sample_code
@@ -220,9 +220,9 @@ plt.show()
 
 *** =solution
 ```{python}
-eric_daily_speed  = grouped_bydates.speed_2d.mean()["Eric"]
-sanne_daily_speed = grouped_bydates.speed_2d.mean()["Sanne"]
-nico_daily_speed  = grouped_bydates.speed_2d.mean()["Nico"]
+eric_daily_speed  = grouped_birdday.speed_2d.mean()["Eric"]
+sanne_daily_speed = grouped_birdday.speed_2d.mean()["Sanne"]
+nico_daily_speed  = grouped_birdday.speed_2d.mean()["Nico"]
 
 eric_daily_speed.plot(label="Eric")
 sanne_daily_speed.plot(label="Sanne")
