@@ -83,9 +83,9 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 -  Call `more_frequent(distribution)`.
 
 *** =hint
-- You might begin with sorting the counts of the distribution as follows: `counts = sorted(distribution.keys())`
-- Sort the values of the distribution with `sorted(distribution.values(), reverse = True)`.  `numpy` is preloaded into memory as `np`: find the cumulative sum of these using `np.cumsum()`.
-- To obtain the fraction of words more frequent than this, divide this cumulative sum by its maximum, and subtract this value from 1.  You're ready to make a dictionary with these as values and counts as keys!
+- You might begin with storing the counts of the distribution as follows: `counts = list(distribution.keys())`
+- Store the values of the distribution with `frequency_of_counts = list(distribution.values())`.  `numpy` is preloaded into memory as `np`: find the cumulative sum of these using `np.cumsum()`.
+- To obtain the fraction of words more frequent than this, divide this cumulative sum by its maximum, and subtract this value from 1.  You're ready to make a dictionary with the results of this calculation as values and `counts` as keys!
 
 *** =pre_exercise_code
 ```{python}
@@ -128,9 +128,9 @@ distribution = word_count_distribution(text)
 *** =solution
 ```{python}
 def more_frequent(distribution):
-    counts = sorted(distribution.keys())
-    sorted_frequencies = sorted(distribution.values(), reverse = True)
-    cumulative_frequencies = np.cumsum(sorted_frequencies)
+    counts = list(distribution.keys())
+    frequency_of_counts = list(distribution.values())
+    cumulative_frequencies = np.cumsum(frequency_of_counts)
     more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
     return dict(zip(counts, more_frequent))
     
@@ -200,9 +200,9 @@ def word_count_distribution(text):
     count_distribution = Counter(word_counts.values())
     return count_distribution
 def more_frequent(distribution):
-    counts = sorted(distribution.keys())
-    sorted_frequencies = sorted(distribution.values(), reverse = True)
-    cumulative_frequencies = np.cumsum(sorted_frequencies)
+    counts = list(distribution.keys())
+    frequency_of_counts = list(distribution.values())
+    cumulative_frequencies = np.cumsum(frequency_of_counts)
     more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
     return dict(zip(counts, more_frequent))
 ```
@@ -301,9 +301,9 @@ def word_count_distribution(text):
     count_distribution = Counter(word_counts.values())
     return count_distribution
 def more_frequent(distribution):
-    counts = sorted(distribution.keys())
-    sorted_frequencies = sorted(distribution.values(), reverse = True)
-    cumulative_frequencies = np.cumsum(sorted_frequencies)
+    counts = list(distribution.keys())
+    frequency_of_counts = list(distribution.values())
+    cumulative_frequencies = np.cumsum(frequency_of_counts)
     more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
     return dict(zip(counts, more_frequent))
 hamlets = pd.DataFrame(columns = ("language", "distribution"))
