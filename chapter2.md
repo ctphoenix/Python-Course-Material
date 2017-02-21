@@ -184,13 +184,13 @@ Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two play
 *** =instructions
 - Write a function `random_place(board, player)` that places a marker for the current player at random among all the available positions (those currently set to 0).
 - Find possible placements with `possibilities(board)`.
-- Select one possible placement at random using `np.random.choice(selection)`.
+- Select one possible placement at random using `random.choice(selection)`.
 - `board` is already defined from previous exercises.  Call `random_place(board, player)` to place a random marker for Player 2, and store this as `board` to update its value.
 
 
 
 *** =hint
-- The `choice` function in the `np.random` library will randomly select one item from an iterable.
+- The `choice` function in the `random` library will randomly select one item from an iterable.
 
 *** =pre_exercise_code
 ```{python}
@@ -228,7 +228,7 @@ def possibilities(board):
 def random_place(board, player):
     selections = possibilities(board)
     if len(selections) > 0:
-        selection = np.random.choice(selections)
+        selection = random.choice(selections)
         place(board, player, selection)
     return board
 
