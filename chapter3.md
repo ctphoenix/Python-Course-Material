@@ -155,8 +155,8 @@ def caesar(message, encryption_key):
     coded_message = "".join([letters[encoding[letter]] for letter in message])
     return coded_message
     
-coded_message = caesar(message, encryption_key=3)
-print(coded_message)    
+encoded_message = caesar(message, encryption_key=3)
+print(encoded_message)    
 ```
 
 *** =sct
@@ -167,9 +167,9 @@ test_student_typed("caesar",
 test_student_typed("print",
               pattern=False,
               not_typed_msg="Make sure to call `print`!")                
-test_object("coded_message",
-            undefined_msg = "Did you define `coded_message`?",
-            incorrect_msg = "It looks like `coded_message` wasn't defined correctly.")
+test_object("encoded_message",
+            undefined_msg = "Did you define `encoded_message`?",
+            incorrect_msg = "It looks like `encoded_message` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
@@ -179,7 +179,7 @@ success_msg("Great work!")
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 *** =instructions
-- Decode and save `coded_message` using `caesar` and `encryption_key = -3`.  `coded_message` is already loaded from the previous problem.
+- Note that `encoded_message` is already loaded from the previous problem. Use `caesar` to decode `encoded_message` using `encryption_key = -3`.
 - Store your decoded message as `decoded_message`.
 - Print `decoded_message`.  Does this recover your original message?
 
@@ -198,7 +198,7 @@ encoding = {letter: (place + encryption_key) % 27 for (place, letter) in enumera
 def caesar(message, encryption_key):
     encoding = {letter: (place + encryption_key) % 27 for (place, letter) in enumerate(alphabet)}
     return "".join([letters[encoding[letter]] for letter in message])
-coded_message = caesar(message, encryption_key=3)
+encoded_message = caesar(message, encryption_key=3)
 ```
 
 *** =sample_code
@@ -210,7 +210,7 @@ coded_message = caesar(message, encryption_key=3)
 
 *** =solution
 ```{python}
-decoded_message = caesar(coded_message, encryption_key=-3)
+decoded_message = caesar(encoded_message, encryption_key=-3)
 print(decoded_message)
 ```
 
