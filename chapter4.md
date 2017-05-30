@@ -80,7 +80,7 @@ For these exercises, functions `count_words_fast`, `read_book`, and `word_stats`
 
 *** =instructions
 -  Create a function `more_frequent(distribution)` that takes a word frequency dictionary (like that made in Exercise 1) and outputs a dictionary with the same keys as those in distribution (the number of times a group of words appears in the text), and values corresponding to the fraction of words that occur with more frequency than that key.
--  Call `more_frequent(distribution)`.
+-  Call `more_frequent(distribution)`, and store as `cumulative`.
 
 *** =hint
 - You might begin with storing the counts of the distribution as follows: `counts = list(distribution.keys())`
@@ -134,7 +134,7 @@ def more_frequent(distribution):
     more_frequent = 1 - cumulative_frequencies / cumulative_frequencies[-1]
     return dict(zip(counts, more_frequent))
     
-more_frequent(distribution)   
+cumulative = more_frequent(distribution)
 ```
 
 *** =sct
@@ -142,6 +142,9 @@ more_frequent(distribution)
 test_function("more_frequent",
               not_called_msg = "Make sure to call `more_frequent`!",
               incorrect_msg = "Check your definition of `more_frequent` again.")
+test_object("cumulative",
+            undefined_msg = "Did you define `cumulative`?",
+            incorrect_msg = "It looks like `cumulative` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
