@@ -646,7 +646,7 @@ print(percentage)
 ```{python}
 test_function("accuracy",
               not_called_msg = "Make sure to call `accuracy`!",
-              incorrect_msg = "Check your definition of `accuracy` again.")
+              incorrect_msg = "It appears the arguments you used in `accuracy` are not correct.")
 test_student_typed("print",
               pattern=False,
               not_typed_msg="Make sure to call `print`!")  
