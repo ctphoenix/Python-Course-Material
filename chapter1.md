@@ -8,12 +8,11 @@ In this five-part exercise, we will count the frequency of each letter in a give
 
 *** =instructions
 - Import the `string` library.
-- Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` data attribute of the `string` library.
+- Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` attribute of the `string` library.
 
 *** =hint
 - Use `import` to import the `string` library.
 - Use `=` to assign `ascii_letters` to `alphabet`.
-- For additional information, use `dir(string)` to look through the attributes in the `string` library.
 
 
 *** =pre_exercise_code
@@ -454,6 +453,8 @@ The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In
 
 *** =instructions
 - `distance(x, y)` is pre-loaded from part `2c`. Write a function `in_circle(x, origin)` that determines whether a two-dimensional point falls within a unit circle surrounding a given origin. Your function should return a boolean that is `True` if the distance between `x` and `origin` is less than 1, and `False` otherwise.
+-- suboption 1
+-- suboption 2
 - Use your function to determine whether the point (1,1) lies within the unit circle centered at `(0,0)`.
 - Print your answer.
 
