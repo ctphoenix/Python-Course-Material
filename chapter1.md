@@ -452,9 +452,7 @@ success_msg("Great work!")
 The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Write a function `in_circle(x, origin)` that determines whether a two-dimensional point falls within a unit circle surrounding a given origin. 
-    - Your function should return a boolean that is `True` if the distance between `x` and `origin` is less than 1, and `False` otherwise.
-    - `distance(x, y)` is pre-loaded from part `2c`. 
+- `distance(x, y)` is pre-loaded from part `2c`. Write a function `in_circle(x, origin)` that determines whether a two-dimensional point falls within a unit circle surrounding a given origin. Your function should return a boolean that is `True` if the distance between `x` and `origin` is less than 1, and `False` otherwise.
 - Use your function to determine whether the point (1,1) lies within the unit circle centered at `(0,0)`.
 - Print your answer.
 
