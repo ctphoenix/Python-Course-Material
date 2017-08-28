@@ -8,11 +8,12 @@ In this five-part exercise, we will count the frequency of each letter in a give
 
 *** =instructions
 - Import the `string` library.
-- Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` attribute of the `string` library.
+- Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` data attribute of the `string` library.
 
 *** =hint
 - Use `import` to import the `string` library.
 - Use `=` to assign `ascii_letters` to `alphabet`.
+- For additional information, use `dir(string)` to look through the attributes in the `string` library.
 
 
 *** =pre_exercise_code
