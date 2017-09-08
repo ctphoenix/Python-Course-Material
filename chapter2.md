@@ -4,11 +4,11 @@ description : Exercises for Homework (Week 2).  Tic-tac-toe (or noughts and cros
 --- type:NormalExercise lang:python xp:100 skills:2 key:cfd2bb78d3
 ## Exercise 1
 
-Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator, and evaluate basic winning strategies.
+Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
 *** =instructions
 - For our tic-tac-toe board, we will use a numpy array with dimension 3 by 3.  Make a function `create_board()` that creates such a board, with values of integers `0`.
-- Call `create_board(),` and store this as `board`.
+- Call `create_board()`, and store this as `board`.
 
 
 *** =hint
