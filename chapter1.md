@@ -8,11 +8,12 @@ In this five-part exercise, we will count the frequency of each letter in a give
 
 *** =instructions
 - Import the `string` library.
-- Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` attribute of the `string` library.
+- Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` data attribute of the `string` library.
 
 *** =hint
 - Use `import` to import the `string` library.
 - Use `=` to assign `ascii_letters` to `alphabet`.
+- For additional information, use `dir(string)` to look through the attributes in the `string` library.
 
 
 *** =pre_exercise_code
@@ -53,8 +54,8 @@ success_msg("Great work!")
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
-- The lower and upper cases of the English alphabet is stored as `alphabet`.
-- Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with keys consisting of each unique letter in the sentence and values consisting of the number of times each letter is used in this sentence.  Count both upper case and lower case letters separately in the dictionary.
+- The lower and upper cases of the English alphabet are stored as the string `alphabet`.
+- Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with keys consisting of each unique letter in the sentence and values consisting of the number of times each letter is used in this sentence.  Count upper case and lower case letters separately in the dictionary.
 
 *** =hint
 - Can you think of a way to use a `for` loop to count up the frequency of each letter used in the sentence? 
@@ -164,7 +165,7 @@ success_msg("Great work!")
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
 *** =instructions
-- Abraham Lincoln was a president during the American Civil War.  His famous 1863 Gettysburg Address has been stored as `address`, and the `counter` function defined in part **1c** has been loaded.  Use these to return a dictionary consisting of the count of each letter in this address, and save this as `address_count`.
+- Abraham Lincoln was a president during the American Civil War.  His famous 1863 Gettysburg Address has been stored as `address`, and the `counter` function as defined in part **1c** has been loaded.  Use these to return a dictionary consisting of the count of each letter in this address, and save this as `address_count`.
 - Print `address_count`.
 
 *** =hint
@@ -285,10 +286,10 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:8b40a3f09f
 ## Exercise 2a
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
+Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Using the math library, calculate and print the value of pi / 4.
+- Using the `math` library, calculate and print the value of `pi / 4`.
 
 *** =hint
 - The `math` library contains a float `pi` --- try using that!
@@ -327,14 +328,14 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:7aa7dadeac
 ## Exercise 2b
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
+Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Using `random.uniform`, create a function `rand()` that generates a single `float` between `-1` and `1`.
-- Call `rand()` once.  So we can check your solution, we will use `random.seed` to fix the value called by your function.
+- Using `random.uniform()`, create a function `rand()` that generates a single `float` between `-1` and `1`.
+- Call `rand()` once.  So we can check your solution, we will use `random.seed()` to fix the value called by your function.
 
 *** =hint
--  `random.uniform` generates a random value between the first argument and the second argument.  Try using this to get random values between `-1` and `1`.
+-  `random.uniform()` generates a random value between the first argument and the second argument.  Try using this to get random values between `-1` and `1`.
 
 *** =pre_exercise_code
 ```{python}
@@ -387,7 +388,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:eabc2b80ff
 ## Exercise 2c
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
+Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
 - The distance between two points `x` and `y` is the square root of the sum of squared differences along each dimension of `x` and `y`.  Create a function `distance(x, y)` that takes two vectors and outputs the distance between them.  Use your function to find the distance between `x=(0,0)` and `y=(1,1)`.
@@ -449,15 +450,17 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:89310e2304
 ## Exercise 2d
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
+Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- `distance(x, y)` is pre-loaded from part `2c`. Write a function `in_circle(x, origin)` that determines whether a two-dimensional point falls within a unit circle surrounding a given origin. Your function should return a boolean that is `True` if the distance between `x` and `origin` is less than 1, and `False` otherwise.
-- Use your function to determine whether the point (1,1) lies within the unit circle centered at `(0,0)`.
+- Write a function `in_circle(x, origin)` that determines whether a two-dimensional point falls within a unit circle surrounding a given origin. 
+    - Your function should return a boolean that is `True` if the distance between `x` and `origin` is less than 1, and `False` otherwise.
+    - `distance(x, y)` as defined in `2c` is pre-loaded. 
+- Use your function to determine whether the point `(1,1)` lies within the unit circle centered at `(0,0)`.
 - Print your answer.
 
 *** =hint
-- Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than 1!
+- Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than `1`!
 
 *** =pre_exercise_code
 ```{python}
@@ -529,7 +532,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:c7c20038ea
 ## Exercise 2e
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
+Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
 - Create a list of `R=10000` booleans called `inside` that determines whether each point in `x` falls within the unit circle centered at `(0,0)`.  Make sure to use `in_circle`.
@@ -592,9 +595,9 @@ inside = []
 for i in range(R):
     point = [rand(), rand()]
     x.append(point)
-    # Enter your code here! #
+    # append inside here!
 
-# Enter your code here! #
+print(sum(inside) / R)
 
 ```
 
@@ -616,13 +619,11 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:d3950c2ef5
 ## Exercise 2f
 
-The ratio of the areas of a circle and the square inscribing it is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
+Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
 *** =instructions
-- Note: `inside` and `R` are defined as in Exercise `2e`.  Recall that the true ratio of the area of the unit circle to the area to the inscribing square is `pi / 4`.
-- Find the difference between your estimate from part `2e` and `math.pi / 4`.
+- Find the difference between your estimate from part `2e` and `math.pi / 4`. Note: `inside` and `R` are defined as in Exercise `2e`.
 - Print your answer.
-
 
 
 *** =hint
