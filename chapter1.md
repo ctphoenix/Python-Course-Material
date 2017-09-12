@@ -6,6 +6,8 @@ description : Exercises for homework (Week 1).  In this homework, we will use ob
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
+THIS IS A TEST MESSAGE, DELETE SOON
+
 *** =instructions
 - Import the `string` library.
 - Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` data attribute of the `string` library.
