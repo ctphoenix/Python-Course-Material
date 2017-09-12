@@ -7,7 +7,9 @@ description : A cipher is a secret code for a language.  In this case study, we 
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
-The Caesar cipher shifts each letter of this message to another letter in the alphabet, which is a fixed number of letters away from the original.  If our encryption key were 1, we would shift `h` to the next letter `i`, `i` to the next letter `j`, and so on.  If we reach the end of the alphabet, which for us is the space character, we simply loop back to `a`. To decode the message, we make a similar shift, except we move the same number of steps backwards in the alphabet.
+The Caesar cipher shifts each letter of a message to another letter in the alphabet located a fixed distance from the original letter. If our encryption key were 1, we would shift `h` to the next letter `i`, `i` to the next letter `j`, and so on.  If we reach the end of the alphabet, which for us is the space character, we simply loop back to `a`. To decode the message, we make a similar shift, except we move the same number of steps backwards in the alphabet.
+
+Over the next four exercises, we will create our own Caesar cipher, as well as a message decoder for this cipher.
 
 *** =instructions
 -  Create a dictionary `letters` with keys consisting of the numbers from 0 to 26, and values consisting of the lowercase letters of the English alphabet, including the space `' '` at the end.
@@ -55,6 +57,8 @@ success_msg("Great work!")
 ## Exercise 2
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
+
+In this exercise, we will define a new dictionary with the 
 
 *** =instructions
 -  `alphabet` and `letters` are already defined. Create a dictionary `encoding` with keys being the characters in `alphabet` and values being numbers from 0-26, shifted by an integer `encryption_key=3`.  For example, the key `a` should have value `encryption_key`, key `b` should have value `encryption_key + 1`, and so on.  If any result of this addition is less than 0 or greater than 26, you can ensure the result remains within 0-26 using `result % 27`.

@@ -6,13 +6,14 @@ description : In this case study, we will find and plot the distribution of word
 
 In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
-For these exercises, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x).
+For these exercises, functions `count_words_fast()`, `read_book()`, and `word_stats()` are already defined as in the Case 2 Videos (Videos 3.2.x).
 
 *** =instructions
-- Write a function `word_count_distribution(text)` that takes a book `string` and returns a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.
+- Write a function `word_count_distribution(text)` that takes a book `text` and returns a dictionary with items corresponding to the count of times a collection of words appears in the translation, and values corresponding to the number of number of words that appear with that frequency.
 - First use `count_words_fast(text)` to create a dictionary called `word_counts` with unique words in the dictionary as keys and their frequency in the book as values.
-- Next, create and return a new dictionary `count_distribution` with unique values from `word_counts` as keys and their frequency as values.  For example, `'you are what you eat'` contains three words that occur once and one word that occurs twice, so `word_count_distribution('you are what you eat')` should return a dictionary `{1:3, 2:1}`.
-- 'Romeo and Juliet' is preloaded as `text`.  Call `word_count_distribution(text)`, and save the result as `distribution`.
+- Next, create and return a new dictionary `count_distribution` with unique values from `word_counts` as keys and their frequency as values.
+  - For example, `'you are what you eat'` contains three words that occur once and one word that occurs twice, so `word_count_distribution('you are what you eat')` should return a dictionary `{1:3, 2:1}`.
+- *Romeo and Juliet* is preloaded as `text`.  Call `word_count_distribution(text)`, and save the result as `distribution`.
 
 *** =hint
 - Using `Counter` on the values from `count_words_fast(text)` ought to do the trick!
