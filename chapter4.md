@@ -16,7 +16,7 @@ For these exercises, functions `count_words_fast()`, `read_book()`, and `word_st
 - *Romeo and Juliet* is preloaded as `text`.  Call `word_count_distribution(text)`, and save the result as `distribution`.
 
 *** =hint
-- Using `Counter` on the values from `count_words_fast(text)` ought to do the trick!
+- Using `Counter()` on the values from `count_words_fast(text)` ought to do the trick!
 
 *** =pre_exercise_code
 ```{python}
