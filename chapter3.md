@@ -58,8 +58,6 @@ success_msg("Great work!")
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
-In this exercise, we will define a new dictionary with the 
-
 *** =instructions
 -  `alphabet` and `letters` are already defined. Create a dictionary `encoding` with keys being the characters in `alphabet` and values being numbers from 0-26, shifted by an integer `encryption_key=3`.  For example, the key `a` should have value `encryption_key`, key `b` should have value `encryption_key + 1`, and so on.  If any result of this addition is less than 0 or greater than 26, you can ensure the result remains within 0-26 using `result % 27`.
 
