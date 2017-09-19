@@ -51,6 +51,9 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 
 *** =sct
 ```{python}
+test_student_typed("data.head(5)",
+              pattern=False,
+              not_typed_msg="Did you use `data.head`? Did you specify the number of rows to print?")
 test_object("data",
             undefined_msg = "Did you define `data`?",
             incorrect_msg = "It looks like `data` wasn't defined correctly.")
@@ -62,12 +65,14 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
-Next, we will perform some mild data cleaning, and inspect the dataset.
+Next, we will inspect the dataset and perform some mild data cleaning.
 
 *** =instructions
+- Print the first 5 rows of `data` using the `head()` method.
 - The dataset remains stored as `data`.  Two columns in `data` are `is_red` and `color`, which are redundant. Drop `color` from the dataset, and save the new dataset as `numeric_data`.
 
 *** =hint
+- The first optional parameter `data.head()` specifies the number of rows to print.
 - Pandas dataframes contain the `drop` method - give that a try!
 - To make sure this is applied to the column, you might try including the parameter `axis=1`!
 
