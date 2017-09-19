@@ -97,7 +97,9 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 
 *** =sample_code
 ```{python}
-numeric_data = # Enter your code here!
+# Print the first 5 rows of your data here.
+
+numeric_data = # drop the column "color" here.
 
 
 
@@ -110,7 +112,7 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sct
 ```{python}
-test_student_typed("data.head\(\s*5\s*|(\s*n\=5\s*)\)",
+test_student_typed("data.head\(\s*5\s*|(\s*n\s*\=\s*5\s*)\)",
               pattern=True,
               not_typed_msg="Did you use `data.head`? Did you specify the number of rows to print?")
 test_object("numeric_data",
