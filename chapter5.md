@@ -62,6 +62,8 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+Next, we will perform some mild data cleaning, and inspect the dataset.
+
 *** =instructions
 - The dataset remains stored as `data`.  Two columns in `data` are `is_red` and `color`, which are redundant. Drop `color` from the dataset, and save the new dataset as `numeric_data`.
 
