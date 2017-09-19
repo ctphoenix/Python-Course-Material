@@ -125,9 +125,11 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+We want to ensure that each variable contributes equally to the kNN classifier, so we will need to standardize the data. Then, we will use principal components to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data.
+
 *** =instructions
-- To ensure that each variable contributes equally to the kNN classifier, we need to standardize the data.  First, from each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store your standardized result as `numeric_data`.
-- Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components).  Use `pca.fit(numeric_data).transform(numeric_data)` to extract the first two principal components from the data.  Store this as `principal_components`.
+- From each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store your standardized result as `numeric_data`.
+- The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components).  Use `pca.fit(numeric_data).transform(numeric_data)` to extract the first two principal components from the data.  Store this as `principal_components`.
 
 
 *** =hint
