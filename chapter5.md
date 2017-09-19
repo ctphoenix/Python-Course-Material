@@ -163,7 +163,8 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sample_code
 ```{python}
-numeric_data = # Enter your code here!
+numeric_data -= # subtract the mean of each column here.
+numeric_data /= # divide the standard deviation of each column here.
 
 import sklearn.decomposition
 pca = sklearn.decomposition.PCA(n_components=2)
