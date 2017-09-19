@@ -111,7 +111,7 @@ numeric_data = data.drop("color", axis=1)
 *** =sct
 ```{python}
 test_student_typed("data.head\(\s*5\s*|(\s*n\=5\s*)\)",
-              pattern=False,
+              pattern=True,
               not_typed_msg="Did you use `data.head`? Did you specify the number of rows to print?")
 test_object("numeric_data",
             undefined_msg = "Did you define `numeric_data`?",
