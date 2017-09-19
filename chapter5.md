@@ -51,9 +51,6 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 
 *** =sct
 ```{python}
-test_student_typed("data.head(5)",
-              pattern=False,
-              not_typed_msg="Did you use `data.head`? Did you specify the number of rows to print?")
 test_object("data",
             undefined_msg = "Did you define `data`?",
             incorrect_msg = "It looks like `data` wasn't defined correctly.")
@@ -113,6 +110,9 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sct
 ```{python}
+test_student_typed("data.head(5)",
+              pattern=False,
+              not_typed_msg="Did you use `data.head`? Did you specify the number of rows to print?")
 test_object("numeric_data",
             undefined_msg = "Did you define `numeric_data`?",
             incorrect_msg = "It looks like `numeric_data` wasn't defined correctly.")
