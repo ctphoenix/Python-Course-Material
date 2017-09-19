@@ -127,11 +127,13 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
-We want to ensure that each variable contributes equally to the kNN classifier, so we will need to standardize the data. Then, we will use principal components to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data.
+We want to ensure that each variable contributes equally to the kNN classifier, so we will need to scale the data by subtracting the mean of each column and dividing each column by its standard deviation. Then, we will use principal components to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data.
 
 *** =instructions
-- From each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store your standardized result as `numeric_data`.
-- The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components).  Use `pca.fit(numeric_data).transform(numeric_data)` to extract the first two principal components from the data.  Store this as `principal_components`.
+- REVAMP FOR SKLEARN SCALING.
+- Now let's extract the first two principal components from the data. The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components). This class is stored as `pca`.
+    - Use `pca.fit(numeric_data).transform(numeric_data)` to extract the first two principal components from the data.
+    - Store this as `principal_components`.
 
 
 *** =hint
@@ -163,8 +165,9 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sample_code
 ```{python}
-numeric_data -= # subtract the mean of each column here.
-numeric_data /= # divide the standard deviation of each column here.
+import sklearn.preprocessing
+scaled_data = sklearn.preprocessing.scale(numeric_data)
+numeric_data = pd.DataFrame(scaled_data, columns = numeric_data.columns)
 
 import sklearn.decomposition
 pca = sklearn.decomposition.PCA(n_components=2)
