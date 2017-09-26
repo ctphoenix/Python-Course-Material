@@ -68,6 +68,7 @@ Network homophily occurs when nodes that share an edge share a characteristic mo
 -  In this dataset, each individual has a personal ID, or PID, stored in `key_vilno_1.csv` and `key_vilno_2.csv` for villages 1 and 2, respectively. `data_filepath` contains the base URL to the datasets used in this exercise. Use `pd.read_csv` to read in and store `key_vilno_1.csv` and `key_vilno_2.csv` as `pid1` and `pid2` respectively.  The `csv` files have no headers, so make sure to include the parameter `header = None`.
 
 *** =hint
+- Remember, you can concatenate strings with `+`. You can also take a look at the contents of string `data_filepath` using the shell.
 -   You might want to store these as type `int` using the parameter `dtype=int`!
 
 *** =pre_exercise_code
@@ -107,12 +108,12 @@ success_msg("Great work!")
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 *** =instructions
-- Define Python dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.  Store these into variables named `sex1`, `caste1`, and `religion1` for Village 1 and `sex2`, `caste2`, and `religion2` for Village 2.
-
-*** =hint
-- Define Python dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
+- Define dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
 - For Village 1, store these dictionaries into variables named `sex1`, `caste1`, and `religion1`.
 - For Village 2, store these dictionaries into variables named `sex2`, `caste2`, and `religion2`.
+
+*** =hint
+
 
 
 *** =pre_exercise_code
@@ -175,8 +176,10 @@ success_msg("Great work!")
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
+Let's consider how much homophily exists in these networks.  For a given characteristic, our measure of homophily will be the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes `x` and `y` share characteristic `a` is the probability both nodes have characteristic `a`, which is the frequency of `a` squared.  The total probability that nodes `x` and `y` share their characteristic is therefore the sum of the frequency of each characteristic in the network.  For example, in the dictionary `favorite_colors` provided, the frequency of `red` and `blue` is 1/3 and 2/3 respectively, so the chance homophily is (1/3)^2+(2/3)^2 = 5/9.
+
 *** =instructions
-- Let's consider how much homophily exists in these networks.  For a given characteristic, our measure of homophily will be the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes `x` and `y` share characteristic `a` is the probability both nodes have characteristic `a`, which is the frequency of `a` squared.  The total probability that nodes `x` and `y` share their characteristic is therefore the sum of the frequency of each characteristic in the network.  For example, in the dictionary `favorite_colors` provided, the frequency of `red` and `blue` is 1/3 and 2/3 respectively, so the chance homophily is (1/3)^2+(2/3)^2 = 5/9.  Create a function `chance_homophily(chars)` that takes a dictionary with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
+- Create a function `chance_homophily(chars)` that takes a dictionary with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
 - A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group, and store as `color_homophily`.
 - Print `color_homophily`.
 
