@@ -179,7 +179,7 @@ Network homophily occurs when nodes that share an edge share a characteristic mo
 Let's consider how much homophily exists in these networks.  For a given characteristic, our measure of homophily will be the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes `x` and `y` share characteristic `a` is the probability both nodes have characteristic `a`, which is the frequency of `a` squared.  The total probability that nodes `x` and `y` share their characteristic is therefore the sum of the frequency of each characteristic in the network.  For example, in the dictionary `favorite_colors` provided, the frequency of `red` and `blue` is 1/3 and 2/3 respectively, so the chance homophily is (1/3)^2+(2/3)^2 = 5/9.
 
 *** =instructions
-- Create a function `chance_homophily(chars)` that takes a dictionary with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
+- Create a function `chance_homophily(chars)` that takes a dictionary `chars` with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
 - A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group, and store as `color_homophily`.
 - Print `color_homophily`.
 
