@@ -93,7 +93,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:2 key:4c2151eafc
+--- type:NormalExercise lang:python xp:100 skills:2 key:70b4ba58eb
 ## Exercise 3
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
@@ -165,7 +165,7 @@ In this exercise, we will define a function that encodes a message with any give
 - Print `encoded_message`.
 
 *** =hint
-- Try using `"".join(my_list)` to transform the coded list into a string!
+- Much of what is being asked of you is to transform the given code into a function, and call and print its use.
 
 *** =pre_exercise_code
 ```{python}
