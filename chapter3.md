@@ -37,7 +37,7 @@ alphabet = " " + string.ascii_lowercase
 
 *** =sct
 ```{python}
-test_object("letters",
+test_object("alphabet",
             undefined_msg = "Did you define `alphabet`?",
             incorrect_msg = "It looks like `alphabet` wasn't defined correctly.")
 success_msg("Great work!")
@@ -93,7 +93,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:2 key:9cf6c03894
+--- type:NormalExercise lang:python xp:100 skills:2 key:ad8af89ef1
 ## Exercise 3
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
