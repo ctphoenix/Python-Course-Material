@@ -93,7 +93,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:2 key:971a8a19ca
+--- type:NormalExercise lang:python xp:100 skills:2 key:8bb2db8347
 ## Exercise 3
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
@@ -255,7 +255,7 @@ message = "hi my name is caesar"
 positions = {}
 index = 0
 for char in alphabet:
-    positions[char] = inde
+    positions[char] = index
     index += 1
 
 def encoding(message, key = 0):
