@@ -93,7 +93,7 @@ success_msg("Great work!")
 ```
 
 
---- type:NormalExercise lang:python xp:100 skills:2 key:ad8af89ef1
+--- type:NormalExercise lang:python xp:100 skills:2 key:4c2151eafc
 ## Exercise 3
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
@@ -172,7 +172,7 @@ In this exercise, we will define a function that encodes a message with any give
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = " " + string.ascii_lowercase
-"hi my name is caesar"
+message = "hi my name is caesar"
 positions = {}
 index = 0
 for char in alphabet:
@@ -187,7 +187,7 @@ for char in message:
     position = positions[char]
     encoded_position = (position + key) % 27
     encoding_list.append(alphabet[encoded_position])
-encoded_message = "".join(encoding_list)
+encoded_string = "".join(encoding_list)
 
 
 ```
@@ -207,7 +207,7 @@ def encoding(message, key = 0):
     encoding_list = []
     for char in message:
         position = positions[char]
-        encoded_position = (position + encode_key) % 27
+        encoded_position = (position + key) % 27
         encoding_list.append(alphabet[encoded_position])
     encoded_string = "".join(encoding_list)
     return encoded_string
@@ -251,7 +251,7 @@ In this exercise, we will decode an encoded message.
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = " " + string.ascii_lowercase
-"hi my name is caesar"
+message = "hi my name is caesar"
 positions = {}
 index = 0
 for char in alphabet:
