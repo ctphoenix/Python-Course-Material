@@ -19,7 +19,7 @@ To perform prediction and classification, we will primarily use the two models w
 
 *** =pre_exercise_code
 ```{python}
-#data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -39,13 +39,13 @@ plt.rcParams["figure.figsize"] = (10,10) # Just specifies the size of the plot i
 
 *** =sample_code
 ```{python}
-df = pd.read_csv('./merged_movie_data.csv')
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 df.head()
 ```
 
 *** =solution
 ```{python}
-df = pd.read_csv('./merged_movie_data.csv')
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 df.head()
 ```
 
