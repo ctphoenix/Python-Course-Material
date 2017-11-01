@@ -11,7 +11,8 @@ Network homophily occurs when nodes that share an edge share a characteristic mo
 In this exercise, we will calculate the chance homophily for an arbitrary characteristic. Homophily is the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes `x` and `y` share characteristic `a` is the probability both nodes have characteristic `a`, which is the frequency of `a` squared.  The total probability that nodes `x` and `y` share their characteristic is therefore the sum of the frequency of each characteristic in the network.  For example, in the dictionary `favorite_colors` provided, the frequency of `red` and `blue` is 1/3 and 2/3 respectively, so the chance homophily is (1/3)^2+(2/3)^2 = 5/9.
 
 *** =instructions
-- Create a function `chance_homophily(chars)` that takes a dictionary `chars` with personal IDs as keys and characteristics as values, and computes the chance homophily for that characteristic.
+- Create a function that takes a dictionary `chars` with personal IDs as keys and characteristics as values, and returns a dictionary with characteristics as keys, and the frequency of their occurrence as values.
+- Create a function `chance_homophily(chars)` that takes a dictionary `chars` defined as above and computes the chance homophily for that characteristic.
 - A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group, and store as `color_homophily`.
 - Print `color_homophily`.
 
@@ -27,8 +28,13 @@ import numpy as np
 *** =sample_code
 ```{python}
 from collections import Counter
+def frequency(chars):
+    # Enter code here!
+    
+    
 def chance_homophily(chars):
     # Enter code here!
+
 
 favorite_colors = {
     "ankit":  "red",
@@ -44,15 +50,17 @@ print(color_homophily)
 *** =solution
 ```{python}
 from collections import Counter
+def frequency(chars):
+    frequencies     = dict(Counter(chars.values()))
+    sum_frequencies = sum(frequencies.values())
+    for key in frequencies:
+        frequencies[key] /= sum_frequencies
+    return frequencies
+        
+        
 def chance_homophily(chars):
-    """
-    Computes the chance homophily of a characteristic,
-    specified as a dictionary, chars.
-    """
-    chars_counts_dict = Counter(chars.values())
-    chars_counts = np.array(list(chars_counts_dict.values()))
-    chars_props  = chars_counts / sum(chars_counts)
-    return sum(chars_props**2)
+    frequencies = frequency(chars)
+    return np.sum(np.square(list(frequencies.values())))
 
 favorite_colors = {
     "ankit":  "red",
