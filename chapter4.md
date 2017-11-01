@@ -116,9 +116,9 @@ In this exercise, we will summarize the text for a single translation of Hamlet 
 *** =instructions
 - Find the dictionary of word frequency in `text` by calling `count_words_fast()`. Store this as `counted_text`.
 - Create a `pandas` dataframe named `data`.
-- Using ``counted_text`, define two columns in `data`:
- -  `word`, consisting of each unique word in `text`.
- -  `count`, consisting of the number of times each word in `word` is included in the text.
+- Using `counted_text`, define two columns in `data`:
+    -  `word`, consisting of each unique word in `text`.
+    -  `count`, consisting of the number of times each word in `word` is included in the text.
 
 *** =hint
 - `word` are the keys and `count` are the values from `counted_text`.
@@ -222,9 +222,9 @@ In this exercise, we will continue to define summary statistics for a single tra
 *** =instructions
 - Add a column to `data` named `length`, defined as the length of each word.
 - Add another column named `frequency`, which is defined as follows for each word in `data`:
- -  If `count` > 10, `frequency ` is `frequent`.
- -  If 1 < `count` <= 10, `frequency ` is `infrequent`.
- -  If `count` == 1, `frequency ` is `unique`.
+    -  If `count` > 10, `frequency ` is `frequent`.
+    -  If 1 < `count` <= 10, `frequency ` is `infrequent`.
+    -  If `count` == 1, `frequency ` is `unique`.
 
 *** =hint
 - You can use the `apply()` function to `data["word"]` to apply a function to each element in `data["word"]`. To compute the length of each word, try the `len` function as the argument for `apply()`.
@@ -340,19 +340,10 @@ In this exercise, we will summarize the statistics in `data` into a smaller `pan
 
 *** =instructions
 - Create a `pandas` dataframe named `sub_data`, with a single row and the following columns:
- - `language`, which is the language of the text.
- -  `frequency`, which is a list containing the strings `"frequent"`, `"infrequent"`, and `"unique"`.
- -  `mean_word_length`, which is the mean word length of each value in `frequency`.
- -  `num_words`, which is the total number of words in each frequency category.
-
-sub_data = pd.DataFrame({
-    "language": ## Enter code here. ##
-    "frequency": ["frequent","infrequent","unique"],
-    "mean_word_length": ## Enter code here. ##
-    "num_words": ## Enter code here. ##
-})
-    "mean_word_length": data.groupby(by = "frequency")["length"].mean(),
-    "num_words": data.groupby(by = "frequency").size()
+    - `language`, which is the language of the text.
+    -  `frequency`, which is a list containing the strings `"frequent"`, `"infrequent"`, and `"unique"`.
+    -  `mean_word_length`, which is the mean word length of each value in `frequency`.
+    -  `num_words`, which is the total number of words in each frequency category.
 
 
 *** =hint
@@ -418,7 +409,20 @@ for language in book_titles:
 
 *** =sample_code
 ```{python}
+language, text = hamlets.iloc[0]
 
+counted_text = count_words_fast(text)
+
+data = pd.DataFrame({
+    "word": list(counted_text.keys()),
+    "count": list(counted_text.values())
+})
+
+data["length"] = data["word"].apply(len)
+
+data.loc[data["count"] > 10,  "frequency"] = "frequent"
+data.loc[data["count"] <= 10, "frequency"] = "infrequent"
+data.loc[data["count"] == 1,  "frequency"] = "unique"
 
 # Enter your code here.
 
@@ -564,6 +568,8 @@ def summarize_text(language, text):
     
     return(sub_data)
     
+# Enter your code here.
+
 
 ```
 
@@ -619,7 +625,8 @@ In this case study, we will find and visualize summary statistics of the text of
 In this exercise, we will plot our results and look for differences across each translation.
 
 *** =instructions
--  Plot the word frequency distributions of each translations on a single plot.  Note that we have already done most of the work for you.  Do the distributions of each translation differ?
+-  Plot the word statistics of each translations on a single plot.  Note that we have already done most of the work for you.
+-  Consider: do the word statistics differ by translation?
 
 *** =hint
 - No hint for this one: don't overthink it!
@@ -786,6 +793,6 @@ plt.show()
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you use `plt.show`?")   
-success_msg("Great work!  The distributions differ somewhat, but their basic shape is the same. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
+success_msg("Great work!  We see that the original English version of Hamlet contains fewer words overall, and its unique words are shorter than its translations. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
 ```
 
