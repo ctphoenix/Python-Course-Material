@@ -13,12 +13,10 @@ To perform prediction and classification, we will primarily use the two models w
 In this exercise, we will import our necessary libraries and read in the data.
 
 *** =instructions
-- First, let's import several libraries we will use. We will primarily use submodules in **sci-kit learn** (`sklearn`) for model fitting, and `matplotlib.pyplot` for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
--  Now let's read in the dataset.
-(NOTE: This dataset has already undergone some json and other preprocessing, per Matt's Jupyter Notebook. This may be included at will!)
+- First, we will import several libraries. **sci-kit learn** (`sklearn`) contains helpful models for fitting, and we'll use `matplotlib.pyplot` for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
 
 *** =hint
--  
+-  You don't need to do anything, just take a look at the imports.
 
 *** =pre_exercise_code
 ```{python}
@@ -93,12 +91,6 @@ test_student_typed("df.head()",
               not_typed_msg="Did you call `df.head()`?")            
 success_msg("Great work!")
 ```
-
-
-
-
-
-
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:e2c40f651a
 ## Exercise 2
