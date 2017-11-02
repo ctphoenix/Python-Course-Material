@@ -15,4 +15,14 @@ difficulty_level: 2
 time_needed: Approximately 1 hour each
 programming_language: python
 datasets:
+  adj_allVillageRelationships_vilno_1.csv: Adj allvillagerelationships vilno 1
+  adj_allVillageRelationships_vilno_2.csv: Adj allvillagerelationships vilno 2
+  bird_tracking.csv: Bird tracking
+  gettysburg.txt: Gettysburg
+  individual_characteristics.dta: Individual characteristics
+  key_vilno_1.csv: Key vilno 1
+  key_vilno_2.csv: Key vilno 2
+  merged_movie_data.csv: Merged movie data
   merged_movie_data_small.csv: Merged movie data small
+  regions.txt: Regions
+  whiskies.txt: Whiskies
