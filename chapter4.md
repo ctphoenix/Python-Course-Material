@@ -40,7 +40,7 @@ import numpy as np
 from collections import Counter
 def count_words_fast(text):
     text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
+    skips = [".", ",", ";", ":", "'", '"', "\n", "!", "?", "(", ")"]
     for ch in skips:
         text = text.replace(ch, "")
     word_counts = Counter(text.split(" "))
@@ -147,7 +147,7 @@ import numpy as np
 from collections import Counter
 def count_words_fast(text):
     text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
+    skips = [".", ",", ";", ":", "'", '"', "\n", "!", "?", "(", ")"]
     for ch in skips:
         text = text.replace(ch, "")
     word_counts = Counter(text.split(" "))
@@ -253,7 +253,7 @@ import numpy as np
 from collections import Counter
 def count_words_fast(text):
     text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
+    skips = [".", ",", ";", ":", "'", '"', "\n", "!", "?", "(", ")"]
     for ch in skips:
         text = text.replace(ch, "")
     word_counts = Counter(text.split(" "))
@@ -373,7 +373,7 @@ import numpy as np
 from collections import Counter
 def count_words_fast(text):
     text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
+    skips = [".", ",", ";", ":", "'", '"', "\n", "!", "?", "(", ")"]
     for ch in skips:
         text = text.replace(ch, "")
     word_counts = Counter(text.split(" "))
@@ -509,7 +509,7 @@ import numpy as np
 from collections import Counter
 def count_words_fast(text):
     text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
+    skips = [".", ",", ";", ":", "'", '"', "\n", "!", "?", "(", ")"]
     for ch in skips:
         text = text.replace(ch, "")
     word_counts = Counter(text.split(" "))
@@ -654,7 +654,7 @@ import numpy as np
 from collections import Counter
 def count_words_fast(text):
     text = text.lower()
-    skips = [".", ",", ";", ":", "'", '"']
+    skips = [".", ",", ";", ":", "'", '"', "\n", "!", "?", "(", ")"]
     for ch in skips:
         text = text.replace(ch, "")
     word_counts = Counter(text.split(" "))
