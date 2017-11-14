@@ -334,15 +334,13 @@ def homophily(G, chars, IDs):
     """
     num_same_ties = 0
     num_ties = 0
-    for n1 in G.nodes():
-        for n2 in G.nodes():
-            if n1 > n2:   # do not double-count edges!
-                if IDs[n1] in chars and IDs[n2] in chars:
-                    if G.has_edge(n1, n2):
-                        # Should `num_ties` be incremented?  What about `num_same_ties`?
-                        if chars[IDs[n1]] == chars[IDs[n2]]:
-                            # Should `num_ties` be incremented?  What about `num_same_ties`?
-    return (num_same_ties / num_ties)
+    for n1, n2 in G.edges():
+        if IDs[n1] in chars and IDs[n2] in chars:
+            if G.has_edge(n1, n2):
+                # Should `num_ties` be incremented?  What about `num_same_ties`?
+                if chars[IDs[n1]] == chars[IDs[n2]]:
+                    # Should `num_ties` be incremented?  What about `num_same_ties`?
+    return (num_same_ties / num_ties)    
     
 ```
 
@@ -356,14 +354,12 @@ def homophily(G, chars, IDs):
     """
     num_same_ties = 0
     num_ties = 0
-    for n1 in G.nodes():
-        for n2 in G.nodes():
-            if n1 > n2:   # do not double-count edges!
-                if IDs[n1] in chars and IDs[n2] in chars:
-                    if G.has_edge(n1, n2):
-                        num_ties += 1
-                        if chars[IDs[n1]] == chars[IDs[n2]]:
-                            num_same_ties += 1
+    for n1, n2 in G.edges():
+        if IDs[n1] in chars and IDs[n2] in chars:
+            if G.has_edge(n1, n2):
+                num_ties += 1
+                if chars[IDs[n1]] == chars[IDs[n2]]:
+                    num_same_ties += 1
     return (num_same_ties / num_ties)
 ```
 
@@ -422,14 +418,17 @@ success_msg("Great work!")
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
-In this exercise, we will compute the homophily of several network characteristics for Villages 1 and 2. The networks for these villages have been stored as `networkx` graph objects `G1` and `G2`.  
+In this exercise, we will compute the homophily of several network characteristics for Villages 1 and 2, and compare this to chance homophily. The networks for these villages have been stored as `networkx` graph objects `G1` and `G2`. `homophily()` and `chance_homophily()` are pre-loaded from previous exercises.
 
 *** =instructions
-- Use your `homophily` function to compute the observed homophily for sex, caste, and religion in Villages 1 and 2.
-- Print all six values.  Are these values higher or lower than that expected by chance?
+- Use your `homophily()` function to compute the observed homophily for sex, caste, and religion in Villages 1 and 2. Print all six values.
+- Use the `chance_homophily()` to compare these values to chance homophily.  Are these values higher or lower than that expected by chance?
+
+
 
 *** =hint
-- Use your `homophily` function on `sex1`, `caste1`, and `religion1` with `pid1`, and `sex2`, `caste2`, and `religion2` with `pid2`.
+- Use your `homophily()` function on `sex1`, `caste1`, and `religion1` with `pid1`, and `sex2`, `caste2`, and `religion2` with `pid2`.
+- Do the same with `chance_homophily()`.
 
 *** =pre_exercise_code
 ```{python}
@@ -453,22 +452,34 @@ A2 = np.array(pd.read_csv(data_filepath + "adj_allVillageRelationships_vilno_2.c
 G1 = nx.to_networkx_graph(A1)
 G2 = nx.to_networkx_graph(A2)
 def homophily(G, chars, IDs):
-    num_same_ties, num_ties = 0, 0
-    for n1 in G.nodes():
-        for n2 in G.nodes():
-            if n1 > n2:   # do not double-count edges!
-                if IDs[n1] in chars and IDs[n2] in chars:
-                    if G.has_edge(n1, n2):
-                        num_ties += 1
-                        if chars[IDs[n1]] == chars[IDs[n2]]:
-                            num_same_ties += 1
-    return (num_same_ties / num_ties)    
+    num_same_ties = 0
+    num_ties = 0
+    for n1, n2 in G.edges():
+        if IDs[n1] in chars and IDs[n2] in chars:
+            if G.has_edge(n1, n2):
+                num_ties += 1
+                if chars[IDs[n1]] == chars[IDs[n2]]:
+                    num_same_ties += 1
+    return (num_same_ties / num_ties) 
+
+from collections import Counter
+def frequency(chars):
+    frequencies     = dict(Counter(chars.values()))
+    sum_frequencies = sum(frequencies.values())
+    for key in frequencies:
+        frequencies[key] /= sum_frequencies
+    return frequencies
+
+def chance_homophily(chars):
+    frequencies = frequency(chars)
+    return np.sum(np.square(list(frequencies.values())))
     
 ```
 
 *** =sample_code
 ```{python}
 print("Village 1 observed proportion of same sex:", homophily(G1, sex1, pid1))
+
 # Enter your code here!
 
 
@@ -487,6 +498,13 @@ print("Village 2 observed proportion of same sex:", homophily(G2, sex2, pid2))
 print("Village 2 observed proportion of same caste:", homophily(G2, caste2, pid2))
 print("Village 2 observed proportion of same religion:", homophily(G2, religion2, pid2))
 
+print("Village 1 chance of same sex:", chance_homophily(sex1))
+print("Village 1 chance of same caste:", chance_homophily(caste1))
+print("Village 1 chance of same religion:", chance_homophily(religion1))
+
+print("Village 2 chance of same sex:", chance_homophily(sex2))
+print("Village 2 chance of same caste:", chance_homophily(caste2))
+print("Village 2 chance of same religion:", chance_homophily(religion2))
 ```
 
 *** =sct
@@ -508,8 +526,11 @@ test_student_typed("caste2",
               not_typed_msg="Did you use `homophily` for `caste2`?")  
 test_student_typed("religion2",
               pattern=False,
-              not_typed_msg="Did you use `homophily` for `religion2`?")               
-success_msg("Great work!  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
+              not_typed_msg="Did you use `homophily` for `religion2`?")
+test_student_typed("chance_homophily",
+              pattern=False,
+              not_typed_msg="Did you use `chance_homophily` to compare observed homophily to chance?")              
+success_msg("Great work!  In each case, these are substantially higher than chance. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
 ```
 
 
