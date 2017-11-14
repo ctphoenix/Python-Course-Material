@@ -284,8 +284,10 @@ success_msg("Great work!  Yes, these differ significantly.")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+In this exercise, we will create a function that calculates the accuracy between predictions and outcomes.
+
 *** =instructions
--  We are now ready to fit the wine data to our kNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size as arguments and returns a single number, which is the percentage of elements that are equal for the two lists.
+-  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size as arguments and returns a single number, which is the percentage of elements that are equal for the two lists.
 -  Use `accuracy` to compare the percentage of similar elements in `x = np.array([1,2,3])` and `y = np.array([1,2,4])`.
 -  Print your answer.
 
@@ -365,8 +367,12 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality. In this exercise, we 
+
+
+
 *** =instructions
--  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.  Accomplish this by calling `accuracy` with `0` as the first argument, and `data["high_quality"]` as the second argument.
+-  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.  Accomplish this by calling `accuracy` with `0` as the first argument, and `data["high_quality"]` as the second argument.
 -  Print your result.
 
 
