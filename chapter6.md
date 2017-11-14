@@ -424,8 +424,10 @@ success_msg("Great work!")
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
+In this exercise, we give a demonstration of plotting geographic points.
+
 *** =instructions
-- Next, we provide an example of plotting points geographically. Run the following code, to be adapted in the next section.  Compare this code to that used in plotting the distillery correlations.
+- Run the following code, to be adapted in the next section.  Compare this code to that used in plotting the distillery correlations.
 
 *** =hint
 - Just run the code and follow along!
@@ -509,8 +511,10 @@ success_msg("Great work!")
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
+In this exercise, we will define a function `location_plot(title, colors)` that takes a string `title` and a list of colors corresponding to each distillery and outputs a Bokeh plot of each distillery by latitude and longitude.  It will also display the distillery name, latitude, and longitude as hover text.
+
 *** =instructions
-- Adapt the given code from the beginning to `show(fig)` in order to define a function `location_plot(title, colors)`.  This function takes a string `title` and a list of colors corresponding to each distillery and outputs a Bokeh plot of each distillery by latitude and longitude.  As the cursor hovers over each point, it displays the distillery name, latitude, and longitude.
+- Adapt the given code beginning with the first comment and ending with `show(fig)` to create the function `location_plot()`, as described above.
 - `Region` is a column of in the `pandas` dataframe `whisky`, containing the regional group membership for each distillery.  Make a list consisting of the value of `region_colors` for each distillery, and store this list as `region_cols`.
 - Use `location_plot` to plot each distillery, colored by its regional grouping.	
 
@@ -625,14 +629,16 @@ success_msg("Great work!")
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
+`location_plot` remains stored from the previous exercise. In this exercise, we will use this function to plot each distillery, colored by region and taste coclustering classification, respectively.
+
 *** =instructions
-- Use list comprehensions to create the list `region_cols` consisting of the color in `region_colors` that corresponds to each whisky in `whisky.Region`.
+- Create the list `region_cols` consisting of the color in `region_colors` that corresponds to each whisky in `whisky.Region`.
 - Similarly, create a list `classification_cols` consisting of the color in `cluster_colors` that corresponds to each cluster membership in `whisky.Group`.
-- `location_plot` remains stored from the previous exercise.  Use it to create two interactive plots of distilleries, one colored by defined region called `region_cols` and the other with colors defined by coclustering designation called `classification_cols`.  How well do the coclustering groupings match the regional groupings?
+- Create two interactive plots of distilleries, one using `region_cols` and the other with colors defined by  called `classification_cols`.  How well do the coclustering groupings match the regional groupings?
 
 *** =hint
 - This problem asks you to repeat part of the previous problem (for comparison), and to define a similar color classification for flavor clusters.  Two straightforward list comprehensions will do the trick.
-- Consider casting `whisky.Region` and `whisky.Group` as lists!
+- If you do use a list comprehension, `whisky.Region` and `whisky.Group` should be cast as lists!
 
 *** =pre_exercise_code
 ```{python}
