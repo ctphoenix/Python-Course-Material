@@ -136,7 +136,7 @@ We want to ensure that each variable contributes equally to the kNN classifier, 
 - Convert this to a `pandas` dataframe, and store as `numeric_data`.
     - Include the numeric variable names using the parameter `columns = numeric_data.columns`.
 - Use the `sklearn.decomposition` module `PCA()`, and store this as `pca`.
-- Use `fit_transform` to extract the first two principal components from the data, and store this as `principal_components`.
+- Use the `fit_transform()` function to extract the first two principal components from the data, and store this as `principal_components`.
 
 
 
