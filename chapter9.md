@@ -350,7 +350,13 @@ df[outcomes_and_continuous_covariates].skew()
 
 *** =sct
 ```{python}
-
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+test_student_typed("df.head()",
+              pattern=False,
+              not_typed_msg="Did you call `df.head()`?")            
+success_msg("Great work!")
 ```
 
 
@@ -409,7 +415,13 @@ outcomes_and_continuous_covariates = continuous_covariates + [regression_target,
 
 *** =sct
 ```{python}
-
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+test_student_typed("df.head()",
+              pattern=False,
+              not_typed_msg="Did you call `df.head()`?")            
+success_msg("Great work!")
 ```
 --- type:NormalExercise lang:python xp:100 skills:2 key:bc061bf4aa
 ## Exercise 7
@@ -462,7 +474,13 @@ outcomes_and_continuous_covariates = continuous_covariates + [regression_target,
 
 *** =sample_code
 ```{python}
-
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+test_student_typed("df.head()",
+              pattern=False,
+              not_typed_msg="Did you call `df.head()`?")            
+success_msg("Great work!")
 ```
 
 *** =solution
@@ -553,7 +571,13 @@ for row in zip(all_covariates, forest_regression.feature_importances_,):
 
 *** =sample_code
 ```{python}
-
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+test_student_typed("df.head()",
+              pattern=False,
+              not_typed_msg="Did you call `df.head()`?")            
+success_msg("Great work!")
 ```
 
 *** =solution
@@ -576,11 +600,13 @@ for row in zip(all_covariates, forest_classifier.feature_importances_,):
 
 *** =sct
 ```{python}
-The logistic model classifies profitability correctly 82% of the time.
-The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model.
-
-We see that according to random forests, popularity and vote count are the most important variables in predicting whether a movie will be profitable.
-
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+test_student_typed("df.head()",
+              pattern=False,
+              not_typed_msg="Did you call `df.head()`?")            
+success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model. We see that according to random forests, popularity and vote count are the most important variables in predicting whether a movie will be profitable.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:dbcd7e671f
@@ -659,6 +685,27 @@ plt.show()
 
 *** =sct
 ```{python}
-It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see is the random forest model fares any better.
-Like the linear regression model, predicting whether a movie will make no money at all seem quite difficult.
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+test_student_typed("plt.show()",
+              pattern=False,
+              not_typed_msg="Did you call `df.head()`?")
+success_msg("Great work! It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see is the random forest model fares any better. Like the linear regression model, predicting whether a movie will make no money at all seem quite difficult.")
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
