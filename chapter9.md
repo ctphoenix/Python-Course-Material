@@ -1,13 +1,9 @@
 ---
-title       : Case Study 7 - Movie Analysis
-description : Description of the Movie Analysis.
+title       : Case Study 7 - Movie Analysis: Data Cleaning
+description : [The Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metadata) is a database of 5000 movies catalogued by [IMDB](http://www.imdb.com/). The information available about each movie is its budget, revenue, rating, actors and actresses, etc. In this Case Study, we will use this dataset to predict whether any information about a movie can predict how much money a movie will make. We will also attempt to predict whether a movie will make more money than is spent on its budget.
 --- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 
 ## Exercise 1
-
-[The Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metadata) is a database of 5000 movies catalogued by [IMDB](http://www.imdb.com/). The information available about each movie is its budget, revenue, rating, actors and actresses, etc. In this Case Study, we will use this dataset to predict whether any information about a movie can predict how much money a movie will make. We will also attempt to predict whether a movie will make more money than is spent on its budget.
-
-To perform prediction and classification, we will primarily use the two models we recently discussed: generalized linear regression, and random forests. We will use linear regression to predict revenue, and logistic regression to classify whether a movie made a profit. Random forests come equipped with both a regression and classification mode, and we will use both of them to predict revenue and whether or not a movie made a profit.
 
 In this exercise, we will import our necessary libraries and read in the data.
 
@@ -666,7 +662,7 @@ for row in zip(all_covariates, forest_classifier.feature_importances_,):
 *** =solution
 ```{python}
 fig, ax = plt.subplots()
-ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors = (.8, .2, 0, .3),s=40)
+ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors = (.8, .2, 0, .3), s=40)
 regression_range = [regression_outcome.min(), regression_outcome.max()]
 ax.plot(regression_range, regression_range, 'k--', lw=4)
 ax.set_xlabel('Measured')
@@ -674,7 +670,7 @@ ax.set_ylabel('Predicted')
 plt.show()
 
 fig, ax = plt.subplots()
-ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors = (0, .3, .6, .3),s=40)
+ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors = (0, .3, .6, .3), s=40)
 regression_range = [regression_outcome.min(), regression_outcome.max()]
 
 ax.plot(regression_range, regression_range, 'k--', lw=2)
@@ -685,12 +681,9 @@ plt.show()
 
 *** =sct
 ```{python}
-test_object("df",
-            undefined_msg = "Did you define `df`?",
-            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
 test_student_typed("plt.show()",
               pattern=False,
-              not_typed_msg="Did you call `df.head()`?")
+              not_typed_msg="Did you call `plt.show()`?")
 success_msg("Great work! It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see is the random forest model fares any better. Like the linear regression model, predicting whether a movie will make no money at all seem quite difficult.")
 ```
 
