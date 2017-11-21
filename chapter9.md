@@ -163,14 +163,16 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:177b5ae318
 ## Exercise 3
 
-In this exercise, we will remove rows with missing values.
+For simplicity, we will proceed by analyzing only the rows without any missing data. In this exercise, we will remove rows with any infinite or missing values.
 
 
 *** =instructions
 
-- For simplicity, we will proceed by analyzing only the rows without any missing data. Let's drop each row with at least some missing values.
+- Use `df.replace()` to replace any cells with of type `np.inf` or `-np.inf` with `np.nan`.
+- Drop all rows with any `np.nan` values in that row using `df.dropna()`. Do any further arguments need to be specified in this function to remove rows with any such values?
 
 *** =hint
+- To specify the removal of rows with any missing values, add the parameter `how="any"`
 
 *** =pre_exercise_code
 ```{python}
@@ -197,6 +199,10 @@ classification_target = 'profitable'
 
 *** =sample_code
 ```{python}
+# Enter code here.
+
+
+
 
 ```
 
@@ -204,6 +210,9 @@ classification_target = 'profitable'
 ```{python}
 df = df.replace([np.inf, -np.inf], np.nan)
 df = df.dropna(how="any")
+
+
+
 ```
 
 *** =sct
@@ -274,22 +283,29 @@ df[genres].head()
 
 *** =sct
 ```{python}
-
+test_object("df",
+            undefined_msg = "Did you define `df`?",
+            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+test_student_typed("df.head()",
+              pattern=False,
+              not_typed_msg="Did you call `df.head()`?")            
+success_msg("Great work!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:9f0ce8e050
 ## Exercise 5
 
-In this exercise, we will visualize the data for outcomes and continuous covariates.
-
+Some variables in the dataset are already numeric and perhaps useful for regression and classification. In this exercise, we will store the names of these variables for future use and visualize the data for outcomes and continuous covariates. We will also take a look at the continuous variables by plotting each pair in a scatter matrix, and evaluate the skew of each variable.
 
 *** =instructions
 
-- Some variables in the dataset are already numeric and perhaps useful for regression and classification. Let's store the names of these for future use.
-- Let's take a look at the continuous variables, and see if they are related to either or both of the outcomes, or each other. We can do this by plotting each pair in a scatter matrix.
-- There is quite a bit of covariance in these pairwise plots, so our modeling strategies or regression and classification might work!
+- Call `plt.show()` to observe the plot below. 
+    - Consider: Are any continuous covariates related to each other, the outcome, or both?
+- Call `skew()` on the columns `outcomes_and_continuous_covariates` in `df`.
+    - Consider: Is the skew above 1 for any of these variables?
 
 *** =hint
+- No hint for this one!
 
 *** =pre_exercise_code
 ```{python}
@@ -328,7 +344,14 @@ for genre in genres:
 
 *** =sample_code
 ```{python}
+continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]
 
+axes = pd.tools.plotting.scatter_matrix(df[outcomes_and_continuous_covariates], alpha = 0.15,color=(0,0,0),hist_kwds={"color":(0,0,0)},facecolor=(1,0,0))
+plt.tight_layout()
+# show the plot.
+
+# determine the skew.
 ```
 
 *** =solution
@@ -346,13 +369,14 @@ df[outcomes_and_continuous_covariates].skew()
 
 *** =sct
 ```{python}
-test_object("df",
-            undefined_msg = "Did you define `df`?",
-            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
-test_student_typed("df.head()",
+test_student_typed("plt.show()",
               pattern=False,
-              not_typed_msg="Did you call `df.head()`?")            
-success_msg("Great work!")
+              not_typed_msg="Did you call `plt.show()`?")    
+              
+test_student_typed(".skew()",
+              pattern=False,
+              not_typed_msg="Did you call `.skew()`?")   
+success_msg("There is quite a bit of covariance in these pairwise plots, so our modeling strategies or regression and classification might work!")
 ```
 
 
@@ -434,8 +458,6 @@ In this exercise, we will fit our regression models to predict movie revenue. We
 
 *** =hint
 - This exercise makes heavy use of `sklearn` functions. Feel free to consult its manuals for help.
-- 
-
 
 *** =pre_exercise_code
 ```{python}
@@ -514,27 +536,22 @@ for row in zip(all_covariates, forest_regression.feature_importances_,):
 
 *** =sct
 ```{python}
-test_object("linear_classifier",
-            undefined_msg = "Did you define `linear_classifier`?",
-            incorrect_msg = "It looks like `linear_classifier` wasn't defined correctly.") 
-test_object("forest_classifier",
-            undefined_msg = "Did you define `forest_classifier`?",
-            incorrect_msg = "It looks like `forest_classifier` wasn't defined correctly.") 
-test_object("linear_classification_predicted",
-            undefined_msg = "Did you define `linear_classification_predicted`?",
-            incorrect_msg = "It looks like `linear_classification_predicted` wasn't defined correctly.") 
-test_object("forest_classification_predicted",
-            undefined_msg = "Did you define `forest_classification_predicted"`?",
-            incorrect_msg = "It looks like `forest_classification_predicted"` wasn't defined correctly.") 
-test_object("df",
-            undefined_msg = "Did you define `df`?",
-            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
-test_student_typed("df.head()",
-              pattern=False,
-              not_typed_msg="Did you call `df.head()`?")            
-success_msg("Great work!")
-The cross-validated correlation between the predictions and the outcome is 0.71. Not bad! The cross-validated correlation between the predictions and the outcome is 0.70. Also good, but this fit performs slightly less well than logistic regression.
-
+test_object("linear_regression",
+            undefined_msg = "Did you define `linear_regression`?",
+            incorrect_msg = "It looks like `linear_regression` wasn't defined correctly.") 
+test_object("forest_regression",
+            undefined_msg = "Did you define `forest_regression`?",
+            incorrect_msg = "It looks like `forest_regression` wasn't defined correctly.") 
+test_object("linear_regression_predicted",
+            undefined_msg = "Did you define `linear_regression_predicted`?",
+            incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
+test_object("forest_regression_predicted",
+            undefined_msg = "Did you define `forest_regression_predicted"`?",
+            incorrect_msg = "It looks like `forest_regression_predicted"` wasn't defined correctly.") 
+test_student_typed("pearsonr",
+            pattern=False,
+            not_typed_msg="Did you determine the correlation of `linear_classifier` and `forest_classifier`?")
+success_msg("Great work! The cross-validated correlation between the predictions and the outcome is 0.71. Not bad! The cross-validated correlation between the predictions and the outcome is 0.70. Also good, but this fit performs slightly less well than logistic regression.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:56e0886a08
