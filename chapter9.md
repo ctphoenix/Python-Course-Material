@@ -405,7 +405,39 @@ It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue
 
 *** =pre_exercise_code
 ```{python}
+import pandas as pd
+import numpy as np
 
+from sklearn.model_selection import cross_val_predict
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import accuracy_score
+from scipy.stats import pearsonr
+
+import matplotlib.pyplot as plt
+plt.rcParams["figure.figsize"] = (10,10)
+df = pd.read_csv('./merged_movie_data.csv')
+regression_target = 'revenue'
+df['profitable'] = df.budget < df.revenue
+df['profitable'] = df['profitable'].astype(int)
+classification_target = 'profitable'
+df = df.replace([np.inf, -np.inf], np.nan)
+df = df.dropna(how="any")
+list_genres = df.genres.apply(lambda x: x.split(","))
+genres = []
+for row in list_genres:
+    row = [genre.strip() for genre in row]
+    for genre in row:
+        if genre not in genres:
+            genres.append(genre)
+
+for genre in genres:
+    df[genre] = df['genres'].str.contains(genre).astype(int)
+continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]    
 ```
 
 *** =sample_code
