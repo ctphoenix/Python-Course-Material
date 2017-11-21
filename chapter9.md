@@ -460,10 +460,7 @@ for covariate in ['budget','popularity','vote_count','revenue']:
 ```{python}
 test_object("df",
             undefined_msg = "Did you define `df`?",
-            incorrect_msg = "Did you transform ") 
-test_student_typed("df.head()",
-              pattern=False,
-              not_typed_msg="Did you call `df.head()`?")            
+            incorrect_msg = "It appears you did not transform the variables correctly.") 
 success_msg("Great work!")
 ```
 --- type:NormalExercise lang:python xp:100 skills:2 key:bc061bf4aa
