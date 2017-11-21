@@ -262,7 +262,18 @@ df = df.dropna(how="any")
 
 *** =sample_code
 ```{python}
+list_genres = df.genres.apply(lambda x: x.split(","))
+genres = []
+for row in list_genres:
+    row = [genre.strip() for genre in row]
+    for genre in row:
+        if genre not in genres:
+            genres.append(genre)
 
+for genre in genres:
+    df[genre] = df['genres'].str.contains(genre).astype(int)
+
+df[genres].head()
 ```
 
 *** =solution
@@ -298,7 +309,6 @@ success_msg("Great work!")
 Some variables in the dataset are already numeric and perhaps useful for regression and classification. In this exercise, we will store the names of these variables for future use and visualize the data for outcomes and continuous covariates. We will also take a look at the continuous variables by plotting each pair in a scatter matrix, and evaluate the skew of each variable.
 
 *** =instructions
-
 - Call `plt.show()` to observe the plot below. 
     - Consider: Are any continuous covariates related to each other, the outcome, or both?
 - Call `skew()` on the columns `outcomes_and_continuous_covariates` in `df`.
@@ -383,13 +393,15 @@ success_msg("There is quite a bit of covariance in these pairwise plots, so our 
 --- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:f9c66ebd99
 ## Exercise 6
 
-It appears that the variables budget, popularity, vote_count, and revenue are all right-skewed. In this exercise, we will transform some covariates to eliminate strong skew.
+It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, transform these covariates to eliminate this skew. Specifically, we will use the `log` transform. Because some of these variables contain values of 0, we must first add a small value (1) to each value to ensure it is strictly positive. (Note that log(0) is negative infinity!)
 
 *** =instructions
 
-- Take the log of each of these variables to even them out.
+- Transform each of the above-mentioned covariates in `df` by `log(1+x)`.
 
 *** =hint
+- You can use the `apply()` function on a `df.Series` object. Apply takes a single function as its argument, and returns the `df.Series` with that function applied to each element.
+- Functions can be specified anonymously using `lambda` function.
 
 *** =pre_exercise_code
 ```{python}
@@ -398,6 +410,11 @@ It appears that the variables budget, popularity, vote_count, and revenue are al
 
 *** =sample_code
 ```{python}
+# Enter your code here.
+
+
+
+
 
 ```
 
@@ -405,39 +422,13 @@ It appears that the variables budget, popularity, vote_count, and revenue are al
 ```{python}
 for covariate in ['budget','popularity','vote_count','revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log(1+x))
-
-axes = pd.tools.plotting.scatter_matrix(df[outcomes_and_continuous_covariates], alpha = 0.15,color=(0,0,0),hist_kwds={"color":(0,0,0)},facecolor=(1,0,0))
-plt.tight_layout()
-plt.show()   
-
-all_covariates = continuous_covariates + genres
-all_columns = [regression_target, classification_target] + all_covariates
-df[all_columns]
-regression_target = 'revenue'
-df['profitable'] = df.budget < df.revenue
-df['profitable'] = df['profitable'].astype(int)
-classification_target = 'profitable'
-df = df.replace([np.inf, -np.inf], np.nan)
-df = df.dropna(how="any")
-list_genres = df.genres.apply(lambda x: x.split(","))
-genres = []
-for row in list_genres:
-    row = [genre.strip() for genre in row]
-    for genre in row:
-        if genre not in genres:
-            genres.append(genre)
-
-for genre in genres:
-    df[genre] = df['genres'].str.contains(genre).astype(int)
-continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]    
 ```
 
 *** =sct
 ```{python}
 test_object("df",
             undefined_msg = "Did you define `df`?",
-            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
+            incorrect_msg = "Did you transform ") 
 test_student_typed("df.head()",
               pattern=False,
               not_typed_msg="Did you call `df.head()`?")            
