@@ -422,14 +422,20 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:bc061bf4aa
 ## Exercise 7
 
-In this exercise, we will fit a regression model.
-
+In this exercise, we will fit our regression models to predict movie revenue. We will also print the cross-validated correlation between the predicted values and true revenue, and determine the more important variables from the random forests regression fit.
 
 *** =instructions
-
-- We will now fit our regression models to predict movie revenue. From our imports at the top, we can define the regression model objects and fit them using cross_val_predict. We will print the total correlation between the predicted values and true revenue.
+- Call an instance of `LinearRegression()`, and store as `linear_regression`.
+- Call an instance of `RandomForestRegressor()` with `max_depth=4` and, `random_state=0`, and store as `forest_regression`.
+- Using both classifiers, call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `regression_outcome` with 10 cross-validation folds.
+    - Store the predictions as `linear_regression_predicted` and `forest_regression_predicted`, respectively.
+- Call `pearsonr()` to compare the accuracy of `regression_outcome` and your cross-validated predictions. How well do these perform?
+- Code is provided below to inspect which variables appear to be the most important for predicting profitability according to the random forest model. Which variables are most important?
 
 *** =hint
+- This exercise makes heavy use of `sklearn` functions. Feel free to consult its manuals for help.
+- 
+
 
 *** =pre_exercise_code
 ```{python}
@@ -470,6 +476,56 @@ outcomes_and_continuous_covariates = continuous_covariates + [regression_target,
 
 *** =sample_code
 ```{python}
+regression_outcome = df[regression_target]
+
+linear_regression =
+linear_regression_predicted = 
+# determine the correlation of linear regression predictions.
+
+forest_regression =
+forest_regression_predicted =
+# determine the correlation of random forest predictions.
+
+### Determine feature importance. This code is complete!
+forest_regression.fit(df[all_covariates], regression_outcome)
+for row in zip(all_covariates, forest_regression.feature_importances_,):
+    print(row)
+```
+
+*** =solution
+```{python}
+regression_outcome = df[regression_target]
+
+linear_regression = LinearRegression()
+linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
+pearsonr(regression_outcome, linear_regression_predicted)
+# determine the correlation of linear regression predictions.
+
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
+pearsonr(regression_outcome, forest_regression_predicted)
+# determine the correlation of random forest predictions.
+
+### Determine feature importance. This code is complete!
+forest_regression.fit(df[all_covariates], regression_outcome)
+for row in zip(all_covariates, forest_regression.feature_importances_,):
+    print(row)
+```
+
+*** =sct
+```{python}
+test_object("linear_classifier",
+            undefined_msg = "Did you define `linear_classifier`?",
+            incorrect_msg = "It looks like `linear_classifier` wasn't defined correctly.") 
+test_object("forest_classifier",
+            undefined_msg = "Did you define `forest_classifier`?",
+            incorrect_msg = "It looks like `forest_classifier` wasn't defined correctly.") 
+test_object("linear_classification_predicted",
+            undefined_msg = "Did you define `linear_classification_predicted`?",
+            incorrect_msg = "It looks like `linear_classification_predicted` wasn't defined correctly.") 
+test_object("forest_classification_predicted",
+            undefined_msg = "Did you define `forest_classification_predicted"`?",
+            incorrect_msg = "It looks like `forest_classification_predicted"` wasn't defined correctly.") 
 test_object("df",
             undefined_msg = "Did you define `df`?",
             incorrect_msg = "It looks like `df` wasn't defined correctly.") 
@@ -477,32 +533,7 @@ test_student_typed("df.head()",
               pattern=False,
               not_typed_msg="Did you call `df.head()`?")            
 success_msg("Great work!")
-```
-
-*** =solution
-```{python}
-linear_regression = LinearRegression()
-regression_outcome = df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, linear_regression_predicted)
-
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, forest_regression_predicted)
-
-# Variable Importance
-forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_,):
-    print(row)
-
-```
-
-*** =sct
-```{python}
-
-The cross-validated correlation between the predictions and the outcome is 0.71. Not bad!
-
-The cross-validated correlation between the predictions and the outcome is 0.70. Also good, but this fit performs slightly less well than logistic regression.
+The cross-validated correlation between the predictions and the outcome is 0.71. Not bad! The cross-validated correlation between the predictions and the outcome is 0.70. Also good, but this fit performs slightly less well than logistic regression.
 
 ```
 
@@ -512,13 +543,19 @@ The cross-validated correlation between the predictions and the outcome is 0.70.
 In this exercise, we will fit a classification model to determine whether a movie will be profitable or not.
 NOTE: let's have them tune max_depth on their own.
 
-*** =instructions
+In this exercise, we will use both classifiers to determine whether a movie will be profitable or not.
 
-- Next, we will fit two models to predict whether a movie will be profitable or not.
-- Let's finish our analysis by inspecting which variables appear to be the most important for predicting profitability according to the random forest model.
-- - How well does this do?
+*** =instructions
+- Call an instance of `LogisticRegression()`, and store as `linear_classifier`.
+- Call an instance of `RandomForestClassifier()` with `max_depth=3` and, `random_state=0`, and store as `forest_classifier`.
+- Using both classifiers, call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `classification_outcome` with 10 cross-validation folds.
+    - Store the predictions as `linear_regression_predicted` and `forest_regression_predicted`, respectively.
+- Call `accuracy_score()` to compare the accuracy of `classification_outcome` and your cross-validated predictions. How well do these perform?
+- Code is provided below to inspect which variables appear to be the most important for predicting profitability according to the random forest model. Which variables are most important?
 
 *** =hint
+- This exercise makes heavy use of `sklearn` functions. Feel free to consult its manuals for help.
+
 
 *** =pre_exercise_code
 ```{python}
@@ -567,19 +604,28 @@ for row in zip(all_covariates, forest_regression.feature_importances_,):
 
 *** =sample_code
 ```{python}
-test_object("df",
-            undefined_msg = "Did you define `df`?",
-            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
-test_student_typed("df.head()",
-              pattern=False,
-              not_typed_msg="Did you call `df.head()`?")            
-success_msg("Great work!")
+classification_outcome = df[classification_target]
+
+linear_classifier =
+linear_classification_predicted =
+# determine the accuracy of logistic regression predictions.
+
+
+forest_classifier =
+forest_classification_predicted =
+# determine the accuracy of random forest predictions.
+
+### Determine feature importance. This code is complete!
+forest_classifier.fit(df[all_covariates], classification_outcome)
+for row in zip(all_covariates, forest_classifier.feature_importances_,):
+    print(row)
 ```
 
 *** =solution
 ```{python}
-linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
+
+linear_classifier = LogisticRegression()
 linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, linear_classification_predicted)
 
@@ -596,12 +642,21 @@ for row in zip(all_covariates, forest_classifier.feature_importances_,):
 
 *** =sct
 ```{python}
-test_object("df",
-            undefined_msg = "Did you define `df`?",
-            incorrect_msg = "It looks like `df` wasn't defined correctly.") 
-test_student_typed("df.head()",
+test_object("linear_classifier",
+            undefined_msg = "Did you define `linear_classifier`?",
+            incorrect_msg = "It looks like `linear_classifier` wasn't defined correctly.") 
+test_object("forest_classifier",
+            undefined_msg = "Did you define `forest_classifier`?",
+            incorrect_msg = "It looks like `forest_classifier` wasn't defined correctly.") 
+test_object("linear_classification_predicted",
+            undefined_msg = "Did you define `linear_classification_predicted`?",
+            incorrect_msg = "It looks like `linear_classification_predicted` wasn't defined correctly.") 
+test_object("forest_classification_predicted",
+            undefined_msg = "Did you define `forest_classification_predicted"`?",
+            incorrect_msg = "It looks like `forest_classification_predicted"` wasn't defined correctly.") 
+test_student_typed("accuracy_score",
               pattern=False,
-              not_typed_msg="Did you call `df.head()`?")            
+              not_typed_msg="Did you determine the accuracy of  `linear_classifier` and `forest_classifier`?")
 success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model. We see that according to random forests, popularity and vote count are the most important variables in predicting whether a movie will be profitable.")
 ```
 
@@ -611,8 +666,11 @@ success_msg("Great work! The logistic model classifies profitability correctly 8
 Finally, let's take a look at the relationship between the predicted revenue and the true revenues. In this exercise, we will visualize the quality of the model fits.
 
 *** =instructions
+-  Plot the revenue for each movie again the fits of the linear regression and random forest regression models.
+-  Consider: which of the two exhibits a better fit?
 
 *** =hint
+- No hint for this one: don't overthink it!
 
 *** =pre_exercise_code
 ```{python}
@@ -656,7 +714,23 @@ for row in zip(all_covariates, forest_classifier.feature_importances_,):
 
 *** =sample_code
 ```{python}
+fig, ax = plt.subplots()
+ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors = (.8, .2, 0, .3), s=40)
+regression_range = [regression_outcome.min(), regression_outcome.max()]
+ax.plot(regression_range, regression_range, 'k--', lw=4)
+ax.set_xlabel('Measured')
+ax.set_ylabel('Predicted')
+plt.show()
 
+fig, ax = plt.subplots()
+ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors = (0, .3, .6, .3), s=40)
+regression_range = [regression_outcome.min(), regression_outcome.max()]
+
+ax.plot(regression_range, regression_range, 'k--', lw=2)
+ax.set_xlabel('Measured')
+ax.set_ylabel('Predicted')
+
+# Show the plot using plt.show().
 ```
 
 *** =solution
