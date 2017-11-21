@@ -1,6 +1,6 @@
 ---
 title       : Case Study 7 - Movie Analysis
-description : Descriptio of the movie analysis.
+description : Description of the Movie Analysis.
 --- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 
 ## Exercise 1
@@ -94,19 +94,20 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:e2c40f651a
 ## Exercise 2
 
-In this exercise, we will define the regression and classification outcomes.
-
-We will use the revenue column as the target for regression.
+In this exercise, we will define the regression and classification outcomes. Specifically, we will use the revenue column as the target for regression. For classification, we will use an indicator as to whether each movie was profitable or not. The dataset does not yet contain a column with this information, but determine it from other columns.
 
 
 *** =instructions
 
-- We will use the revenue column as the target for regression.
-- For classification, we will use an indicator as to whether each movie was profitable or not. The dataset does not yet contain a column with this information, but determine it from other columns. Let's define a new column profitable to be a 1 if the movie revenue is larger than the movie budget. For pandas.Series objects, we may do this using a simple inequality, which will return a new pandas.Series object. Then, we will cast this to an integer (1 if true, and 0 otherwise).
-
+- Create a new column in `df` called `profitable`, defined as 1 if the movie revenue is larger than the movie budget, and 0 otherwise.
 - Let's define and store the outcomes we will use for regression and classification.
+- Define `regression_target` as `'revenue"`, and `classification_target` as `'profitable'`.
+
 
 *** =hint
+
+- To create `df['profitable']`, use a simple inequality between the budget and revenue columns in `df`.  Then, we will cast this to an integer (1 if true, and 0 otherwise).
+
 
 *** =pre_exercise_code
 ```{python}
@@ -129,6 +130,12 @@ df = pd.read_csv('./merged_movie_data.csv')
 
 *** =sample_code
 ```{python}
+# Enter code here.
+
+
+
+
+
 
 ```
 
@@ -145,7 +152,16 @@ classification_target = 'profitable'
 
 *** =sct
 ```{python}
-
+test_object("df",
+            undefined_msg = "Did you define `profitable`?",
+            incorrect_msg = "It looks like the column `profitable` wasn't defined correctly.") 
+test_object("regression_target",
+            undefined_msg = "Did you define `regression_target`?",
+            incorrect_msg = "It looks like `regression_target` wasn't defined correctly.") 
+test_object("classification_target",
+            undefined_msg = "Did you define `classification_target`?",
+            incorrect_msg = "It looks like `classification_target` wasn't defined correctly.") 
+success_msg("Great work!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:177b5ae318
@@ -196,7 +212,9 @@ df = df.dropna(how="any")
 
 *** =sct
 ```{python}
-
+test_object("df",
+            incorrect_msg = "It looks like not all `np.inf` and `np.nan` cells have been dropped.") 
+success_msg("Great work!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:12a3d786b3
