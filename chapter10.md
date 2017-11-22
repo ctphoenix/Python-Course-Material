@@ -467,8 +467,6 @@ positive_revenue_df = df[df["revenue"]>0]
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
 forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
-
-
 ```
 
 *** =sample_code
