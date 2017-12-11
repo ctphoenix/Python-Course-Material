@@ -233,11 +233,12 @@ Many of the variables in our dataframe contain the names of genre, actors/actres
 
 *** =instructions
 
-- Determine all the genres in the genre column.
+- Determine all the genres in the genre column. Make sure to use the `strip()` function on each genre to remove trailing characters.
 - Next, include each listed genre as a new column in the dataframe. Each element of these genre columns should be 1 if the movie falls under that particular genre, and 0 otherwise.
 - Call `df[genres].head()` to view your results.
 
 *** =hint
+- No hint for this one.
 
 *** =pre_exercise_code
 ```{python}
@@ -266,18 +267,8 @@ df = df.dropna(how="any")
 
 *** =sample_code
 ```{python}
-list_genres = df.genres.apply(lambda x: x.split(","))
-genres = []
-for row in list_genres:
-    row = [genre.strip() for genre in row]
-    for genre in row:
-        if genre not in genres:
-            genres.append(genre)
+# Enter your code here.
 
-for genre in genres:
-    df[genre] = df['genres'].str.contains(genre).astype(int)
-
-df[genres].head()
 ```
 
 *** =solution
@@ -310,7 +301,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:9f0ce8e050
 ## Exercise 5
 
-Some variables in the dataset are already numeric and perhaps useful for regression and classification. In this exercise, we will store the names of these variables for future use and visualize the data for outcomes and continuous covariates. We will also take a look at the continuous variables by plotting each pair in a scatter matrix, and evaluate the skew of each variable.
+Some variables in the dataset are already numeric and perhaps useful for regression and classification. In this exercise, we will store the names of these variables for future use and visualize the data for outcomes and continuous covariates. We will also take a look at the continuous variables and outcomes by plotting each pair in a scatter plot, and evaluate the skew of each variable.
 
 *** =instructions
 - Call `plt.show()` to observe the plot below. 
@@ -319,7 +310,7 @@ Some variables in the dataset are already numeric and perhaps useful for regress
     - Consider: Is the skew above 1 for any of these variables?
 
 *** =hint
-- No hint for this one!
+- No hint for this one.
 
 *** =pre_exercise_code
 ```{python}
@@ -361,7 +352,7 @@ for genre in genres:
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]
 
-axes = pd.tools.plotting.scatter_matrix(df[outcomes_and_continuous_covariates], alpha = 0.15,color=(0,0,0),hist_kwds={"color":(0,0,0)},facecolor=(1,0,0))
+axes = pd.tools.plotting.scatter_matrix(df[outcomes_and_continuous_covariates], alpha=0.15, color=(0,0,0), hist_kwds={"color":(0,0,0)}, facecolor=(1,0,0))
 plt.tight_layout()
 # show the plot.
 
@@ -390,22 +381,22 @@ test_student_typed("plt.show()",
 test_student_typed(".skew()",
               pattern=False,
               not_typed_msg="Did you call `.skew()`?")   
-success_msg("There is quite a bit of covariance in these pairwise plots, so our modeling strategies or regression and classification might work!")
+success_msg("Great work! There is quite a bit of covariance in these pairwise plots, so our modeling strategies of regression and classification might work!")
 ```
 
 
 --- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:f9c66ebd99
 ## Exercise 6
 
-It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, transform these covariates to eliminate this skew. Specifically, we will use the `log` transform. Because some of these variables contain values of 0, we must first add a small value (1) to each value to ensure it is strictly positive. (Note that log(0) is negative infinity!)
+It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `log` transform. Because some of these variable values are exactly 0, we will add a small value to each value to ensure it is defined. (Note that log(0) is negative infinity!)
 
 *** =instructions
 
-- Transform each of the above-mentioned covariates in `df` by `log(1+x)`.
+- For each above-mentioned variable in `df`, transform value `x` into `log(1+x)`.
 
 *** =hint
-- You can use the `apply()` function on a `df.Series` object. Apply takes a single function as its argument, and returns the `df.Series` with that function applied to each element.
-- Functions can be specified anonymously using `lambda` function.
+- You can use the `apply()` function on a `df.Series` object. `apply()` takes a single function as its argument, and returns the `df.Series` with that function applied to each element.
+- Anonymous functions can be specified using `lambda`.
 
 *** =pre_exercise_code
 ```{python}
@@ -450,14 +441,14 @@ outcomes_and_continuous_covariates = continuous_covariates + [regression_target,
 
 
 
-
-
 ```
 
 *** =solution
 ```{python}
-for covariate in ['budget','popularity','vote_count','revenue']:
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log(1+x))
+    
+    
 ```
 
 *** =sct
