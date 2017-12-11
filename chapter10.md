@@ -5,20 +5,22 @@ description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metada
 --- type:NormalExercise lang:python xp:100 skills:2 key:bc061bf4aa
 ## Exercise 1
 
-In Part 2 of this case study, we will primarily use the two models we recently discussed: generalized linear regression and random forests in turn to perform prediction and classification. We will use linear regression to predict revenue, and logistic regression to classify whether a movie made a profit. Random forests come equipped with both a regression and classification mode, and we will use both of them to predict revenue and whether or not a movie made a profit.
+In Part 2 of this case study, we will primarily use the two models we recently discussed: linear/logistic regression and random forests to perform prediction and classification. We will use linear regression to predict revenue, and logistic regression to classify whether a movie was profitable.
 
-In this exercise, we will fit our regression models to predict movie revenue. We will also print the cross-validated correlation between the predicted values and true revenue, and determine the more important variables from the random forests regression fit.
+In this exercise, we will fit our regression models to predict movie revenue. We will also print the cross-validated accuracy between the predicted values and true revenue, and determine the more important variables from the random forests regression fit.
 
 *** =instructions
-- Call an instance of `LinearRegression()`, and store as `linear_regression`.
-- Call an instance of `RandomForestRegressor()` with `max_depth=4` and, `random_state=0`, and store as `forest_regression`.
-- Using both classifiers, call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `regression_outcome` with 10 cross-validation folds.
+- Call an instance of `LinearRegression()`, and assign the output to `linear_regression`.
+- Call an instance of `RandomForestRegressor()` with `max_depth=4` and, `random_state=0`, and assign the output to `forest_regression`.
+- Call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `regression_outcome` with 10 cross-validation folds.
     - Store the predictions as `linear_regression_predicted` and `forest_regression_predicted`, respectively.
-- Call `pearsonr()` to compare the accuracy of `regression_outcome` and your cross-validated predictions. How well do these perform?
-- Code is provided below to inspect which variables appear to be the most important for predicting profitability according to the random forest model. Which variables are most important?
+- Call `pearsonr()` to compare the accuracy of `regression_outcome` and your cross-validated predictions.
+    - Consider: how well do these models perform?
+- Code is provided below to determine which variables appear to be the most important for predicting profitability according to the random forest model.
+    - Consider: which variables are most important?
 
 *** =hint
-- This exercise makes heavy use of `sklearn` functions. Feel free to consult its manuals for help.
+- This exercise makes heavy use of `sklearn` functions. Feel free to consult its online documentation for help.
 
 *** =pre_exercise_code
 ```{python}
@@ -63,15 +65,15 @@ regression_outcome = df[regression_target]
 
 linear_regression =
 linear_regression_predicted = 
-# determine the correlation of linear regression predictions.
+# determine the accuracy of linear regression predictions.
 
 forest_regression =
 forest_regression_predicted =
-# determine the correlation of random forest predictions.
+# determine the accuracy of random forest predictions.
 
 ### Determine feature importance. This code is complete!
 forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_,):
+for row in zip(all_covariates, forest_regression.feature_importances_):
     print(row)
 ```
 
@@ -91,7 +93,7 @@ pearsonr(regression_outcome, forest_regression_predicted)
 
 ### Determine feature importance. This code is complete!
 forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_,):
+for row in zip(all_covariates, forest_regression.feature_importances_):
     print(row)
 ```
 
@@ -111,28 +113,27 @@ test_object("forest_regression_predicted",
             incorrect_msg = "It looks like `forest_regression_predicted"` wasn't defined correctly.") 
 test_student_typed("pearsonr",
             pattern=False,
-            not_typed_msg="Did you determine the correlation of `linear_classifier` and `forest_classifier`?")
-success_msg("Great work! The cross-validated correlation between the predictions and the outcome is 0.71. Not bad! The cross-validated correlation between the predictions and the outcome is 0.70. Also good, but this fit performs slightly less well than logistic regression.")
+            not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
+success_msg("Great work! The cross-validated accuracy between the predictions and the outcome is 0.71. Not bad! The cross-validated accuracy between the predictions and the outcome is 0.70. Also good, but this fit performs slightly less well than logistic regression.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:56e0886a08
 ## Exercise 2
 
-In this exercise, we will fit a classification model to determine whether a movie will be profitable or not.
-NOTE: let's have them tune max_depth on their own.
-
 In this exercise, we will use both classifiers to determine whether a movie will be profitable or not.
 
 *** =instructions
 - Call an instance of `LogisticRegression()`, and store as `linear_classifier`.
-- Call an instance of `RandomForestClassifier()` with `max_depth=3` and, `random_state=0`, and store as `forest_classifier`.
-- Using both classifiers, call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `classification_outcome` with 10 cross-validation folds.
-    - Store the predictions as `linear_regression_predicted` and `forest_regression_predicted`, respectively.
-- Call `accuracy_score()` to compare the accuracy of `classification_outcome` and your cross-validated predictions. How well do these perform?
-- Code is provided below to inspect which variables appear to be the most important for predicting profitability according to the random forest model. Which variables are most important?
+- Call an instance of `RandomForestClassifier()` with `max_depth=3` and, `random_state=0`, and assign it to `forest_classifier`.
+- Call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `classification_outcome` with 10 cross-validation folds.
+    - Assign these predictions to `linear_regression_predicted` and `forest_regression_predicted`.
+- Call `accuracy_score()` to compare the accuracy of `classification_outcome` to your cross-validated predictions.
+    - Consider: how well do these perform?
+- We provide code below to inspect which variables appear to be the most important for predicting profitability in the random forest model.
+    - Consider: which variables are most important?
 
 *** =hint
-- This exercise makes heavy use of `sklearn` functions. Feel free to consult its manuals for help.
+- This exercise makes heavy use of `sklearn` functions. Feel free to consult its online documentation for help.
 
 
 *** =pre_exercise_code
@@ -195,7 +196,7 @@ forest_classification_predicted =
 
 ### Determine feature importance. This code is complete!
 forest_classifier.fit(df[all_covariates], classification_outcome)
-for row in zip(all_covariates, forest_classifier.feature_importances_,):
+for row in zip(all_covariates, forest_classifier.feature_importances_):
     print(row)
 ```
 
@@ -212,7 +213,7 @@ forest_classification_predicted = cross_val_predict(forest_classifier, df[all_co
 accuracy_score(classification_outcome, forest_classification_predicted)
 
 forest_classifier.fit(df[all_covariates], classification_outcome)
-for row in zip(all_covariates, forest_classifier.feature_importances_,):
+for row in zip(all_covariates, forest_classifier.feature_importances_):
     print(row)
 
 
@@ -234,18 +235,18 @@ test_object("forest_classification_predicted",
             incorrect_msg = "It looks like `forest_classification_predicted"` wasn't defined correctly.") 
 test_student_typed("accuracy_score",
               pattern=False,
-              not_typed_msg="Did you determine the accuracy of  `linear_classifier` and `forest_classifier`?")
-success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model. We see that according to random forests, popularity and vote count are the most important variables in predicting whether a movie will be profitable.")
+              not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
+success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model. We see that according to random forests, popularity and vote count appear to be the most important variables in predicting whether a movie will be profitable.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:dbcd7e671f
 ## Exercise 3
 
-Finally, let's take a look at the relationship between the predicted revenue and the true revenues. In this exercise, we will visualize the quality of the model fits.
+Finally, let's take a look at the relationship between predicted and true revenue. In this exercise, we will visualize the quality of the model fits.
 
 *** =instructions
--  Plot the revenue for each movie again the fits of the linear regression and random forest regression models.
--  Consider: which of the two exhibits a better fit?
+-  Plot the revenue for each movie against the fits of the linear regression and random forest regression models.
+    -  Consider: which of the two models exhibits a better fit?
 
 *** =hint
 - No hint for this one: don't overthink it!
@@ -298,23 +299,23 @@ regression_range = [regression_outcome.min(), regression_outcome.max()]
 ax.plot(regression_range, regression_range, 'k--', lw=4)
 ax.set_xlabel('Measured')
 ax.set_ylabel('Predicted')
-plt.show()
+# Show the plot.
 
 fig, ax = plt.subplots()
-ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors = (0, .3, .6, .3), s=40)
+ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors=(0, .3, .6, .3), s=40)
 regression_range = [regression_outcome.min(), regression_outcome.max()]
 
 ax.plot(regression_range, regression_range, 'k--', lw=2)
 ax.set_xlabel('Measured')
 ax.set_ylabel('Predicted')
 
-# Show the plot using plt.show().
+# Show the plot.
 ```
 
 *** =solution
 ```{python}
 fig, ax = plt.subplots()
-ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors = (.8, .2, 0, .3), s=40)
+ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors=(.8, .2, 0, .3), s=40)
 regression_range = [regression_outcome.min(), regression_outcome.max()]
 ax.plot(regression_range, regression_range, 'k--', lw=4)
 ax.set_xlabel('Measured')
@@ -336,7 +337,7 @@ plt.show()
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see is the random forest model fares any better. Like the linear regression model, predicting whether a movie will make no money at all seem quite difficult.")
+success_msg("Great work! It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see if the random forest model fares any better. Like the linear regression model, predicting whether a movie will make no money at all seems quite difficult.")
 ```
 
 
@@ -344,17 +345,17 @@ success_msg("Great work! It's well worth noting that many movies make zero dolla
 --- type:NormalExercise lang:python xp:100 skills:2 key:a0ae0c80a0
 ## Exercise 4
 
-It appears that predicting movies that are reported to have made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analysis to determine if the fit improves. In this exercise, we will rerun the regression analysis.
+It appears that predicting movies that are reported to have made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fit improves. In this exercise, we will rerun the regression analysis for this subsetted dataset.
 
 *** =instructions
 - Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
-- The solutions to the previous analysis using `df` is shown below. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
+- The solutions to the previous analyses using `df` are shown below. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
 - Consider the following comparisons to the analysis that included movies with zero reported revenue: 
     - Are these cross-validated correlations between predictions and true revenue higher or lower in general?
     - Previously, linear regression outperformed random forests. Has this changed?
 
 *** =hint
-- `pandas` supprts slicing syntax for rows. You use this to select only rows meeting the logical condition `df["revenue"] > 0`.
+- `pandas` supports slicing syntax for rows. You can use this to select only rows meeting the logical condition `df["revenue"] > 0`.
 
 *** =pre_exercise_code
 ```{python}
@@ -423,7 +424,7 @@ pearsonr(regression_outcome, forest_regression_predicted)
 test_object("positive_revenue_df",
             undefined_msg = "Did you define `positive_revenue_df`?",
             incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.") 
-success_msg("Great work! By excluding movies with zero reported revenue, we do see that the correlation betwene predictions and outcome is increased. Linear regression still slightly outperforms random forests.")
+success_msg("Great work! By excluding movies with zero reported revenue, we do see that the correlation between predictions and outcome is increased. Linear regression still appears to slightly outperforms random forests.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:8203914a10
@@ -655,7 +656,7 @@ plt.show()
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves the model fit. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
+success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves the model fit. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
 
 
