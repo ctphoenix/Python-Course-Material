@@ -2,14 +2,15 @@
 title       : Case Study 7 - Movie Analysis, Part 1 - Data Preparation
 description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metadata) is a database of 5000 movies catalogued by [IMDB](http://www.imdb.com/). The information available about each movie is its budget, revenue, rating, actors and actresses, etc. In this case study, we will use this dataset to determine whether any information about a movie can predict the total revenue of a movie. We will also attempt to predict whether a movie's revenue will exceed its budget.
 
-In Part 1, we will inspect, clean, and transform the data. In Part 2, we will use this prepared dataset for analysis. In this exercise, we will import our necessary libraries and read in the data.
+In Part 1, we will inspect, clean, and transform the data. In Part 2, we will use this prepared dataset for analysis. In this exercise, we will import our necessary libraries and read in the dataset.
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 
 ## Exercise 1
 
 *** =instructions
-- First, we will import several libraries. **sci-kit learn** (`sklearn`) contains helpful models for fitting, and we'll use `matplotlib.pyplot` for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
+- First, we will import several libraries. **sci-kit learn** (`sklearn`) contains helpful statistical models for fitting, and we'll use the `matplotlib.pyplot` library for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
+- Read
 
 *** =hint
 -  You don't need to do anything, just take a look at the imports.
@@ -30,7 +31,7 @@ from sklearn.metrics import accuracy_score
 from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10) # Just specifies the size of the plot in this Jupyter Notebook.
+plt.rcParams["figure.figsize"] = (10,10)
 
 ```
 
@@ -75,6 +76,7 @@ plt.rcParams["figure.figsize"] = (10,10)
 
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 df.head()
+
 ```
 
 *** =sct
@@ -91,19 +93,20 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:e2c40f651a
 ## Exercise 2
 
-In this exercise, we will define the regression and classification outcomes. Specifically, we will use the revenue column as the target for regression. For classification, we will use an indicator as to whether each movie was profitable or not. The dataset does not yet contain a column with this information, but determine it from other columns.
+In this exercise, we will define the regression and classification outcomes. Specifically, we will use the revenue column as the target for regression. For classification, we will construct an indicator of profitability for each movie.
 
 
 *** =instructions
 
-- Create a new column in `df` called `profitable`, defined as 1 if the movie revenue is larger than the movie budget, and 0 otherwise.
-- Let's define and store the outcomes we will use for regression and classification.
-- Define `regression_target` as `'revenue"`, and `classification_target` as `'profitable'`.
+- Create a new column in `df` called `profitable`, defined as 1 if the movie revenue is greater than the movie budget, and 0 otherwise.
+- Next, define and store the outcomes we will use for regression and classification.
+    - Define `regression_target` as `'revenue'`.
+    - Define `classification_target` as `'profitable'`.
 
 
 *** =hint
 
-- To create `df['profitable']`, use a simple inequality between the budget and revenue columns in `df`.  Then, we will cast this to an integer (1 if true, and 0 otherwise).
+- To create `df['profitable']`, use a simple inequality between the budget and revenue columns in `df`.  Then, we will cast this as an `int`: 1 if true, and 0 otherwise.
 
 
 *** =pre_exercise_code
@@ -140,7 +143,7 @@ df = pd.read_csv('./merged_movie_data.csv')
 ```{python}
 regression_target = 'revenue'
 
-df['profitable'] = df.budget < df.revenue
+df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
 
 classification_target = 'profitable'
@@ -169,11 +172,11 @@ For simplicity, we will proceed by analyzing only the rows without any missing d
 
 *** =instructions
 
-- Use `df.replace()` to replace any cells with of type `np.inf` or `-np.inf` with `np.nan`.
+- Use `df.replace()` to replace any cells with type `np.inf` or `-np.inf` with `np.nan`.
 - Drop all rows with any `np.nan` values in that row using `df.dropna()`. Do any further arguments need to be specified in this function to remove rows with any such values?
 
 *** =hint
-- To specify the removal of rows with any missing values, add the parameter `how="any"`
+- To specify the removal of rows with any missing values, add the parameter `how="any"`.
 
 *** =pre_exercise_code
 ```{python}
@@ -193,7 +196,7 @@ import matplotlib.pyplot as plt
 plt.rcParams["figure.figsize"] = (10,10)
 df = pd.read_csv('./merged_movie_data.csv')
 regression_target = 'revenue'
-df['profitable'] = df.budget < df.revenue
+df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
 classification_target = 'profitable'
 ```
@@ -230,9 +233,9 @@ Many of the variables in our dataframe contain the names of genre, actors/actres
 
 *** =instructions
 
-- Let's determine all the genres in the genre column.
-- Next, let's include each listed genre as a new column, each of which will be a 1 if the movie falls under a particular genre, and 0 otherwise.
-- Let's look at the dataset again, focusing on our new genres.
+- Determine all the genres in the genre column.
+- Next, include each listed genre as a new column in the dataframe. Each element of these genre columns should be 1 if the movie falls under that particular genre, and 0 otherwise.
+- Call `df[genres].head()` to view your results.
 
 *** =hint
 
