@@ -456,7 +456,7 @@ for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
 test_object("df",
             undefined_msg = "Did you define `df`?",
             incorrect_msg = "It appears you did not transform the variables correctly.") 
-success_msg("Great work! This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
+success_msg("Great work! This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
 
 

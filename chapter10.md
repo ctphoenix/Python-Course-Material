@@ -655,7 +655,7 @@ plt.show()
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves the model fit. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
+success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves the model fit. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
 
 
