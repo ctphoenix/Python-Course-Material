@@ -423,7 +423,7 @@ pearsonr(regression_outcome, forest_regression_predicted)
 ```{python}
 test_object("positive_revenue_df",
             undefined_msg = "Did you define `positive_revenue_df`?",
-            incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.") 
+            incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.")
 test_object("linear_regression_predicted",
             undefined_msg = "Did you define `linear_regression_predicted`?",
             incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
@@ -495,17 +495,19 @@ forest_regression.fit(df[all_covariates], regression_outcome)
 positive_revenue_df = df[df["revenue"]>0]
 linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
 forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
+linear_classifier = LogisticRegression()
+forest_classifier = RandomForestClassifierRandomForestClassifier(max_depth=3, random_state=0)
 ```
 
 *** =sample_code
 ```{python}
+# Rename the data in the following code, and run.
+
 classification_outcome = df[classification_target]
 
-linear_classifier = LogisticRegression()
 linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, linear_classification_predicted)
 
-forest_classifier = RandomForestClassifierRandomForestClassifier(max_depth=3, random_state=0)
 forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, forest_classification_predicted)
 
@@ -520,11 +522,9 @@ for row in zip(all_covariates, forest_classifier.feature_importances_):
 ```{python}
 classification_outcome = positive_revenue_df[classification_target]
 
-linear_classifier = LogisticRegression()
 linear_classification_predicted = cross_val_predict(linear_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, linear_classification_predicted)
 
-forest_classifier = RandomForestClassifierRandomForestClassifier(max_depth=3, random_state=0)
 forest_classification_predicted = cross_val_predict(forest_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, forest_classification_predicted)
 
@@ -537,12 +537,6 @@ for row in zip(all_covariates, forest_classifier.feature_importances_):
 
 *** =sct
 ```{python}
-test_object("linear_classifier",
-            undefined_msg = "Did you define `linear_classifier`?",
-            incorrect_msg = "It looks like `linear_classifier` wasn't defined correctly.") 
-test_object("forest_classifier",
-            undefined_msg = "Did you define `forest_classifier`?",
-            incorrect_msg = "It looks like `forest_classifier` wasn't defined correctly.") 
 test_object("linear_classification_predicted",
             undefined_msg = "Did you define `linear_classification_predicted`?",
             incorrect_msg = "It looks like `linear_classification_predicted` wasn't defined correctly.") 
