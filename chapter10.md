@@ -424,19 +424,50 @@ pearsonr(regression_outcome, forest_regression_predicted)
 test_object("positive_revenue_df",
             undefined_msg = "Did you define `positive_revenue_df`?",
             incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.") 
-success_msg("Great work! By excluding movies with zero reported revenue, we do see that the correlation between predictions and outcome is increased. Linear regression still appears to slightly outperforms random forests.")
+test_object("linear_regression_predicted",
+            undefined_msg = "Did you define `linear_regression_predicted`?",
+            incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
+test_object("forest_regression_predicted",
+            undefined_msg = "Did you define `forest_regression_predicted`?",
+            incorrect_msg = "It looks like `forest_regression_predicted` wasn't defined correctly.") 
+test_student_typed("pearsonr",
+              pattern=False,
+              not_typed_msg="Did you determine the correlation between `linear_classifier` and `forest_classifier` with revenue?")
+success_msg("Great work! By excluding movies with zero reported revenue, we do see that the correlation between predictions and outcome is increased. Linear regression still appears to slightly outperform random forests.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:8203914a10
 ## Exercise 5
 
+In this exercise, we will rerun the classification analysis for the subsetted dataset that includes only movies with positive revenue.
 
 *** =instructions
+- Replace all instances of `df` with `positive_revenue_df`, and run the given code.
+- Consider the following comparisons to the analysis that included movies with zero reported revenue: 
+    - Is the cross-validated accuracy between predictions and true revenue higher or lower in general?
+    - Previously, logistic regression outperformed random forest classification. Has this changed?
 
 *** =hint
+- No hint for this one.
+
 
 *** =pre_exercise_code
 ```{python}
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import cross_val_predict
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import accuracy_score
+from scipy.stats import pearsonr
+
+import matplotlib.pyplot as plt
+plt.rcParams["figure.figsize"] = (10,10)
+df = pd.read_csv('./merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
@@ -456,109 +487,74 @@ for genre in genres:
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 linear_regression = LinearRegression()
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
 forest_regression.fit(df[all_covariates], regression_outcome)
-linear_classifier = LogisticRegression()
-classification_outcome = df[classification_target]
-forest_classifier.fit(df[all_covariates], classification_outcome)
 positive_revenue_df = df[df["revenue"]>0]
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
 forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
 ```
 
 *** =sample_code
 ```{python}
-
-```
-
-*** =solution
-```{python}
-
-```
-
-*** =sct
-```{python}
-test_object("linear_regression",
-            undefined_msg = "Did you define `linear_regression`?",
-            incorrect_msg = "It looks like `linear_regression` wasn't defined correctly.") 
-test_student_typed("pearsonr",
-            pattern=False,
-            not_typed_msg="Did you determine the correlation of `linear_classifier` and `forest_classifier`?")
-success_msg("Great work!")
-```
-
---- type:NormalExercise lang:python xp:100 skills:2 key:666196c087
-## Exercise 6
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{python}
-regression_target = 'revenue'
-df['profitable'] = df.budget < df.revenue
-df['profitable'] = df['profitable'].astype(int)
-classification_target = 'profitable'
-df = df.replace([np.inf, -np.inf], np.nan)
-df = df.dropna(how="any")
-list_genres = df.genres.apply(lambda x: x.split(","))
-genres = []
-for row in list_genres:
-    row = [genre.strip() for genre in row]
-    for genre in row:
-        if genre not in genres:
-            genres.append(genre)
-
-for genre in genres:
-    df[genre] = df['genres'].str.contains(genre).astype(int)
-continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
-linear_regression = LinearRegression()
-regression_outcome = df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_,):
-    print(row)
-linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
+
+linear_classifier = LogisticRegression()
 linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, linear_classification_predicted)
+
 forest_classifier = RandomForestClassifierRandomForestClassifier(max_depth=3, random_state=0)
 forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, forest_classification_predicted)
-forest_classifier.fit(df[all_covariates], classification_outcome)
-```
 
-*** =sample_code
-```{python}
+forest_classifier.fit(df[all_covariates], classification_outcome)
+for row in zip(all_covariates, forest_classifier.feature_importances_):
+    print(row)
+
 
 ```
 
 *** =solution
 ```{python}
+classification_outcome = positive_revenue_df[classification_target]
+
+linear_classifier = LogisticRegression()
+linear_classification_predicted = cross_val_predict(linear_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
+accuracy_score(classification_outcome, linear_classification_predicted)
+
+forest_classifier = RandomForestClassifierRandomForestClassifier(max_depth=3, random_state=0)
+forest_classification_predicted = cross_val_predict(forest_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
+accuracy_score(classification_outcome, forest_classification_predicted)
+
+forest_classifier.fit(positive_revenue_df[all_covariates], classification_outcome)
+for row in zip(all_covariates, forest_classifier.feature_importances_):
+    print(row)
+
 
 ```
 
 *** =sct
 ```{python}
-test_object("linear_regression",
-            undefined_msg = "Did you define `linear_regression`?",
-            incorrect_msg = "It looks like `linear_regression` wasn't defined correctly.") 
-test_student_typed("pearsonr",
-            pattern=False,
-            not_typed_msg="Did you determine the correlation of `linear_classifier` and `forest_classifier`?")
-success_msg("Great work!")
+test_object("linear_classifier",
+            undefined_msg = "Did you define `linear_classifier`?",
+            incorrect_msg = "It looks like `linear_classifier` wasn't defined correctly.") 
+test_object("forest_classifier",
+            undefined_msg = "Did you define `forest_classifier`?",
+            incorrect_msg = "It looks like `forest_classifier` wasn't defined correctly.") 
+test_object("linear_classification_predicted",
+            undefined_msg = "Did you define `linear_classification_predicted`?",
+            incorrect_msg = "It looks like `linear_classification_predicted` wasn't defined correctly.") 
+test_object("forest_classification_predicted",
+            undefined_msg = "Did you define `forest_classification_predicted"`?",
+            incorrect_msg = "It looks like `forest_classification_predicted"` wasn't defined correctly.") 
+test_student_typed("accuracy_score",
+              pattern=False,
+              not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
+success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model. We see that according to random forests, popularity and vote count appear to be the most important variables in predicting whether a movie will be profitable.")
+success_msg("Great work! By excluding movies with zero reported revenue, we do see that the accuracy of both models is increased. Linear regression still appears to slightly outperform random forests.")
 ```
-
-
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:175d2a15e1
 ## Exercise 6
@@ -598,8 +594,6 @@ linear_regression_predicted = cross_val_predict(linear_regression, df[all_covari
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
 forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_,):
-    print(row)
 linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
 linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
@@ -608,6 +602,18 @@ forest_classifier = RandomForestClassifierRandomForestClassifier(max_depth=3, ra
 forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, forest_classification_predicted)
 forest_classifier.fit(df[all_covariates], classification_outcome)
+
+positive_revenue_df = df[df["revenue"]>0]
+linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
+forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
+
+classification_outcome = positive_revenue_df[classification_target]
+
+linear_classifier = LogisticRegression()
+linear_classification_predicted = cross_val_predict(linear_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
+forest_classifier = RandomForestClassifierRandomForestClassifier(max_depth=3, random_state=0)
+forest_classification_predicted = cross_val_predict(forest_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
+forest_classifier.fit(positive_revenue_df[all_covariates], classification_outcome)
 ```
 
 *** =sample_code
