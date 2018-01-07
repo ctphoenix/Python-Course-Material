@@ -178,6 +178,8 @@ outcomes_and_continuous_covariates = continuous_covariates + [regression_target,
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 regression_outcome = df[regression_target]
+linear_regression = LinearRegression()
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
