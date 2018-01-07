@@ -288,8 +288,6 @@ linear_regression_predicted = cross_val_predict(linear_regression, df[all_covari
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
 forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_,):
-    print(row)
 linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
 linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
