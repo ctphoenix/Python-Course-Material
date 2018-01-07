@@ -293,7 +293,7 @@ df[genres].head()
 test_object("df",
             undefined_msg = "Did you define `df`?",
             incorrect_msg = "It looks like `df` wasn't defined correctly.") 
-test_student_typed("df.head()",
+test_student_typed("df[genres].head()",
               pattern=False,
               not_typed_msg="Did you call `df.head()`?")            
 success_msg("Great work!")
