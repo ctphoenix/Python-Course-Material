@@ -437,7 +437,7 @@ forest_classifier.fit(df[all_covariates], classification_outcome)
 *** =sample_code
 ```{python}
 positive_revenue_df = 
-
+classification_outcome = 
 
 # Rename the data in the following code, and run.
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
