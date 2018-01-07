@@ -330,7 +330,7 @@ from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
 plt.rcParams["figure.figsize"] = (10,10)
-df = pd.read_csv('./merged_movie_data.csv')
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
