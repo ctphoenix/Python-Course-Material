@@ -102,12 +102,6 @@ for row in zip(all_covariates, forest_regression.feature_importances_):
 
 *** =sct
 ```{python}
-test_object("linear_regression",
-            undefined_msg = "Did you define `linear_regression`?",
-            incorrect_msg = "It looks like `linear_regression` wasn't defined correctly.") 
-test_object("forest_regression",
-            undefined_msg = "Did you define `forest_regression`?",
-            incorrect_msg = "It looks like `forest_regression` wasn't defined correctly.") 
 test_object("linear_regression_predicted",
             undefined_msg = "Did you define `linear_regression_predicted`?",
             incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
