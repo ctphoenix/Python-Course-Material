@@ -421,7 +421,6 @@ regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression.fit(df[all_covariates], regression_outcome)
 
 linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
@@ -539,7 +538,6 @@ regression_outcome = positive_revenue_df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates],regression_outcome, cv=10)
 forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
 
-
 linear_classifier = LogisticRegression()
 forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
 
@@ -594,7 +592,7 @@ test_object("forest_classification_predicted",
 test_student_typed("accuracy_score",
               pattern=False,
               not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
-success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model. We see that according to random forests, popularity and vote count appear to be the most important variables in predicting whether a movie will be profitable.")
+success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 83% of the time, which is slightly better than the linear model, aa reversal from our previous accuracy results. We see that according to random forests, popularity and vote count appear to be the most important variables in predicting whether a movie will be profitable.")
 success_msg("Great work! By excluding movies with zero reported revenue, we do see that the accuracy of both models is increased. Linear regression still appears to slightly outperform random forests.")
 ```
 
@@ -656,9 +654,7 @@ forest_regression_predicted = cross_val_predict(forest_regression, df[all_covari
 forest_regression.fit(df[all_covariates], regression_outcome)
 linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
-accuracy_score(classification_outcome, linear_classification_predicted)
 forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
-accuracy_score(classification_outcome, forest_classification_predicted)
 
 positive_revenue_df = df[df["revenue"]>0]
 regression_outcome = positive_revenue_df[regression_target]
@@ -719,7 +715,7 @@ plt.show()
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves the model fit. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
+success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves prediction of revenues. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
 
 
