@@ -452,11 +452,11 @@ pearsonr(regression_outcome, forest_regression_predicted)
 positive_revenue_df = df[df["revenue"]>0]
 classification_outcome = positive_revenue_df[classification_target]
 
-linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], positive_revenue_regression_outcome, cv=10)
-pearsonr(positive_revenue_regression_outcome, linear_regression_predicted)
+linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates],regression_outcome, cv=10)
+pearsonr(regression_outcome, linear_regression_predicted)
 
-forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], positive_revenue_regression_outcome, cv=10)
-pearsonr(positive_revenue_regression_outcome, forest_regression_predicted)
+forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
+pearsonr(regression_outcome, forest_regression_predicted)
 ```
 
 *** =sct
