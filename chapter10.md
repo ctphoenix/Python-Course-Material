@@ -532,7 +532,6 @@ regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression.fit(df[all_covariates], regression_outcome)
 positive_revenue_df = df[df["revenue"]>0]
 linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
 forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
@@ -649,12 +648,9 @@ forest_regression_predicted = cross_val_predict(forest_regression, df[all_covari
 forest_regression.fit(df[all_covariates], regression_outcome)
 linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
-linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, linear_classification_predicted)
 forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
-forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
 accuracy_score(classification_outcome, forest_classification_predicted)
-forest_classifier.fit(df[all_covariates], classification_outcome)
 
 positive_revenue_df = df[df["revenue"]>0]
 linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
