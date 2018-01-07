@@ -112,8 +112,8 @@ test_object("linear_regression_predicted",
             undefined_msg = "Did you define `linear_regression_predicted`?",
             incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
 test_object("forest_regression_predicted",
-            undefined_msg = "Did you define `forest_regression_predicted"`?",
-            incorrect_msg = "It looks like `forest_regression_predicted"` wasn't defined correctly.") 
+            undefined_msg = "Did you define `forest_regression_predicted`?",
+            incorrect_msg = "It looks like `forest_regression_predicted` wasn't defined correctly.") 
 test_student_typed("pearsonr",
             pattern=False,
             not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
