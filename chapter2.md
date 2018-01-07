@@ -6,6 +6,8 @@ description : Exercises for Homework (Week 2).  Tic-tac-toe (or noughts and cros
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+In the following 13 exercises, we will learn to create a tic-tac-toe board, place markers on the board, evaluate if either player has won, and use this to simulate two basic strategies.
+
 *** =instructions
 - For our tic-tac-toe board, we will use a numpy array with dimension 3 by 3.  Make a function `create_board()` that creates such a board, with values of integers `0`.
 - Call `create_board()`, and store this as `board`.
@@ -62,13 +64,18 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+Players 1 and 2 will take turns changing values of this array from a 0 to a 1 or 2, indicating the number of the player who places there.
+
 *** =instructions
-- Players 1 and 2 will take turns changing values of this array from a 0 to a 1 or 2, indicating the number of the player who places there.  Create a function `place(board, player, position)` with `player` being the current player (an integer 1 or 2), and `position` a tuple of length 2 specifying a desired location to place their marker.  Only allow the current player to place a piece on the board (change the board position to their number) if that position is empty (zero).
-- Use `create_board()` to store a board as `board`, and use `place` to have Player 1 place a piece on spot `(0, 0)`.
+- Create a function `place(board, player, position)`, where:
+    - `player` is the current player (an integer 1 or 2)
+    - `position` a tuple of length 2 specifying a desired location to place their marker.
+    - Your function should only allow the current player to place a marker on the board (change the board position to their number) if that position is empty (zero).
+- Use `create_board()` to store a board as `board`, and use `place` to have Player 1 place a marker on location `(0, 0)`.
 
 *** =hint
-- Because `board` is a `numpy.array` object, you can assign value to its positions using bracket indeces, just like a dictionary.
-- Keep in mind that the positions in this array are tuples!  For example, position `(0, 0)` can be reassigned using `board[position] == 0`.
+- Because `board` is a `numpy.array` object, you can assign a value to its positions using bracket indices, just like a dictionary.
+- Keep in mind that the positions in this array are tuples!  For example, position `(0, 0)` can be reassigned using `board[(0,0)] == 0`.
 
 *** =pre_exercise_code
 ```{python}
@@ -122,8 +129,10 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+In this exercise, we will determine which positions are available to either player for placing their marker.
+
 *** =instructions
-- Create a function `possibilities(board)` that returns a list of all positions (`tuples`) on the board that are not occupied (`0`).  (Hint: `numpy.where` is a handy function that returns a list of indexes that meet a condition.)
+- Create a function `possibilities(board)` that returns a list of all positions (`tuples`) on the board that are not occupied (`0`).  (Hint: `numpy.where` is a handy function that returns a list of indices that meet a condition.)
 - `board` is already defined from previous exercises.  Call `possibilities(board)` to see what it returns!
 
 *** =hint
@@ -181,16 +190,17 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
-*** =instructions
-1. Write a function `random_place(board, player)` that places a marker for the current player at random among all the available positions (those currently set to 0).
-    a. Find possible placements with `possibilities(board)`.
-    b. Select one possible placement at random using `random.choice(selection)`.
-2. `board` is already defined from previous exercises.  Call `random_place(board, player)` to place a random marker for Player 2, and store this as `board` to update its value.
+The next step is for the current player to place a marker among the available positions. In this exercise, we will select an available board position at random and place a marker there.
 
+*** =instructions
+- Write a function `random_place(board, player)` that places a marker for the current player at random among all the available positions (those currently set to 0).
+	- Find possible placements with `possibilities(board)`.
+	- Select one possible placement at random using `random.choice(selection)`.
+- `board` is already defined from previous exercises.  Call `random_place(board, player)` to place a random marker for Player 2, and store this as `board` to update its value.
 
 
 *** =hint
-- The `choice` function in the `random` library will randomly select one item from an iterable.
+- Note that the `choice` function in the `random` library takes a single parameter, an iterable. `random.choice()` will randomly select one item from that iterable.
 
 *** =pre_exercise_code
 ```{python}
@@ -253,8 +263,10 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+We will now have both players place three markers each.
+
 *** =instructions
-- `board` is already defined from previous exercises.  Use `random_place(board, player)` to place three pieces on `board` each for players 1 and 2.
+- `board` is already given.  Call `random_place(board, player)` to place three pieces each on `board` for players 1 and 2.
 - Print `board` to see your result.
 
 *** =hint
@@ -286,11 +298,10 @@ def random_place(board, player):
 *** =sample_code
 ```{python}
 board = create_board()
-for i in range(3):
-    for player in [1, 2]:
-        # add here!
 
-print(board)
+
+
+
 
 ```
 
@@ -322,12 +333,15 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+In the next few exercises, we will make functions that verify if either player has won the game.
+
 *** =instructions
-- Now that players may place their pieces, how will they know they've won?  Make a function `row_win(board, player)` that takes the player (integer), and determines if any row consists of only their marker.  Have it return `True` of this condition is met, and `False` otherwise.
+- Make a function `row_win(board, player)` that takes the player (integer), and determines if any row consists of only their marker.  Have it return `True` of this condition is met, and `False` otherwise.
 - `board` is already defined from previous exercises.  Call `row_win` to check if Player 1 has a complete row. 
 
 *** =hint
 - Using `if` and `else` would work elegantly.
+- `numpy` contains function `any` and `all`, which might be helpful For more information, use `help()`!
 
 *** =pre_exercise_code
 ```{python}
@@ -371,8 +385,7 @@ for i in range(3):
 *** =solution
 ```{python}
 def row_win(board, player):
-    winner = False
-    if np.any(np.all(board==player,axis=1)):
+    if np.any(np.all(board==player,axis=1)): # this checks if any row contains all positions equal to player.
         return True
     else:
         return False
@@ -395,6 +408,8 @@ success_msg("Great work!")
 ## Exercise 7
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
+
+In the next few exercises, we will make functions that verify if either player has won the game.
 
 *** =instructions
 - Create a similar function `col_win(board, player)` that takes the player (integer), and determines if any column consists of only their marker.  Have it return `True` if this condition is met, and `False` otherwise.
@@ -469,6 +484,8 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+In the next few exercises, we will make functions that verify if either player has won the game.
+
 *** =instructions
 - Finally, create a function `diag_win(board, player)` that tests if either diagonal of the board consists of only their marker. Have it return `True` if this condition is met, and `False` otherwise.
 - `board` is already defined from previous exercises.  Call `diag_win` to check if Player 1 has a complete diagonal. 
@@ -520,6 +537,8 @@ for i in range(3):
 ```{python}
 def diag_win(board, player):
     if np.all(np.diag(board)==player) or np.all(np.diag(np.fliplr(board))==player):
+        # np.diag returns the diagonal of the array
+        # np.fliplr rearranges columns in reverse order
         return True
     else:
         return False
@@ -599,7 +618,8 @@ for i in range(3):
 def evaluate(board):
     winner = 0
     for player in [1, 2]:
-        # Check if `row_win`, `col_win`, or `diag_win` apply.  if so, store `player` as `winner`.
+        # Check if `row_win`, `col_win`, or `diag_win` apply. 
+		# If so, store `player` as `winner`.
     if np.all(board != 0) and winner == 0:
         winner = -1
     return winner
@@ -638,8 +658,14 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+In this exercise, we will use all the functions we have made to simulate an entire game.
+
 *** =instructions
-- `create_board()`, `random_place(board, player)`, and `evaluate(board)` have been created from previous exercises.  Create a function `play_game()` that creates a board, calls alternates between two players (beginning with Player 1), and evaluates the board for a winner after every placement.  Play the game until one player wins (returning `1` or `2` to reflect the winning player), or the game is a draw (returning `-1`).
+- `create_board()`, `random_place(board, player)`, and `evaluate(board)` have been created from previous exercises.  Create a function `play_game()` that:
+	- Creates a board.
+	- Alternates taking turns between two players (beginning with Player 1), placing a marker during each turn.
+	- Evaluates the board for a winner after each placement.
+	- Continues the game until one player wins (returning `1` or `2` to reflect the winning player), or the game is a draw (returning `-1`).
 - Call `play_game` once.
 
 *** =hint
@@ -708,7 +734,8 @@ def evaluate(board):
 *** =solution
 ```{python}
 def play_game():
-    board, winner = create_board(), 0
+    board = create_board()
+	winner = 0
     while winner == 0:
         for player in [1, 2]:
             random_place(board, player)
@@ -737,13 +764,20 @@ success_msg("Great work!")
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+We will now play several games, and visualize how often either player wins, or how often the game is a draw.
+
 *** =instructions
 - Use the `play_game()` function to play 1,000 random games, where Player 1 always goes first.
-- When doing this, import and use the `time` library to call the `time` function both before and after playing all 1,000 games in order to evaluate how long this takes per game.  Print your answer.
-- The library `matplotlib.pyplot` has already been stored as `plt`.  Use `plt.hist` and `plt.show` to plot a histogram of the results.  Does Player 1 win more than Player 2? Does either player win more than each player draws?
+- Import and use the `time` library to call the `time()` function both before and after playing all 1,000 games.
+	- Store these times as `start` and `stop`, respectively.
+	- Subtract them to evaluate how long it takes to play 1,000 games, and print your answer.
+- The library `matplotlib.pyplot` has already been stored as `plt`.  Use `plt.hist()` and `plt.show()` to plot a histogram of the results.
+	- Does Player 1 win more than Player 2?
+	- Does either player win more than each player draws?
 
 *** =hint
 - You can call and store the results of `play_game` very quickly using a list comprehension!
+- You can subtract two `time.time` objects to obtain the number of seconds between them.
 
 *** =pre_exercise_code
 ```{python}
@@ -850,8 +884,10 @@ success_msg("Great work!  We see that Player 1 wins more than Player 2, and the 
 
 Tic-tac-toe (or noughts and crosses) is a simple strategy game in which two players take turns placing a mark on a 3x3 board, attempting to make a row, column, or diagonal of three with their mark.  In this homework, we will use the tools we've covered in the past two weeks to create a tic-tac-toe simulator and evaluate basic winning strategies.
 
+In the previous exercise, we see that when guessing at random, it's better to go first, as expected.  Let's see if Player 1 can improve their strategy.  
+
 *** =instructions
-- This result is expected --- when guessing at random, it's better to go first.  Let's see if Player 1 can improve their strategy.  `create_board()`, `random_place(board, player)`, and `evaluate(board)` have been created from previous exercises.  Create a function `play_strategic_game()`, where Player 1 always starts with the middle square, and otherwise both players place their markers randomly.
+- `create_board()`, `random_place(board, player)`, and `evaluate(board)` have been created from previous exercises.  Create a function `play_strategic_game()`, where Player 1 always starts with the middle square, and otherwise both players place their markers randomly.
 - Call `play_strategic_game` once.
 
 *** =hint

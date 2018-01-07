@@ -4,14 +4,15 @@ description : In this case study, we will continue taking a look at patterns of 
 --- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 ## Exercise 1
 
-In this case study, we will continue taking a look at patterns of flight for each of the three birds in our dataset.
+In this case study, we will continue taking a look at patterns of flight for each of the three birds in our dataset. We will group the flight patterns by bird and date, and plot the mean altitude for these groupings.
+
+`pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. In this exercise, we will group the dataframe by `birdname` and then find the average `speed_2d` for each bird.
 
 *** =instructions
-- `pandas` makes it easy to perform basic operations on groups within a dataframe without needing to loop through each value in the dataframe. The sample code shows you how to group the dataframe by `birdname` and then find the average `speed_2d` for each bird.  Modify the code to assign the mean altitudes of each bird into an object called `mean_altitudes`.
+- Fill in the code to find the mean altitudes of each bird.
 
 *** =hint
 - `grouped_birds` contains a column called `altitude`.  Find the mean of this column!
-- This can be done by calling the `mean()` method on this column.
 
 *** =pre_exercise_code 
 ```{python}
@@ -27,59 +28,64 @@ grouped_bydates = birddata.groupby(["bird_name", "date"])
 
 *** =sample_code
 ```{python}
-# First, use `groupby` to group up the data.
-grouped_birds = birddata.groupby("bird_name")
+# First, use `groupby()` to group the data by "bird_name".
+grouped_birds =
 
-# Now operations are performed on each group.
-mean_speeds = grouped_birds.speed_2d.mean()
+# Now calculate the mean of `speed_2d` using the `mean()` function.
+mean_speeds = 
 
-# The `head` method prints the first 5 lines of each bird.
-grouped_birds.head()
+# Use the `head()` method prints the first 5 lines of each bird.
+
 
 # Find the mean `altitude` for each bird.
-# Assign this to `mean_altitudes`.
-mean_altitudes = ## YOUR CODE HERE ##
+mean_altitudes = 
 
 ```
 
 *** =solution
 ```{python}
-# First, use `groupby` to group up the data.
+# First, use `groupby()` to group the data by "bird_name".
 grouped_birds = birddata.groupby("bird_name")
 
-# Now operations are performed on each group.
+# Now calculate the mean of `speed_2d` using the `mean()` function.
 mean_speeds = grouped_birds.speed_2d.mean()
 
-# The `head` method prints the first 5 lines of each bird.
+# Use the `head()` method prints the first 5 lines of each bird.
 grouped_birds.head()
 
 # Find the mean `altitude` for each bird.
-# Assign this to `mean_altitudes`.
 mean_altitudes = grouped_birds.altitude.mean()
 
 ```
 
+
 *** =sct
 ```{python}
+test_student_typed("head",
+              pattern=False,
+              not_typed_msg="Did you make sure to check the head of your dataset?")  
 test_object("mean_altitudes",
             undefined_msg = "Did you define `mean_altitudes`?",
             incorrect_msg = "It looks like `mean_altitudes` wasn't defined correctly.")
 success_msg("Great work!")
 ```
 
-
 --- type:NormalExercise lang:python xp:100 skills:2 key:88166cd5b1
 ## Exercise 2
 
-In this case study, we will continue taking a look at patterns of bird flights over time.
+In this case study, we will continue taking a look at patterns of flight for each of the three birds in our dataset. We will group the flight patterns by bird and date, and plot the mean altitude for these groupings.
+
+In this exercise, we will group the flight times by date and calculate the mean altitude within that day.
 
 *** =instructions
--  In this exercise, we will group the flight times by date and calculate the mean altitude within that day.  Use `groupby` to group the data by date.
--  Calculate the mean altitude per day and store these results as `mean_altitudes_perday`.
+
+- Convert `birddata.date_time` to the `pd.datetime` format, and store as `birddata["date"]`.
+-  Fill in the code to find the mean altitudes for each day.
 
 *** =hint
-- See `?pd.DataFrame.groupby` for help!
+- The function `pd.to_datetime()` will convert dates to a `datetime` objects.
 - For `mean_altitudes_perday`, you can use the `mean()` method on `grouped_bydates.altitude`.
+- See `?pd.DataFrame.groupby` for help!
 
 *** =pre_exercise_code
 ```{python}
@@ -92,16 +98,20 @@ birddata = pd.read_csv(data_filepath + "bird_tracking.csv")
 *** =sample_code
 ```{python}
 # Convert birddata.date_time to the `pd.datetime` format.
-birddata.date_time = pd.to_datetime(birddata.date_time)
+birddata.date_time = 
 
 # Create a new column of day of observation
-birddata["date"] = birddata.date_time.dt.date
+birddata["date"] = 
 
 # Check the head of the column.
-birddata.date.head()
 
-grouped_bydates = ## YOUR CODE HERE ##
+
+# Use `groupby()` to group the data by date.
+grouped_bydates = 
+
+# Find the mean `altitude` for each date.
 mean_altitudes_perday = ## YOUR CODE HERE ##
+
 ```
 
 *** =solution
@@ -115,8 +125,15 @@ birddata["date"] = birddata.date_time.dt.date
 # Check the head of the column.
 birddata.date.head()
 
+# Use `groupby()` to group the data by date.
 grouped_bydates = birddata.groupby("date")
+
+# Find the mean `altitude` for each date.
+mean_altitudes_perday = ## YOUR CODE HERE ##
+
+# Convert birddata.date_time to the `pd.datetime` format.
 mean_altitudes_perday = grouped_bydates.altitude.mean()
+
 ```
 
 
@@ -124,6 +141,9 @@ mean_altitudes_perday = grouped_bydates.altitude.mean()
 
 *** =sct
 ```{python}
+test_student_typed("head",
+              pattern=False,
+              not_typed_msg="Did you make sure to check the head of your dataset?")  
 test_object("mean_altitudes_perday",
             undefined_msg = "Did you define `mean_altitudes_perday`?",
             incorrect_msg = "It looks like `mean_altitudes_perday` wasn't defined correctly.")
@@ -133,7 +153,9 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:d421739915
 ## Exercise 3
 
-In this case study, we will continue taking a look at patterns of bird flights over time.
+In this case study, we will continue taking a look at patterns of flight for each of the three birds in our dataset. We will group the flight patterns by bird and date, and plot the mean altitude for these groupings.
+
+In this exercise, we will group the flight times by both bird and date, and calculate the mean altitude for each.
 
 *** =instructions
 - `birddata` already contains the `date` column.  To find the average speed for each bird and day, create a new grouped dataframe called `grouped_birdday` that groups the data by both `bird_name` and `date`.
@@ -154,17 +176,24 @@ birddata['date'] = birddata.date_time.dt.date
 
 *** =sample_code
 ```{python}
-grouped_birdday = ## YOUR CODE HERE ##
-mean_altitudes_perday = grouped_birdday.altitude.mean()
+
+# Use `groupby()` to group the data by bird and date.
+grouped_birdday = 
+
+# Find the mean `altitude` for each bird and date.
+mean_altitudes_perday =
 
 # look at the head of `mean_altitudes_perday`.
-mean_altitudes_perday.head()
+
 
 ```
 
 *** =solution
 ```{python}
+# Use `groupby()` to group the data by bird and date.
 grouped_birdday = birddata.groupby(["bird_name", "date"])
+
+# Find the mean `altitude` for each bird and date.
 mean_altitudes_perday = grouped_birdday.altitude.mean()
 
 # look at the head of `mean_altitudes_perday`.
@@ -177,16 +206,21 @@ mean_altitudes_perday.head()
 test_object("mean_altitudes_perday",
             undefined_msg = "Did you define `mean_altitudes_perday`?",
             incorrect_msg = "It looks like `mean_altitudes_perday` wasn't defined correctly.")
+test_student_typed("head",
+              pattern=False,
+              not_typed_msg="Did you make sure to check the head of your dataset?")              
 success_msg("Great work!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:98d1b86767
 ## Exercise 4
 
-In this case study, we will continue taking a look at patterns of bird flights over time.
+In this case study, we will continue taking a look at patterns of flight for each of the three birds in our dataset. We will group the flight patterns by bird and date, and plot the mean altitude for these groupings.
+
+Great!  Now find the average speed for each bird and day.
 
 *** =instructions
--  Great!  Now find the average speed for each bird and day.  Store these are three `pandas` Series objects – one for each bird.
+-  Store these are three `pandas` Series objects – one for each bird.
 -  Use the plotting code provided to plot the average speeds for each bird.
 
 *** =hint

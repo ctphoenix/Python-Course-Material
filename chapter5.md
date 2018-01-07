@@ -6,6 +6,8 @@ description : In this case study, we will analyze a dataset consisting of an ass
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+Our first step is to import the dataset.
+
 *** =instructions
 -  Read in the data as a `pandas` dataframe using `pd.read_csv`.  The data can be found at `https://s3.amazonaws.com/demo-datasets/wine.csv`.
 
@@ -60,10 +62,14 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+Next, we will inspect the dataset and perform some mild data cleaning.
+
 *** =instructions
+- Print the first 5 rows of `data` using the `head()` method.
 - The dataset remains stored as `data`.  Two columns in `data` are `is_red` and `color`, which are redundant. Drop `color` from the dataset, and save the new dataset as `numeric_data`.
 
 *** =hint
+- The first optional parameter `data.head()` specifies the number of rows to print.
 - Pandas dataframes contain the `drop` method - give that a try!
 - To make sure this is applied to the column, you might try including the parameter `axis=1`!
 
@@ -91,7 +97,9 @@ data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
 
 *** =sample_code
 ```{python}
-numeric_data = # Enter your code here!
+# Print the first 5 rows of your data here.
+
+numeric_data = # drop the column "color" here.
 
 
 
@@ -99,11 +107,16 @@ numeric_data = # Enter your code here!
 
 *** =solution
 ```{python}
+data.head(5)
+
 numeric_data = data.drop("color", axis=1)
 ```
 
 *** =sct
 ```{python}
+test_student_typed("data.head",
+              pattern=True,
+              not_typed_msg="Did you use `data.head`?")
 test_object("numeric_data",
             undefined_msg = "Did you define `numeric_data`?",
             incorrect_msg = "It looks like `numeric_data` wasn't defined correctly.")
@@ -116,9 +129,16 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+We want to ensure that each variable contributes equally to the kNN classifier, so we will need to scale the data by subtracting the mean of each column and dividing each column by its standard deviation. Then, we will use principal components to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. In this exercise, we will scale the numeric data and extract the first two principal components.
+
 *** =instructions
-- To ensure that each variable contributes equally to the kNN classifier, we need to standardize the data.  First, from each variable in `numeric_data`, subtract its mean.  Second, for each variable in `numeric_data`, divide by its standard deviation.  Store your standardized result as `numeric_data`.
-- Principal component analysis is a way to take a linear snapshot of the data from several different angles, with each snapshot ordered by how well it aligns with variation in the data. The `sklearn.decomposition` module contains the `PCA` class, which determines the most informative principal components of the data (a matrix with columns corresponding to the principal components).  Use `pca.fit(numeric_data).transform(numeric_data)` to extract the first two principal components from the data.  Store this as `principal_components`.
+- Scale the data using the `sklearn.preprocessing` function `scale()` on `numeric_data`.
+- Convert this to a `pandas` dataframe, and store as `numeric_data`.
+    - Include the numeric variable names using the parameter `columns = numeric_data.columns`.
+- Use the `sklearn.decomposition` module `PCA()`, and store this as `pca`.
+- Use the `fit_transform()` function to extract the first two principal components from the data, and store this as `principal_components`.
+
+
 
 
 *** =hint
@@ -150,21 +170,26 @@ numeric_data = data.drop("color", axis=1)
 
 *** =sample_code
 ```{python}
-numeric_data = # Enter your code here!
+import sklearn.preprocessing
+scaled_data = 
+numeric_data = 
 
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(n_components=2)
-principal_components = # Enter your code here!
+pca = 
+principal_components = 
 
 
 ```
 
 *** =solution
 ```{python}
-numeric_data = (numeric_data - np.mean(numeric_data, axis=0)) / np.std(numeric_data, axis=0)
+import sklearn.preprocessing
+scaled_data = sklearn.preprocessing.scale(numeric_data)
+numeric_data = pd.DataFrame(scaled_data, columns = numeric_data.columns)
 
 import sklearn.decomposition
 pca = sklearn.decomposition.PCA(n_components=2)
+principal_components = pca.fit_transform(numeric_data)
 principal_components = pca.fit(numeric_data).transform(numeric_data)
 
 ```
@@ -182,8 +207,11 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+In this exercise, we will plot the first two principal components of the covariates in the dataset. The high and low quality wines will be colored using red and blue.
+
 *** =instructions
--  The first two principal components can be accessed using `principal_components[:,0]` and `principal_components[:,1]`.  Store these as `x` and `y` respectively, and plot the first two principal components.  The high and low quality wines will be colored using red and blue.  How well are the two groups of wines separated by the first two principal components?
+-  The first two principal components can be accessed using `principal_components[:,0]` and `principal_components[:,1]`.  Store these as `x` and `y` respectively, and plot the first two principal components.
+-  Consider: how well are the two groups of wines separated by the first two principal components?
 
 *** =hint
 - The columns of `principal_components` are already ordered.  How can you index `principal_components` to plot the first two components?  Store these as `x` and `y`!
@@ -207,12 +235,15 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv") 
 numeric_data = data.drop("color", axis=1)
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+import sklearn.preprocessing
+scaled_data = sklearn.preprocessing.scale(numeric_data)
+numeric_data = pd.DataFrame(scaled_data, columns = numeric_data.columns)
+
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(2)
-principal_components = pca.fit(numeric_data).transform(numeric_data)    
+pca = sklearn.decomposition.PCA(n_components=2)
+principal_components = pca.fit_transform(numeric_data)  
 ```
 
 *** =sample_code
@@ -259,7 +290,7 @@ test_student_typed("principal_components",
 test_student_typed("plt.show",
               pattern=False,
               not_typed_msg="Did you use `plt.show`?")
-success_msg("Great work!  Yes, these differ significantly.")
+success_msg("Great work!  The two groups of wine quality appear to separate significantly.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:5817bdff2e
@@ -267,8 +298,10 @@ success_msg("Great work!  Yes, these differ significantly.")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+In this exercise, we will create a function that calculates the accuracy between predictions and outcomes.
+
 *** =instructions
--  We are now ready to fit the wine data to our kNN classifier.  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size as arguments and returns a single number, which is the percentage of elements that are equal for the two lists.
+-  Create a function `accuracy(predictions, outcomes)` that takes two lists of the same size as arguments and returns a single number, which is the percentage of elements that are equal for the two lists.
 -  Use `accuracy` to compare the percentage of similar elements in `x = np.array([1,2,3])` and `y = np.array([1,2,4])`.
 -  Print your answer.
 
@@ -297,10 +330,13 @@ def knn_predict(p, points, outcomes, k=5):
 import pandas as pd
 data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
 numeric_data = data.drop("color", axis=1)
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+import sklearn.preprocessing
+scaled_data = sklearn.preprocessing.scale(numeric_data)
+numeric_data = pd.DataFrame(scaled_data, columns = numeric_data.columns)
+
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(2)
-principal_components = pca.fit(numeric_data).transform(numeric_data)        
+pca = sklearn.decomposition.PCA(n_components=2)
+principal_components = pca.fit_transform(numeric_data)     
 ```
 
 *** =sample_code
@@ -348,13 +384,16 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality. In this exercise, we determine the accuracy of this simple rule. The `accuracy()` function preloaded into memory as defined in Exercise 5.
+
+
 *** =instructions
--  The dataset remains stored as `data`.  Because most wines in the dataset are classified as low quality, one very simple classification rule is to predict that all wines are of low quality.  Use the `accuracy` function (preloaded into memory as defined in Exercise 5) to calculate how many wines in the dataset are of low quality.  Accomplish this by calling `accuracy` with `0` as the first argument, and `data["high_quality"]` as the second argument.
+-  Use `accuracy()` to calculate how many wines in the dataset are of low quality.  Do this by using `0` as the first argument, and `data["high_quality"]` as the second argument.
 -  Print your result.
 
 
 *** =hint
-- The `accuracy` function should work just fine with `0` as the first argument!
+- The `accuracy()` function should work just fine with `0` as the first argument!
 - Compare `0` with the `high_quality` column in `data`.  How can you do that?
 
 *** =pre_exercise_code
@@ -378,10 +417,13 @@ def knn_predict(p, points, outcomes, k=5):
 import pandas as pd
 data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
 numeric_data = data.drop("color", axis=1)
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+import sklearn.preprocessing
+scaled_data = sklearn.preprocessing.scale(numeric_data)
+numeric_data = pd.DataFrame(scaled_data, columns = numeric_data.columns)
+
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(2)
-principal_components = pca.fit(numeric_data).transform(numeric_data)    
+pca = sklearn.decomposition.PCA(n_components=2)
+principal_components = pca.fit_transform(numeric_data)  
 def accuracy(predictions, outcomes):
     return 100*np.mean(predictions == outcomes)
 ```
@@ -415,6 +457,8 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+In this exercise, we will use the kNN classifier from `scikit-learn` to predict the quality of wines in our dataset.
+
 *** =instructions
 - Use `knn.predict(numeric_data)` to predict which wines are high and low quality and store the result as `library_predictions`.
 - Use `accuracy` to find the accuracy of your predictions, using `library_predictions` as the first argument and `data["high_quality"]` as the second argument.
@@ -447,10 +491,13 @@ def knn_predict(p, points, outcomes, k=5):
 import pandas as pd
 data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
 numeric_data = data.drop("color", axis=1)
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+import sklearn.preprocessing
+scaled_data = sklearn.preprocessing.scale(numeric_data)
+numeric_data = pd.DataFrame(scaled_data, columns = numeric_data.columns)
+
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(2)
-principal_components = pca.fit(numeric_data).transform(numeric_data)    
+pca = sklearn.decomposition.PCA(n_components=2)
+principal_components = pca.fit_transform(numeric_data)   
 def accuracy(predictions, outcomes):
     return 100*np.mean(predictions == outcomes)
 ```
@@ -493,8 +540,10 @@ success_msg("Great work!  Yes, this is better!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset. In this exercise, we will select a subset of our data to use in our homemade kNN classifier.
+
 *** =instructions
--  Unlike the `scikit-learn` function, our homemade kNN classifier does not take any shortcuts in calculating which neighbors are closest to each observation, so it is likely too slow to carry out on the whole dataset.  To circumvent this, fix the random generator using `random.seed(123)`, and select 10 rows from the dataset using `random.sample(range(n_rows), 10)`.  Store this selection as `selection`.
+-   To circumvent this, fix the random generator using `random.seed(123)`, and select 10 rows from the dataset using `random.sample(range(n_rows), 10)`.  Store this selection as `selection`.
 
 *** =hint
 - Make sure to use a `range` object for sampling!
@@ -520,10 +569,13 @@ def knn_predict(p, points, outcomes, k=5):
 import pandas as pd
 data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
 numeric_data = data.drop("color", axis=1)
-numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
+import sklearn.preprocessing
+scaled_data = sklearn.preprocessing.scale(numeric_data)
+numeric_data = pd.DataFrame(scaled_data, columns = numeric_data.columns)
+
 import sklearn.decomposition
-pca = sklearn.decomposition.PCA(2)
-principal_components = pca.fit(numeric_data).transform(numeric_data)    
+pca = sklearn.decomposition.PCA(n_components=2)
+principal_components = pca.fit_transform(numeric_data)    
 def accuracy(predictions, outcomes):
     return 100*np.mean(predictions == outcomes)
 from sklearn.neighbors import KNeighborsClassifier
@@ -568,8 +620,11 @@ success_msg("Great work!")
 
 In this case study, we will analyze a dataset consisting of an assortment of wines classified as "high quality" and "low quality" and will use the k-Nearest Neighbors classifier to determine whether or not other information about the wine helps us correctly predict whether a new wine will be of high quality.
 
+We are now ready to use our homemade kNN classifier and compare the accuracy of our results to the baseline. The sample of `10` row indices are stored as `selection` from the previous exercise.
+
+
 *** =instructions
--  The sample of `10` row indices are stored as `selection` from the previous exercise.  For each predictor `p` in `predictors[selection]`, use `knn_predict(p, predictors[training_indices,:], outcomes, k=5)` to predict the quality of each wine in the prediction set, and store these predictions as a `np.array` called `my_predictions`.  Note that `knn_predict` is already defined as in the Case 3 videos.
+-  For each predictor `p` in `predictors[selection]`, use `knn_predict(p, predictors[training_indices,:], outcomes, k=5)` to predict the quality of each wine in the prediction set, and store these predictions as a `np.array` called `my_predictions`.  Note that `knn_predict` is already defined as in the Case 3 videos.
 -  Using the `accuracy` function, compare these results to the selected rows from the `high_quality` variable in `data` using `my_predictions` as the first argument and `data.high_quality[selection]` as the second argument.  Store these results as `percentage`.
 -  Print your answer.
 
