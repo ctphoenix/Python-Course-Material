@@ -38,7 +38,7 @@ from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
 plt.rcParams["figure.figsize"] = (10,10)
-df = pd.read_csv('./merged_movie_data.csv')
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
@@ -152,7 +152,7 @@ from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
 plt.rcParams["figure.figsize"] = (10,10)
-df = pd.read_csv('./merged_movie_data.csv')
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
@@ -253,6 +253,21 @@ Finally, let's take a look at the relationship between predicted and true revenu
 
 *** =pre_exercise_code
 ```{python}
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import cross_val_predict
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import accuracy_score
+from scipy.stats import pearsonr
+
+import matplotlib.pyplot as plt
+plt.rcParams["figure.figsize"] = (10,10)
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
@@ -359,6 +374,21 @@ It appears that predicting movies that are reported to have made precisely no mo
 
 *** =pre_exercise_code
 ```{python}
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import cross_val_predict
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import accuracy_score
+from scipy.stats import pearsonr
+
+import matplotlib.pyplot as plt
+plt.rcParams["figure.figsize"] = (10,10)
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
@@ -467,7 +497,7 @@ from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
 plt.rcParams["figure.figsize"] = (10,10)
-df = pd.read_csv('./merged_movie_data.csv')
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
@@ -564,6 +594,21 @@ Finally, let's again plot predicted revenue against true revenues.
 
 *** =pre_exercise_code
 ```{python}
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import cross_val_predict
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import accuracy_score
+from scipy.stats import pearsonr
+
+import matplotlib.pyplot as plt
+plt.rcParams["figure.figsize"] = (10,10)
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
 df['profitable'] = df['profitable'].astype(int)
