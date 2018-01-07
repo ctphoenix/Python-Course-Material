@@ -370,6 +370,7 @@ It appears that predicting movies that are reported to have made precisely no mo
 
 *** =instructions
 - Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
+- Define `classification_outcome` to be ` = positive_revenue_df[classification_target]`.
 - The solutions to the previous analyses using `df` are shown below. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
 - Consider the following comparisons to the analysis that included movies with zero reported revenue: 
     - Are these cross-validated correlations between predictions and true revenue higher or lower in general?
@@ -449,12 +450,13 @@ pearsonr(regression_outcome, forest_regression_predicted)
 *** =solution
 ```{python}
 positive_revenue_df = df[df["revenue"]>0]
+classification_outcome = positive_revenue_df[classification_target]
 
-linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, linear_regression_predicted)
+linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates], positive_revenue_regression_outcome, cv=10)
+pearsonr(positive_revenue_regression_outcome, linear_regression_predicted)
 
-forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, forest_regression_predicted)
+forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], positive_revenue_regression_outcome, cv=10)
+pearsonr(positive_revenue_regression_outcome, forest_regression_predicted)
 ```
 
 *** =sct
