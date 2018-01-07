@@ -393,7 +393,6 @@ success_msg("Great work! There is quite a bit of covariance in these pairwise pl
 It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `log` transform. Because some of these variable values are exactly 0, we will add a small value to each value to ensure it is defined. (Note that log(0) is negative infinity!)
 
 *** =instructions
-
 - For each above-mentioned variable in `df`, transform value `x` into `log(1+x)`.
 
 *** =hint
