@@ -24,6 +24,7 @@ In this exercise, we will fit our regression models to predict movie revenue. We
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -138,6 +139,7 @@ In this exercise, we will use both classifiers to determine whether a movie will
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -253,6 +255,7 @@ Finally, let's take a look at the relationship between predicted and true revenu
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -374,6 +377,7 @@ It appears that predicting movies that are reported to have made precisely no mo
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -483,6 +487,7 @@ In this exercise, we will rerun the classification analysis for the subsetted da
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -594,6 +599,7 @@ Finally, let's again plot predicted revenue against true revenues.
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 

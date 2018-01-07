@@ -109,6 +109,7 @@ In this exercise, we will define the regression and classification outcomes. Spe
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -178,6 +179,7 @@ For simplicity, we will proceed by analyzing only the rows without any missing d
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -240,6 +242,7 @@ Many of the variables in our dataframe contain the names of genre, actors/actres
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -312,6 +315,7 @@ Some variables in the dataset are already numeric and perhaps useful for regress
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
@@ -398,6 +402,7 @@ It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 import numpy as np
 
