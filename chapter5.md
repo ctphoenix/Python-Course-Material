@@ -290,7 +290,7 @@ test_student_typed("principal_components",
 test_student_typed("plt.show",
               pattern=False,
               not_typed_msg="Did you use `plt.show`?")
-success_msg("Great work!  Yes, these differ significantly.")
+success_msg("Great work!  The two groups of wine quality appear to separate significantly.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:5817bdff2e
