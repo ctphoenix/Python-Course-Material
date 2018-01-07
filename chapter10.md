@@ -57,7 +57,9 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
 ```
 
 *** =sample_code
@@ -173,6 +175,8 @@ for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
 regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
@@ -184,9 +188,6 @@ for row in zip(all_covariates, forest_regression.feature_importances_,):
 
 *** =sample_code
 ```{python}
-all_covariates = continuous_covariates + genres
-all_columns = [regression_target, classification_target] + all_covariates
-
 classification_outcome = df[classification_target]
 
 linear_classifier =
@@ -290,7 +291,9 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]  
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
 linear_regression = LinearRegression()
 regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
@@ -412,7 +415,9 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]  
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
 linear_regression = LinearRegression()
 regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
@@ -522,7 +527,9 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target] 
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
 linear_regression = LinearRegression()
 regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
@@ -634,7 +641,9 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]  
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
 linear_regression = LinearRegression()
 regression_outcome = df[regression_target]
 linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
