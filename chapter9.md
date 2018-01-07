@@ -1,8 +1,6 @@
 ---
 title       : Case Study 7 - Movie Analysis, Part 1 - Data Preparation
-description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metadata) is a database of 5000 movies catalogued by [IMDB](http://www.imdb.com/). The information available about each movie is its budget, revenue, rating, actors and actresses, etc. In this case study, we will use this dataset to determine whether any information about a movie can predict the total revenue of a movie. We will also attempt to predict whether a movie's revenue will exceed its budget.
-
-In Part 1, we will inspect, clean, and transform the data. In Part 2, we will use this prepared dataset for analysis. In this exercise, we will import our necessary libraries and read in the dataset.
+description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metadata) is a database of 5000 movies catalogued by [IMDB](http://www.imdb.com/). The information available about each movie is its budget, revenue, rating, actors and actresses, etc. In this case study, we will use this dataset to determine whether any information about a movie can predict the total revenue of a movie. We will also attempt to predict whether a movie's revenue will exceed its budget. In Part 1, we will inspect, clean, and transform the data. In Part 2, we will use this prepared dataset for analysis. In this exercise, we will import our necessary libraries and read in the dataset.
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
 
