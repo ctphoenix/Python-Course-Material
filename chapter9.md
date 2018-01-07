@@ -387,7 +387,7 @@ success_msg("Great work! There is quite a bit of covariance in these pairwise pl
 ```
 
 
---- type:MultipleChoiceExercise lang:python xp:50 skills:2 key:f9c66ebd99
+--- type:NormalExercise lang:python xp:100 skills:2 key:5caa334a5f
 ## Exercise 6
 
 It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `log` transform. Because some of these variable values are exactly 0, we will add a small value to each value to ensure it is defined. (Note that log(0) is negative infinity!)
@@ -460,19 +460,6 @@ test_object("df",
             incorrect_msg = "It appears you did not transform the variables correctly.") 
 success_msg("Great work! This concludes the case study.  You can return to the course through this link: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
