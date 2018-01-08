@@ -6,8 +6,10 @@ description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metada
 
 ## Exercise 1
 
+First, we will import several libraries. **sci-kit learn** (`sklearn`) contains helpful statistical models for fitting, and we'll use the `matplotlib.pyplot` library for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
+
 *** =instructions
-- First, we will import several libraries. **sci-kit learn** (`sklearn`) contains helpful statistical models for fitting, and we'll use the `matplotlib.pyplot` library for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
+- Read and execute the given code.
 
 *** =hint
 -  You don't need to do anything, just take a look at the imports.
