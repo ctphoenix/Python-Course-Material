@@ -7,20 +7,15 @@ description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metada
 
 In Part 2 of this case study, we will primarily use the two models we recently discussed: linear/logistic regression and random forests to perform prediction and classification. We will use linear regression to predict revenue, and logistic regression to classify whether a movie was profitable.
 
-In this exercise, we will fit our regression models to predict movie revenue. We will also print the cross-validated accuracy between the predicted values and true revenue, and determine the more important variables from the random forests regression fit.
+Recall that `regression_target`, `classification_target`, and `all_covariates` are strings or lists of strings, and each string is a column name in `df`. In this exercise, we will prepare the covariates and outcomes we will use for data analysis defining `regression_outcome`, `classification_outcome`, and `covariates` as selected columns in `df`. We will also instantiate regression and classification models for fitting.
+
 
 *** =instructions
-- Call an instance of `LinearRegression()`, and assign the output to `linear_regression`.
-- Call an instance of `RandomForestRegressor()` with `max_depth=4` and, `random_state=0`, and assign the output to `forest_regression`.
-- Call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `regression_outcome` with 10 cross-validation folds.
-    - Store the predictions as `linear_regression_predicted` and `forest_regression_predicted`, respectively.
-- Call `pearsonr()` to compare the accuracy of `regression_outcome` and your cross-validated predictions.
-    - Consider: how well do these models perform?
-- Code is provided below to determine which variables appear to be the most important for predicting profitability according to the random forest model.
-    - Consider: which variables are most important?
+- In turn, call instances of `LinearRegression()`, `LogisticRegression()`, `RandomForestRegressor()`, `RandomForestClassifier()`, and assign the output to `linear_regression`, `linear_classifier`, `forest_regression`, and `forest_classifier`, respectively.
+    - For the random forests models, specify `max_depth=4` and `random_state=0`.
 
 *** =hint
-- This exercise makes heavy use of `sklearn` functions. Feel free to consult its online documentation for help.
+- No hint for this one!
 
 *** =pre_exercise_code
 ```{python}
@@ -66,9 +61,9 @@ all_columns = [regression_target, classification_target] + all_covariates
 *** =sample_code
 ```{python}
 # Define all covariates and outcomes from `df`.
-regression_outcome = 
-classification_outcome = 
-covariates = 
+regression_outcome = df[regression_target]
+classification_outcome = df[classification_target]
+covariates = df[all_covariates]
 
 # Instantiate all regression models and classifiers.
 linear_regression = 
@@ -79,10 +74,12 @@ forest_classifier =
 
 *** =solution
 ```{python}
+# Define all covariates and outcomes from `df`.
 regression_outcome = df[regression_target]
 classification_outcome = df[classification_target]
 covariates = df[all_covariates]
 
+# Instantiate all regression models and classifiers.
 linear_regression = LinearRegression()
 linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
@@ -91,24 +88,33 @@ forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 
 *** =sct
 ```{python}
-test_object("linear_regression_predicted",
-            undefined_msg = "Did you define `linear_regression_predicted`?",
-            incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
-test_object("forest_regression_predicted",
-            undefined_msg = "Did you define `forest_regression_predicted`?",
-            incorrect_msg = "It looks like `forest_regression_predicted` wasn't defined correctly.") 
-test_student_typed("pearsonr",
-            pattern=False,
-            not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
-success_msg("Great work! The cross-validated accuracy between the predictions and the outcome is 0.71. Not bad! The cross-validated accuracy between the predictions and the outcome is 0.70. Also good, but this fit performs slightly less well than logistic regression.")
+test_object("regression_outcome",
+            undefined_msg = "Did you define `regression_outcome`?",
+            incorrect_msg = "It looks like `regression_outcome` wasn't defined correctly.") 
+test_object("classification_outcome",
+            undefined_msg = "Did you define `classification_outcome`?",
+            incorrect_msg = "It looks like `classification_outcome` wasn't defined correctly.") 
+test_object("covariates",
+            undefined_msg = "Did you define `covariates`?",
+            incorrect_msg = "It looks like `covariates` wasn't defined correctly.") 
+success_msg("Great work!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:56e0886a08
 ## Exercise 2
 
+fit our regression models to predict movie revenue. We will also print the cross-validated accuracy between the predicted values and true revenue, and determine the more important variables from the random forests regression fit.
 In this exercise, we will use both classifiers to determine whether a movie will be profitable or not.
 
 *** =instructions
+- Call an instance of `RandomForestRegressor()` with `max_depth=4` and, `random_state=0`, and assign the output to `forest_regression`.
+- Call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `regression_outcome` with 10 cross-validation folds.
+    - Store the predictions as `linear_regression_predicted` and `forest_regression_predicted`, respectively.
+- Call `pearsonr()` to compare the accuracy of `regression_outcome` and your cross-validated predictions.
+    - Consider: how well do these models perform?
+- Code is provided below to determine which variables appear to be the most important for predicting profitability according to the random forest model.
+    - Consider: which variables are most important?
+
 - Call an instance of `LogisticRegression()`, and store as `linear_classifier`.
 - Call an instance of `RandomForestClassifier()` with `max_depth=3` and, `random_state=0`, and assign it to `forest_classifier`.
 - Call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `classification_outcome` with 10 cross-validation folds.
@@ -117,6 +123,7 @@ In this exercise, we will use both classifiers to determine whether a movie will
     - Consider: how well do these perform?
 - We provide code below to inspect which variables appear to be the most important for predicting profitability in the random forest model.
     - Consider: which variables are most important?
+
 
 *** =hint
 - This exercise makes heavy use of `sklearn` functions. Feel free to consult its online documentation for help.
@@ -571,70 +578,20 @@ success_msg("Great work! The logistic model classifies profitability correctly 8
 success_msg("Great work! By excluding movies with zero reported revenue, we do see that the accuracy of both models is increased. Linear regression still appears to slightly outperform random forests.")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:175d2a15e1
-## Exercise 6
 
-Finally, let's again plot predicted revenue against true revenues. 
 
-*** =instructions
--  Plot the revenue for each movie again the fits of the linear regression and random forest regression models.
--  Consider: which of the two exhibits a better fit?
 
-*** =hint
-- No hint for this one!
 
-*** =pre_exercise_code
-```{python}
-```
 
-*** =sample_code
-```{python}
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors = (.8, .2, 0, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
-ax.plot(regression_range, regression_range, 'k--', lw=4)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
-plt.show()
 
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors = (0, .3, .6, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
 
-ax.plot(regression_range, regression_range, 'k--', lw=2)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
 
-# Show the plot using plt.show().
-```
 
-*** =solution
-```{python}
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors = (.8, .2, 0, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
-ax.plot(regression_range, regression_range, 'k--', lw=4)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
-plt.show()
 
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors = (0, .3, .6, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
 
-ax.plot(regression_range, regression_range, 'k--', lw=2)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
-plt.show()
-```
 
-*** =sct
-```{python}
-test_student_typed("plt.show()",
-              pattern=False,
-              not_typed_msg="Did you call `plt.show()`?")
+
 success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves prediction of revenues. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
-```
 
 
 
@@ -644,10 +601,3 @@ success_msg("Great work! it seems that omitting movies that are estimated to hav
 
 
 
-
-
-
-
-
-
-```
