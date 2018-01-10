@@ -28,17 +28,18 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 import pandas as pd
 import numpy as np
 
-from sklearn.model_selection import cross_val_predict
+
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
@@ -149,7 +150,7 @@ from sklearn.metrics import accuracy_score
 from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
@@ -260,7 +261,7 @@ from sklearn.metrics import accuracy_score
 from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
@@ -380,7 +381,7 @@ from sklearn.metrics import accuracy_score
 from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
@@ -491,7 +492,7 @@ from sklearn.metrics import accuracy_score
 from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
@@ -610,7 +611,7 @@ from sklearn.metrics import accuracy_score
 from scipy.stats import pearsonr
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue

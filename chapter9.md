@@ -6,13 +6,14 @@ description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metada
 
 ## Exercise 1
 
-First, we will import several libraries. **scikit-learn** (`sklearn`) contains helpful statistical models for fitting, and we'll use the `matplotlib.pyplot` library for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
+First, we will import several libraries. **scikit-learn** (`sklearn`) contains helpful statistical models, and we'll use the `matplotlib.pyplot` library for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
 
 *** =instructions
 - Read and execute the given code.
+- Call `df.head()` to take a look at the data.
 
 *** =hint
--  You don't need to do anything, just take a look at the imports.
+-  No hint on this one!
 
 *** =pre_exercise_code
 ```{python}
@@ -27,10 +28,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 
 ```
 
@@ -39,18 +40,18 @@ plt.rcParams["figure.figsize"] = (10,10)
 import pandas as pd
 import numpy as np
 
-from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
 
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 # Enter code here.
 
 
@@ -68,10 +69,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 df.head()
@@ -121,10 +122,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 ```
 
@@ -191,10 +192,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.revenue > df.budget
@@ -254,10 +255,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
@@ -327,10 +328,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
@@ -413,10 +414,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (10,10)
+
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.budget < df.revenue
