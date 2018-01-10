@@ -103,30 +103,19 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:56e0886a08
 ## Exercise 2
 
-fit our regression models to predict movie revenue. We will also print the cross-validated accuracy between the predicted values and true revenue, and determine the more important variables from the random forests regression fit.
-In this exercise, we will use both classifiers to determine whether a movie will be profitable or not.
+In this exercise, we will create two functions that compute a model's score. For regression models, we will use the correlation as the score. For classification models, we will use accuracy as the score.
 
 *** =instructions
-- Call an instance of `RandomForestRegressor()` with `max_depth=4` and, `random_state=0`, and assign the output to `forest_regression`.
-- Call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `regression_outcome` with 10 cross-validation folds.
-    - Store the predictions as `linear_regression_predicted` and `forest_regression_predicted`, respectively.
-- Call `pearsonr()` to compare the accuracy of `regression_outcome` and your cross-validated predictions.
-    - Consider: how well do these models perform?
-- Code is provided below to determine which variables appear to be the most important for predicting profitability according to the random forest model.
-    - Consider: which variables are most important?
 
-- Call an instance of `LogisticRegression()`, and store as `linear_classifier`.
-- Call an instance of `RandomForestClassifier()` with `max_depth=3` and, `random_state=0`, and assign it to `forest_classifier`.
-- Call `cross_val_predict()` to fit both classifiers using `df[all_covariates]` and `classification_outcome` with 10 cross-validation folds.
-    - Assign these predictions to `linear_regression_predicted` and `forest_regression_predicted`.
-- Call `accuracy_score()` to compare the accuracy of `classification_outcome` to your cross-validated predictions.
-    - Consider: how well do these perform?
-- We provide code below to inspect which variables appear to be the most important for predicting profitability in the random forest model.
-    - Consider: which variables are most important?
+
+- Define a function called `correlation` with arguments `estimator`, `X`, and `y` that computes the correlation between the outcome `y` and the predictions made from using covariates `X` to fit the model `estimator` to `y`.
+    - To obtain predictions, the function should use the `fit` method from `estimator`, and the `predict` method from the fitted object.
+    - The function should return the first argument from `r2_score` comparing `predictions` and `y`.
+- Define a function called `accuracy` with the same arguments and code, substituting `accuracy_score` for `r2_score`.
 
 
 *** =hint
-- This exercise makes heavy use of `sklearn` functions. Feel free to consult its online documentation for help.
+- This exercise makes use of `sklearn` functions. Feel free to consult its online documentation for help.
 
 
 *** =pre_exercise_code
@@ -181,32 +170,18 @@ forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 
 *** =sample_code
 ```{python}
-classification_outcome = df[classification_target]
-
-linear_classifier =
-linear_classification_predicted =
-# determine the accuracy of logistic regression predictions.
-
-
-forest_classifier =
-forest_classification_predicted =
-# determine the accuracy of random forest predictions.
-
-### Determine feature importance. This code is complete!
-forest_classifier.fit(df[all_covariates], classification_outcome)
-for row in zip(all_covariates, forest_classifier.feature_importances_):
-    print(row)
+# Enter your code here.
 ```
 
 *** =solution
 ```{python}
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(X, y)[0]
+    return r2_score(predictions, y)
     
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(X, y)[0]
+    return accuracy_score(predictions, y)
 ```
 
 *** =sct
@@ -226,14 +201,16 @@ success_msg("Great work! The logistic model classifies profitability correctly 8
 --- type:NormalExercise lang:python xp:100 skills:2 key:dbcd7e671f
 ## Exercise 3
 
-Finally, let's take a look at the relationship between predicted and true revenue. In this exercise, we will visualize the quality of the model fits.
+In this exercise, we will compute the cross-validated performance for the linear and random forest regression models.
 
 *** =instructions
--  Plot the revenue for each movie against the fits of the linear regression and random forest regression models.
+- In turn, call `cross_val_score` using `linear_regression` and `forest regression` as models. Store the output as `linear_regression_scores` and `forest_regression_scores`, respectively.
+    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = correlation` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear regression and random forest regression models.
     -  Consider: which of the two models exhibits a better fit?
 
 *** =hint
-- No hint for this one: don't overthink it!
+- To determine the necessary arguments for `cross_val_score`, use `help()`.
 
 *** =pre_exercise_code
 ```{python}
@@ -285,19 +262,18 @@ forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(X, y)[0]
+    return r2_score(X, y)
     
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(X, y)[0]
+    return accuracy_score(X, y)
 
 ```
 
 *** =sample_code
 ```{python}
-# determine the correlation of random forest predictions.
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+# Determine the cross-validated correlation for linear and random forest models.
+
 
 # Plot Results
 plt.scatter(linear_regression_scores, forest_regression_scores)
@@ -311,7 +287,7 @@ plt.ylabel("Forest Regression")
 
 *** =solution
 ```{python}
-# determine the correlation of random forest predictions.
+# Determine the cross-validated accuracy for linear and random forest models.
 linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 
@@ -321,6 +297,7 @@ plt.xlim(0.5,1)
 plt.ylim(0.5,1)
 plt.xlabel("Linear Regression")
 plt.ylabel("Forest Regression")
+
 plt.show()
 ```
 
@@ -337,17 +314,16 @@ success_msg("Great work! It's well worth noting that many movies make zero dolla
 --- type:NormalExercise lang:python xp:100 skills:2 key:a0ae0c80a0
 ## Exercise 4
 
-It appears that predicting movies that are reported to have made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fit improves. In this exercise, we will rerun the regression analysis for this subsetted dataset.
+In this exercise, we will compute the cross-validated performance for the linear and random forest classification models.
 
 *** =instructions
-- Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
-- The solutions to the previous analyses using `df` are shown below. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
-- Consider the following comparisons to the analysis that included movies with zero reported revenue: 
-    - Are these cross-validated correlations between predictions and true revenue higher or lower in general?
-    - Previously, linear regression outperformed random forests. Has this changed?
+- In turn, call `cross_val_score` using `linear_classifier` and `forest_classifier` as models. Store the output as `linear_classification_scores` and `forest_classification_scores`, respectively.
+    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = accuracy` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear and random forest classification models.
+    -  Consider: which of the two models exhibits a better fit?
 
 *** =hint
-- `pandas` supports slicing syntax for rows. You can use this to select only rows meeting the logical condition `df["revenue"] > 0`.
+- To determine the necessary arguments for `cross_val_score`, use `help()`.
 
 *** =pre_exercise_code
 ```{python}
@@ -399,41 +375,47 @@ forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(X, y)[0]
+    return r2_score(X, y)
     
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(X, y)[0]
+    return accuracy_score(X, y)
 linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+
 ```
 
 *** =sample_code
 ```{python}
-positive_revenue_df = 
+# Determine the cross-validated accuracy for linear and random forest models.
 
-# Rename the data in the following code, and run.
-regression_outcome = df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, linear_regression_predicted)
 
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, forest_regression_predicted)
-```
-
-*** =solution
-```{python}
-# determine the correlation of random forest predictions.
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
-
-# plot results
+# Plot Results
 plt.scatter(linear_classification_scores, forest_classification_scores)
 plt.xlim(0.5,1)
 plt.ylim(0.5,1)
 plt.xlabel("Linear classification")
 plt.ylabel("Forest classification")
+
+# Show the plot.
+
+```
+
+*** =solution
+```{python}
+# Determine the cross-validated accuracy for linear and random forest models.
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
+
+# Plot Results
+plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear classification")
+plt.ylabel("Forest classification")
+
 plt.show()
+
 ```
 
 *** =sct
@@ -459,6 +441,18 @@ success_msg("Great work! By excluding movies with zero reported revenue, we do s
 In this exercise, we will rerun the classification analysis for the subsetted dataset that includes only movies with positive revenue.
 
 *** =instructions
+- Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
+- The solutions to the previous analyses using `df` are shown below. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
+- Consider the following comparisons to the analysis that included movies with zero reported revenue: 
+    - Are these cross-validated correlations between predictions and true revenue higher or lower in general?
+    - Previously, linear regression outperformed random forests. Has this changed?
+
+*** =hint
+- `pandas` supports slicing syntax for rows. You can use this to select only rows meeting the logical condition `df["revenue"] > 0`.
+
+
+
+*** =instructions
 - Replace all instances of `df` with `positive_revenue_df`, and run the given code.
 - Consider the following comparisons to the analysis that included movies with zero reported revenue: 
     - Is the cross-validated accuracy between predictions and true revenue higher or lower in general?
@@ -466,6 +460,8 @@ In this exercise, we will rerun the classification analysis for the subsetted da
 
 *** =hint
 - No hint for this one.
+
+
 
 
 *** =pre_exercise_code
@@ -518,11 +514,11 @@ forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(X, y)[0]
+    return r2_score(X, y)
     
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(X, y)[0]
+    return accuracy_score(X, y)
 linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
@@ -587,7 +583,9 @@ success_msg("Great work! By excluding movies with zero reported revenue, we do s
 
 
 
+Finally, let's take a look at the relationship between predicted and true revenue. In this exercise, we will visualize the quality of the model fits.
 
+It appears that predicting movies that are reported to have made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fit improves. In this exercise, we will rerun the regression analysis for this subsetted dataset.
 
 
 
