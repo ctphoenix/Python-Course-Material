@@ -6,7 +6,7 @@ description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metada
 
 ## Exercise 1
 
-First, we will import several libraries. **scikit-learn** (`sklearn`) contains helpful statistical models, and we'll use the `matplotlib.pyplot` library for visualizations. Of course, we will use `numpy`, `scipy`, and `pandas` for data manipulation throughout.
+First, we will import several libraries. **scikit-learn** (`sklearn`) contains helpful statistical models, and we'll use the `matplotlib.pyplot` library for visualizations. Of course, we will use `numpy` and `pandas` for data manipulation throughout.
 
 *** =instructions
 - Read and execute the given code.
@@ -18,27 +18,13 @@ First, we will import several libraries. **scikit-learn** (`sklearn`) contains h
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
-import numpy as np
-
-from sklearn.model_selection import cross_val_predict
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.ensemble import RandomForestClassifier
-
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import r2_score
-
-import matplotlib.pyplot as plt
-
 
 ```
 
 *** =sample_code
 ```{python}
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
@@ -112,10 +98,9 @@ In this exercise, we will define the regression and classification outcomes. Spe
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -123,6 +108,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -181,22 +167,8 @@ For simplicity, we will proceed by analyzing only the rows without any missing d
 
 *** =pre_exercise_code
 ```{python}
-data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
-import numpy as np
 
-from sklearn.model_selection import cross_val_predict
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.ensemble import RandomForestClassifier
 
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import r2_score
-
-import matplotlib.pyplot as plt
-
-df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 regression_target = 'revenue'
 df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
@@ -245,10 +217,9 @@ Many of the variables in our dataframe contain the names of genre, actors/actres
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -256,6 +227,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -318,10 +290,9 @@ Some variables in the dataset are already numeric and perhaps useful for regress
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -329,6 +300,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -404,10 +376,9 @@ It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -415,6 +386,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 

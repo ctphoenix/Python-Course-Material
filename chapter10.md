@@ -25,8 +25,8 @@ In this exercise, we will fit our regression models to predict movie revenue. We
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 
 from sklearn.linear_model import LinearRegression
@@ -65,40 +65,28 @@ all_columns = [regression_target, classification_target] + all_covariates
 
 *** =sample_code
 ```{python}
-regression_outcome = df[regression_target]
+# Define all covariates and outcomes from `df`.
+regression_outcome = 
+classification_outcome = 
+covariates = 
 
-linear_regression =
-linear_regression_predicted = 
-# determine the accuracy of linear regression predictions.
-
-forest_regression =
-forest_regression_predicted =
-# determine the accuracy of random forest predictions.
-
-### Determine feature importance. This code is complete!
-forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_):
-    print(row)
+# Instantiate all regression models and classifiers.
+linear_regression = 
+linear_classifier = 
+forest_regression = 
+forest_classifier = 
 ```
 
 *** =solution
 ```{python}
 regression_outcome = df[regression_target]
+classification_outcome = df[classification_target]
+covariates = df[all_covariates]
 
 linear_regression = LinearRegression()
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, linear_regression_predicted)
-# determine the correlation of linear regression predictions.
-
+linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, forest_regression_predicted)
-# determine the correlation of random forest predictions.
-
-### Determine feature importance. This code is complete!
-forest_regression.fit(df[all_covariates], regression_outcome)
-for row in zip(all_covariates, forest_regression.feature_importances_):
-    print(row)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 ```
 
 *** =sct
@@ -137,17 +125,18 @@ In this exercise, we will use both classifiers to determine whether a movie will
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
+
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -172,13 +161,15 @@ continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
+
 regression_outcome = df[regression_target]
+classification_outcome = df[classification_target]
+covariates = df[all_covariates]
+
 linear_regression = LinearRegression()
+linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression.fit(df[all_covariates], regression_outcome)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 ```
 
 *** =sample_code
@@ -202,21 +193,13 @@ for row in zip(all_covariates, forest_classifier.feature_importances_):
 
 *** =solution
 ```{python}
-classification_outcome = df[classification_target]
-
-linear_classifier = LogisticRegression()
-linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, linear_classification_predicted)
-
-forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
-forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, forest_classification_predicted)
-
-forest_classifier.fit(df[all_covariates], classification_outcome)
-for row in zip(all_covariates, forest_classifier.feature_importances_):
-    print(row)
-
-
+def correlation(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return r2_score(X, y)[0]
+    
+def accuracy(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return accuracy_score(X, y)[0]
 ```
 
 *** =sct
@@ -248,17 +231,18 @@ Finally, let's take a look at the relationship between predicted and true revenu
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
+
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -280,63 +264,56 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]  
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
-linear_regression = LinearRegression()
+
 regression_outcome = df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression.fit(df[all_covariates], regression_outcome)
-linear_classifier = LogisticRegression()
 classification_outcome = df[classification_target]
-linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, linear_classification_predicted)
-forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
-forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, forest_classification_predicted)
-forest_classifier.fit(df[all_covariates], classification_outcome)
+covariates = df[all_covariates]
+
+linear_regression = LinearRegression()
+linear_classifier = LogisticRegression()
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
+def correlation(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return r2_score(X, y)[0]
+    
+def accuracy(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return accuracy_score(X, y)[0]
+
 ```
 
 *** =sample_code
 ```{python}
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors = (.8, .2, 0, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
-ax.plot(regression_range, regression_range, 'k--', lw=4)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
-# Show the plot.
+# determine the correlation of random forest predictions.
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors=(0, .3, .6, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
-
-ax.plot(regression_range, regression_range, 'k--', lw=2)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
+# Plot Results
+plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear Regression")
+plt.ylabel("Forest Regression")
 
 # Show the plot.
 ```
 
 *** =solution
 ```{python}
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, linear_regression_predicted, edgecolors=(.8, .2, 0, .3), facecolors=(.8, .2, 0, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
-ax.plot(regression_range, regression_range, 'k--', lw=4)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
-plt.show()
+# determine the correlation of random forest predictions.
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 
-fig, ax = plt.subplots()
-ax.scatter(regression_outcome, forest_regression_predicted, edgecolors=(0, .3, .6, 0.3), facecolors = (0, .3, .6, .3), s=40)
-regression_range = [regression_outcome.min(), regression_outcome.max()]
-
-ax.plot(regression_range, regression_range, 'k--', lw=2)
-ax.set_xlabel('Measured')
-ax.set_ylabel('Predicted')
+# Plot Results
+plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear Regression")
+plt.ylabel("Forest Regression")
 plt.show()
 ```
 
@@ -368,17 +345,18 @@ It appears that predicting movies that are reported to have made precisely no mo
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
+
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -400,23 +378,27 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]  
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
-linear_regression = LinearRegression()
-regression_outcome = df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
 
-linear_classifier = LogisticRegression()
+regression_outcome = df[regression_target]
 classification_outcome = df[classification_target]
-linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, linear_classification_predicted)
-forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
-forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, forest_classification_predicted)
-forest_classifier.fit(df[all_covariates], classification_outcome)
+covariates = df[all_covariates]
+
+linear_regression = LinearRegression()
+linear_classifier = LogisticRegression()
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
+def correlation(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return r2_score(X, y)[0]
+    
+def accuracy(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return accuracy_score(X, y)[0]
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 ```
 
 *** =sample_code
@@ -434,14 +416,17 @@ pearsonr(regression_outcome, forest_regression_predicted)
 
 *** =solution
 ```{python}
-positive_revenue_df = df[df["revenue"]>0]
-regression_outcome = positive_revenue_df[regression_target]
+# determine the correlation of random forest predictions.
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
 
-linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates],regression_outcome, cv=10)
-pearsonr(regression_outcome, linear_regression_predicted)
-
-forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
-pearsonr(regression_outcome, forest_regression_predicted)
+# plot results
+plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear classification")
+plt.ylabel("Forest classification")
+plt.show()
 ```
 
 *** =sct
@@ -479,17 +464,18 @@ In this exercise, we will rerun the classification analysis for the subsetted da
 *** =pre_exercise_code
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-from sklearn.model_selection import cross_val_predict
+
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -511,24 +497,29 @@ for row in list_genres:
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target] 
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
-linear_regression = LinearRegression()
+
 regression_outcome = df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
+classification_outcome = df[classification_target]
+covariates = df[all_covariates]
 
-positive_revenue_df = df[df["revenue"]>0]
-regression_outcome = positive_revenue_df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates],regression_outcome, cv=10)
-forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
-
+linear_regression = LinearRegression()
 linear_classifier = LogisticRegression()
-forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
-
-
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
+def correlation(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return r2_score(X, y)[0]
+    
+def accuracy(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return accuracy_score(X, y)[0]
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
 ```
 
 *** =sample_code
@@ -552,19 +543,16 @@ for row in zip(all_covariates, forest_classifier.feature_importances_):
 
 *** =solution
 ```{python}
-classification_outcome = positive_revenue_df[classification_target]
 
-linear_classification_predicted = cross_val_predict(linear_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, linear_classification_predicted)
+positive_revenue_df = df[df["revenue"] > 0]
+regression_outcome = df[regression_target]
+classification_outcome = df[classification_target]
+covariates = df[all_covariates]
 
-forest_classification_predicted = cross_val_predict(forest_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, forest_classification_predicted)
-
-forest_classifier.fit(positive_revenue_df[all_covariates], classification_outcome)
-for row in zip(all_covariates, forest_classifier.feature_importances_):
-    print(row)
-
-
+linear_regression = LinearRegression()
+linear_classifier = LogisticRegression()
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 ```
 
 
@@ -597,63 +585,6 @@ Finally, let's again plot predicted revenue against true revenues.
 
 *** =pre_exercise_code
 ```{python}
-data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
-import pandas as pd
-import numpy as np
-
-from sklearn.model_selection import cross_val_predict
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.ensemble import RandomForestClassifier
-
-from sklearn.metrics import accuracy_score
-from scipy.stats import pearsonr
-
-import matplotlib.pyplot as plt
-
-df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
-regression_target = 'revenue'
-df['profitable'] = df.budget < df.revenue
-df['profitable'] = df['profitable'].astype(int)
-classification_target = 'profitable'
-df = df.replace([np.inf, -np.inf], np.nan)
-df = df.dropna(how="any")
-list_genres = df.genres.apply(lambda x: x.split(","))
-genres = []
-for row in list_genres:
-    row = [genre.strip() for genre in row]
-    for genre in row:
-        if genre not in genres:
-            genres.append(genre)
-
-for genre in genres:
-    df[genre] = df['genres'].str.contains(genre).astype(int)
-continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]  
-all_covariates = continuous_covariates + genres
-all_columns = [regression_target, classification_target] + all_covariates
-linear_regression = LinearRegression()
-regression_outcome = df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
-forest_regression_predicted = cross_val_predict(forest_regression, df[all_covariates], regression_outcome, cv=10)
-forest_regression.fit(df[all_covariates], regression_outcome)
-linear_classifier = LogisticRegression()
-classification_outcome = df[classification_target]
-forest_classifier = RandomForestClassifier(max_depth=3, random_state=0)
-
-positive_revenue_df = df[df["revenue"]>0]
-regression_outcome = positive_revenue_df[regression_target]
-linear_regression_predicted = cross_val_predict(linear_regression, positive_revenue_df[all_covariates],regression_outcome, cv=10)
-forest_regression_predicted = cross_val_predict(forest_regression, positive_revenue_df[all_covariates], regression_outcome, cv=10)
-
-classification_outcome = positive_revenue_df[classification_target]
-linear_classification_predicted = cross_val_predict(linear_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
-forest_classification_predicted = cross_val_predict(forest_classifier, positive_revenue_df[all_covariates], classification_outcome, cv=10)
-forest_classifier.fit(positive_revenue_df[all_covariates], classification_outcome)
-
-
 ```
 
 *** =sample_code
