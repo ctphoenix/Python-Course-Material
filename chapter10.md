@@ -756,7 +756,7 @@ def correlation(estimator, X, y):
     return r2_score(y, predictions)
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    
+    return accuracy_score(y, predictions)
 ```
 
 *** =sample_code
