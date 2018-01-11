@@ -456,9 +456,6 @@ In this exercise, we will rerun the regression analysis for a subsetted dataset 
 
 *** =instructions
 - Replace all instances of `df` with `positive_revenue_df`, and run the given code.
-- Consider the following comparisons to the analysis that included movies with zero reported revenue: 
-    - Is the cross-validated accuracy between predictions and true revenue higher or lower in general?
-    - Previously, logistic regression outperformed random forest classification. Has this changed?
 
 *** =hint
 - No hint for this one.
@@ -638,10 +635,6 @@ linear_regression = LinearRegression()
 linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
     return r2_score(y, predictions)
@@ -758,10 +751,6 @@ linear_regression = LinearRegression()
 linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
     return r2_score(y, predictions)
