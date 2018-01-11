@@ -49,7 +49,6 @@ for row in list_genres:
     for genre in row:
         if genre not in genres:
             genres.append(genre)
-
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
@@ -150,7 +149,6 @@ for row in list_genres:
     for genre in row:
         if genre not in genres:
             genres.append(genre)
-
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
@@ -177,25 +175,30 @@ forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 ```{python}
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(predictions, y)
+    return r2_score(y, predictions)
     
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(predictions, y)
+    return accuracy_score(y, predictions)
+    
+correlation(linear_regression, covariates, regression_outcome)
 ```
 
 *** =sct
 ```{python}
-test_object("linear_classification_predicted",
-            undefined_msg = "Did you define `linear_classification_predicted`?",
-            incorrect_msg = "It looks like `linear_classification_predicted` wasn't defined correctly.") 
-test_object("forest_classification_predicted",
-            undefined_msg = "Did you define `forest_classification_predicted`?",
-            incorrect_msg = "It looks like `forest_classification_predicted` wasn't defined correctly.") 
+test_student_typed("correlation",
+              pattern=False,
+              not_typed_msg="Did you define `correlation`?")
+test_student_typed("r2_score",
+              pattern=False,
+              not_typed_msg="It looks like `correlation` wasn't defined correctly.")
+test_student_typed("accuracy",
+              pattern=False,
+              not_typed_msg="Did you define `correlation`?")
 test_student_typed("accuracy_score",
               pattern=False,
-              not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
-success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 80% of the time, slightly less well than the logistic model. We see that according to random forests, popularity and vote count appear to be the most important variables in predicting whether a movie will be profitable.")
+              not_typed_msg="It looks like `correlation` wasn't defined correctly.")
+success_msg("Great work!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:dbcd7e671f
@@ -244,7 +247,6 @@ for row in list_genres:
     for genre in row:
         if genre not in genres:
             genres.append(genre)
-
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
@@ -262,11 +264,11 @@ forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(X, y)
+    return r2_score(y, predictions)
     
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(X, y)
+    return accuracy_score(y, predictions)
 
 ```
 
@@ -303,13 +305,18 @@ plt.show()
 
 *** =sct
 ```{python}
+test_object("linear_regression_scores",
+            undefined_msg = "Did you define `linear_regression_scores`?",
+            incorrect_msg = "It looks like `linear_regression_scores` wasn't defined correctly.") 
+test_object("forest_regression_scores",
+            undefined_msg = "Did you define `forest_regression_scores`?",
+            incorrect_msg = "It looks like `forest_regression_scores` wasn't defined correctly.") 
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see if the random forest model fares any better. Like the linear regression model, predicting whether a movie will make no money at all seems quite difficult.")
-```
-
-
+success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model.")
+``` 
+It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see if the random forest model fares any better. Like the linear regression model, predicting whether a movie will make no money at all seems quite difficult.
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:a0ae0c80a0
 ## Exercise 4
@@ -357,7 +364,6 @@ for row in list_genres:
     for genre in row:
         if genre not in genres:
             genres.append(genre)
-
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
@@ -375,11 +381,10 @@ forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(X, y)
-    
+    return r2_score(y, predictions)
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(X, y)
+    return accuracy_score(y, predictions)
 linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 
@@ -394,8 +399,8 @@ forest_regression_scores = cross_val_score(forest_regression, covariates, regres
 plt.scatter(linear_classification_scores, forest_classification_scores)
 plt.xlim(0.5,1)
 plt.ylim(0.5,1)
-plt.xlabel("Linear classification")
-plt.ylabel("Forest classification")
+plt.xlabel("Linear Classification")
+plt.ylabel("Forest Classification")
 
 # Show the plot.
 
@@ -404,15 +409,15 @@ plt.ylabel("Forest classification")
 *** =solution
 ```{python}
 # Determine the cross-validated accuracy for linear and random forest models.
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
 
 # Plot Results
 plt.scatter(linear_classification_scores, forest_classification_scores)
 plt.xlim(0.5,1)
 plt.ylim(0.5,1)
-plt.xlabel("Linear classification")
-plt.ylabel("Forest classification")
+plt.xlabel("Linear Classification")
+plt.ylabel("Forest Classification")
 
 plt.show()
 
@@ -420,32 +425,30 @@ plt.show()
 
 *** =sct
 ```{python}
-test_object("positive_revenue_df",
-            undefined_msg = "Did you define `positive_revenue_df`?",
-            incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.")
-test_object("linear_regression_predicted",
-            undefined_msg = "Did you define `linear_regression_predicted`?",
-            incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
-test_object("forest_regression_predicted",
-            undefined_msg = "Did you define `forest_regression_predicted`?",
-            incorrect_msg = "It looks like `forest_regression_predicted` wasn't defined correctly.") 
-test_student_typed("pearsonr",
+test_object("linear_classification_scores",
+            undefined_msg = "Did you define `linear_classification_scores`?",
+            incorrect_msg = "It looks like `linear_classification_scores` wasn't defined correctly.") 
+test_object("forest_classification_scores",
+            undefined_msg = "Did you define `forest_classification_scores`?",
+            incorrect_msg = "It looks like `forest_classification_scores` wasn't defined correctly.") 
+test_student_typed("plt.show()",
               pattern=False,
-              not_typed_msg="Did you determine the correlation between `linear_classifier` and `forest_classifier` with revenue?")
-success_msg("Great work! By excluding movies with zero reported revenue, we do see that the correlation between predictions and outcome is increased. Linear regression still appears to slightly outperform random forests.")
+              not_typed_msg="Did you call `plt.show()`?")
+success_msg("Great work! According to the metric of cross-validated accuracy, the random forest model clearly outperforms the linear model.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:8203914a10
 ## Exercise 5
+It might be the case that appears that predicting movies that made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fit improves. In this exercise, we will rerun the regression analysis for this subsetted dataset.
 
-In this exercise, we will rerun the classification analysis for the subsetted dataset that includes only movies with positive revenue.
+In this exercise, we will rerun the regression analysis for a subsetted dataset that includes only movies with positive revenue.
 
 *** =instructions
 - Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
 - The solutions to the previous analyses using `df` are shown below. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
 - Consider the following comparisons to the analysis that included movies with zero reported revenue: 
     - Are these cross-validated correlations between predictions and true revenue higher or lower in general?
-    - Previously, linear regression outperformed random forests. Has this changed?
+    - Previously, random forests outperformed the linear model for both regression and classification. Has this changed?
 
 *** =hint
 - `pandas` supports slicing syntax for rows. You can use this to select only rows meeting the logical condition `df["revenue"] > 0`.
@@ -514,33 +517,31 @@ forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
 def correlation(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return r2_score(X, y)
-    
+    return r2_score(y, predictions)
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
-    return accuracy_score(X, y)
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = correlation)
+    return accuracy_score(y, predictions)
 ```
 
 *** =sample_code
 ```{python}
-# Rename the data in the following code, and run.
+positive_revenue_df = 
 
+# Replace the dataframe in the following code, and run.
+
+regression_outcome = df[regression_target]
 classification_outcome = df[classification_target]
+covariates = df[all_covariates]
 
-linear_classification_predicted = cross_val_predict(linear_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, linear_classification_predicted)
-
-forest_classification_predicted = cross_val_predict(forest_classifier, df[all_covariates], classification_outcome, cv=10)
-accuracy_score(classification_outcome, forest_classification_predicted)
-
-forest_classifier.fit(df[all_covariates], classification_outcome)
-for row in zip(all_covariates, forest_classifier.feature_importances_):
-    print(row)
-
+# Reinstantiate all regression models and classifiers.
+linear_regression = LinearRegression()
+linear_classifier = LogisticRegression()
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
 
 ```
 
@@ -548,36 +549,170 @@ for row in zip(all_covariates, forest_classifier.feature_importances_):
 ```{python}
 
 positive_revenue_df = df[df["revenue"] > 0]
-regression_outcome = df[regression_target]
-classification_outcome = df[classification_target]
-covariates = df[all_covariates]
 
+regression_outcome = positive_revenue_df[regression_target]
+classification_outcome = positive_revenue_df[classification_target]
+covariates = positive_revenue_df[all_covariates]
+
+# Reinstantiate all regression models and classifiers.
 linear_regression = LinearRegression()
 linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
 ```
 
 
 *** =sct
 ```{python}
-test_object("linear_classification_predicted",
-            undefined_msg = "Did you define `linear_classification_predicted`?",
-            incorrect_msg = "It looks like `linear_classification_predicted` wasn't defined correctly.") 
-test_object("forest_classification_predicted",
-            undefined_msg = "Did you define `forest_classification_predicted`?",
-            incorrect_msg = "It looks like `forest_classification_predicted` wasn't defined correctly.") 
-test_student_typed("accuracy_score",
-              pattern=False,
-              not_typed_msg="Did you determine the accuracy of `linear_classifier` and `forest_classifier`?")
-success_msg("Great work! The logistic model classifies profitability correctly 82% of the time. The random forests model classifies profitability correctly 83% of the time, which is slightly better than the linear model, aa reversal from our previous accuracy results. We see that according to random forests, popularity and vote count appear to be the most important variables in predicting whether a movie will be profitable.")
-success_msg("Great work! By excluding movies with zero reported revenue, we do see that the accuracy of both models is increased. Linear regression still appears to slightly outperform random forests.")
+test_object("positive_revenue_df",
+            undefined_msg = "Did you define `positive_revenue_df`?",
+            incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.") 
+success_msg("Great work!")
+
 ```
 
 
 
 
 
+
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:fe450a86a0
+## Exercise 6
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+import numpy as np
+import pandas as pd
+
+
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
+
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
+regression_target = 'revenue'
+df['profitable'] = df.budget < df.revenue
+df['profitable'] = df['profitable'].astype(int)
+classification_target = 'profitable'
+df = df.replace([np.inf, -np.inf], np.nan)
+df = df.dropna(how="any")
+list_genres = df.genres.apply(lambda x: x.split(","))
+genres = []
+for row in list_genres:
+    row = [genre.strip() for genre in row]
+    for genre in row:
+        if genre not in genres:
+            genres.append(genre)
+for genre in genres:
+    df[genre] = df['genres'].str.contains(genre).astype(int)
+continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
+
+positive_revenue_df = df[df["revenue"] > 0]
+regression_outcome = positive_revenue_df[regression_target]
+classification_outcome = positive_revenue_df[classification_target]
+covariates = positive_revenue_df[all_covariates]
+linear_regression = LinearRegression()
+linear_classifier = LogisticRegression()
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+def correlation(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return r2_score(y, predictions)
+def accuracy(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    
+```
+
+*** =sample_code
+```{python}
+
+```
+
+*** =solution
+```{python}
+
+```
+
+*** =sct
+```{python}
+
+```
+
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:9445151d8f
+## Exercise 7
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+
+```
+
+*** =sample_code
+```{python}
+
+```
+
+*** =solution
+```{python}
+
+```
+
+*** =sct
+```{python}
+
+```
+
+
+
+
+
+
+
+
+
+
+test_object("positive_revenue_df",
+            undefined_msg = "Did you define `positive_revenue_df`?",
+            incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.")
+test_object("linear_regression_predicted",
+            undefined_msg = "Did you define `linear_regression_predicted`?",
+            incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
+test_object("forest_regression_predicted",
+            undefined_msg = "Did you define `forest_regression_predicted`?",
+            incorrect_msg = "It looks like `forest_regression_predicted` wasn't defined correctly.") 
+test_student_typed("pearsonr",
+              pattern=False,
+              not_typed_msg="Did you determine the correlation between `linear_classifier` and `forest_classifier` with revenue?")
+success_msg("Great work! By excluding movies with zero reported revenue, we do see that the correlation between predictions and outcome is increased. Linear regression still appears to slightly outperform random forests.")
 
 
 
@@ -585,14 +720,10 @@ success_msg("Great work! By excluding movies with zero reported revenue, we do s
 
 Finally, let's take a look at the relationship between predicted and true revenue. In this exercise, we will visualize the quality of the model fits.
 
-It appears that predicting movies that are reported to have made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fit improves. In this exercise, we will rerun the regression analysis for this subsetted dataset.
 
-
+success_msg("Great work! By excluding movies with zero reported revenue, we do see that the accuracy of both models is increased. Linear regression still appears to slightly outperform random forests.")
 
 success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves prediction of revenues. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
-
-
-
 
 
 
