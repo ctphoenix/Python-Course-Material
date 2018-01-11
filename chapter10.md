@@ -316,7 +316,6 @@ test_student_typed("plt.show()",
               not_typed_msg="Did you call `plt.show()`?")
 success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model.")
 ``` 
-It's well worth noting that many movies make zero dollars, which is quite extreme and apparently difficult to predict. Let's see if the random forest model fares any better. Like the linear regression model, predicting whether a movie will make no money at all seems quite difficult.
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:a0ae0c80a0
 ## Exercise 4
@@ -577,16 +576,20 @@ success_msg("Great work!")
 
 
 
-
-
-
-
 --- type:NormalExercise lang:python xp:100 skills:2 key:fe450a86a0
 ## Exercise 6
 
+In this exercise, we will compute the cross-validated performance for the linear and random forest regression models for positive revenue movies only.
+
 *** =instructions
+- In turn, call `cross_val_score` using `linear_regression` and `forest regression` as models. Store the output as `linear_regression_scores` and `forest_regression_scores`, respectively.
+    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = correlation` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear regression and random forest regression models.
+    -  Consider: which of the two models exhibits a better fit? Is this result different from what we observed when considering all movies?
 
 *** =hint
+- To determine the necessary arguments for `cross_val_score`, use `help()`.
+
 
 *** =pre_exercise_code
 ```{python}
@@ -649,82 +652,171 @@ def accuracy(estimator, X, y):
 
 *** =sample_code
 ```{python}
+# Determine the cross-validated correlation for linear and random forest models.
 
+
+# Plot Results
+plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear Regression")
+plt.ylabel("Forest Regression")
+
+# Show the plot.
 ```
 
 *** =solution
 ```{python}
+# Determine the cross-validated accuracy for linear and random forest models.
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
 
+# Plot Results
+plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear Regression")
+plt.ylabel("Forest Regression")
+
+plt.show()
 ```
 
 *** =sct
 ```{python}
-
-```
+test_object("linear_regression_scores",
+            undefined_msg = "Did you define `linear_regression_scores`?",
+            incorrect_msg = "It looks like `linear_regression_scores` wasn't defined correctly.") 
+test_object("forest_regression_scores",
+            undefined_msg = "Did you define `forest_regression_scores`?",
+            incorrect_msg = "It looks like `forest_regression_scores` wasn't defined correctly.") 
+test_student_typed("plt.show()",
+              pattern=False,
+              not_typed_msg="Did you call `plt.show()`?")
+success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies.")
+``` 
 
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:9445151d8f
 ## Exercise 7
 
+In this exercise, we will compute the cross-validated performance for the linear and random forest classification models for positive revenue movies only.
 
 *** =instructions
+- In turn, call `cross_val_score` using `linear_classifier` and `forest_classifier` as models. Store the output as `linear_classification_scores` and `forest_classification_scores`, respectively.
+    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = accuracy` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear and random forest classification models.
+    -  Consider: which of the two models exhibits a better fit? Is this result different from what we observed when considering all movies?
 
 *** =hint
+- To determine the necessary arguments for `cross_val_score`, use `help()`.
+
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+import numpy as np
+import pandas as pd
 
+
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
+
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
+
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
+regression_target = 'revenue'
+df['profitable'] = df.budget < df.revenue
+df['profitable'] = df['profitable'].astype(int)
+classification_target = 'profitable'
+df = df.replace([np.inf, -np.inf], np.nan)
+df = df.dropna(how="any")
+list_genres = df.genres.apply(lambda x: x.split(","))
+genres = []
+for row in list_genres:
+    row = [genre.strip() for genre in row]
+    for genre in row:
+        if genre not in genres:
+            genres.append(genre)
+for genre in genres:
+    df[genre] = df['genres'].str.contains(genre).astype(int)
+continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
+outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
+all_covariates = continuous_covariates + genres
+all_columns = [regression_target, classification_target] + all_covariates
+
+positive_revenue_df = df[df["revenue"] > 0]
+regression_outcome = positive_revenue_df[regression_target]
+classification_outcome = positive_revenue_df[classification_target]
+covariates = positive_revenue_df[all_covariates]
+linear_regression = LinearRegression()
+linear_classifier = LogisticRegression()
+forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
+forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+def correlation(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    return r2_score(y, predictions)
+def accuracy(estimator, X, y):
+    predictions = estimator.fit(X, y).predict(X)
+    
 ```
 
 *** =sample_code
 ```{python}
+# Determine the cross-validated accuracy for linear and random forest models.
+
+
+# Plot Results
+plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear Classification")
+plt.ylabel("Forest Classification")
+
+# Show the plot.
 
 ```
 
 *** =solution
 ```{python}
+# Determine the cross-validated accuracy for linear and random forest models.
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+
+# Plot Results
+plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.xlim(0.5,1)
+plt.ylim(0.5,1)
+plt.xlabel("Linear Classification")
+plt.ylabel("Forest Classification")
+
+plt.show()
 
 ```
 
 *** =sct
 ```{python}
-
-```
-
-
-
-
-
-
-
-
-
-
-test_object("positive_revenue_df",
-            undefined_msg = "Did you define `positive_revenue_df`?",
-            incorrect_msg = "It looks like `positive_revenue_df` wasn't defined correctly.")
-test_object("linear_regression_predicted",
-            undefined_msg = "Did you define `linear_regression_predicted`?",
-            incorrect_msg = "It looks like `linear_regression_predicted` wasn't defined correctly.") 
-test_object("forest_regression_predicted",
-            undefined_msg = "Did you define `forest_regression_predicted`?",
-            incorrect_msg = "It looks like `forest_regression_predicted` wasn't defined correctly.") 
-test_student_typed("pearsonr",
+test_object("linear_classification_scores",
+            undefined_msg = "Did you define `linear_classification_scores`?",
+            incorrect_msg = "It looks like `linear_classification_scores` wasn't defined correctly.") 
+test_object("forest_classification_scores",
+            undefined_msg = "Did you define `forest_classification_scores`?",
+            incorrect_msg = "It looks like `forest_classification_scores` wasn't defined correctly.") 
+test_student_typed("plt.show()",
               pattern=False,
-              not_typed_msg="Did you determine the correlation between `linear_classifier` and `forest_classifier` with revenue?")
-success_msg("Great work! By excluding movies with zero reported revenue, we do see that the correlation between predictions and outcome is increased. Linear regression still appears to slightly outperform random forests.")
-
-
-
-
-
-Finally, let's take a look at the relationship between predicted and true revenue. In this exercise, we will visualize the quality of the model fits.
-
-
-success_msg("Great work! By excluding movies with zero reported revenue, we do see that the accuracy of both models is increased. Linear regression still appears to slightly outperform random forests.")
-
-success_msg("Great work! it seems that omitting movies that are estimated to have made precisely no money improves prediction of revenues. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
-
+              not_typed_msg="Did you call `plt.show()`?")
+success_msg("Great work! According to the metric of cross-validated accuracy, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
+```
+``` 
 
 
 
