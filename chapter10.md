@@ -7,7 +7,7 @@ description : The [Movie Database](https://www.kaggle.com/tmdb/tmdb-movie-metada
 
 In Part 2 of this case study, we will primarily use the two models we recently discussed: linear/logistic regression and random forests to perform prediction and classification. We will use linear regression to predict revenue, and logistic regression to classify whether a movie was profitable.
 
-Recall that `regression_target`, `classification_target`, and `all_covariates` are strings or lists of strings, and each string is a column name in `df`. In this exercise, we will prepare the covariates and outcomes we will use for data analysis defining `regression_outcome`, `classification_outcome`, and `covariates` as selected columns in `df`. We will also instantiate regression and classification models for fitting.
+Recall that `regression_target`, `classification_target`, and `all_covariates` are strings or lists of strings, and each string is a column name in `df`. Code is provided that prepares the covariates and outcomes we will use for data analysis defining `regression_outcome`, `classification_outcome`, and `covariates` as selected columns in `df`. In this exercise, we will instantiate regression and classification models for fitting.
 
 
 *** =instructions
