@@ -5,13 +5,13 @@ description : The [movie dataset on which this case study is based](https://www.
 --- type:NormalExercise lang:python xp:100 skills:2 key:bc061bf4aa
 ## Exercise 1
 
-In Part 2 of this case study, we will primarily use the two models we recently discussed: linear/logistic regression and random forests to perform prediction and classification. We will use linear regression to predict revenue, and logistic regression to classify whether a movie was profitable.
+In Part 2 of this case study, we will primarily use the two models we recently discussed: linear/logistic regression and random forests to perform prediction and classification. We will use these methods to predict revenue, and logistic regression to classify whether a movie was profitable.
 
-Recall that `regression_target`, `classification_target`, and `all_covariates` are strings or lists of strings, and each string is a column name in `df`. Code is provided that prepares the covariates and outcomes we will use for data analysis defining `regression_outcome`, `classification_outcome`, and `covariates` as selected columns in `df`. In this exercise, we will instantiate regression and classification models for fitting.
+Recall that `regression_target`, `classification_target`, and `all_covariates` are strings or lists of strings, and each string is a column name in `df`. Code is provided that prepares the covariates and outcomes we will use for data analysis defining `regression_outcome`, `classification_outcome`, and `covariates` as selected columns in `df`. In this exercise, we will instantiate regression and classification models.
 
 
 *** =instructions
-- In turn, call instances of `LinearRegression()`, `LogisticRegression()`, `RandomForestRegressor()`, `RandomForestClassifier()`, and assign the output to `linear_regression`, `linear_classifier`, `forest_regression`, and `forest_classifier`, respectively.
+- In turn, instantiate `LinearRegression()`, `LogisticRegression()`, `RandomForestRegressor()`, and `RandomForestClassifier()` objects, and assign them to `linear_regression`, `linear_classifier`, `forest_regression`, and `forest_classifier`, respectively.
     - For the random forests models, specify `max_depth=4` and `random_state=0`.
 
 *** =hint
@@ -102,11 +102,9 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:56e0886a08
 ## Exercise 2
 
-In this exercise, we will create two functions that compute a model's score. For regression models, we will use the correlation as the score. For classification models, we will use accuracy as the score.
+In this exercise, we will create two functions that compute a model's score. For regression models, we will use correlation as the score. For classification models, we will use accuracy as the score.
 
 *** =instructions
-
-
 - Define a function called `correlation` with arguments `estimator`, `X`, and `y` that computes the correlation between the outcome `y` and the predictions made from using covariates `X` to fit the model `estimator` to `y`.
     - To obtain predictions, the function should use the `fit` method from `estimator`, and the `predict` method from the fitted object.
     - The function should return the first argument from `r2_score` comparing `predictions` and `y`.
@@ -208,8 +206,8 @@ In this exercise, we will compute the cross-validated performance for the linear
 
 *** =instructions
 - In turn, call `cross_val_score` using `linear_regression` and `forest regression` as models. Store the output as `linear_regression_scores` and `forest_regression_scores`, respectively.
-    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = correlation` to use our correlation function defined in the previous exercise.
-- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear regression and random forest regression models.
+    - Set the parameters `cv=10` to use 10 folds for cross-validation and `scoring=correlation` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to plot the revenue for each movie against the fits of the linear regression and random forest regression models.
     -  Consider: which of the two models exhibits a better fit?
 
 *** =hint
@@ -279,8 +277,8 @@ def accuracy(estimator, X, y):
 
 # Plot Results
 plt.scatter(linear_regression_scores, forest_regression_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Regression")
 plt.ylabel("Forest Regression")
 
@@ -290,13 +288,13 @@ plt.ylabel("Forest Regression")
 *** =solution
 ```{python}
 # Determine the cross-validated accuracy for linear and random forest models.
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv=10, scoring=correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv=10, scoring=correlation)
 
 # Plot Results
 plt.scatter(linear_regression_scores, forest_regression_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Regression")
 plt.ylabel("Forest Regression")
 
@@ -324,8 +322,8 @@ In this exercise, we will compute the cross-validated performance for the linear
 
 *** =instructions
 - In turn, call `cross_val_score` using `linear_classifier` and `forest_classifier` as models. Store the output as `linear_classification_scores` and `forest_classification_scores`, respectively.
-    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = accuracy` to use our correlation function defined in the previous exercise.
-- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear and random forest classification models.
+    - Set the parameters `cv=10` to use 10 folds for cross-validation and `scoring=accuracy` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to plot the revenue for each movie against the fits of the linear and random forest classification models.
     -  Consider: which of the two models exhibits a better fit?
 
 *** =hint
@@ -384,8 +382,8 @@ def correlation(estimator, X, y):
 def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
     return accuracy_score(y, predictions)
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv=10, scoring=correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv=10, scoring=correlation)
 
 ```
 
@@ -396,8 +394,8 @@ forest_regression_scores = cross_val_score(forest_regression, covariates, regres
 
 # Plot Results
 plt.scatter(linear_classification_scores, forest_classification_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Classification")
 plt.ylabel("Forest Classification")
 
@@ -408,13 +406,13 @@ plt.ylabel("Forest Classification")
 *** =solution
 ```{python}
 # Determine the cross-validated accuracy for linear and random forest models.
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
 
 # Plot Results
 plt.scatter(linear_classification_scores, forest_classification_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Classification")
 plt.ylabel("Forest Classification")
 
@@ -438,9 +436,7 @@ success_msg("Great work! According to the metric of cross-validated accuracy, th
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:8203914a10
 ## Exercise 5
-It might be the case that appears that predicting movies that made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fit improves. In this exercise, we will rerun the regression analysis for this subsetted dataset.
-
-In this exercise, we will rerun the regression analysis for a subsetted dataset that includes only movies with positive revenue.
+It might be the case that predicting movies that made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fits improve. In this exercise, we will rerun the regression analysis for this subsetted dataset.
 
 *** =instructions
 - Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
@@ -534,10 +530,10 @@ linear_regression = LinearRegression()
 linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv=10, scoring=correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv=10, scoring=correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
 
 ```
 
@@ -555,10 +551,10 @@ linear_regression = LinearRegression()
 linear_classifier = LogisticRegression()
 forest_regression = RandomForestRegressor(max_depth=4, random_state=0)
 forest_classifier = RandomForestClassifier(max_depth=4, random_state=0)
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv=10, scoring=correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv=10, scoring=correlation)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
 ```
 
 
@@ -580,8 +576,8 @@ In this exercise, we will compute the cross-validated performance for the linear
 
 *** =instructions
 - In turn, call `cross_val_score` using `linear_regression` and `forest regression` as models. Store the output as `linear_regression_scores` and `forest_regression_scores`, respectively.
-    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = correlation` to use our correlation function defined in the previous exercise.
-- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear regression and random forest regression models.
+    - Set the parameters `cv=10` to use 10 folds for cross-validation and `scoring=correlation` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to plot the revenue for each movie against the fits of the linear regression and random forest regression models.
     -  Consider: which of the two models exhibits a better fit? Is this result different from what we observed when considering all movies?
 
 *** =hint
@@ -650,8 +646,8 @@ def accuracy(estimator, X, y):
 
 # Plot Results
 plt.scatter(linear_regression_scores, forest_regression_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Regression")
 plt.ylabel("Forest Regression")
 
@@ -661,13 +657,13 @@ plt.ylabel("Forest Regression")
 *** =solution
 ```{python}
 # Determine the cross-validated accuracy for linear and random forest models.
-linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
-forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv = 10, scoring = correlation)
+linear_regression_scores = cross_val_score(linear_regression, covariates, regression_outcome, cv=10, scoring=correlation)
+forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv=10, scoring=correlation)
 
 # Plot Results
 plt.scatter(linear_regression_scores, forest_regression_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Regression")
 plt.ylabel("Forest Regression")
 
@@ -696,8 +692,8 @@ In this exercise, we will compute the cross-validated performance for the linear
 
 *** =instructions
 - In turn, call `cross_val_score` using `linear_classifier` and `forest_classifier` as models. Store the output as `linear_classification_scores` and `forest_classification_scores`, respectively.
-    - Set the parameters `cv = 10` to use 10 folds for cross-validation and `scoring = accuracy` to use our correlation function defined in the previous exercise.
-- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to Plot the revenue for each movie against the fits of the linear and random forest classification models.
+    - Set the parameters `cv=10` to use 10 folds for cross-validation and `scoring=accuracy` to use our correlation function defined in the previous exercise.
+- Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to plot the revenue for each movie against the fits of the linear and random forest classification models.
     -  Consider: which of the two models exhibits a better fit? Is this result different from what we observed when considering all movies?
 
 *** =hint
@@ -766,8 +762,8 @@ def accuracy(estimator, X, y):
 
 # Plot Results
 plt.scatter(linear_classification_scores, forest_classification_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Classification")
 plt.ylabel("Forest Classification")
 
@@ -778,13 +774,13 @@ plt.ylabel("Forest Classification")
 *** =solution
 ```{python}
 # Determine the cross-validated accuracy for linear and random forest models.
-linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
-forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv = 10, scoring = accuracy)
+linear_classification_scores = cross_val_score(linear_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
+forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
 
 # Plot Results
 plt.scatter(linear_classification_scores, forest_classification_scores)
-plt.xlim(0.5,1)
-plt.ylim(0.5,1)
+plt.xlim(0.5, 1)
+plt.ylim(0.5, 1)
 plt.xlabel("Linear Classification")
 plt.ylabel("Forest Classification")
 
