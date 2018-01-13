@@ -61,7 +61,7 @@ mean_altitudes = grouped_birds.altitude.mean()
 
 *** =sct
 ```{python}
-test_student_typed("head",
+test_student_typed("grouped_birds.head()",
               pattern=False,
               not_typed_msg="Did you make sure to check the head of your dataset?")  
 test_object("mean_altitudes",
