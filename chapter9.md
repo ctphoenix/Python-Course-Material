@@ -23,9 +23,10 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 *** =sample_code
 ```{python}
-import numpy as np
 import pandas as pd
+import numpy as np
 
+from sklearn.model_selection import cross_val_predict
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -33,7 +34,6 @@ from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import r2_score
-from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 
@@ -59,7 +59,6 @@ from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
 
-
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 df.head()
 
@@ -83,7 +82,6 @@ In this exercise, we will define the regression and classification outcomes. Spe
 
 
 *** =instructions
-
 - Create a new column in `df` called `profitable`, defined as 1 if the movie revenue is greater than the movie budget, and 0 otherwise.
 - Next, define and store the outcomes we will use for regression and classification.
     - Define `regression_target` as `'revenue'`.
@@ -91,7 +89,6 @@ In this exercise, we will define the regression and classification outcomes. Spe
 
 
 *** =hint
-
 - To create `df['profitable']`, use a simple inequality between the budget and revenue columns in `df`.  Then, we will cast this as an `int`: 1 if true, and 0 otherwise.
 
 
@@ -128,11 +125,10 @@ df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 
 *** =solution
 ```{python}
-regression_target = 'revenue'
-
 df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
 
+regression_target = 'revenue'
 classification_target = 'profitable'
 
 ```
@@ -167,11 +163,25 @@ For simplicity, we will proceed by analyzing only the rows without any missing d
 
 *** =pre_exercise_code
 ```{python}
+data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
+import numpy as np
+import pandas as pd
 
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 
-regression_target = 'revenue'
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
+
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
 df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
+regression_target = 'revenue'
 classification_target = 'profitable'
 ```
 
@@ -232,9 +242,9 @@ from sklearn.model_selection import cross_val_score
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
-regression_target = 'revenue'
-df['profitable'] = df.budget < df.revenue
+df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
+regression_target = 'revenue'
 classification_target = 'profitable'
 df = df.replace([np.inf, -np.inf], np.nan)
 df = df.dropna(how="any")
@@ -280,7 +290,7 @@ Some variables in the dataset are already numeric and perhaps useful for regress
 
 *** =instructions
 - Call `plt.show()` to observe the plot below. 
-    - Consider: Are any continuous covariates related to each other, the outcome, or both?
+    - Consider: which of the covariates and/or outcomes are correlated with each other?
 - Call `skew()` on the columns `outcomes_and_continuous_covariates` in `df`.
     - Consider: Is the skew above 1 for any of these variables?
 
@@ -305,9 +315,9 @@ from sklearn.model_selection import cross_val_score
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
-regression_target = 'revenue'
-df['profitable'] = df.budget < df.revenue
+df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
+regression_target = 'revenue'
 classification_target = 'profitable'
 df = df.replace([np.inf, -np.inf], np.nan)
 df = df.dropna(how="any")
@@ -346,7 +356,7 @@ axes = pd.tools.plotting.scatter_matrix(df[plotting_variables], alpha = 0.15,col
 plt.tight_layout()
 plt.show()
 
-df[outcomes_and_continuous_covariates].skew()
+print(df[outcomes_and_continuous_covariates].skew())
 
 ```
 
@@ -366,7 +376,7 @@ success_msg("Great work! There is quite a bit of covariance in these pairwise pl
 --- type:NormalExercise lang:python xp:100 skills:2 key:5caa334a5f
 ## Exercise 6
 
-It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `np.log10()` method. Because some of these variable values are exactly 0, we will add a small positive value to each to ensure it is defined. (Note that for any base, log(0) is negative infinity!)
+It appears that the variables `budget`, `popularity`, `runtime`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `np.log10()` method. Because some of these variable values are exactly 0, we will add a small positive value to each to ensure it is defined. (Note that for any base, log(0) is negative infinity!)
 
 *** =instructions
 - For each above-mentioned variable in `df`, transform value `x` into `np.log10(1+x)`.
@@ -393,9 +403,9 @@ from sklearn.model_selection import cross_val_score
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(data_filepath + 'merged_movie_data.csv')
-regression_target = 'revenue'
-df['profitable'] = df.budget < df.revenue
+df['profitable'] = df.revenue > df.budget
 df['profitable'] = df['profitable'].astype(int)
+regression_target = 'revenue'
 classification_target = 'profitable'
 df = df.replace([np.inf, -np.inf], np.nan)
 df = df.dropna(how="any")
@@ -423,7 +433,7 @@ outcomes_and_continuous_covariates = continuous_covariates + [regression_target,
 
 *** =solution
 ```{python}
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))
     
     

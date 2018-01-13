@@ -51,7 +51,7 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 all_covariates = continuous_covariates + genres
@@ -150,7 +150,7 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 all_covariates = continuous_covariates + genres
@@ -248,7 +248,7 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 all_covariates = continuous_covariates + genres
@@ -370,7 +370,7 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 all_covariates = continuous_covariates + genres
@@ -494,7 +494,7 @@ for row in list_genres:
 
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 all_covariates = continuous_covariates + genres
@@ -620,7 +620,7 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 all_covariates = continuous_covariates + genres
@@ -697,7 +697,7 @@ test_object("forest_regression_scores",
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies, although these results are significantly better. We also see that the vote count, budget, and popularity of movies are most important for predicting movie revenue.")
+success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies, although these results are generally improved. We also see that the vote count, budget, and popularity of movies are most important for predicting movie revenue.")
 ``` 
 
 
@@ -752,7 +752,7 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
-for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+for covariate in ['budget', 'popularity', 'runtime', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 all_covariates = continuous_covariates + genres
