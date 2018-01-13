@@ -51,6 +51,8 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]
 all_covariates = continuous_covariates + genres
@@ -149,6 +151,8 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
@@ -246,6 +250,8 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
@@ -279,8 +285,8 @@ plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
 plt.plot((0, 1), (0, 1), 'k-')
 
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Regression Score")
 plt.ylabel("Forest Regression Score")
 
@@ -297,8 +303,8 @@ forest_regression_scores = cross_val_score(forest_regression, covariates, regres
 plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
 plt.plot((0, 1), (0, 1), 'k-')
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Regression Score")
 plt.ylabel("Forest Regression Score")
 
@@ -367,6 +373,8 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
@@ -401,8 +409,8 @@ plt.axes().set_aspect('equal', 'box')
 plt.scatter(logistic_regression_scores, forest_classification_scores)
 plt.plot((0, 1), (0, 1), 'k-')
 
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Classification Score")
 plt.ylabel("Forest Classification Score")
 
@@ -421,8 +429,8 @@ plt.axes().set_aspect('equal', 'box')
 plt.scatter(logistic_regression_scores, forest_classification_scores)
 plt.plot((0, 1), (0, 1), 'k-')
 
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Classification Score")
 plt.ylabel("Forest Classification Score")
 
@@ -441,12 +449,12 @@ test_object("forest_classification_scores",
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! According to the metric of cross-validated accuracy, the random forest model clearly outperforms the linear model.")
+success_msg("Great work! According to the metric of cross-validated accuracy, the random forest model clearly outperforms the linear model, although both perform well.")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:8203914a10
 ## Exercise 5
-It might be the case that predicting movies that made precisely no money is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fits improve. In this exercise, we will rerun the regression analysis for this subsetted dataset.
+In Exercise 3, we saw that predicting revenue was only moderately successful. It might be the case that predicting movies that generated precisely no revenue is difficult. In the next three exercises, we will exclude these movies, and rerun the analyses to determine if the fits improve. In this exercise, we will rerun the regression analysis for this subsetted dataset.
 
 *** =instructions
 - Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
@@ -490,6 +498,8 @@ for row in list_genres:
 
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
@@ -614,6 +624,8 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
@@ -645,8 +657,8 @@ plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
 plt.plot((0, 1), (0, 1), 'k-')
 
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Regression Score")
 plt.ylabel("Forest Regression Score")
 
@@ -664,8 +676,8 @@ plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
 plt.plot((0, 1), (0, 1), 'k-')
 
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Regression Score")
 plt.ylabel("Forest Regression Score")
 
@@ -683,7 +695,7 @@ test_object("forest_regression_scores",
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies.")
+success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies, although these results are significantly better.")
 ``` 
 
 
@@ -736,6 +748,8 @@ for row in list_genres:
             genres.append(genre)
 for genre in genres:
     df[genre] = df['genres'].str.contains(genre).astype(int)
+for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
@@ -767,8 +781,8 @@ plt.axes().set_aspect('equal', 'box')
 plt.scatter(logistic_regression_scores, forest_classification_scores)
 plt.plot((0, 1), (0, 1), 'k-')
 
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Classification Score")
 plt.ylabel("Forest Classification Score")
 
@@ -787,8 +801,8 @@ plt.axes().set_aspect('equal', 'box')
 plt.scatter(logistic_regression_scores, forest_classification_scores)
 plt.plot((0, 1), (0, 1), 'k-')
 
-plt.xlim(0.5, 1)
-plt.ylim(0.5, 1)
+plt.xlim(0, 1)
+plt.ylim(0, 1)
 plt.xlabel("Linear Classification Score")
 plt.ylabel("Forest Classification Score")
 

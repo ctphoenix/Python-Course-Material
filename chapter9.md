@@ -364,10 +364,10 @@ success_msg("Great work! There is quite a bit of covariance in these pairwise pl
 --- type:NormalExercise lang:python xp:100 skills:2 key:5caa334a5f
 ## Exercise 6
 
-It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `log` transform. Because some of these variable values are exactly 0, we will add a small value to each value to ensure it is defined. (Note that log(0) is negative infinity!)
+It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `np.log10()` method. Because some of these variable values are exactly 0, we will add a small value to each value to ensure it is defined. (Note that for any base, log(0) is negative infinity!)
 
 *** =instructions
-- For each above-mentioned variable in `df`, transform value `x` into `log(1+x)`.
+- For each above-mentioned variable in `df`, transform value `x` into `np.log10(1+x)`.
 
 *** =hint
 - You can use the `apply()` function on a `df.Series` object. `apply()` takes a single function as its argument, and returns the `df.Series` with that function applied to each element.
@@ -422,7 +422,7 @@ outcomes_and_continuous_covariates = continuous_covariates + [regression_target,
 *** =solution
 ```{python}
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
-    df[covariate] = df[covariate].apply(lambda x: np.log(1+x))
+    df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))
     
     
 ```
