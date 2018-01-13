@@ -580,6 +580,7 @@ In this exercise, we will compute the cross-validated performance for the linear
     - Set the parameters `cv=10` to use 10 folds for cross-validation and `scoring=correlation` to use our correlation function defined in the previous exercise.
 - Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to plot the correlation between actual and predicted revenue for each cross-validation fold using the linear and random forest regression models.
     -  Consider: which of the two models exhibits a better fit? Is this result different from what we observed when considering all movies?
+- Code is provided for you that prints the importance of each covariate in predicting revenue using the random forests classifier. Consider: which variables are most important?
 
 *** =hint
 - To determine the necessary arguments for `cross_val_score`, use `help()`.
@@ -657,6 +658,8 @@ plt.xlabel("Linear Regression Score")
 plt.ylabel("Forest Regression Score")
 
 # Show the plot.
+
+# Print the importance of each covariate in the random forest regression.
 ```
 
 *** =solution
@@ -676,6 +679,11 @@ plt.xlabel("Linear Regression Score")
 plt.ylabel("Forest Regression Score")
 
 plt.show()
+
+# Print the importance of each covariate in the random forest regression.
+forest_regression.fit(positive_revenue_df[all_covariates], regression_outcome)
+for row in zip(all_covariates, forest_regression.feature_importances_,):
+    print(row)
 ```
 
 *** =sct
@@ -689,7 +697,7 @@ test_object("forest_regression_scores",
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies, although these results are significantly better.")
+success_msg("Great work! According to the metric of cross-validated correlation, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies, although these results are significantly better. We also see that the vote count, budget, and popularity of movies are most important for predicting movie revenue.")
 ``` 
 
 
@@ -703,6 +711,8 @@ In this exercise, we will compute the cross-validated performance for the linear
     - Set the parameters `cv=10` to use 10 folds for cross-validation and `scoring=accuracy` to use our correlation function defined in the previous exercise.
 - Plotting code has been provided to compare the performance of the two models. Use `plt.show()` to plot the accuracy of predicted profitability for each cross-validation fold using the logistic and random forest classification models.
     -  Consider: which of the two models exhibits a better fit? Is this result different from what we observed when considering all movies?
+- Adapt the code in Exercise 6 to print the importance of each covariate in predicting profitability using the random forests classifier.
+    - Consider: which variables are most important?
 
 *** =hint
 - To determine the necessary arguments for `cross_val_score`, use `help()`.
@@ -781,6 +791,8 @@ plt.ylabel("Forest Classification Score")
 
 # Show the plot.
 
+# Print the importance of each covariate in the random forest classification.
+
 ```
 
 *** =solution
@@ -801,6 +813,11 @@ plt.ylabel("Forest Classification Score")
 
 plt.show()
 
+# Print the importance of each covariate in the random forest classification.
+forest_classifier.fit(positive_revenue_df[all_covariates], classification_outcome)
+for row in zip(all_covariates, forest_classifier.feature_importances_,):
+    print(row)
+
 ```
 
 *** =sct
@@ -814,9 +831,12 @@ test_object("forest_classification_scores",
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you call `plt.show()`?")
-success_msg("Great work! According to the metric of cross-validated accuracy, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
+test_student_typed("forest_classifier.feature_importances_",
+              pattern=False,
+              not_typed_msg="Did you determine the importance of features in the random forest model?")
+success_msg("Great work! According to the metric of cross-validated accuracy, the random forest model clearly outperforms the linear model for positive revenue movies. This is broadly the same result as what we observed when considering all movies. We also see that the popularity, vote count, and budget of movies are most important for predicting profitability. This concludes the case study. You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
-``` 
+
 
 
 
