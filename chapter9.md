@@ -208,7 +208,7 @@ Many of the variables in our dataframe contain the names of genre, actors/actres
 *** =instructions
 
 - Determine all the genres in the genre column. Make sure to use the `strip()` function on each genre to remove trailing characters.
-- Next, include each listed genre as a new column in the dataframe. Each element of these genre columns should be 1 if the movie falls under that particular genre, and 0 otherwise.
+- Next, include each listed genre as a new column in the dataframe. Each element of these genre columns should be 1 if the movie belongs to that particular genre, and 0 otherwise. (Keep in mind, a movie may belong to several genres at once.)
 - Call `df[genres].head()` to view your results.
 
 *** =hint
@@ -432,7 +432,7 @@ for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
 test_object("df",
             undefined_msg = "Did you define `df`?",
             incorrect_msg = "It appears you did not transform the variables correctly.") 
-success_msg("Great work! This concludes the case study.  You can return to the course through this link: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
+success_msg("Great work! This concludes the first half of this case study.  You can return to the course through this link: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
 
 
