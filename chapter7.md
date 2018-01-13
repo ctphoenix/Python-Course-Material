@@ -110,7 +110,7 @@ birddata["date"] =
 grouped_bydates = 
 
 # Find the mean `altitude` for each date.
-mean_altitudes_perday = ## YOUR CODE HERE ##
+mean_altitudes_perday =
 
 ```
 
@@ -129,9 +129,6 @@ birddata.date.head()
 grouped_bydates = birddata.groupby("date")
 
 # Find the mean `altitude` for each date.
-mean_altitudes_perday = ## YOUR CODE HERE ##
-
-# Convert birddata.date_time to the `pd.datetime` format.
 mean_altitudes_perday = grouped_bydates.altitude.mean()
 
 ```
@@ -176,7 +173,6 @@ birddata['date'] = birddata.date_time.dt.date
 
 *** =sample_code
 ```{python}
-
 # Use `groupby()` to group the data by bird and date.
 grouped_birdday = 
 
