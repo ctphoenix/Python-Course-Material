@@ -179,7 +179,6 @@ def accuracy(estimator, X, y):
     predictions = estimator.fit(X, y).predict(X)
     return accuracy_score(y, predictions)
     
-correlation(linear_regression, covariates, regression_outcome)
 ```
 
 *** =sct
