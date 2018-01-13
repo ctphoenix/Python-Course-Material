@@ -450,24 +450,10 @@ It might be the case that predicting movies that made precisely no money is diff
 
 *** =instructions
 - Define `positive_revenue_df` as the subset of movies in `df` with revenue greater than zero.
-- The solutions to the previous analyses using `df` are shown below. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
-- Consider the following comparisons to the analysis that included movies with zero reported revenue: 
-    - Are these cross-validated correlations between predictions and true revenue higher or lower in general?
-    - Previously, random forests outperformed the linear model for both regression and classification. Has this changed?
+- Code is provided below that creates new instances of model objects. Replace all instances of `df` with `positive_revenue_df`, and run the given code.
 
 *** =hint
 - `pandas` supports slicing syntax for rows. You can use this to select only rows meeting the logical condition `df["revenue"] > 0`.
-
-
-
-*** =instructions
-- Replace all instances of `df` with `positive_revenue_df`, and run the given code.
-
-*** =hint
-- No hint for this one.
-
-
-
 
 *** =pre_exercise_code
 ```{python}
