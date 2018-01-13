@@ -276,11 +276,14 @@ def accuracy(estimator, X, y):
 
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.plot((0, 1), (0, 1), 'k-')
+
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Regression")
-plt.ylabel("Forest Regression")
+plt.xlabel("Linear Regression Score")
+plt.ylabel("Forest Regression Score")
 
 # Show the plot.
 ```
@@ -292,11 +295,13 @@ linear_regression_scores = cross_val_score(linear_regression, covariates, regres
 forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv=10, scoring=correlation)
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.plot((0, 1), (0, 1), 'k-')
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Regression")
-plt.ylabel("Forest Regression")
+plt.xlabel("Linear Regression Score")
+plt.ylabel("Forest Regression Score")
 
 plt.show()
 ```
@@ -393,11 +398,14 @@ forest_regression_scores = cross_val_score(forest_regression, covariates, regres
 
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.plot((0, 1), (0, 1), 'k-')
+
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Classification")
-plt.ylabel("Forest Classification")
+plt.xlabel("Linear Classification Score")
+plt.ylabel("Forest Classification Score")
 
 # Show the plot.
 
@@ -410,11 +418,14 @@ linear_classification_scores = cross_val_score(linear_classifier, covariates, cl
 forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.plot((0, 1), (0, 1), 'k-')
+
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Classification")
-plt.ylabel("Forest Classification")
+plt.xlabel("Linear Classification Score")
+plt.ylabel("Forest Classification Score")
 
 plt.show()
 
@@ -645,11 +656,14 @@ def accuracy(estimator, X, y):
 
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.plot((0, 1), (0, 1), 'k-')
+
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Regression")
-plt.ylabel("Forest Regression")
+plt.xlabel("Linear Regression Score")
+plt.ylabel("Forest Regression Score")
 
 # Show the plot.
 ```
@@ -661,11 +675,14 @@ linear_regression_scores = cross_val_score(linear_regression, covariates, regres
 forest_regression_scores = cross_val_score(forest_regression, covariates, regression_outcome, cv=10, scoring=correlation)
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_regression_scores, forest_regression_scores)
+plt.plot((0, 1), (0, 1), 'k-')
+
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Regression")
-plt.ylabel("Forest Regression")
+plt.xlabel("Linear Regression Score")
+plt.ylabel("Forest Regression Score")
 
 plt.show()
 ```
@@ -761,11 +778,14 @@ def accuracy(estimator, X, y):
 
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.plot((0, 1), (0, 1), 'k-')
+
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Classification")
-plt.ylabel("Forest Classification")
+plt.xlabel("Linear Classification Score")
+plt.ylabel("Forest Classification Score")
 
 # Show the plot.
 
@@ -778,11 +798,14 @@ linear_classification_scores = cross_val_score(linear_classifier, covariates, cl
 forest_classification_scores = cross_val_score(forest_classifier, covariates, classification_outcome, cv=10, scoring=accuracy)
 
 # Plot Results
+plt.axes().set_aspect('equal', 'box')
 plt.scatter(linear_classification_scores, forest_classification_scores)
+plt.plot((0, 1), (0, 1), 'k-')
+
 plt.xlim(0.5, 1)
 plt.ylim(0.5, 1)
-plt.xlabel("Linear Classification")
-plt.ylabel("Forest Classification")
+plt.xlabel("Linear Classification Score")
+plt.ylabel("Forest Classification Score")
 
 plt.show()
 
