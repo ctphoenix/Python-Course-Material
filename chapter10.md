@@ -54,7 +54,6 @@ for genre in genres:
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 ```
@@ -154,7 +153,6 @@ for genre in genres:
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 
@@ -253,7 +251,6 @@ for genre in genres:
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 
@@ -376,7 +373,6 @@ for genre in genres:
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 
@@ -501,7 +497,6 @@ for genre in genres:
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 
@@ -627,7 +622,6 @@ for genre in genres:
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 
@@ -751,7 +745,6 @@ for genre in genres:
 for covariate in ['budget', 'popularity', 'vote_count', 'revenue']:
     df[covariate] = df[covariate].apply(lambda x: np.log10(1+x))    
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
-outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]   
 all_covariates = continuous_covariates + genres
 all_columns = [regression_target, classification_target] + all_covariates
 

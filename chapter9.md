@@ -276,7 +276,7 @@ success_msg("Great work!")
 --- type:NormalExercise lang:python xp:100 skills:2 key:9f0ce8e050
 ## Exercise 5
 
-Some variables in the dataset are already numeric and perhaps useful for regression and classification. In this exercise, we will store the names of these variables for future use and visualize the data for outcomes and continuous covariates. We will also take a look at the continuous variables and outcomes by plotting each pair in a scatter plot, and evaluate the skew of each variable.
+Some variables in the dataset are already numeric and perhaps useful for regression and classification. In this exercise, we will store the names of these variables for future use. We will also take a look at some of the continuous variables and outcomes by plotting each pair in a scatter plot. Finally, we will evaluate the skew of each variable.
 
 *** =instructions
 - Call `plt.show()` to observe the plot below. 
@@ -327,8 +327,9 @@ for genre in genres:
 ```{python}
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]
+plotting_variables = ['budget', 'popularity', regression_target]
 
-axes = pd.tools.plotting.scatter_matrix(df[outcomes_and_continuous_covariates], alpha=0.15, color=(0,0,0), hist_kwds={"color":(0,0,0)}, facecolor=(1,0,0))
+axes = pd.tools.plotting.scatter_matrix(df[plotting_variables], alpha = 0.15,color=(0,0,0),hist_kwds={"color":(0,0,0)},facecolor=(1,0,0))
 plt.tight_layout()
 # show the plot.
 
@@ -339,8 +340,9 @@ plt.tight_layout()
 ```{python}
 continuous_covariates = ['budget', 'popularity', 'runtime', 'vote_count', 'vote_average']
 outcomes_and_continuous_covariates = continuous_covariates + [regression_target, classification_target]
+plotting_variables = ['budget', 'popularity', regression_target]
 
-axes = pd.tools.plotting.scatter_matrix(df[outcomes_and_continuous_covariates], alpha = 0.15,color=(0,0,0),hist_kwds={"color":(0,0,0)},facecolor=(1,0,0))
+axes = pd.tools.plotting.scatter_matrix(df[plotting_variables], alpha = 0.15,color=(0,0,0),hist_kwds={"color":(0,0,0)},facecolor=(1,0,0))
 plt.tight_layout()
 plt.show()
 
@@ -364,13 +366,13 @@ success_msg("Great work! There is quite a bit of covariance in these pairwise pl
 --- type:NormalExercise lang:python xp:100 skills:2 key:5caa334a5f
 ## Exercise 6
 
-It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `np.log10()` method. Because some of these variable values are exactly 0, we will add a small value to each value to ensure it is defined. (Note that for any base, log(0) is negative infinity!)
+It appears that the variables `budget`, `popularity`, `vote_count`, and `revenue` are all right-skewed. In this exercise, we will transform these variables to eliminate this skewness. Specifically, we will use the `np.log10()` method. Because some of these variable values are exactly 0, we will add a small positive value to each to ensure it is defined. (Note that for any base, log(0) is negative infinity!)
 
 *** =instructions
 - For each above-mentioned variable in `df`, transform value `x` into `np.log10(1+x)`.
 
 *** =hint
-- You can use the `apply()` function on a `df.Series` object. `apply()` takes a single function as its argument, and returns the `df.Series` with that function applied to each element.
+- You can use the `apply()` method on a `df.Series` object. `apply()` takes a single function as its argument, and returns the `df.Series` with that function applied to each element.
 - Anonymous functions can be specified using `lambda`.
 
 *** =pre_exercise_code
