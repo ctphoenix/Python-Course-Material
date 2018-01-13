@@ -708,5 +708,5 @@ test_student_typed("print",
 test_object("percentage",
             undefined_msg = "Did you define `percentage`?",
             incorrect_msg = "It looks like `percentage` wasn't defined correctly.")
-success_msg("Great work! Our accuracy is comparable to the library's function!  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
+success_msg("Great work! Our accuracy is comparable to the library's function!  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```

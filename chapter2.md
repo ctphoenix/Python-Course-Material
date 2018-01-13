@@ -1114,7 +1114,7 @@ test_student_typed("plt.hist",
 test_student_typed("play_strategic_game()",
               pattern=False,
               not_typed_msg="Did you use `play_strategic_game()`?")
-success_msg("Great work!  Yes, starting in the middle square is a large advantage when play is otherwise random.  Also, each game takes less time to play, because each victory is decided earlier.  Player 1 wins much more than Player 2, and draws are less common.")
+success_msg("Great work!  Yes, starting in the middle square is a large advantage when play is otherwise random.  Also, each game takes less time to play, because each victory is decided earlier.  Player 1 wins much more than Player 2, and draws are less common. This concludes this week's homework.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
 
 

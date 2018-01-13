@@ -717,7 +717,7 @@ test_object("classification_cols",
 test_student_typed("location_plot",
               pattern=False,
               not_typed_msg="Did you make sure to use `location_plot` to see your results?")         
-success_msg("Great work!  We see that there is not very much overlap between the regional classifications and the coclustering classifications.  This means that regional classifications are not a very good guide to Scotch whisky flavor profiles.  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016")
+success_msg("Great work!  We see that there is not very much overlap between the regional classifications and the coclustering classifications.  This means that regional classifications are not a very good guide to Scotch whisky flavor profiles.  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
 
 
