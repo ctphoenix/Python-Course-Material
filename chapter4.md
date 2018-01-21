@@ -485,10 +485,6 @@ In this exercise, we will join all the data summaries for text Hamlet translatio
 
 - No hint on this one.
 
-for i in range(hamlets.shape[0]):
-    language, text = hamlets.iloc[i]
-    sub_data = summarize_text(language, text)
-    grouped_data = grouped_data.append(sub_data)
 
 *** =pre_exercise_code
 ```{python}
