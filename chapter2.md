@@ -735,7 +735,7 @@ def evaluate(board):
 ```{python}
 def play_game():
     board = create_board()
-	winner = 0
+    winner = 0
     while winner == 0:
         for player in [1, 2]:
             random_place(board, player)
