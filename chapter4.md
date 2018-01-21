@@ -475,11 +475,15 @@ In this exercise, we will join all the data summaries for text Hamlet translatio
 *** =instructions
 
 - The previous code for summarizing a particular translation of Hamlet is consolidated into a single function called `summarize_text`. Create a `pandas` dataframe `grouped_data` consisting of the results of `summarize_text` for translation of Hamlet in `hamlets`.
+    - Use a `for` loop across the row indices of `hamlets` to assign each translation to a new row.
+    - Obtain the *i*th row of `hamlets` to variables using the `.iloc` method, and assign the output to variables `language` and `text`.
+    - Call `summarize_text` using `language` and `text`, and assign the output to `sub_data`.
+    - Use the `pandas` `.append()` function to append to `pandas` dataframes row-wise to `grouped_data`.
 
 
 *** =hint
 
-- To append to `pandas` dataframes row-wise, consider the `pandas` `.append()` function.
+- No hint on this one.
 
 for i in range(hamlets.shape[0]):
     language, text = hamlets.iloc[i]
