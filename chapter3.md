@@ -219,7 +219,7 @@ print(encoded_message)
 
 *** =sct
 ```{python}
-test_student_typed("encoding(",
+test_student_typed("encoding",
               pattern=False,
               not_typed_msg="Make sure to call the function `encoding`!") 
 test_student_typed("print(",
