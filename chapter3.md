@@ -222,7 +222,7 @@ print(encoded_message)
 test_student_typed("encoding",
               pattern=False,
               not_typed_msg="Make sure to call the function `encoding`!") 
-test_student_typed("print(",
+test_student_typed("print",
               pattern=False,
               not_typed_msg="Make sure to call `print`!")                
 test_object("encoded_message",
