@@ -55,7 +55,7 @@ The Caesar cipher shifts each letter of a message to another letter in the alpha
 In this exercise, we will define a dictionary that specifies the index of each character in `alphabet`.
 
 *** =instructions
--  `alphabet` has already defined from the last exercise. Create a dictionary `letters` with keys consisting of the characters in `alphabet`, and values consisting of the numbers from 0 to 26.
+-  `alphabet` has already defined from the last exercise. Create a dictionary with keys consisting of the characters in `alphabet`, and values consisting of the numbers from 0 to 26.
 - Store this as `positions`.
 
 *** =hint
