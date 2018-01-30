@@ -298,7 +298,7 @@ print(decoded_message)
 
 *** =sct
 ```{python}
-test_student_typed("print(",
+test_student_typed("print",
               pattern=False,
               not_typed_msg="Make sure to call `print`!")  
 test_object("decoded_message",
