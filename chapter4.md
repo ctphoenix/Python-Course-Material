@@ -339,7 +339,7 @@ In this case study, we will find and visualize summary statistics of the text of
 In this exercise, we will summarize the statistics in `data` into a smaller `pandas` dataframe. The solution code from the previous section is already included here.
 
 *** =instructions
-- Create a `pandas` dataframe named `sub_data`, with a single row and the following columns:
+- Create a `pandas` dataframe named `sub_data` including the following columns:
     - `language`, which is the language of the text.
     -  `frequency`, which is a list containing the strings `"frequent"`, `"infrequent"`, and `"unique"`.
     -  `mean_word_length`, which is the mean word length of each value in `frequency`.
