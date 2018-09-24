@@ -1,27 +1,35 @@
 ---
-title       : Homework 1
-description : Exercises for homework (Week 1).  In this homework, we will use objects, functions, and randomness to find the length of documents, approximate pi, and smooth out random noise.
---- type:NormalExercise lang:python xp:100 skills:2 key:e637b6eee9
+title: 'Homework 1'
+description: 'Exercises for homework (Week 1).  In this homework, we will use objects, functions, and randomness to find the length of documents, approximate pi, and smooth out random noise.'
+---
+
 ## Exercise 1a
+
+```yaml
+type: NormalExercise
+key: e637b6eee9
+lang: python
+xp: 100
+skills: 2
+```
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
-*** =instructions
+`@instructions`
 - Import the `string` library.
 - Create a variable `alphabet` that consists of the lowercase and uppercase letters in the English alphabet using the `ascii_letters` data attribute of the `string` library.
 
-*** =hint
+`@hint`
 - Use `import` to import the `string` library.
 - Use `=` to assign `ascii_letters` to `alphabet`.
 - For additional information, use `dir(string)` to look through the attributes in the `string` library.
 
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 # Write your code here!
 
@@ -29,13 +37,13 @@ data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 import string
 alphabet = string.ascii_letters
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("ascii_letters",
                        pattern=False,
@@ -46,29 +54,35 @@ test_object("alphabet",
 success_msg("Great work!")
 ```
 
+---
 
-
---- type:NormalExercise lang:python xp:100 skills:2 key:89cba9d6a8
 ## Exercise 1b
+
+```yaml
+type: NormalExercise
+key: 89cba9d6a8
+lang: python
+xp: 100
+skills: 2
+```
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
-*** =instructions
+`@instructions`
 - The lower and upper cases of the English alphabet are stored as the string `alphabet`.
 - Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'.  Create a dictionary `count_letters` with keys consisting of each unique letter in the sentence and values consisting of the number of times each letter is used in this sentence.  Count upper case and lower case letters separately in the dictionary.
 
-*** =hint
-- Can you think of a way to use a `for` loop to count up the frequency of each letter used in the sentence? 
+`@hint`
+- Can you think of a way to use a `for` loop to count up the frequency of each letter used in the sentence?
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = string.ascii_letters
 ```
 
-
-*** =sample_code
+`@sample_code`
 ```{python}
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
@@ -79,7 +93,7 @@ count_letters = {}
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
@@ -92,7 +106,7 @@ for letter in sentence:
             count_letters[letter] = 1
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("count_letters",
             undefined_msg = "Did you define `count_letters`?",
@@ -100,27 +114,35 @@ test_object("count_letters",
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:8cb1c4bf90
 ## Exercise 1c
+
+```yaml
+type: NormalExercise
+key: 8cb1c4bf90
+lang: python
+xp: 100
+skills: 2
+```
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
-*** =instructions
+`@instructions`
 - Rewrite your code from  **1b** to make a function called `counter` that takes a string `input_string` and returns a dictionary of letter counts `count_letters`.  If you were unable to complete **1b**, you can use the solution by selecting `Show Answer`.
 - Use your function to call `counter(sentence)`.
 
-*** =hint
+`@hint`
 - Add `def` at the beginning to define the function, indent the inner code, and use `return` at the end to ensure your function returns the output.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = string.ascii_letters
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
@@ -131,7 +153,7 @@ sentence = 'Jim quickly realized that the beautiful gowns are expensive'
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 import string 
 
@@ -150,7 +172,7 @@ def counter(input_string):
 counter(sentence)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_function("counter", index = 1,
               not_called_msg = "Make sure to call `counter`!",
@@ -158,20 +180,28 @@ test_function("counter", index = 1,
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:a0932fb3c4
 ## Exercise 1d
+
+```yaml
+type: NormalExercise
+key: a0932fb3c4
+lang: python
+xp: 100
+skills: 2
+```
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
-*** =instructions
+`@instructions`
 - Abraham Lincoln was a president during the American Civil War.  His famous 1863 Gettysburg Address has been stored as `address`, and the `counter` function as defined in part **1c** has been loaded.  Use these to return a dictionary consisting of the count of each letter in this address, and save this as `address_count`.
 - Print `address_count`.
 
-*** =hint
+`@hint`
 -  Can you use `counter` to return the frequency of each letter?
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
@@ -190,7 +220,7 @@ import pandas as pd
 address = str(pd.read_csv(data_filepath + 'gettysburg.txt', error_bad_lines = False))    
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 # Write your code here!
 
@@ -198,14 +228,14 @@ address = str(pd.read_csv(data_filepath + 'gettysburg.txt', error_bad_lines = Fa
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 address_count = counter(address)
 print(address_count)
 
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("address_count",
               undefined_msg = "Make sure to define `address_count`!",
@@ -216,20 +246,28 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:bb70667667
 ## Exercise 1e
+
+```yaml
+type: NormalExercise
+key: bb70667667
+lang: python
+xp: 100
+skills: 2
+```
 
 In this five-part exercise, we will count the frequency of each letter in a given string.
 
-*** =instructions
+`@instructions`
 - The frequency of each letter in the Gettysburg Address is already stored as `address_count`.  Use this dictionary to find the most common letter in the Gettysburg address.
 - Store this letter as `most_frequent_letter`, and print your answer.
 
-*** =hint
+`@hint`
 - You will have to find the key that corresponds to the maximum value in `address_count`!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 
@@ -251,7 +289,15 @@ address = str(pd.read_csv(data_filepath + 'gettysburg.txt', error_bad_lines = Fa
 address_count = counter(address)
 ```
 
-*** =solution
+`@sample_code`
+```{python}
+# write your code here!
+
+
+
+```
+
+`@solution`
 ```{python}
 maximum = 0
 letter_maximum = ""
@@ -263,15 +309,7 @@ for letter in address_count:
 print(most_frequent_letter)
 ```
 
-*** =sample_code
-```{python}
-# write your code here!
-
-
-
-```
-
-*** =sct
+`@sct`
 ```{python}
 test_object("most_frequent_letter",
               undefined_msg = "Make sure to define `most_frequent_letter`!",
@@ -282,30 +320,32 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:8b40a3f09f
 ## Exercise 2a
+
+```yaml
+type: NormalExercise
+key: 8b40a3f09f
+lang: python
+xp: 100
+skills: 2
+```
 
 Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
-*** =instructions
+`@instructions`
 - Using the `math` library, calculate and print the value of `pi / 4`.
 
-*** =hint
+`@hint`
 - The `math` library contains a float `pi` --- try using that!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
-*** =solution
-```{python}
-import math
-print(math.pi / 4)
-```
-
-*** =sample_code
+`@sample_code`
 ```{python}
 # write your code here!
 
@@ -313,7 +353,13 @@ print(math.pi / 4)
 
 ```
 
-*** =sct
+`@solution`
+```{python}
+import math
+print(math.pi / 4)
+```
+
+`@sct`
 ```{python}
 test_student_typed("math.pi",
               pattern=True,
@@ -324,25 +370,46 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:7aa7dadeac
 ## Exercise 2b
+
+```yaml
+type: NormalExercise
+key: 7aa7dadeac
+lang: python
+xp: 100
+skills: 2
+```
 
 Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
-*** =instructions
+`@instructions`
 - Using `random.uniform()`, create a function `rand()` that generates a single `float` between `-1` and `1`.
 - Call `rand()` once.  So we can check your solution, we will use `random.seed()` to fix the value called by your function.
 
-*** =hint
+`@hint`
 -  `random.uniform()` generates a random value between the first argument and the second argument.  Try using this to get random values between `-1` and `1`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
-*** =solution
+`@sample_code`
+```{python}
+import random
+
+random.seed(1) # This line fixes the value called by your function,
+               # and is used for answer-checking.
+
+def rand():
+   # define `rand` here!
+
+rand()
+```
+
+`@solution`
 ```{python}
 import random
 
@@ -361,20 +428,7 @@ def rand():
 rand()
 ```
 
-*** =sample_code
-```{python}
-import random
-
-random.seed(1) # This line fixes the value called by your function,
-               # and is used for answer-checking.
-
-def rand():
-   # define `rand` here!
-
-rand()
-```
-
-*** =sct
+`@sct`
 ```{python}
 test_function("rand", index = 1,
               not_called_msg = "Make sure to call `rand()`!")
@@ -384,27 +438,46 @@ test_student_typed("random.uniform",
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:eabc2b80ff
 ## Exercise 2c
+
+```yaml
+type: NormalExercise
+key: eabc2b80ff
+lang: python
+xp: 100
+skills: 2
+```
 
 Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
-*** =instructions
+`@instructions`
 - The distance between two points `x` and `y` is the square root of the sum of squared differences along each dimension of `x` and `y`.  Create a function `distance(x, y)` that takes two vectors and outputs the distance between them.  Use your function to find the distance between `x=(0,0)` and `y=(1,1)`.
 - Print your answer.
 
-*** =hint
+`@hint`
 - Use the `sqrt` function in the `math` library to find square roots.  Finding the square can be done using the `pow` function in the `math` library, or exponentiating using `**2` after the number you would like to square.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 random.seed(1)
 ```
 
-*** =solution
+`@sample_code`
+```{python}
+import math
+
+def distance(x, y):
+   # define your function here!
+   
+   
+   
+```
+
+`@solution`
 ```{python}
 import math
 
@@ -422,18 +495,7 @@ def distance(x, y):
 print(distance((0,0),(1,1)))
 ```
 
-*** =sample_code
-```{python}
-import math
-
-def distance(x, y):
-   # define your function here!
-   
-   
-   
-```
-
-*** =sct
+`@sct`
 ```{python}
 test_function("distance", index = 1,
               not_called_msg = "Did you use your `distance` function?",
@@ -444,25 +506,31 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
+---
 
-
-
---- type:NormalExercise lang:python xp:100 skills:2 key:89310e2304
 ## Exercise 2d
+
+```yaml
+type: NormalExercise
+key: 89310e2304
+lang: python
+xp: 100
+skills: 2
+```
 
 Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
-*** =instructions
+`@instructions`
 - Write a function `in_circle(x, origin)` that determines whether a two-dimensional point falls within a unit circle surrounding a given origin. 
     - Your function should return a boolean that is `True` if the distance between `x` and `origin` is less than 1, and `False` otherwise.
     - `distance(x, y)` as defined in `2c` is pre-loaded. 
 - Use your function to determine whether the point `(1,1)` lies within the unit circle centered at `(0,0)`.
 - Print your answer.
 
-*** =hint
+`@hint`
 - Use your previous function `distance` to test if the distance between the point and `(0,0)` is less than `1`!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
@@ -481,7 +549,20 @@ def distance(x, y):
         return math.sqrt(sum(square_differences))
 ```
 
-*** =solution
+`@sample_code`
+```{python}
+import random, math
+
+random.seed(1)
+
+def in_circle(x, origin = [0]*2):
+   # Define your function here!
+   
+   
+
+```
+
+`@solution`
 ```{python}
 import random, math
 
@@ -502,20 +583,7 @@ def in_circle(x, origin = [0]*2):
 print(in_circle((1,1)))
 ```
 
-*** =sample_code
-```{python}
-import random, math
-
-random.seed(1)
-
-def in_circle(x, origin = [0]*2):
-   # Define your function here!
-   
-   
-
-```
-
-*** =sct
+`@sct`
 ```{python}
 test_function("in_circle", index = 1,
               not_called_msg = "Did you use your `in_circle` function?",
@@ -526,24 +594,30 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
+---
 
-
-
---- type:NormalExercise lang:python xp:100 skills:2 key:c7c20038ea
 ## Exercise 2e
+
+```yaml
+type: NormalExercise
+key: c7c20038ea
+lang: python
+xp: 100
+skills: 2
+```
 
 Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
-*** =instructions
+`@instructions`
 - Create a list of `R=10000` booleans called `inside` that determines whether each point in `x` falls within the unit circle centered at `(0,0)`.  Make sure to use `in_circle`.
 - Find the proportion of points within the circle by summing the count of `True` in `inside`, and dividing by `R`.
 - Print your answer.  This proportion is an estimate of the ratio of the two areas!
 
-*** =hint
+`@hint`
 -  Use your functions `rand()` and `in_circle((x,y))` are pre-loaded from previous parts.  
 - Print the fraction that do fit inside the circle!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
@@ -574,20 +648,7 @@ def in_circle(x, origin = [0]*2):
         
 ```
 
-*** =solution
-```{python}
-R = 10000
-x = []
-inside = []
-for i in range(R):
-    point = [rand(), rand()]
-    x.append(point)
-    inside.append(in_circle(point))
-
-print(sum(inside) / R)
-```
-
-*** =sample_code
+`@sample_code`
 ```{python}
 R = 10000
 x = []
@@ -601,7 +662,20 @@ print(sum(inside) / R)
 
 ```
 
-*** =sct
+`@solution`
+```{python}
+R = 10000
+x = []
+inside = []
+for i in range(R):
+    point = [rand(), rand()]
+    x.append(point)
+    inside.append(in_circle(point))
+
+print(sum(inside) / R)
+```
+
+`@sct`
 ```{python}
 test_student_typed("print",
               pattern=False,
@@ -615,21 +689,28 @@ test_object("inside",
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:d3950c2ef5
 ## Exercise 2f
+
+```yaml
+type: NormalExercise
+key: d3950c2ef5
+lang: python
+xp: 100
+skills: 2
+```
 
 Consider a circle enclosed by a square. The ratio of their areas is `pi / 4`.  In this six-part exercise, we will find a way to approximate this value.
 
-*** =instructions
+`@instructions`
 - Find the difference between your estimate from part `2e` and `math.pi / 4`. Note: `inside` and `R` are defined as in Exercise `2e`.
 - Print your answer.
 
-
-*** =hint
+`@hint`
 - Take your estimate from the last exercise, and subtract `math.pi / 4`.  Make sure to print your answer!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random, math
@@ -667,12 +748,7 @@ for i in range(R):
     inside.append(in_circle(point))       
 ```
 
-*** =solution
-```{python}
-print(math.pi / 4 - sum(inside) / R)
-```
-
-*** =sample_code
+`@sample_code`
 ```{python}
 # write your code here!
 
@@ -680,7 +756,12 @@ print(math.pi / 4 - sum(inside) / R)
 
 ```
 
-*** =sct
+`@solution`
+```{python}
+print(math.pi / 4 - sum(inside) / R)
+```
+
+`@sct`
 ```{python}
 test_function("print", index = 1,
               incorrect_msg = "It appears what you've printed is not correct.", 
@@ -688,46 +769,38 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:807ffbdc6f
+---
+
 ## Exercise 3a
 
-A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
+```yaml
+type: NormalExercise
+key: 807ffbdc6f
+lang: python
+xp: 100
+skills: 2
+```
 
-*** =instructions
+A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.
+
+`@instructions`
 - Write a function `moving_window_average(x, n_neighbors)` that takes a list `x` and the number of neighbors `n_neighbors` on either side of a given member of the list to consider.
 - For each value in `x`, `moving_window_average(x, n_neighbors)` computes the average of that value's neighbors, where neighbors includes the value itself.
 - `moving_window_average` should return a list of averaged values that is the same length as the original list.
 - If there are not enough neighbors (for cases near the edge), substitute the original value as many times as there are missing neighbors.
 - Use your function to find the moving window sum of `x=[0,10,5,3,1,5]` and `n_neighbors=1`.
 
-
-*** =hint
+`@hint`
 - First concatenate the two edges of your list with repeats of the first and last values of the list, and use a moving sum that applies to the middle values of this longer list!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
 random.seed(1)
 ```
 
-*** =solution
-```{python}
-import random
-
-random.seed(1)
-
-def moving_window_average(x, n_neighbors=1):
-    n = len(x)
-    width = n_neighbors*2 + 1
-    x = [x[0]]*n_neighbors + x + [x[-1]]*n_neighbors
-    return [sum(x[i:(i+width)]) / width for i in range(n)]
-
-x=[0,10,5,3,1,5]
-print(moving_window_average(x, 1))
-```
-
-*** =sample_code
+`@sample_code`
 ```{python}
 import random
 
@@ -744,7 +817,23 @@ x=[0,10,5,3,1,5]
 print(moving_window_average(x, 1))
 ```
 
-*** =sct
+`@solution`
+```{python}
+import random
+
+random.seed(1)
+
+def moving_window_average(x, n_neighbors=1):
+    n = len(x)
+    width = n_neighbors*2 + 1
+    x = [x[0]]*n_neighbors + x + [x[-1]]*n_neighbors
+    return [sum(x[i:(i+width)]) / width for i in range(n)]
+
+x=[0,10,5,3,1,5]
+print(moving_window_average(x, 1))
+```
+
+`@sct`
 ```{python}
 test_object("x",
             undefined_msg = "Did you remember to define `x`?",
@@ -758,22 +847,29 @@ test_function("print", index = 1,
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:006c8d659a
 ## Exercise 3b
 
-A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
+```yaml
+type: NormalExercise
+key: 006c8d659a
+lang: python
+xp: 100
+skills: 2
+```
 
-*** =instructions
+A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.
+
+`@instructions`
 - Compute and store `R=1000` random values from 0-1 as `x`.
 - `moving_window_average(x, n_neighbors)` is pre-loaded into memory from `3a`.  Compute the moving window average for `x` for values of `n_neighbors` ranging from 1 to 9 inclusive.
-- Store `x` as well as each of these averages as consecutive lists in a list called `Y`. 
+- Store `x` as well as each of these averages as consecutive lists in a list called `Y`.
 
-
-*** =hint
+`@hint`
 - You may be able to use a list comprehension here!  A `for` loop will also work.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
@@ -785,19 +881,7 @@ def moving_window_average(x, n_neighbors=1):
     return [sum(x[i:(i+width)]) / width for i in range(n)]
 ```
 
-*** =solution
-```{python}
-import random
-
-random.seed(1) # This line fixes the value called by your function,
-               # and is used for answer-checking.
-    
-R=1000
-x = [random.random() for i in range(R)]
-Y = [x] + [moving_window_average(x, i) for i in range(1, 10)]
-```
-
-*** =sample_code
+`@sample_code`
 ```{python}
 import random
 
@@ -811,7 +895,19 @@ random.seed(1) # This line fixes the value called by your function,
 
 ```
 
-*** =sct
+`@solution`
+```{python}
+import random
+
+random.seed(1) # This line fixes the value called by your function,
+               # and is used for answer-checking.
+    
+R=1000
+x = [random.random() for i in range(R)]
+Y = [x] + [moving_window_average(x, i) for i in range(1, 10)]
+```
+
+`@sct`
 ```{python}
 test_object("Y",
               undefined_msg="Make sure to define `Y`!",
@@ -819,20 +915,28 @@ test_object("Y",
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:7f5873e828
 ## Exercise 3c
 
-A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.  
+```yaml
+type: NormalExercise
+key: 7f5873e828
+lang: python
+xp: 100
+skills: 2
+```
 
-*** =instructions
+A list of numbers can be very unsmooth, meaning very high numbers can be right next to very low numbers.  This list may represent a smooth path in reality that is masked with random noise (for example, satellite trajectories with inaccurate transmission). One way to smooth the values in the list is to replace each value with the average of each value's neighbors, including the value itself.
+
+`@instructions`
 - `moving_window_average(x, n_neighbors=2)` and `Y` are already loaded into memory.  For each list in `Y`, calculate and store the range (the maximum minus the minimum) in a new list `ranges`.
 - Print your answer.  As the window width increases, does the range of each list increase or decrease? Why do you think that is?
 
-*** =hint
+`@hint`
 - A `for` loop or a list comprehension will work well here.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import random
@@ -852,13 +956,7 @@ x = [random.random() for i in range(R)]
 Y = [x] + [moving_window_average(x, i) for i in range(1,10)]
 ```
 
-*** =solution
-```{python}
-ranges = [max(x)-min(x) for x in Y]
-print(ranges)
-```
-
-*** =sample_code
+`@sample_code`
 ```{python}
 # write your code here!
 
@@ -866,7 +964,13 @@ print(ranges)
 
 ```
 
-*** =sct
+`@solution`
+```{python}
+ranges = [max(x)-min(x) for x in Y]
+print(ranges)
+```
+
+`@sct`
 ```{python}
 test_object("ranges",
             undefined_msg = "Did you remember to define `ranges`?",
@@ -876,4 +980,3 @@ test_function("print", index = 1,
               incorrect_msg = "Are you sure that your answer is correct?")
 success_msg("Great work!  The range decreases, because the average smooths a larger number of neighbors. Because the numbers in the original list are just random, we expect the average of many of them to be roughly 1 / 2, and more averaging means more smoothness in this value. This concludes this week's homework.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
-

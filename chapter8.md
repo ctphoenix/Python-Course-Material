@@ -1,31 +1,38 @@
 ---
-title       : Case Study 6 - Social Network Analysis
-description : Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
+title: 'Case Study 6 - Social Network Analysis'
+description: 'Homophily is a network characteristic.  Homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.'
+---
 
-
---- type:NormalExercise lang:python xp:100 skills:2 key:9f789af19a
 ## Exercise 1
+
+```yaml
+type: NormalExercise
+key: 9f789af19a
+lang: python
+xp: 100
+skills: 2
+```
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 In this exercise, we will calculate the chance homophily for an arbitrary characteristic. Homophily is the proportion of edges in the network whose constituent nodes share that characteristic.  How much homophily do we expect by chance?  If characteristics are distributed completely randomly, the probability that two nodes `x` and `y` share characteristic `a` is the probability both nodes have characteristic `a`, which is the frequency of `a` squared.  The total probability that nodes `x` and `y` share their characteristic is therefore the sum of the frequency of each characteristic in the network.  For example, in the dictionary `favorite_colors` provided, the frequency of `red` and `blue` is 1/3 and 2/3 respectively, so the chance homophily is (1/3)^2+(2/3)^2 = 5/9.
 
-*** =instructions
+`@instructions`
 - Create a function that takes a dictionary `chars` with personal IDs as keys and characteristics as values, and returns a dictionary with characteristics as keys, and the frequency of their occurrence as values.
 - Create a function `chance_homophily(chars)` that takes a dictionary `chars` defined as above and computes the chance homophily for that characteristic.
 - A sample of three peoples' favorite colors is given in `favorite_colors`.  Use your function to compute the chance homophily in this group, and store as `color_homophily`.
 - Print `color_homophily`.
 
-*** =hint
+`@hint`
 - Recall from Video 3.2.2 that the `Counter` method takes a `list` and creates a dictionary-like object with unique list values as keys and their counts as values.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import numpy as np
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 from collections import Counter
 def frequency(chars):
@@ -47,7 +54,7 @@ print(color_homophily)
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 from collections import Counter
 def frequency(chars):
@@ -73,7 +80,7 @@ print(color_homophily)
 
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_function("chance_homophily",
               not_called_msg = "Make sure to call `chance_homophily`!",
@@ -87,32 +94,38 @@ test_student_typed("print",
 success_msg("Great work!")
 ```
 
-
-
---- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
+---
 
 ## Exercise 2
+
+```yaml
+type: NormalExercise
+key: 07ea54b341
+lang: python
+xp: 100
+skills: 2
+```
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 In the remaining exercises, we will calculate and compare the actual homophily in these village to chance. In this exercise, we subset the data into individual villages and store them.
 
-*** =instructions
+`@instructions`
 -  `individual_characteristics.dta` contains several characteristics for each individual in the dataset such as age, religion, and caste.  Use the `pandas` library to read in and store these characteristics as a dataframe called `df`.
 -  Store separate datasets for individuals belonging to Villages 1 and 2 as `df1` and `df2`, respectively.
     -  Note that some attributes may be missing for some individuals. In this case study, we will ignore rows of data where some column information is missing.
 - Use the `head` method to display the first few entries of `df1`.
 
-*** =hint
+`@hint`
 -  `df["village"]==1` tests if each row belongs to Village 1.  How can you use this to subset the rows of `df` belonging to Village 1?
 - Don't forget to call `df1.head()`!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 import pandas as pd
 df  = pd.read_stata(data_filepath + "individual_characteristics.dta")
@@ -122,7 +135,7 @@ df2 = # Enter code here!
 # Enter code here!
 ```
 
-*** =solution
+`@solution`
 ```{python}
 import pandas as pd
 df  = pd.read_stata(data_filepath + "individual_characteristics.dta")
@@ -132,7 +145,7 @@ df2 = df[df["village"]==2]
 df1.head()
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("df",
             undefined_msg = "Did you define `df`?",
@@ -149,24 +162,32 @@ test_student_typed("df1.head()",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:147facfc92
+---
+
 ## Exercise 3
+
+```yaml
+type: NormalExercise
+key: 147facfc92
+lang: python
+xp: 100
+skills: 2
+```
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 In this exercise, we define a few dictionaries that enable us to look up the sex, caste, and religion of members of each village by personal ID. For Villages 1 and 2, their personal IDs are stored as `pid`.
 
-*** =instructions
+`@instructions`
 - Define dictionaries with personal IDs as keys and a given covariate for that individual as values.  Complete this for the sex, caste, and religion covariates, for Villages 1 and 2.
 - For Village 1, store these dictionaries into variables named `sex1`, `caste1`, and `religion1`.
 - For Village 2, store these dictionaries into variables named `sex2`, `caste2`, and `religion2`.
 
-*** =hint
+`@hint`
 - Villages 1 and 2 are stored as `df1` and `df2`, respectively. for each, the index of each row may be set using the `set_index()` function using `"pid"` to set the personal ID indeces.
 - Once the column of choice has been selected, the index and column pairs may be cast as a dictionary by using the `.to_dict()` function.
 
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
@@ -176,7 +197,7 @@ df1 = df[df["village"]==1]
 df2 = df[df["village"]==2]
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 sex1      = # Enter code here!
 caste1    = # Enter code here!
@@ -187,7 +208,7 @@ religion1 = # Enter code here!
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 sex1      = df1.set_index("pid")["resp_gend"].to_dict()
 caste1    = df1.set_index("pid")["caste"].to_dict()
@@ -198,7 +219,7 @@ caste2    = df2.set_index("pid")["caste"].to_dict()
 religion2 = df2.set_index("pid")["religion"].to_dict()
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("sex1",
             undefined_msg = "Did you define `sex1`?",
@@ -221,23 +242,30 @@ test_object("religion2",
 success_msg("Great work!")
 ```
 
+---
 
-
---- type:NormalExercise lang:python xp:100 skills:2 key:6d28b82a47
 ## Exercise 4
+
+```yaml
+type: NormalExercise
+key: 6d28b82a47
+lang: python
+xp: 100
+skills: 2
+```
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 In this exercise, we will print the chance homophily of several characteristics of Villages 1 and 2. The function `chance_homophily` is still defined from Exercise 1.
 
-*** =instructions
+`@instructions`
 - `sex1`, `caste1`, `religion1`, `sex2`, `caste2`, and `religion2` are already defined from previous exercises.  Use `chance_homophily` to compute the chance homophily for sex, caste, and religion In Villages 1 and 2.  Is the chance homophily for any attribute very high for either village?
 
-*** =hint
+`@hint`
 - Use `chance_homophily` on `sex1`, `caste1`, `religion1`, `sex2`, `caste2`, and `religion2`.
 - Print all six values.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
@@ -261,7 +289,7 @@ def chance_homophily(chars):
     return sum(chars_props**2)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 print("Village 1 chance of same sex:", chance_homophily(sex1))
 # Enter your code here.
@@ -269,7 +297,7 @@ print("Village 1 chance of same sex:", chance_homophily(sex1))
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 print("Village 1 chance of same sex:", chance_homophily(sex1))
 print("Village 1 chance of same caste:", chance_homophily(caste1))
@@ -280,7 +308,7 @@ print("Village 2 chance of same caste:", chance_homophily(caste2))
 print("Village 2 chance of same religion:", chance_homophily(religion2))
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("chance_homophily(sex1)",
               pattern=False,
@@ -306,25 +334,34 @@ test_student_typed("print",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:49219b49be
+---
+
 ## Exercise 5
+
+```yaml
+type: NormalExercise
+key: 49219b49be
+lang: python
+xp: 100
+skills: 2
+```
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 In this exercise, we will create a function that computes the observed homophily given a village and characteristic.
 
-*** =instructions
+`@instructions`
 - Complete the function `homophily()`, which takes a network `G`, a dictionary of characteristics `chars`, and node IDs `IDs`. For each node pair, determine whether a tie exists between them, as well as whether they share a characteristic.  The total count of these is `num_same_ties` and `num_ties` respectively, and their ratio is the homophily of `chars` in `G`.  Complete the function by choosing where to increment `num_same_ties` and `num_ties`.
 
-*** =hint
+`@hint`
 - You can increment an `int` variable `x` using the Python shorthand `x += 1`!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 def homophily(G, chars, IDs):
     """
@@ -344,7 +381,7 @@ def homophily(G, chars, IDs):
     
 ```
 
-*** =solution
+`@solution`
 ```{python}
 def homophily(G, chars, IDs):
     """
@@ -363,32 +400,41 @@ def homophily(G, chars, IDs):
     return (num_same_ties / num_ties)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:95681c66de
+---
+
 ## Exercise 6
+
+```yaml
+type: NormalExercise
+key: 95681c66de
+lang: python
+xp: 100
+skills: 2
+```
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 In this exercise, we will obtain the personal IDs for Villages 1 and 2. These will be used in the next exercise to calculate homophily for these villages.
 
-*** =instructions
+`@instructions`
 -  In this dataset, each individual has a personal ID, or PID, stored in `key_vilno_1.csv` and `key_vilno_2.csv` for villages 1 and 2, respectively. `data_filepath` contains the base URL to the datasets used in this exercise. Use `pd.read_csv` to read in and store `key_vilno_1.csv` and `key_vilno_2.csv` as `pid1` and `pid2` respectively.  The `csv` files have no headers, so make sure to include the parameter `header = None`.
 
-*** =hint
+`@hint`
 - Remember, you can concatenate strings with `+`. You can also take a look at the contents of string `data_filepath` using the shell.
 -   You might want to store these as type `int` using the parameter `dtype=int`!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 # Enter code here!
 
@@ -396,13 +442,13 @@ import pandas as pd
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 pid1 = pd.read_csv(data_filepath + "key_vilno_1.csv", dtype=int, header = None)
 pid2 = pd.read_csv(data_filepath + "key_vilno_2.csv", dtype=int, header = None)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("pid1",
             undefined_msg = "Did you define `pid1`?",
@@ -413,24 +459,31 @@ test_object("pid2",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:73e9f60471
+---
+
 ## Exercise 7
+
+```yaml
+type: NormalExercise
+key: 73e9f60471
+lang: python
+xp: 100
+skills: 2
+```
 
 Network homophily occurs when nodes that share an edge share a characteristic more often than nodes that do not share an edge.  In this case study, we will investigate homophily of several characteristics of individuals connected in social networks in rural India.
 
 In this exercise, we will compute the homophily of several network characteristics for Villages 1 and 2, and compare this to chance homophily. The networks for these villages have been stored as `networkx` graph objects `G1` and `G2`. `homophily()` and `chance_homophily()` are pre-loaded from previous exercises.
 
-*** =instructions
+`@instructions`
 - Use your `homophily()` function to compute the observed homophily for sex, caste, and religion in Villages 1 and 2. Print all six values.
 - Use the `chance_homophily()` to compare these values to chance homophily.  Are these values higher or lower than that expected by chance?
 
-
-
-*** =hint
+`@hint`
 - Use your `homophily()` function on `sex1`, `caste1`, and `religion1` with `pid1`, and `sex2`, `caste2`, and `religion2` with `pid2`.
 - Do the same with `chance_homophily()`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import pandas as pd
@@ -476,7 +529,7 @@ def chance_homophily(chars):
     
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 print("Village 1 observed proportion of same sex:", homophily(G1, sex1, pid1))
 
@@ -488,7 +541,7 @@ print("Village 1 observed proportion of same sex:", homophily(G1, sex1, pid1))
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 print("Village 1 observed proportion of same sex:", homophily(G1, sex1, pid1))
 print("Village 1 observed proportion of same caste:", homophily(G1, caste1, pid1))
@@ -507,7 +560,7 @@ print("Village 2 chance of same caste:", chance_homophily(caste2))
 print("Village 2 chance of same religion:", chance_homophily(religion2))
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("sex1",
               pattern=False,
@@ -532,10 +585,3 @@ test_student_typed("chance_homophily",
               not_typed_msg="Did you use `chance_homophily` to compare observed homophily to chance?")              
 success_msg("Great work!  In each case, these are substantially higher than chance. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
-
-
-
-
-
-
-

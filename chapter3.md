@@ -1,9 +1,17 @@
 ---
-title       : Case Study 1 - Caesar Cipher
-description : A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
---- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
+title: 'Case Study 1 - Caesar Cipher'
+description: 'A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.'
+---
 
 ## Exercise 1
+
+```yaml
+type: NormalExercise
+key: 07ea54b341
+lang: python
+xp: 100
+skills: 2
+```
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
@@ -11,17 +19,18 @@ The Caesar cipher shifts each letter of a message to another letter in the alpha
 
 Over the next five exercises, we will create our own Caesar cipher, as well as a message decoder for this cipher. In this exercise, we will define the alphabet used in the cipher.
 
-*** =instructions
+`@instructions`
 -  The `string` library has been imported. Create a string called `alphabet` consisting of the lowercase letters of the space character space `' '`, concatenated with `string.ascii_lowercase` at the end.
 
-*** =hint
+`@hint`
 
-*** =pre_exercise_code
+
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 # Let's look at the lowercase letters.
 import string
@@ -29,13 +38,13 @@ alphabet = # Add your code here! #
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 import string
 alphabet = " " + string.ascii_lowercase
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("alphabet",
             undefined_msg = "Did you define `alphabet`?",
@@ -43,10 +52,17 @@ test_object("alphabet",
 success_msg("Great work!")
 ```
 
+---
 
-
---- type:NormalExercise lang:python xp:100 skills:2 key:2288897c84
 ## Exercise 2
+
+```yaml
+type: NormalExercise
+key: 2288897c84
+lang: python
+xp: 100
+skills: 2
+```
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
@@ -54,27 +70,27 @@ The Caesar cipher shifts each letter of a message to another letter in the alpha
 
 In this exercise, we will define a dictionary that specifies the index of each character in `alphabet`.
 
-*** =instructions
+`@instructions`
 -  `alphabet` has already defined from the last exercise. Create a dictionary with keys consisting of the characters in `alphabet`, and values consisting of the numbers from 0 to 26.
 - Store this as `positions`.
 
-*** =hint
+`@hint`
 - You can use a `for` loop to iterate through the values of `alphabet` and assign each as a key to `positions` with a value that increments by `1` after every new entry.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
 alphabet = " " + string.ascii_lowercase
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 positions =
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 alphabet = " " + string.ascii_lowercase
 positions = {}
@@ -84,7 +100,7 @@ for char in alphabet:
     index += 1
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("positions",
             undefined_msg = "Did you define `positions`?",
@@ -92,23 +108,31 @@ test_object("positions",
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:8bb2db8347
 ## Exercise 3
+
+```yaml
+type: NormalExercise
+key: 8bb2db8347
+lang: python
+xp: 100
+skills: 2
+```
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 In this exercise, we will encode a message with a Caesar cipher.
 
-*** =instructions
+`@instructions`
 -  `alphabet` and `positions` have already been defined from previous exercises. Use `positions` to create an encoded message based on `message` where each character in `message` has been shifted forward by 1 position, as defined by `positions`. Note that you can ensure the result remains within 0-26 using `result % 27`
 - Store this as `encoded_message`.
 
-*** =hint
+`@hint`
 - You might use a `for` loop that calls the position of each character in `message`, and increment this value by 1.
 - Using these incremented positions as indices of `alphabet`, you will recover the correct encoded character of the message!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
@@ -120,14 +144,14 @@ for char in alphabet:
     index += 1
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 message = "hi my name is caesar"
 
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 message = "hi my name is caesar"
 
@@ -139,7 +163,7 @@ for char in message:
 encoded_message = "".join(encoding_list)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("encoded_message",
             undefined_msg = "Did you define `encoded_message`?",
@@ -147,27 +171,32 @@ test_object("encoded_message",
 success_msg("Great work!")
 ```
 
+---
 
-
-
-
---- type:NormalExercise lang:python xp:100 skills:2 key:95e2d3c0a4
 ## Exercise 4
+
+```yaml
+type: NormalExercise
+key: 95e2d3c0a4
+lang: python
+xp: 100
+skills: 2
+```
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 In this exercise, we will define a function that encodes a message with any given encryption key.
 
-*** =instructions
+`@instructions`
 - `alphabet`, `position` and `message` remain defined from previous exercises. In addition, sample code for the previous exercise is provided below. Modify this code to define a function `encoding` that takes a message as input as well as an `int` encryption key `key` to encode a message with the Caesar cipher by shifting each letter in `message` by `key` positions.
 - Your function should return a string consisting of these encoded letters.
 - Use `encode` to encode `message` using `key = 3`, and save the result as `encoded_message`.
 - Print `encoded_message`.
 
-*** =hint
+`@hint`
 - Much of what is being asked of you is to transform the given code into a function, and call and print its use.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
@@ -180,7 +209,7 @@ for char in alphabet:
     index += 1
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 encoding_list = []
 for char in message:
@@ -192,7 +221,7 @@ encoded_string = "".join(encoding_list)
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 def encoding(message, key = 0):
     """
@@ -217,7 +246,7 @@ print(encoded_message)
 
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("encoding",
               pattern=False,
@@ -231,22 +260,31 @@ test_object("encoded_message",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:99f93f9512
+---
+
 ## Exercise 5
+
+```yaml
+type: NormalExercise
+key: 99f93f9512
+lang: python
+xp: 100
+skills: 2
+```
 
 A cipher is a secret code for a language.  In this case study, we will explore a cipher that is reported by contemporary Greek historians to have been used by Julius Caesar to send secret messages to generals during times of war.
 
 In this exercise, we will decode an encoded message.
 
-*** =instructions
+`@instructions`
 - Note that `encoding` and `encoded_message` are already loaded from the previous problem. Use `encoding` to decode `encoded_message` using `key = -3`.
 - Store your decoded message as `decoded_message`.
 - Print `decoded_message`.  Does this recover your original message?
 
-*** =hint
+`@hint`
 - This should not require any changes to the function `encoding`!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 import string
@@ -279,7 +317,7 @@ def encoding(message, key = 0):
 encoded_message = encoding(message, 3)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 
 decoded_message = 
@@ -288,7 +326,7 @@ decoded_message =
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 decoded_message = encoding(encoded_message, -3)
 
@@ -296,7 +334,7 @@ print(decoded_message)
 
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("print",
               pattern=False,
@@ -306,4 +344,3 @@ test_object("decoded_message",
             incorrect_msg = "It looks like `decoded_message` wasn't defined correctly.")
 success_msg("Great work!  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
-

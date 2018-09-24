@@ -1,21 +1,30 @@
 ---
-title       : Case Study 4 - Visualizing Whisky Classification
-description : In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
---- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
+title: 'Case Study 4 - Visualizing Whisky Classification'
+description: 'In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.'
+---
+
 ## Exercise 1
+
+```yaml
+type: NormalExercise
+key: 07ea54b341
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 In this exercise, we provide a basic demonstration of an interactive grid plot using Bokeh. Make sure to study this code now, as we will edit similar code in the exercises that follow.
 
-*** =instructions
+`@instructions`
 -  Execute the following code and follow along with the comments. We will later adapt this code to plot the correlations among distillery flavor profiles as well as plot a geographical map of distilleries colored by region and flavor profile.
 -  Once you have plotted the code, hover, click, and drag your cursor on the plot to interact with it.  Additionally, explore the icons in the top-right corner of the plot for more interactive options!
 
-*** =hint
+`@hint`
 - Simply execute and read along with the code given!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
@@ -35,7 +44,7 @@ correlations = pd.DataFrame.corr(whisky.iloc[:,2:14].transpose())
 correlations = np.array(correlations)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 # First, we import a tool to allow text to pop up on a plot when the cursor
 # hovers over it.  Also, we import a data structure used to store arguments
@@ -96,7 +105,7 @@ hover.tooltips = {
 show(fig)
 ```
 
-*** =solution
+`@solution`
 ```{python}
 # First, we import a tool to allow text to pop up on a plot when the cursor
 # hovers over it.  Also, we import a data structure used to store arguments
@@ -157,7 +166,7 @@ hover.tooltips = {
 show(fig)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("show(fig)",
               pattern=False,
@@ -165,28 +174,36 @@ test_student_typed("show(fig)",
 success_msg("Great work!")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:5f8ea1133d
 ## Exercise 2
+
+```yaml
+type: NormalExercise
+key: 5f8ea1133d
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
-In this exercise, we will create the names and colors we will use to plot the correlation matrix of whisky flavors.  Later, we will also use these colors to plot each distillery geographically.  
+In this exercise, we will create the names and colors we will use to plot the correlation matrix of whisky flavors.  Later, we will also use these colors to plot each distillery geographically.
 
-*** =instructions
+`@instructions`
 - Create a dictionary `region_colors` with regions as keys and `cluster_colors` as values.
 - Print `region_colors`.
 
-*** =hint
+`@hint`
 - Use `zip` to combine `regions` and `cluster_colors` and use `dict()` to convert this to a `dict`.
 - Make sure to print your answer!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
 regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
@@ -196,7 +213,7 @@ region_colors = ## ENTER CODE HERE! ##
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
 regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Islay"]
@@ -206,7 +223,7 @@ region_colors = dict(zip(regions, cluster_colors))
 print(region_colors)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("region_colors",
             undefined_msg = "Did you define `region_colors`?",
@@ -217,22 +234,31 @@ test_function("print",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:3f6fcf71bc
+---
+
 ## Exercise 3
+
+```yaml
+type: NormalExercise
+key: 3f6fcf71bc
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 `correlations` is a two-dimensional `np.array` with both rows and columns corresponding to distilleries and elements corresponding to the flavor correlation of each row/column pair.  In this exercise, we will define a list `correlation_colors`, with `string` values corresponding to colors to be used to plot each distillery pair.  Low correlations among distillery pairs will be white, high correlations will be a distinct group color if the distilleries from the same group, and gray otherwise.
 
-*** =instructions
+`@instructions`
 -  Edit the code to define `correlation_colors` for each distillery pair to have input `'white'` if their correlation is less than 0.7.
-- `whisky` is a `pandas` dataframe, and `Group` is a column consisting of distillery group memberships.  For distillery pairs with correlation greater than 0.7, if they share the same whisky group, use the corresponding color from `cluster_colors`.  Otherwise, the `correlation_colors` value for that distillery pair will be defined as `'lightgray'`.	
+- `whisky` is a `pandas` dataframe, and `Group` is a column consisting of distillery group memberships.  For distillery pairs with correlation greater than 0.7, if they share the same whisky group, use the corresponding color from `cluster_colors`.  Otherwise, the `correlation_colors` value for that distillery pair will be defined as `'lightgray'`.
 
-*** =hint
+`@hint`
 - You can index the `(i,j)` distillery pair of `correlations` using `correlations[i,j]`.  How can you test if this value is less than 0.7?
 - You can find the group membership of distillery `i` using `whisky.Group[i]`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 cluster_colors = ["red", "orange", "green", "blue", "purple", "gray"]
@@ -255,7 +281,7 @@ correlations = pd.DataFrame.corr(whisky.iloc[:,2:14].transpose())
 correlations = np.array(correlations)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 distilleries = list(whisky.Distillery)
 correlation_colors = []
@@ -270,7 +296,7 @@ for i in range(len(distilleries)):
                 correlation_colors.append('lightgray') # color them lightgray.
 ```
 
-*** =solution
+`@solution`
 ```{python}
 distilleries = list(whisky.Distillery)
 correlation_colors = []
@@ -285,7 +311,7 @@ for i in range(len(distilleries)):
                 correlation_colors.append('lightgray') # color them lightgray.
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("correlation_colors",
             undefined_msg = "Did you define `correlation_colors`?",
@@ -293,23 +319,31 @@ test_object("correlation_colors",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:a95b5fe144
+---
+
 ## Exercise 4
+
+```yaml
+type: NormalExercise
+key: a95b5fe144
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 In this exercise, we will edit the given code to make an interactive grid of the correlations among distillery pairs based on the quantities found in previous exercises. Most plotting specifications are made by editing `ColumnDataSource`, a `bokeh` structure used for defining interactive plotting inputs. The rest of the plotting code is already complete.
 
-
-*** =instructions
+`@instructions`
 - `correlation_colors` is a list of `string` colors for each pair of distilleries. Set this as `color` in `ColumnDataSource`.  
 - Define `correlations` in `source` using `correlations` from the previous exercise. To convert `correlations` from a `np.array` to a `list`, use the `flatten()` method. This correlation coefficient will be used to define both the color transparency as well as the hover text for each square.
 
-*** =hint
+`@hint`
 - For `"colors"`, the `correlation_colors` we defined in the last question will work as is.
 - Use the `flatten` method for both `"alphas"` and `"correlations"`!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
@@ -343,7 +377,7 @@ for i in range(len(distilleries)):
                 correlation_colors.append('lightgray')
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 source = ColumnDataSource(
     data = {
@@ -374,7 +408,7 @@ hover.tooltips = {
 show(fig)
 ```
 
-*** =solution
+`@solution`
 ```{python}
 source = ColumnDataSource(
     data = {
@@ -405,7 +439,7 @@ hover.tooltips = {
 show(fig)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("show(fig)",
               pattern=False,
@@ -419,20 +453,29 @@ test_student_typed("flatten",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:8c4771d390
+---
+
 ## Exercise 5
+
+```yaml
+type: NormalExercise
+key: 8c4771d390
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 In this exercise, we give a demonstration of plotting geographic points.
 
-*** =instructions
+`@instructions`
 - Run the following code, to be adapted in the next section.  Compare this code to that used in plotting the distillery correlations.
 
-*** =hint
+`@hint`
 - Just run the code and follow along!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
@@ -440,7 +483,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.models import HoverTool, ColumnDataSource
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 points = [(0,0), (1,2), (3,1)]
 xs, ys = zip(*points)
@@ -469,7 +512,7 @@ hover.tooltips = {
 show(fig)
 ```
 
-*** =solution
+`@solution`
 ```{python}
 points = [(0,0), (1,2), (3,1)]
 xs, ys = zip(*points)
@@ -498,7 +541,7 @@ hover.tooltips = {
 show(fig)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("show(fig)",
               pattern=False,
@@ -506,24 +549,32 @@ test_student_typed("show(fig)",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:fd58851485
+---
+
 ## Exercise 6
+
+```yaml
+type: NormalExercise
+key: fd58851485
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 In this exercise, we will define a function `location_plot(title, colors)` that takes a string `title` and a list of colors corresponding to each distillery and outputs a Bokeh plot of each distillery by latitude and longitude.  It will also display the distillery name, latitude, and longitude as hover text.
 
-*** =instructions
+`@instructions`
 - Adapt the given code beginning with the first comment and ending with `show(fig)` to create the function `location_plot()`, as described above.
 - `Region` is a column of in the `pandas` dataframe `whisky`, containing the regional group membership for each distillery.  Make a list consisting of the value of `region_colors` for each distillery, and store this list as `region_cols`.
-- Use `location_plot` to plot each distillery, colored by its regional grouping.	
+- Use `location_plot` to plot each distillery, colored by its regional grouping.
 
-
-*** =hint
+`@hint`
 - Remember to define the function!
 - You can iterate through `whisky.Region` by casting it as a `list`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
@@ -546,7 +597,7 @@ regions = ["Speyside", "Highlands", "Lowlands", "Islands", "Campbelltown", "Isla
 region_colors = dict(zip(regions, cluster_colors))
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 # edit this to make the function `location_plot`.
 
@@ -581,7 +632,7 @@ location_plot("Whisky Locations and Regions", region_cols)
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 def location_plot(title, colors):
     output_file(title+".html")
@@ -613,7 +664,7 @@ region_cols = [region_colors[i] for i in list(whisky["Region"])]
 location_plot("Whisky Locations and Regions", region_cols)    
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("def location_plot(",
               pattern=False,
@@ -624,23 +675,32 @@ test_object("region_cols",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:2952d41efd
+---
+
 ## Exercise 7
+
+```yaml
+type: NormalExercise
+key: 2952d41efd
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we have prepared step-by-step instructions for you on how to prepare plots in Bokeh, a library designed for simple and interactive plotting.  We will demonstrate Bokeh by continuing the analysis of Scotch whiskies.
 
 `location_plot` remains stored from the previous exercise. In this exercise, we will use this function to plot each distillery, colored by region and taste coclustering classification, respectively.
 
-*** =instructions
+`@instructions`
 - Create the list `region_cols` consisting of the color in `region_colors` that corresponds to each whisky in `whisky.Region`.
 - Similarly, create a list `classification_cols` consisting of the color in `cluster_colors` that corresponds to each cluster membership in `whisky.Group`.
 - Create two interactive plots of distilleries, one using `region_cols` and the other with colors defined by  called `classification_cols`.  How well do the coclustering groupings match the regional groupings?
 
-*** =hint
+`@hint`
 - This problem asks you to repeat part of the previous problem (for comparison), and to define a similar color classification for flavor clusters.  Two straightforward list comprehensions will do the trick.
 - If you do use a list comprehension, `whisky.Region` and `whisky.Group` should be cast as lists!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 from sklearn.cluster.bicluster import SpectralCoclustering
@@ -688,7 +748,7 @@ def location_plot(title, colors):
     show(fig)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 region_cols = ## ENTER CODE HERE! ##
 classification_cols = ## ENTER CODE HERE! ##
@@ -697,7 +757,7 @@ location_plot("Whisky Locations and Regions", region_cols)
 location_plot("Whisky Locations and Groups", classification_cols)
 ```
 
-*** =solution
+`@solution`
 ```{python}
 region_cols = [region_colors[i] for i in list(whisky.Region)]
 classification_cols = [cluster_colors[i] for i in list(whisky.Group)]
@@ -706,7 +766,7 @@ location_plot("Whisky Locations and Regions", region_cols)
 location_plot("Whisky Locations and Groups", classification_cols)
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("region_cols",
             undefined_msg = "Did you define `region_cols`?",
@@ -719,8 +779,3 @@ test_student_typed("location_plot",
               not_typed_msg="Did you make sure to use `location_plot` to see your results?")         
 success_msg("Great work!  We see that there is not very much overlap between the regional classifications and the coclustering classifications.  This means that regional classifications are not a very good guide to Scotch whisky flavor profiles.  This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
-
-
-
-
-

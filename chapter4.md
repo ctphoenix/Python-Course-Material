@@ -1,23 +1,32 @@
 ---
-title       : Case Study 2 - Translations of Hamlet
-description : In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation - let's find out!
---- type:NormalExercise lang:python xp:100 skills:2 key:07ea54b341
+title: 'Case Study 2 - Translations of Hamlet'
+description: 'In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.  Perhaps the distribution of word frequencies of Hamlet depends on the translation - let''s find out!'
+---
+
 ## Exercise 1
+
+```yaml
+type: NormalExercise
+key: 07ea54b341
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we will find and visualize summary statistics of the text of different translations of Hamlet. For this case study, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x).
 
 `book_titles` is a nested dictionary, containing book titles within authors within languages, all of which are strings.  These books are all stored online, and are accessed throughout this case study. In this exercise, we will first read in and store each translation of Hamlet.
 
-*** =instructions
+`@instructions`
 - Define `hamlets` as a `pandas` dataframe with columns `language` and `text`.
 - Add an `if` statement to check if the title is equal to `'Hamlet'`.
 - Store the results from `read_book(inputfile)` to `text`.
 - Consider: How many translations are there? Which languages are they translated into?
 
-*** =hint
+`@hint`
 - Try using `pd.DataFrame`.  Make sure to include the `columns` argument!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
@@ -65,7 +74,7 @@ def more_frequent(distribution):
     return dict(zip(counts, more_frequent))
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 hamlets = ## Enter code here! ##
 book_dir = "Books"
@@ -82,7 +91,7 @@ for language in book_titles:
                 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 hamlets = pd.DataFrame(columns = ["language","text"])
 book_dir = "Books"
@@ -97,7 +106,7 @@ for language in book_titles:
                 title_num += 1
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("hamlets",
             undefined_msg = "Did you define `hamlets`?",
@@ -105,26 +114,34 @@ test_object("hamlets",
 success_msg("Great work!  There are three translations: English, German, and Portuguese.")
 ```
 
+---
 
---- type:NormalExercise lang:python xp:100 skills:2 key:f2cef742ec
 ## Exercise 2
+
+```yaml
+type: NormalExercise
+key: f2cef742ec
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we will find and visualize summary statistics of the text of different translations of Hamlet. For this case study, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 In this exercise, we will summarize the text for a single translation of Hamlet in a `pandas` dataframe. The language and text of the first translation of Hamlet in `hamlets` is given in the code section.
 
-*** =instructions
+`@instructions`
 - Find the dictionary of word frequency in `text` by calling `count_words_fast()`. Store this as `counted_text`.
 - Create a `pandas` dataframe named `data`.
 - Using `counted_text`, define two columns in `data`:
     -  `word`, consisting of each unique word in `text`.
     -  `count`, consisting of the number of times each word in `word` is included in the text.
 
-*** =hint
+`@hint`
 - `word` are the keys and `count` are the values from `counted_text`.
 - They may be included by converting `counted_text.keys()` and `counted_text.values()` into lists.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
@@ -180,7 +197,7 @@ for language in book_titles:
                 title_num += 1
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 language, text = hamlets.iloc[0]
 
@@ -189,7 +206,7 @@ language, text = hamlets.iloc[0]
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 language, text = hamlets.iloc[0]
 
@@ -201,7 +218,7 @@ data = pd.DataFrame({
 })
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_function("count_words_fast",
               not_called_msg = "Make sure to call `count_words_fast`!",
@@ -212,25 +229,34 @@ test_object("data",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:0fc5cd1ce9
+---
+
 ## Exercise 3
+
+```yaml
+type: NormalExercise
+key: 0fc5cd1ce9
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we will find and visualize summary statistics of the text of different translations of Hamlet. For this case study, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 In this exercise, we will continue to define summary statistics for a single translation of Hamlet. The solution code from the previous section is already included here.
 
-*** =instructions
+`@instructions`
 - Add a column to `data` named `length`, defined as the length of each word.
 - Add another column named `frequency`, which is defined as follows for each word in `data`:
     -  If `count` > 10, `frequency ` is `frequent`.
     -  If 1 < `count` <= 10, `frequency ` is `infrequent`.
     -  If `count` == 1, `frequency ` is `unique`.
 
-*** =hint
+`@hint`
 - You can use the `apply()` function to `data["word"]` to apply a function to each element in `data["word"]`. To compute the length of each word, try the `len` function as the argument for `apply()`.
-- The column `frequency` can be defined using cases. `data.loc[]` can be used to locate the rows that meet a certain criterion, such as `data["count"] > 10`.  
+- The column `frequency` can be defined using cases. `data.loc[]` can be used to locate the rows that meet a certain criterion, such as `data["count"] > 10`.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
@@ -287,7 +313,7 @@ for language in book_titles:
                 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 language, text = hamlets.iloc[0]
 
@@ -303,7 +329,7 @@ data = pd.DataFrame({
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 language, text = hamlets.iloc[0]
 
@@ -321,7 +347,7 @@ data.loc[data["count"] <= 10, "frequency"] = "infrequent"
 data.loc[data["count"] == 1,  "frequency"] = "unique"
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("data",
             undefined_msg = "Did you define `data`?",
@@ -329,28 +355,34 @@ test_object("data",
 success_msg("Great work!")
 ```
 
+---
 
-
---- type:NormalExercise lang:python xp:100 skills:2 key:62f73c5919
 ## Exercise 4
+
+```yaml
+type: NormalExercise
+key: 62f73c5919
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we will find and visualize summary statistics of the text of different translations of Hamlet. For this case study, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 In this exercise, we will summarize the statistics in `data` into a smaller `pandas` dataframe. The solution code from the previous section is already included here.
 
-*** =instructions
+`@instructions`
 - Create a `pandas` dataframe named `sub_data` including the following columns:
     - `language`, which is the language of the text.
     -  `frequency`, which is a list containing the strings `"frequent"`, `"infrequent"`, and `"unique"`.
     -  `mean_word_length`, which is the mean word length of each value in `frequency`.
     -  `num_words`, which is the total number of words in each frequency category.
 
-
-*** =hint
+`@hint`
 - We recommend you use the `data.groupby()` function, which groups the data according to the unique values in a column specified in the `by` argument. Try grouping by `frequency`.
 - You may then find `mean_word_length` and `num_words` by calling `.mean()` and `.size()` on these grouped datasets, respectively.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
@@ -407,7 +439,7 @@ for language in book_titles:
                 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 language, text = hamlets.iloc[0]
 
@@ -429,7 +461,7 @@ data.loc[data["count"] == 1,  "frequency"] = "unique"
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 language, text = hamlets.iloc[0]
 
@@ -454,7 +486,7 @@ sub_data = pd.DataFrame({
 })
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("sub_data",
             undefined_msg = "Did you define `sub_data`?",
@@ -462,31 +494,33 @@ test_object("sub_data",
 success_msg("Great work!")
 ```
 
+---
 
-
-
---- type:NormalExercise lang:python xp:100 skills:2 key:c3d2e7f96f
 ## Exercise 5
+
+```yaml
+type: NormalExercise
+key: c3d2e7f96f
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we will find and visualize summary statistics of the text of different translations of Hamlet. For this case study, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
-In this exercise, we will join all the data summaries for text Hamlet translation. 
+In this exercise, we will join all the data summaries for text Hamlet translation.
 
-*** =instructions
-
+`@instructions`
 - The previous code for summarizing a particular translation of Hamlet is consolidated into a single function called `summarize_text`. Create a `pandas` dataframe `grouped_data` consisting of the results of `summarize_text` for translation of Hamlet in `hamlets`.
     - Use a `for` loop across the row indices of `hamlets` to assign each translation to a new row.
     - Obtain the *i*th row of `hamlets` to variables using the `.iloc` method, and assign the output to variables `language` and `text`.
     - Call `summarize_text` using `language` and `text`, and assign the output to `sub_data`.
     - Use the `pandas` `.append()` function to append to `pandas` dataframes row-wise to `grouped_data`.
 
-
-*** =hint
-
+`@hint`
 - No hint on this one.
 
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
@@ -543,7 +577,7 @@ for language in book_titles:
                 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 def summarize_text(language, text):
     counted_text = count_words_fast(text)
@@ -573,7 +607,7 @@ def summarize_text(language, text):
 
 ```
 
-*** =solution
+`@solution`
 ```{python}
 def summarize_text(language, text):
     counted_text = count_words_fast(text)
@@ -608,7 +642,7 @@ for i in range(hamlets.shape[0]):
     
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_object("grouped_data",
             undefined_msg = "Did you define `grouped_data`?",
@@ -616,22 +650,30 @@ test_object("grouped_data",
 success_msg("Great work!")
 ```
 
---- type:NormalExercise lang:python xp:100 skills:2 key:4ff32c727c
+---
+
 ## Exercise 6
 
+```yaml
+type: NormalExercise
+key: 4ff32c727c
+lang: python
+xp: 100
+skills: 2
+```
 
 In this case study, we will find and visualize summary statistics of the text of different translations of Hamlet. For this case study, functions `count_words_fast`, `read_book`, and `word_stats` are already defined as in the Case 2 Videos (Videos 3.2.x)
 
 In this exercise, we will plot our results and look for differences across each translation.
 
-*** =instructions
+`@instructions`
 -  Plot the word statistics of each translations on a single plot.  Note that we have already done most of the work for you.
 -  Consider: do the word statistics differ by translation?
 
-*** =hint
+`@hint`
 - No hint for this one: don't overthink it!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{python}
 data_filepath = "https://s3.amazonaws.com/assets.datacamp.com/production/course_974/datasets/"
 book_titles = {#only a selection for now, as the exercises only require translations of Hamlet.
@@ -716,7 +758,7 @@ for i in range(hamlets.shape[0]):
     grouped_data = grouped_data.append(sub_data)                
 ```
 
-*** =sample_code
+`@sample_code`
 ```{python}
 colors = {"Portuguese": "green", "English": "blue", "German": "red"}
 markers = {"frequent": "o","infrequent": "s", "unique": "^"}
@@ -752,7 +794,7 @@ plt.ylabel("Number of Words")
 # show your plot using `plt.show`!
 ```
 
-*** =solution
+`@solution`
 ```{python}
 colors = {"Portuguese": "green", "English": "blue", "German": "red"}
 markers = {"frequent": "o","infrequent": "s", "unique": "^"}
@@ -788,11 +830,10 @@ plt.ylabel("Number of Words")
 plt.show()   
 ```
 
-*** =sct
+`@sct`
 ```{python}
 test_student_typed("plt.show()",
               pattern=False,
               not_typed_msg="Did you use `plt.show`?")   
 success_msg("Great work!  We see that the original English version of Hamlet contains fewer words overall, and its unique words are shorter than its translations. This concludes the case study.  You can return to the course through this link:  https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2018")
 ```
-
