@@ -7,7 +7,7 @@ description: 'In this case study, we have prepared step-by-step instructions for
 
 ```yaml
 type: NormalExercise
-key: 07ea54b341
+key: f6b3dafc5b
 lang: python
 xp: 100
 skills: 2
