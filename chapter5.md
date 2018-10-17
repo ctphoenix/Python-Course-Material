@@ -7,7 +7,7 @@ description: 'In this case study, we will analyze a dataset consisting of an ass
 
 ```yaml
 type: NormalExercise
-key: 07ea54b341
+key: 69842e5e1d
 lang: python
 xp: 100
 skills: 2
