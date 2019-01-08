@@ -31,4 +31,4 @@ Every DataCamp exercise consists of different parts, read up about them <a href=
   - <a href=https://www.datacamp.com/community/blog/create-your-own-r-tutorials-with-github-datacamp target="_blank">Create a course with DataCamp Teach</a> 
   - <a href=https://www.datacamp.com/community/blog/create-your-own-r-tutorials-with-github-datacamp target="_blank">Interpreting DataCamp Teach's build attempts</a>.
 
-*Happy teaching!*
+*Happy teaching and learning!*
