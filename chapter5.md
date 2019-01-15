@@ -18,7 +18,7 @@ In this case study, we will analyze a dataset consisting of an assortment of win
 Our first step is to import the dataset.
 
 `@instructions`
--  Read in the data as a `pandas` dataframe using `pd.read_csv`.  The data can be found at `https://s3.amazonaws.com/demo-datasets/wine.csv`.
+-  Read in the data as a `pandas` dataframe using `pd.read_csv`.  The data can be found at `https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv`.
 
 `@hint`
 - `pd.read_csv` will work directly!
@@ -55,7 +55,7 @@ data = # Enter your code here!
 `@solution`
 ```{python}
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")
 ```
 
 `@sct`
@@ -110,7 +110,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")    
 ```
 
 `@sample_code`
@@ -187,7 +187,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")   
 numeric_data = data.drop("color", axis=1)
 ```
 
@@ -267,7 +267,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv") 
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")
 numeric_data = data.drop("color", axis=1)
 import sklearn.preprocessing
 scaled_data = sklearn.preprocessing.scale(numeric_data)
@@ -369,7 +369,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")
 numeric_data = data.drop("color", axis=1)
 import sklearn.preprocessing
 scaled_data = sklearn.preprocessing.scale(numeric_data)
@@ -463,7 +463,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")
 numeric_data = data.drop("color", axis=1)
 import sklearn.preprocessing
 scaled_data = sklearn.preprocessing.scale(numeric_data)
@@ -544,7 +544,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")
 numeric_data = data.drop("color", axis=1)
 import sklearn.preprocessing
 scaled_data = sklearn.preprocessing.scale(numeric_data)
@@ -631,7 +631,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv") 
 numeric_data = data.drop("color", axis=1)
 import sklearn.preprocessing
 scaled_data = sklearn.preprocessing.scale(numeric_data)
@@ -724,7 +724,7 @@ def knn_predict(p, points, outcomes, k=5):
     ind = find_nearest_neighbors(p, points, k)
     return majority_vote_fast(outcomes[ind])[0]
 import pandas as pd
-data = pd.read_csv("https://s3.amazonaws.com/demo-datasets/wine.csv")    
+data = pd.read_csv("https://courses.edx.org/asset-v1:HarvardX+PH526x+2T2018+type@asset+block@wine.csv")
 numeric_data = data.drop("color", axis=1)
 numeric_data = (numeric_data - np.mean(numeric_data, 0)) / np.std(numeric_data, 0)
 import sklearn.decomposition
